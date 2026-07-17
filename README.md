@@ -6,7 +6,9 @@ Análise de dados de violência contra as mulheres e meninas no Rio Grande do Su
 
 Se utilizar este software/dataset, cite-o conforme abaixo (ver também `CITATION.cff`):
 
-> Schäfer, A. G., & Prates, L. A. (2026). *Pipeline de análise da violência contra a mulher no RS (2012-2026)* [Software]. https://github.com/Alexandrogschafer/violencia-mulheres-rs
+> Schäfer, A. G., & Prates, L. A. (2026). *Pipeline de análise da violência contra a mulher no RS (2012-2026)* [Software]. https://github.com/Alexandrogschafer/violencia-mulheres-rs. DOI: [10.5281/zenodo.21403499](https://doi.org/10.5281/zenodo.21403499)
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21403499.svg)](https://doi.org/10.5281/zenodo.21403499)
 
 Licenciado sob [CC BY 4.0](LICENSE) — Alexandro Gularte Schäfer e Lisie Alende Prates, 2026.
 

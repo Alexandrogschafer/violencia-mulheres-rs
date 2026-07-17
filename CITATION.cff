@@ -9,3 +9,7 @@ authors:
 date-released: 2026-07-16
 repository-code: "https://github.com/Alexandrogschafer/violencia-mulheres-rs"
 license: CC-BY-4.0
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21403499"
+    description: "DOI conceitual: sempre resolve para a versão mais recente publicada no Zenodo."
