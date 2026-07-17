@@ -41,10 +41,15 @@ window.SiteMaps = (function () {
     return rgbToHex(mix);
   }
 
+  // opts.destacarMunicipio: nome (maiúsculas, como no geojson) de um único
+  // município a enquadrar/realçar -- usado pelas páginas de estudo de caso
+  // para reaproveitar este mesmo mapa estadual, só mudando o enquadramento
+  // inicial. Sem esse opt, comportamento idêntico ao mapa estadual completo.
   function initMap(elementId, geojson, taxasPorTipo, opts) {
     opts = opts || {};
     var tipos = Object.keys(taxasPorTipo.taxas);
     var tipoAtual = opts.tipoInicial || tipos[0];
+    var destaque = opts.destacarMunicipio || null;
 
     var map = L.map(elementId, { scrollWheelZoom: false }).setView([-30.0, -53.2], 6.4);
     L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png", {
@@ -73,12 +78,14 @@ window.SiteMaps = (function () {
     function desenhar(tipo) {
       var valores = valoresDoTipo(tipo);
       if (geoLayer) map.removeLayer(geoLayer);
+      var camadaDestaque = null;
       geoLayer = L.geoJSON(geojson, {
         style: function (feature) {
+          var emDestaque = destaque && feature.properties.municipio === destaque;
           return {
             fillColor: corPara(tipo, valores, feature.properties.municipio),
-            weight: 0.6,
-            color: "#ffffff",
+            weight: emDestaque ? 3 : 0.6,
+            color: emDestaque ? "#0b0b0b" : "#ffffff",
             fillOpacity: 0.9,
           };
         },
@@ -104,9 +111,14 @@ window.SiteMaps = (function () {
               if (infoBox) infoBox.innerHTML = texto;
             },
           });
+          if (destaque && municipio === destaque) camadaDestaque = layer;
         },
       }).addTo(map);
       atualizarLegenda(tipo, valores);
+      if (camadaDestaque) {
+        camadaDestaque.bringToFront();
+        map.fitBounds(camadaDestaque.getBounds(), { padding: [60, 60], maxZoom: 10 });
+      }
     }
 
     function atualizarLegenda(tipo, valores) {

@@ -1,0 +1,47 @@
+[
+  {
+    "tipo_crime":"Ameaça",
+    "posicao":119,
+    "n_elegiveis":266,
+    "top_pct":44.7,
+    "taxa_uruguaiana":326.35,
+    "mediana_estadual":309.09,
+    "acima_da_mediana":true
+  },
+  {
+    "tipo_crime":"Estupro",
+    "posicao":57,
+    "n_elegiveis":266,
+    "top_pct":21.4,
+    "taxa_uruguaiana":21.55,
+    "mediana_estadual":16.14,
+    "acima_da_mediana":true
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "posicao":85,
+    "n_elegiveis":266,
+    "top_pct":32.0,
+    "taxa_uruguaiana":1.14,
+    "mediana_estadual":0.85,
+    "acima_da_mediana":true
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "posicao":50,
+    "n_elegiveis":266,
+    "top_pct":18.8,
+    "taxa_uruguaiana":3.39,
+    "mediana_estadual":2.02,
+    "acima_da_mediana":true
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "posicao":30,
+    "n_elegiveis":266,
+    "top_pct":11.3,
+    "taxa_uruguaiana":234.3,
+    "mediana_estadual":155.66,
+    "acima_da_mediana":true
+  }
+]

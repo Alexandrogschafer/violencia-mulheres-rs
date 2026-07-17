@@ -1,0 +1,47 @@
+[
+  {
+    "tipo_crime":"Ameaça",
+    "estatistica_h_uruguaiana":14.0757476096,
+    "p_valor_uruguaiana":0.2288303606,
+    "significativo_5pct_uruguaiana":false,
+    "estatistica_h_estado":59.6615126028,
+    "p_valor_estado":0.0000000107,
+    "significativo_5pct_estado":true
+  },
+  {
+    "tipo_crime":"Estupro",
+    "estatistica_h_uruguaiana":11.4866830151,
+    "p_valor_uruguaiana":0.4034357637,
+    "significativo_5pct_uruguaiana":false,
+    "estatistica_h_estado":23.4752264491,
+    "p_valor_estado":0.0151364589,
+    "significativo_5pct_estado":true
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "estatistica_h_uruguaiana":10.2295008818,
+    "p_valor_uruguaiana":0.5098693077,
+    "significativo_5pct_uruguaiana":false,
+    "estatistica_h_estado":12.0822340024,
+    "p_valor_estado":0.3574938169,
+    "significativo_5pct_estado":false
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "estatistica_h_uruguaiana":6.6020962414,
+    "p_valor_uruguaiana":0.8303309804,
+    "significativo_5pct_uruguaiana":false,
+    "estatistica_h_estado":15.7416948225,
+    "p_valor_estado":0.1509944964,
+    "significativo_5pct_estado":false
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "estatistica_h_uruguaiana":20.1976656017,
+    "p_valor_uruguaiana":0.0427024116,
+    "significativo_5pct_uruguaiana":true,
+    "estatistica_h_estado":76.8832520082,
+    "p_valor_estado":0.0,
+    "significativo_5pct_estado":true
+  }
+]

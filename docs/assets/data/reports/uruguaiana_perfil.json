@@ -1,0 +1,42 @@
+[
+  {
+    "tipo_crime":"Ameaça",
+    "casos_2012_2026":5877,
+    "casos_2012_2025_base_taxa":5765,
+    "taxa_uruguaiana":327.73,
+    "taxa_estado":333.72,
+    "razao_uru_estado":0.98
+  },
+  {
+    "tipo_crime":"Estupro",
+    "casos_2012_2026":387,
+    "casos_2012_2025_base_taxa":378,
+    "taxa_uruguaiana":21.49,
+    "taxa_estado":17.67,
+    "razao_uru_estado":1.22
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "casos_2012_2026":20,
+    "casos_2012_2025_base_taxa":20,
+    "taxa_uruguaiana":1.14,
+    "taxa_estado":0.82,
+    "razao_uru_estado":1.39
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "casos_2012_2026":61,
+    "casos_2012_2025_base_taxa":55,
+    "taxa_uruguaiana":3.37,
+    "taxa_estado":2.53,
+    "razao_uru_estado":1.33
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "casos_2012_2026":4227,
+    "casos_2012_2025_base_taxa":4131,
+    "taxa_uruguaiana":234.84,
+    "taxa_estado":193.65,
+    "razao_uru_estado":1.21
+  }
+]

@@ -203,7 +203,11 @@ def preparar_dados_docs() -> None:
         d.mkdir(parents=True, exist_ok=True)
 
     # reports/ -- todas as tabelas de resultado estatístico geradas pelas
-    # notebooks 1 e 2, convertidas 1:1 para JSON.
+    # notebooks (exploratória, inferencial, estudos de caso), convertidas 1:1
+    # para JSON. Genérico por design: qualquer novo notebook que salve um CSV
+    # em outputs/reports/ é publicado aqui automaticamente, sem precisar tocar
+    # este script -- é assim que um futuro estudo de caso de outro município
+    # entra no portal.
     for csv_path in sorted(REPORTS_DIR.glob("*.csv")):
         _csv_para_json(csv_path, docs_reports / f"{csv_path.stem}.json")
 

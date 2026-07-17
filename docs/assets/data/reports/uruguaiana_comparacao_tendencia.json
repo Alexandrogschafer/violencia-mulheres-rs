@@ -1,0 +1,47 @@
+[
+  {
+    "tipo_crime":"Ameaça",
+    "slope_uruguaiana":-20.630952381,
+    "p_valor_linregress_uruguaiana":0.000445419,
+    "significativo_linregress_5pct_uruguaiana":true,
+    "slope_estado":-841.8571428571,
+    "p_valor_linregress_estado":0.0099604958,
+    "significativo_linregress_5pct_estado":true
+  },
+  {
+    "tipo_crime":"Estupro",
+    "slope_uruguaiana":-0.880952381,
+    "p_valor_linregress_uruguaiana":0.5529515273,
+    "significativo_linregress_5pct_uruguaiana":false,
+    "slope_estado":136.0,
+    "p_valor_linregress_estado":0.0232336894,
+    "significativo_linregress_5pct_estado":true
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "slope_uruguaiana":-0.2380952381,
+    "p_valor_linregress_uruguaiana":0.2199438192,
+    "significativo_linregress_5pct_uruguaiana":false,
+    "slope_estado":-4.0357142857,
+    "p_valor_linregress_estado":0.0863903071,
+    "significativo_linregress_5pct_estado":false
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "slope_uruguaiana":0.0,
+    "p_valor_linregress_uruguaiana":1.0,
+    "significativo_linregress_5pct_uruguaiana":false,
+    "slope_estado":-17.7857142857,
+    "p_valor_linregress_estado":0.0063741175,
+    "significativo_linregress_5pct_estado":true
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "slope_uruguaiana":-15.880952381,
+    "p_valor_linregress_uruguaiana":0.0108182604,
+    "significativo_linregress_5pct_uruguaiana":true,
+    "slope_estado":-371.3214285714,
+    "p_valor_linregress_estado":0.0775696221,
+    "significativo_linregress_5pct_estado":false
+  }
+]
