@@ -1,0 +1,377 @@
+[
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"IRAI",
+    "taxa_por_100mil_hab":682.5973241577
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"PALMEIRA DAS MISSOES",
+    "taxa_por_100mil_hab":577.0976453482
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"AMETISTA DO SUL",
+    "taxa_por_100mil_hab":571.832435804
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"SOLEDADE",
+    "taxa_por_100mil_hab":553.2352768554
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"SALTO DO JACUI",
+    "taxa_por_100mil_hab":530.0753251983
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"TENENTE PORTELA",
+    "taxa_por_100mil_hab":511.4353337468
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"LAGOA VERMELHA",
+    "taxa_por_100mil_hab":510.0890786245
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"CAMPO NOVO",
+    "taxa_por_100mil_hab":497.1170802642
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"ARROIO DO SAL",
+    "taxa_por_100mil_hab":487.4130718283
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"TRAMANDAI",
+    "taxa_por_100mil_hab":487.1213000711
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"PLANALTO",
+    "taxa_por_100mil_hab":483.7838668405
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"SOBRADINHO",
+    "taxa_por_100mil_hab":481.269627531
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"CIDREIRA",
+    "taxa_por_100mil_hab":475.7964422748
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"IMBE",
+    "taxa_por_100mil_hab":468.6034731298
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"FAXINAL DO SOTURNO",
+    "taxa_por_100mil_hab":457.1849250341
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"CIDREIRA",
+    "taxa_por_100mil_hab":72.6081143295
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"INDEPENDENCIA",
+    "taxa_por_100mil_hab":61.6584044096
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"SERTAO SANTANA",
+    "taxa_por_100mil_hab":59.7209917911
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"PALMARES DO SUL",
+    "taxa_por_100mil_hab":53.9626250947
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"NOVA HARTZ",
+    "taxa_por_100mil_hab":50.7718580617
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"CERRO GRANDE DO SUL",
+    "taxa_por_100mil_hab":48.9601914808
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"IMBE",
+    "taxa_por_100mil_hab":48.1014870541
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"MINAS DO LEAO",
+    "taxa_por_100mil_hab":46.9613772591
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"XANGRILA",
+    "taxa_por_100mil_hab":46.6182344142
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"SANTA BARBARA DO SUL",
+    "taxa_por_100mil_hab":46.5683152266
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"ELDORADO DO SUL",
+    "taxa_por_100mil_hab":44.2321525799
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"SANTANA DA BOA VISTA",
+    "taxa_por_100mil_hab":44.1425731839
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"ARROIO DO SAL",
+    "taxa_por_100mil_hab":43.0736329699
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"GUAIBA",
+    "taxa_por_100mil_hab":42.7569969898
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"NOVA SANTA RITA",
+    "taxa_por_100mil_hab":41.4526550031
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"BARAO DO TRIUNFO",
+    "taxa_por_100mil_hab":9.3941307809
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"NOVA ARACA",
+    "taxa_por_100mil_hab":8.0130866509
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"ITAARA",
+    "taxa_por_100mil_hab":7.136103592
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"SALTO DO JACUI",
+    "taxa_por_100mil_hab":5.4897343733
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"SOBRADINHO",
+    "taxa_por_100mil_hab":4.1622161451
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"SANTO ANTONIO DAS MISSOES",
+    "taxa_por_100mil_hab":4.0281973817
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"RONDA ALTA",
+    "taxa_por_100mil_hab":4.0124385595
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"CAMPO NOVO",
+    "taxa_por_100mil_hab":3.9824771008
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"BALNEARIO PINHAL",
+    "taxa_por_100mil_hab":3.9644112429
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"REDENTORA",
+    "taxa_por_100mil_hab":3.7513144853
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"HARMONIA",
+    "taxa_por_100mil_hab":3.7188545928
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"SENTINELA DO SUL",
+    "taxa_por_100mil_hab":3.5492457853
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"SERTAO",
+    "taxa_por_100mil_hab":3.5479865177
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"SAO PAULO DAS MISSOES",
+    "taxa_por_100mil_hab":3.5373187124
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"ESTACAO",
+    "taxa_por_100mil_hab":3.5161744023
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"IRAI",
+    "taxa_por_100mil_hab":18.4162943097
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"ARROIO DO SAL",
+    "taxa_por_100mil_hab":11.1346437217
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"PALMARES DO SUL",
+    "taxa_por_100mil_hab":10.9901249793
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"GAURAMA",
+    "taxa_por_100mil_hab":10.5921611401
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"LAVRAS DO SUL",
+    "taxa_por_100mil_hab":8.2259391281
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"PLANALTO",
+    "taxa_por_100mil_hab":7.5695584568
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"MACHADINHO",
+    "taxa_por_100mil_hab":6.9356341881
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"ARROIO DOS RATOS",
+    "taxa_por_100mil_hab":6.8343808313
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"CERRO GRANDE DO SUL",
+    "taxa_por_100mil_hab":6.4626977197
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"LINDOLFO COLLOR",
+    "taxa_por_100mil_hab":6.4020486556
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"SAO PEDRO DO SUL",
+    "taxa_por_100mil_hab":6.3271265248
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"SANTA MARIA DO HERVAL",
+    "taxa_por_100mil_hab":6.2676277029
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"PANTANO GRANDE",
+    "taxa_por_100mil_hab":6.0546918323
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"PORTO XAVIER",
+    "taxa_por_100mil_hab":5.9194967128
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"SALTO DO JACUI",
+    "taxa_por_100mil_hab":5.8644280057
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"IMBE",
+    "taxa_por_100mil_hab":368.3695550181
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"CIDREIRA",
+    "taxa_por_100mil_hab":350.6312183951
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"BALNEARIO PINHAL",
+    "taxa_por_100mil_hab":310.5308240441
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"TRAMANDAI",
+    "taxa_por_100mil_hab":308.1867748243
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"CAPAO DA CANOA",
+    "taxa_por_100mil_hab":288.3673359157
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"TENENTE PORTELA",
+    "taxa_por_100mil_hab":274.988952576
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"CANELA",
+    "taxa_por_100mil_hab":269.2078035896
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"ERECHIM",
+    "taxa_por_100mil_hab":267.4173191196
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"SOBRADINHO",
+    "taxa_por_100mil_hab":267.3885305096
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"REDENTORA",
+    "taxa_por_100mil_hab":262.2566664534
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"CORONEL BICACO",
+    "taxa_por_100mil_hab":260.2723313678
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"ERVAL GRANDE",
+    "taxa_por_100mil_hab":255.5167160484
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"ARROIO DO SAL",
+    "taxa_por_100mil_hab":255.144477734
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"IRAI",
+    "taxa_por_100mil_hab":254.6052717703
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"TORRES",
+    "taxa_por_100mil_hab":250.4591295858
+  }
+]

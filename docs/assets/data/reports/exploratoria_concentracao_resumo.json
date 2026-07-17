@@ -1,0 +1,14 @@
+[
+  {
+    "métrica":"pct_top10_com_poa",
+    "valor_pct":37.1793699548
+  },
+  {
+    "métrica":"pct_porto_alegre",
+    "valor_pct":12.2341464296
+  },
+  {
+    "métrica":"pct_top10_sem_poa",
+    "valor_pct":30.8864119852
+  }
+]

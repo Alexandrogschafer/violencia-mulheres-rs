@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Municípios — Violência contra as mulheres no RS</title>
+<meta name="description" content="Tabela pesquisável e ordenável com a taxa de violência por 100 mil habitantes em cada município do Rio Grande do Sul.">
+<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#0b0b0b">
+<link rel="canonical" href="https://alexandrogschafer.github.io/violencia-mulheres-rs/municipios.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Violência contra as mulheres no RS">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Municípios — Violência contra as mulheres no RS">
+<meta property="og:description" content="Tabela pesquisável e ordenável com a taxa de violência por 100 mil habitantes em cada município do Rio Grande do Sul.">
+<meta property="og:url" content="https://alexandrogschafer.github.io/violencia-mulheres-rs/municipios.html">
+<meta property="og:image" content="https://alexandrogschafer.github.io/violencia-mulheres-rs/assets/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Municípios — Violência contra as mulheres no RS">
+<meta name="twitter:description" content="Tabela pesquisável e ordenável com a taxa de violência por 100 mil habitantes em cada município do Rio Grande do Sul.">
+<meta name="twitter:image" content="https://alexandrogschafer.github.io/violencia-mulheres-rs/assets/img/og-cover.png">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+<header class="site-header">
+  <nav class="site-nav">
+    <span class="brand"><a href="index.html">Violência contra as mulheres no RS</a></span>
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="metodologia.html">Metodologia</a></li>
+      <li><a href="resultados.html">Resultados</a></li>
+      <li><a href="municipios.html">Municípios</a></li>
+      <li><a href="mapas.html">Mapas</a></li>
+      <li><a href="dados.html">Dados</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main-content">
+  <h1>Municípios</h1>
+  <p class="lede muted">
+    Casos e taxa por 100 mil habitantes, por tipo de crime, acumulados no período
+    2021–2025 (mesmo recorte usado na análise espacial). Pesquise por nome e ordene
+    clicando no cabeçalho de qualquer coluna.
+  </p>
+  <div class="callout">
+    <p class="small" style="margin:0">
+      Taxa = casos acumulados no período / soma da população anual × 100.000 — não é
+      uma taxa "por ano". Ver <a href="metodologia.html">limitações de dados</a>, em
+      especial sobre população total vs. feminina.
+    </p>
+  </div>
+  <div id="tabela-municipios"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <strong>Violência contra as mulheres no RS</strong>
+      <p class="muted small">Schäfer, A. G. &amp; Prates, L. A. (2026)</p>
+      <div class="institutional-logo footer-logo">
+        <img src="assets/img/logo_petclima.png" alt="Logotipo do PET Saúde Clima" width="772" height="212">
+      </div>
+    </div>
+    <div>
+      <span class="muted">Links</span>
+      <ul>
+        <li><a href="https://github.com/Alexandrogschafer/violencia-mulheres-rs">Repositório no GitHub</a></li>
+        <li><a href="https://github.com/Alexandrogschafer/violencia-mulheres-rs/blob/master/LICENSE">Licença: CC BY 4.0</a></li>
+        <li><a href="https://doi.org/10.5281/zenodo.21403499">DOI: 10.5281/zenodo.21403499</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/charts.js"></script>
+<script src="assets/js/tables.js"></script>
+<script src="assets/js/nav.js"></script>
+<script>
+(async function () {
+  const dados = await fetch("assets/data/tables/municipios_resumo.json").then(r => r.json());
+  const tipos = SiteCharts.CRIME_ORDER;
+
+  const colunas = [
+    { key: "municipio", label: "Município" },
+    { key: "casos_geral", label: "Casos (Geral)", numeric: true, format: v => SiteCharts.fmtInt(v) },
+  ].concat(
+    tipos.map(tipo => ({
+      key: "taxa_" + tipo,
+      label: tipo + " (taxa/100 mil)",
+      numeric: true,
+      format: v => v == null ? "—" : v.toFixed(1),
+    }))
+  );
+
+  SiteTables.renderTable(document.getElementById("tabela-municipios"), colunas, dados, {
+    searchable: true,
+    searchPlaceholder: "Pesquisar município…",
+    defaultSort: { key: "casos_geral", dir: "desc" },
+    caption: "497 municípios do RS — casos e taxa por 100 mil hab., 2021–2025",
+  });
+})();
+</script>
+</body>
+</html>

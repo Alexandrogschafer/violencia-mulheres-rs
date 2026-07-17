@@ -1,0 +1,372 @@
+[
+  {
+    "ano":2012,
+    "tipo_crime":"Ameaça",
+    "casos_total":44969
+  },
+  {
+    "ano":2012,
+    "tipo_crime":"Estupro",
+    "casos_total":1454
+  },
+  {
+    "ano":2012,
+    "tipo_crime":"Feminicídio Consumado",
+    "casos_total":101
+  },
+  {
+    "ano":2012,
+    "tipo_crime":"Lesão Corporal",
+    "casos_total":27123
+  },
+  {
+    "ano":2013,
+    "tipo_crime":"Ameaça",
+    "casos_total":43879
+  },
+  {
+    "ano":2013,
+    "tipo_crime":"Estupro",
+    "casos_total":1448
+  },
+  {
+    "ano":2013,
+    "tipo_crime":"Feminicídio Consumado",
+    "casos_total":92
+  },
+  {
+    "ano":2013,
+    "tipo_crime":"Feminicídio Tentado",
+    "casos_total":229
+  },
+  {
+    "ano":2013,
+    "tipo_crime":"Lesão Corporal",
+    "casos_total":26137
+  },
+  {
+    "ano":2014,
+    "tipo_crime":"Ameaça",
+    "casos_total":44771
+  },
+  {
+    "ano":2014,
+    "tipo_crime":"Estupro",
+    "casos_total":1407
+  },
+  {
+    "ano":2014,
+    "tipo_crime":"Feminicídio Consumado",
+    "casos_total":75
+  },
+  {
+    "ano":2014,
+    "tipo_crime":"Feminicídio Tentado",
+    "casos_total":286
+  },
+  {
+    "ano":2014,
+    "tipo_crime":"Lesão Corporal",
+    "casos_total":25542
+  },
+  {
+    "ano":2015,
+    "tipo_crime":"Ameaça",
+    "casos_total":42841
+  },
+  {
+    "ano":2015,
+    "tipo_crime":"Estupro",
+    "casos_total":1472
+  },
+  {
+    "ano":2015,
+    "tipo_crime":"Feminicídio Consumado",
+    "casos_total":99
+  },
+  {
+    "ano":2015,
+    "tipo_crime":"Feminicídio Tentado",
+    "casos_total":311
+  },
+  {
+    "ano":2015,
+    "tipo_crime":"Lesão Corporal",
+    "casos_total":24533
+  },
+  {
+    "ano":2016,
+    "tipo_crime":"Ameaça",
+    "casos_total":39606
+  },
+  {
+    "ano":2016,
+    "tipo_crime":"Estupro",
+    "casos_total":1574
+  },
+  {
+    "ano":2016,
+    "tipo_crime":"Feminicídio Consumado",
+    "casos_total":96
+  },
+  {
+    "ano":2016,
+    "tipo_crime":"Feminicídio Tentado",
+    "casos_total":263
+  },
+  {
+    "ano":2016,
+    "tipo_crime":"Lesão Corporal",
+    "casos_total":22667
+  },
+  {
+    "ano":2017,
+    "tipo_crime":"Ameaça",
+    "casos_total":37946
+  },
+  {
+    "ano":2017,
+    "tipo_crime":"Estupro",
+    "casos_total":1661
+  },
+  {
+    "ano":2017,
+    "tipo_crime":"Feminicídio Consumado",
+    "casos_total":83
+  },
+  {
+    "ano":2017,
+    "tipo_crime":"Feminicídio Tentado",
+    "casos_total":322
+  },
+  {
+    "ano":2017,
+    "tipo_crime":"Lesão Corporal",
+    "casos_total":22960
+  },
+  {
+    "ano":2018,
+    "tipo_crime":"Ameaça",
+    "casos_total":37623
+  },
+  {
+    "ano":2018,
+    "tipo_crime":"Estupro",
+    "casos_total":1712
+  },
+  {
+    "ano":2018,
+    "tipo_crime":"Feminicídio Consumado",
+    "casos_total":116
+  },
+  {
+    "ano":2018,
+    "tipo_crime":"Feminicídio Tentado",
+    "casos_total":355
+  },
+  {
+    "ano":2018,
+    "tipo_crime":"Lesão Corporal",
+    "casos_total":21815
+  },
+  {
+    "ano":2019,
+    "tipo_crime":"Ameaça",
+    "casos_total":37381
+  },
+  {
+    "ano":2019,
+    "tipo_crime":"Estupro",
+    "casos_total":1714
+  },
+  {
+    "ano":2019,
+    "tipo_crime":"Feminicídio Consumado",
+    "casos_total":97
+  },
+  {
+    "ano":2019,
+    "tipo_crime":"Feminicídio Tentado",
+    "casos_total":359
+  },
+  {
+    "ano":2019,
+    "tipo_crime":"Lesão Corporal",
+    "casos_total":20989
+  },
+  {
+    "ano":2020,
+    "tipo_crime":"Ameaça",
+    "casos_total":33756
+  },
+  {
+    "ano":2020,
+    "tipo_crime":"Estupro",
+    "casos_total":2246
+  },
+  {
+    "ano":2020,
+    "tipo_crime":"Feminicídio Consumado",
+    "casos_total":80
+  },
+  {
+    "ano":2020,
+    "tipo_crime":"Feminicídio Tentado",
+    "casos_total":318
+  },
+  {
+    "ano":2020,
+    "tipo_crime":"Lesão Corporal",
+    "casos_total":18901
+  },
+  {
+    "ano":2021,
+    "tipo_crime":"Ameaça",
+    "casos_total":32762
+  },
+  {
+    "ano":2021,
+    "tipo_crime":"Estupro",
+    "casos_total":2455
+  },
+  {
+    "ano":2021,
+    "tipo_crime":"Feminicídio Consumado",
+    "casos_total":96
+  },
+  {
+    "ano":2021,
+    "tipo_crime":"Feminicídio Tentado",
+    "casos_total":255
+  },
+  {
+    "ano":2021,
+    "tipo_crime":"Lesão Corporal",
+    "casos_total":18007
+  },
+  {
+    "ano":2022,
+    "tipo_crime":"Ameaça",
+    "casos_total":31389
+  },
+  {
+    "ano":2022,
+    "tipo_crime":"Estupro",
+    "casos_total":2783
+  },
+  {
+    "ano":2022,
+    "tipo_crime":"Feminicídio Consumado",
+    "casos_total":111
+  },
+  {
+    "ano":2022,
+    "tipo_crime":"Feminicídio Tentado",
+    "casos_total":263
+  },
+  {
+    "ano":2022,
+    "tipo_crime":"Lesão Corporal",
+    "casos_total":18197
+  },
+  {
+    "ano":2023,
+    "tipo_crime":"Ameaça",
+    "casos_total":33453
+  },
+  {
+    "ano":2023,
+    "tipo_crime":"Estupro",
+    "casos_total":2820
+  },
+  {
+    "ano":2023,
+    "tipo_crime":"Feminicídio Consumado",
+    "casos_total":86
+  },
+  {
+    "ano":2023,
+    "tipo_crime":"Feminicídio Tentado",
+    "casos_total":237
+  },
+  {
+    "ano":2023,
+    "tipo_crime":"Lesão Corporal",
+    "casos_total":19903
+  },
+  {
+    "ano":2024,
+    "tipo_crime":"Ameaça",
+    "casos_total":31523
+  },
+  {
+    "ano":2024,
+    "tipo_crime":"Estupro",
+    "casos_total":2522
+  },
+  {
+    "ano":2024,
+    "tipo_crime":"Feminicídio Consumado",
+    "casos_total":73
+  },
+  {
+    "ano":2024,
+    "tipo_crime":"Feminicídio Tentado",
+    "casos_total":236
+  },
+  {
+    "ano":2024,
+    "tipo_crime":"Lesão Corporal",
+    "casos_total":18747
+  },
+  {
+    "ano":2025,
+    "tipo_crime":"Ameaça",
+    "casos_total":32031
+  },
+  {
+    "ano":2025,
+    "tipo_crime":"Estupro",
+    "casos_total":2474
+  },
+  {
+    "ano":2025,
+    "tipo_crime":"Feminicídio Consumado",
+    "casos_total":80
+  },
+  {
+    "ano":2025,
+    "tipo_crime":"Feminicídio Tentado",
+    "casos_total":263
+  },
+  {
+    "ano":2025,
+    "tipo_crime":"Lesão Corporal",
+    "casos_total":18504
+  },
+  {
+    "ano":2026,
+    "tipo_crime":"Ameaça",
+    "casos_total":15541
+  },
+  {
+    "ano":2026,
+    "tipo_crime":"Estupro",
+    "casos_total":1001
+  },
+  {
+    "ano":2026,
+    "tipo_crime":"Feminicídio Consumado",
+    "casos_total":41
+  },
+  {
+    "ano":2026,
+    "tipo_crime":"Feminicídio Tentado",
+    "casos_total":122
+  },
+  {
+    "ano":2026,
+    "tipo_crime":"Lesão Corporal",
+    "casos_total":8491
+  }
+]

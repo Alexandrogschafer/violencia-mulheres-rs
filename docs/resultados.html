@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resultados — Violência contra as mulheres no RS</title>
+<meta name="description" content="Tendência, sazonalidade, correlação entre tipos de crime e quebra estrutural em torno das enchentes de maio/2024.">
+<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#0b0b0b">
+<link rel="canonical" href="https://alexandrogschafer.github.io/violencia-mulheres-rs/resultados.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Violência contra as mulheres no RS">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Resultados — Violência contra as mulheres no RS">
+<meta property="og:description" content="Tendência, sazonalidade, correlação entre tipos de crime e quebra estrutural em torno das enchentes de maio/2024.">
+<meta property="og:url" content="https://alexandrogschafer.github.io/violencia-mulheres-rs/resultados.html">
+<meta property="og:image" content="https://alexandrogschafer.github.io/violencia-mulheres-rs/assets/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Resultados — Violência contra as mulheres no RS">
+<meta name="twitter:description" content="Tendência, sazonalidade, correlação entre tipos de crime e quebra estrutural em torno das enchentes de maio/2024.">
+<meta name="twitter:image" content="https://alexandrogschafer.github.io/violencia-mulheres-rs/assets/img/og-cover.png">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+<header class="site-header">
+  <nav class="site-nav">
+    <span class="brand"><a href="index.html">Violência contra as mulheres no RS</a></span>
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="metodologia.html">Metodologia</a></li>
+      <li><a href="resultados.html">Resultados</a></li>
+      <li><a href="municipios.html">Municípios</a></li>
+      <li><a href="mapas.html">Mapas</a></li>
+      <li><a href="dados.html">Dados</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main-content">
+  <h1>Resultados</h1>
+  <p class="lede muted">
+    Os quatro testes estatísticos da Camada 2 (<code>notebooks/analise_inferencial.ipynb</code>).
+    Todos os números abaixo vêm de <code>outputs/reports/</code>, gerado ao rodar a notebook —
+    nada aqui foi recalculado ou estimado à parte.
+  </p>
+
+  <h2>1. Tendência anual (2018–2025)</h2>
+  <p class="muted small">Regressão linear simples (ano → casos) por tipo de crime, com Mann-Kendall como checagem cruzada.</p>
+  <figure class="chart-figure" id="fig-tendencia">
+    <div class="chart-toolbar"><button class="btn-toggle" type="button" aria-pressed="false">Ver como tabela</button></div>
+    <div class="chart-canvas-wrap" style="height:340px">
+      <canvas id="chart-tendencia" role="img" aria-label="Série anual de casos por tipo de crime, 2018 a 2025"></canvas>
+    </div>
+    <div class="table-view" id="table-tendencia"></div>
+  </figure>
+  <div class="callout">
+    <h3>Leitura</h3>
+    <p>Ameaça, Estupro e Feminicídio Tentado têm tendência significativa a 5% (queda para Ameaça e Feminicídio Tentado, alta para Estupro). Feminicídio Consumado e Lesão Corporal não atingem significância — com n=8 anos, o poder estatístico é baixo.</p>
+  </div>
+
+  <h2>2. Sazonalidade mensal (2018–2026)</h2>
+  <p class="muted small">Kruskal-Wallis entre os 12 meses do ano, por tipo de crime. Onde significativo, os meses em destaque vêm de um post-hoc Mann-Whitney U mês-vs-resto com correção de Holm-Bonferroni.</p>
+  <div class="table-controls">
+    <label for="select-sazonalidade" class="small muted">Tipo de crime:</label>
+    <select id="select-sazonalidade"></select>
+  </div>
+  <figure class="chart-figure" id="fig-sazonalidade">
+    <div class="chart-toolbar"><button class="btn-toggle" type="button" aria-pressed="false">Ver como tabela</button></div>
+    <div class="chart-canvas-wrap" style="height:320px">
+      <canvas id="chart-sazonalidade" role="img" aria-label="Média de casos por mês"></canvas>
+    </div>
+    <div class="table-view" id="table-sazonalidade"></div>
+  </figure>
+  <div id="table-kruskal-wrap" class="table-scroll" style="margin-bottom:1.25rem"></div>
+  <div class="callout">
+    <h3>Leitura</h3>
+    <p>Ameaça, Estupro e Lesão Corporal têm diferença significativa entre meses. Janeiro se destaca para cima nos três; junho (e maio/julho para Lesão Corporal) se destaca para baixo. Feminicídio (tentado ou consumado) não mostra sazonalidade detectável — esperado para eventos raros, com pouca contagem mensal.</p>
+  </div>
+
+  <h2>3. Correlação entre tipos de crime, por município</h2>
+  <p class="muted small">Spearman entre os 5 tipos de crime, por município. Duas variantes: número absoluto de casos (2012–2026) e taxa por 100 mil hab. (2012–2025).</p>
+  <div class="grid-2">
+    <div>
+      <h3 class="small">Número absoluto de casos</h3>
+      <div id="heatmap-absoluto" role="img" aria-label="Matriz de correlação de Spearman entre os 5 tipos de crime, em número absoluto de casos"></div>
+    </div>
+    <div>
+      <h3 class="small">Taxa por 100 mil hab.</h3>
+      <div id="heatmap-taxa" role="img" aria-label="Matriz de correlação de Spearman entre os 5 tipos de crime, em taxa por 100 mil habitantes"></div>
+    </div>
+  </div>
+  <div class="callout">
+    <h3>Leitura</h3>
+    <p>Boa parte da correlação em números absolutos é só efeito de porte do município — ao controlar por população, a maioria dos pares cai bastante (de ~0,7–0,9 para ~0,2–0,4). A exceção é <strong>Ameaça × Lesão Corporal</strong>, que continua forte mesmo em taxa (0,82) — os dois parecem de fato andar juntos, e não só porque cidades grandes têm mais casos de tudo.</p>
+  </div>
+
+  <h2>4. Quebra estrutural em torno das enchentes de maio/2024</h2>
+  <p class="muted small">Teste de Chow sobre a série mensal dessazonalizada (resíduo em relação à média histórica pré-enchente): compara um único ajuste linear contra dois ajustes separados (pré e pós maio/2024).</p>
+  <div class="gallery">
+    <figure>
+      <img src="assets/data/figures/inferencial_quebra_estrutural.png" alt="Série dessazonalizada com quebra estrutural em maio de 2024, por tipo de crime" loading="lazy">
+      <figcaption>Resíduo vs. média histórica pré-2024; linha tracejada = maio/2024. Gerado por <code>notebooks/analise_inferencial.ipynb</code>.</figcaption>
+    </figure>
+  </div>
+  <div id="table-chow-wrap" class="table-scroll" style="margin:1rem 0"></div>
+  <div class="callout">
+    <h3>Leitura</h3>
+    <p>Estupro tem a quebra mais nítida (p=1,6e-14) — a tendência de alta que vinha desde 2018 se inverte após maio/2024. Feminicídio Tentado também mostra quebra significativa (p=0,015). Ameaça fica no limiar (p=0,054). Lesão Corporal e Feminicídio Consumado não mostram quebra detectável neste desenho. O post-hoc por mês equivalente (Mann-Whitney U) não detecta significância em nenhum mês/tipo — com n=6 vs n=2, o menor p-valor exato possível é 0,143, então serve só como referência descritiva.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <strong>Violência contra as mulheres no RS</strong>
+      <p class="muted small">Schäfer, A. G. &amp; Prates, L. A. (2026)</p>
+      <div class="institutional-logo footer-logo">
+        <img src="assets/img/logo_petclima.png" alt="Logotipo do PET Saúde Clima" width="772" height="212">
+      </div>
+    </div>
+    <div>
+      <span class="muted">Links</span>
+      <ul>
+        <li><a href="https://github.com/Alexandrogschafer/violencia-mulheres-rs">Repositório no GitHub</a></li>
+        <li><a href="https://github.com/Alexandrogschafer/violencia-mulheres-rs/blob/master/LICENSE">Licença: CC BY 4.0</a></li>
+        <li><a href="https://doi.org/10.5281/zenodo.21403499">DOI: 10.5281/zenodo.21403499</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="assets/js/charts.js"></script>
+<script src="assets/js/tables.js"></script>
+<script src="assets/js/nav.js"></script>
+<script>
+(async function () {
+  const [tendencia, kruskal, destaques, corrAbs, corrTaxa, chow] = await Promise.all([
+    fetch("assets/data/reports/inferencial_tendencia_anual.json").then(r => r.json()),
+    fetch("assets/data/reports/inferencial_sazonalidade_kruskal.json").then(r => r.json()),
+    fetch("assets/data/reports/inferencial_sazonalidade_destaques.json").then(r => r.json()),
+    fetch("assets/data/reports/inferencial_correlacao_matriz_casos_absolutos.json").then(r => r.json()),
+    fetch("assets/data/reports/inferencial_correlacao_matriz_taxa_por_100mil_hab.json").then(r => r.json()),
+    fetch("assets/data/reports/inferencial_quebra_estrutural_chow.json").then(r => r.json()),
+  ]);
+  const serieAnual = await fetch("assets/data/tables/totais_anuais_estado.json").then(r => r.json());
+
+  // --- 1. Tendência ---
+  const serie1825 = serieAnual.filter(d => d.ano >= 2018 && d.ano <= 2025);
+  SiteCharts.renderTrendChart(document.getElementById("chart-tendencia"), serie1825, { logScale: false, showLegend: true });
+  const tipos = SiteCharts.CRIME_ORDER;
+  const anos1825 = [...new Set(serie1825.map(d => d.ano))].sort();
+  const linhasTend = anos1825.map(ano => {
+    const linha = { ano };
+    tipos.forEach(tipo => {
+      const item = serie1825.find(d => d.ano === ano && d.tipo_crime === tipo);
+      linha[tipo] = item ? item.casos_total : null;
+    });
+    return linha;
+  });
+  SiteTables.renderTable(
+    document.getElementById("table-tendencia"),
+    [{ key: "ano", label: "Ano", numeric: true }].concat(tipos.map(t => ({ key: t, label: t, numeric: true, format: v => v == null ? "—" : SiteCharts.fmtInt(v) }))),
+    linhasTend,
+    { defaultSort: { key: "ano", dir: "desc" } }
+  );
+  SiteTables.wireToggle(document.getElementById("fig-tendencia"));
+
+  // Tabela-resumo dos coeficientes de tendência, junto ao gráfico via toggle.
+  SiteTables.renderTable(
+    document.getElementById("table-tendencia"),
+    [
+      { key: "tipo_crime", label: "Tipo de crime" },
+      { key: "slope", label: "Inclinação/ano", numeric: true, format: v => v.toFixed(1) },
+      { key: "p_valor_linregress", label: "p (regressão)", numeric: true, format: v => v.toExponential(2) },
+      { key: "p_valor_mann_kendall", label: "p (Mann-Kendall)", numeric: true, format: v => v.toExponential(2) },
+      { key: "significativo_linregress_5pct", label: "Significativo (5%)", format: v => v ? "Sim" : "Não" },
+    ],
+    tendencia,
+    { caption: "Coeficientes de tendência anual, por tipo de crime (2018-2025)" }
+  );
+
+  // --- 2. Sazonalidade ---
+  const selectSaz = document.getElementById("select-sazonalidade");
+  const tiposComSazonalidade = [...new Set(destaques.map(d => d.tipo_crime))];
+  tiposComSazonalidade.forEach(tipo => {
+    const opt = document.createElement("option");
+    opt.value = tipo;
+    opt.textContent = tipo;
+    selectSaz.appendChild(opt);
+  });
+  let chartSaz = null;
+  function desenharSazonalidade(tipo) {
+    const dadosTipo = destaques.filter(d => d.tipo_crime === tipo);
+    if (chartSaz) chartSaz.destroy();
+    chartSaz = SiteCharts.renderSeasonalityChart(document.getElementById("chart-sazonalidade"), dadosTipo);
+    SiteTables.renderTable(
+      document.getElementById("table-sazonalidade"),
+      [
+        { key: "mes_nome", label: "Mês" },
+        { key: "media_casos", label: "Média de casos", numeric: true, format: v => v.toFixed(1) },
+        { key: "destaque_5pct", label: "Destaque (p ajustado<0,05)", format: v => v ? "Sim" : "Não" },
+        { key: "direcao", label: "Direção" },
+      ],
+      dadosTipo,
+      { defaultSort: { key: "mes_nome", dir: "asc" }, caption: `Sazonalidade mensal — ${tipo}` }
+    );
+  }
+  selectSaz.addEventListener("change", () => desenharSazonalidade(selectSaz.value));
+  desenharSazonalidade(tiposComSazonalidade[0]);
+  SiteTables.wireToggle(document.getElementById("fig-sazonalidade"));
+
+  SiteTables.renderTable(
+    document.getElementById("table-kruskal-wrap"),
+    [
+      { key: "tipo_crime", label: "Tipo de crime" },
+      { key: "n_obs", label: "N obs.", numeric: true },
+      { key: "estatistica_h", label: "H (Kruskal-Wallis)", numeric: true, format: v => v.toFixed(2) },
+      { key: "p_valor", label: "p-valor", numeric: true, format: v => v.toExponential(2) },
+      { key: "significativo_5pct", label: "Significativo (5%)", format: v => v ? "Sim" : "Não" },
+    ],
+    kruskal,
+    { caption: "Kruskal-Wallis entre os 12 meses, todos os tipos de crime" }
+  );
+
+  // --- 3. Correlação ---
+  function matrizComoDicionario(registros) {
+    const dic = {};
+    registros.forEach(row => {
+      dic[row.tipo_crime] = { ...row };
+      delete dic[row.tipo_crime].tipo_crime;
+    });
+    return dic;
+  }
+  SiteCharts.renderCorrelationHeatmap(document.getElementById("heatmap-absoluto"), matrizComoDicionario(corrAbs));
+  SiteCharts.renderCorrelationHeatmap(document.getElementById("heatmap-taxa"), matrizComoDicionario(corrTaxa));
+
+  // --- 4. Quebra estrutural ---
+  SiteTables.renderTable(
+    document.getElementById("table-chow-wrap"),
+    [
+      { key: "tipo_crime", label: "Tipo de crime" },
+      { key: "estatistica_f", label: "F (Chow)", numeric: true, format: v => v.toFixed(2) },
+      { key: "p_valor", label: "p-valor", numeric: true, format: v => v.toExponential(2) },
+      { key: "significativo_5pct", label: "Quebra significativa (5%)", format: v => v ? "Sim" : "Não" },
+    ],
+    chow,
+    { defaultSort: { key: "p_valor", dir: "asc" }, caption: "Teste de Chow — quebra estrutural em maio/2024, por tipo de crime" }
+  );
+})();
+</script>
+</body>
+</html>

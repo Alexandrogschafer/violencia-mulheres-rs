@@ -1,0 +1,42 @@
+[
+  {
+    "municipio":"CAXIAS DO SUL",
+    "casos_total":30329
+  },
+  {
+    "municipio":"CANOAS",
+    "casos_total":29228
+  },
+  {
+    "municipio":"SANTA MARIA",
+    "casos_total":26156
+  },
+  {
+    "municipio":"PELOTAS",
+    "casos_total":25694
+  },
+  {
+    "municipio":"PASSO FUNDO",
+    "casos_total":23560
+  },
+  {
+    "municipio":"GRAVATAI",
+    "casos_total":23051
+  },
+  {
+    "municipio":"VIAMAO",
+    "casos_total":22645
+  },
+  {
+    "municipio":"ALVORADA",
+    "casos_total":21053
+  },
+  {
+    "municipio":"SAO LEOPOLDO",
+    "casos_total":19267
+  },
+  {
+    "municipio":"NOVO HAMBURGO",
+    "casos_total":19157
+  }
+]

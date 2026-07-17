@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metodologia — Violência contra as mulheres no RS</title>
+<meta name="description" content="Fonte dos dados, métodos estatísticos e limitações do painel de violência contra as mulheres no RS.">
+<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#0b0b0b">
+<link rel="canonical" href="https://alexandrogschafer.github.io/violencia-mulheres-rs/metodologia.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Violência contra as mulheres no RS">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Metodologia — Violência contra as mulheres no RS">
+<meta property="og:description" content="Fonte dos dados, métodos estatísticos e limitações do painel de violência contra as mulheres no RS.">
+<meta property="og:url" content="https://alexandrogschafer.github.io/violencia-mulheres-rs/metodologia.html">
+<meta property="og:image" content="https://alexandrogschafer.github.io/violencia-mulheres-rs/assets/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Metodologia — Violência contra as mulheres no RS">
+<meta name="twitter:description" content="Fonte dos dados, métodos estatísticos e limitações do painel de violência contra as mulheres no RS.">
+<meta name="twitter:image" content="https://alexandrogschafer.github.io/violencia-mulheres-rs/assets/img/og-cover.png">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+<header class="site-header">
+  <nav class="site-nav">
+    <span class="brand"><a href="index.html">Violência contra as mulheres no RS</a></span>
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="metodologia.html">Metodologia</a></li>
+      <li><a href="resultados.html">Resultados</a></li>
+      <li><a href="municipios.html">Municípios</a></li>
+      <li><a href="mapas.html">Mapas</a></li>
+      <li><a href="dados.html">Dados</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main-content">
+  <h1>Metodologia</h1>
+  <p class="lede muted">Fonte dos dados, o que cada camada de análise faz, e as limitações que valem para todo número deste painel.</p>
+
+  <h2>Fonte dos dados</h2>
+  <p>
+    Os dados vêm das planilhas oficiais de monitoramento da <strong>SIP/PROCERGS</strong>
+    (sistema de dados de segurança pública do Rio Grande do Sul), publicadas por um
+    Observatório estadual. Cobrem crimes prosseguidos sob a <strong>Lei Maria da Penha</strong>:
+  </p>
+  <ul>
+    <li><strong>Feminicídio Tentado</strong> e <strong>Feminicídio Consumado</strong></li>
+    <li><strong>Ameaça</strong></li>
+    <li><strong>Estupro</strong></li>
+    <li><strong>Lesão Corporal</strong></li>
+  </ul>
+  <p>
+    Cobertura: 2012–2017 (arquivo consolidado, só município × ano) e 2018–2026
+    (um arquivo por ano, com detalhe mensal; 2026 é ano parcial). O pipeline completo
+    de extração está em <code>src/load_data.py</code> — ver detalhes de estrutura das
+    planilhas originais em
+    <a href="https://github.com/Alexandrogschafer/violencia-mulheres-rs/blob/master/CLAUDE.md">CLAUDE.md</a>.
+  </p>
+
+  <h2>As quatro camadas de análise</h2>
+
+  <div class="card">
+    <h3>Camada 1 — Exploratória</h3>
+    <p>Estatísticas descritivas: totais por tipo de crime, ranking de municípios (absoluto e por taxa), concentração municipal, Porto Alegre vs. resto do estado.</p>
+    <p><span class="method-tag">agregação e percentuais</span><span class="method-tag">taxa = casos / população × 100.000</span></p>
+    <p class="small"><a href="https://github.com/Alexandrogschafer/violencia-mulheres-rs/blob/master/notebooks/analise_exploratoria.ipynb">Ver notebook completo →</a></p>
+  </div>
+
+  <div class="card">
+    <h3>Camada 2 — Inferencial</h3>
+    <p>Quatro perguntas, uma por seção, testadas estatisticamente sobre a série estadual:</p>
+    <ul>
+      <li><strong>Tendência anual (2018–2025):</strong> regressão linear simples (ano → casos) com Mann-Kendall como checagem cruzada, mais robusta a não-linearidade.</li>
+      <li><strong>Sazonalidade mensal (2018–2026):</strong> Kruskal-Wallis entre os 12 meses; post-hoc Mann-Whitney U mês-vs-resto com correção de Holm-Bonferroni.</li>
+      <li><strong>Correlação entre tipos de crime:</strong> Spearman por município, em número absoluto e em taxa por 100 mil hab.</li>
+      <li><strong>Quebra estrutural (maio/2024):</strong> teste de Chow sobre a série mensal dessazonalizada (resíduo vs. média histórica pré-enchente), comparando um único ajuste linear contra dois ajustes separados (pré/pós).</li>
+    </ul>
+    <p>
+      <span class="method-tag">OLS + Mann-Kendall</span>
+      <span class="method-tag">Kruskal-Wallis</span>
+      <span class="method-tag">Mann-Whitney U + Holm-Bonferroni</span>
+      <span class="method-tag">Spearman ρ</span>
+      <span class="method-tag">Chow test</span>
+    </p>
+    <p class="small"><a href="https://github.com/Alexandrogschafer/violencia-mulheres-rs/blob/master/notebooks/analise_inferencial.ipynb">Ver notebook completo →</a> · resultados na página <a href="resultados.html">Resultados</a></p>
+  </div>
+
+  <div class="card">
+    <h3>Camada 3 — Espacial</h3>
+    <p>
+      Autocorrelação espacial da taxa por 100 mil hab. (2021–2025), com matriz de vizinhança
+      Queen (contiguidade), padronizada por linha, 999 permutações, semente 12345.
+    </p>
+    <ul>
+      <li><strong>Índice de Moran Global:</strong> testa se existe autocorrelação espacial (clustering) para cada tipo de crime.</li>
+      <li><strong>LISA (Local Indicators of Spatial Association):</strong> onde estão os clusters, calculado só para os tipos com Moran Global significativo.</li>
+    </ul>
+    <p><span class="method-tag">Moran's I Global</span><span class="method-tag">LISA (Moran Local)</span></p>
+    <p class="small"><a href="https://github.com/Alexandrogschafer/violencia-mulheres-rs/blob/master/notebooks/analise_espacial.ipynb">Ver notebook completo →</a> · mapas na página <a href="mapas.html">Mapas</a></p>
+  </div>
+
+  <div class="card">
+    <h3>Estudo de caso — Uruguaiana</h3>
+    <p>
+      Verifica se os padrões estaduais (tendência, sazonalidade, cluster espacial) se
+      replicam no maior município da fronteira oeste com a Argentina, e testa a hipótese
+      de um "efeito fronteira" comparando Uruguaiana com Bagé (outra cidade de fronteira
+      de porte semelhante) e municípios não-fronteiriços de porte comparável.
+    </p>
+    <p class="small"><a href="https://github.com/Alexandrogschafer/violencia-mulheres-rs/blob/master/notebooks/estudo_uruguaiana.ipynb">Ver notebook completo →</a></p>
+  </div>
+
+  <h2>Limitações de dados (leia antes de interpretar qualquer número)</h2>
+  <div class="callout warn">
+    <h3>2012–2017 não tem detalhe mensal por município</h3>
+    <p>O arquivo consolidado desse período só tem município × ano; a quebra mensal por município só existe a partir de 2018.</p>
+  </div>
+  <div class="callout warn">
+    <h3>Taxa por habitante usa população total, não só mulheres</h3>
+    <p>
+      O IBGE só quebra população por sexo no ano de Censo — as estimativas intercensitárias
+      só têm população total. A DEE-RS tinha população feminina por município, mas só até
+      2021 (descontinuada após as enchentes de maio/2024). A taxa aqui não é diretamente
+      comparável à métrica original da SSP (mulheres vítimas por 10 mil habitantes mulheres).
+    </p>
+  </div>
+  <div class="callout warn">
+    <h3>População de 2023 é interpolada, não medida</h3>
+    <p>O IBGE não publicou a estimativa municipal de 2023; o valor usado é uma interpolação linear entre o Censo 2022 e a estimativa 2024.</p>
+  </div>
+  <div class="callout warn">
+    <h3>2026 é um ano parcial</h3>
+    <p>Dados só até por volta de junho/2026, sem estimativa de população do IBGE ainda (só sai em ago/set de 2026).</p>
+  </div>
+  <div class="callout warn">
+    <h3>"NÃO INFORMADO" não é um município real</h3>
+    <p>Aparece em 2018 (Ameaça e Lesão Corporal): casos sem município identificado na base original, mantidos para não perder casos do total, mas excluídos de qualquer ranking/mapa por município.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <strong>Violência contra as mulheres no RS</strong>
+      <p class="muted small">Schäfer, A. G. &amp; Prates, L. A. (2026)</p>
+      <div class="institutional-logo footer-logo">
+        <img src="assets/img/logo_petclima.png" alt="Logotipo do PET Saúde Clima" width="772" height="212">
+      </div>
+    </div>
+    <div>
+      <span class="muted">Links</span>
+      <ul>
+        <li><a href="https://github.com/Alexandrogschafer/violencia-mulheres-rs">Repositório no GitHub</a></li>
+        <li><a href="https://github.com/Alexandrogschafer/violencia-mulheres-rs/blob/master/LICENSE">Licença: CC BY 4.0</a></li>
+        <li><a href="https://doi.org/10.5281/zenodo.21403499">DOI: 10.5281/zenodo.21403499</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>

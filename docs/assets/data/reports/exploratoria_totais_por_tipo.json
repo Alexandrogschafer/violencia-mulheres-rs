@@ -1,0 +1,27 @@
+[
+  {
+    "tipo_crime":"Ameaça",
+    "casos_total":539471,
+    "participacao_%":60.9
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "casos_total":312516,
+    "participacao_%":35.28
+  },
+  {
+    "tipo_crime":"Estupro",
+    "casos_total":28743,
+    "participacao_%":3.24
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "casos_total":3819,
+    "participacao_%":0.43
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "casos_total":1326,
+    "participacao_%":0.15
+  }
+]

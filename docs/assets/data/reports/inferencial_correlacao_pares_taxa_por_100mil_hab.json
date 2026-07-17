@@ -1,0 +1,72 @@
+[
+  {
+    "tipo_crime_a":"Ameaça",
+    "tipo_crime_b":"Lesão Corporal",
+    "rho":0.8225493654,
+    "p_valor":2.012155897e-123,
+    "significativo_5pct":true
+  },
+  {
+    "tipo_crime_a":"Estupro",
+    "tipo_crime_b":"Lesão Corporal",
+    "rho":0.4059044555,
+    "p_valor":3.891947768e-21,
+    "significativo_5pct":true
+  },
+  {
+    "tipo_crime_a":"Feminicídio Tentado",
+    "tipo_crime_b":"Lesão Corporal",
+    "rho":0.383261042,
+    "p_valor":7.75990458e-19,
+    "significativo_5pct":true
+  },
+  {
+    "tipo_crime_a":"Ameaça",
+    "tipo_crime_b":"Estupro",
+    "rho":0.3832175728,
+    "p_valor":7.836140491e-19,
+    "significativo_5pct":true
+  },
+  {
+    "tipo_crime_a":"Ameaça",
+    "tipo_crime_b":"Feminicídio Tentado",
+    "rho":0.3531818211,
+    "p_valor":4.783405016e-16,
+    "significativo_5pct":true
+  },
+  {
+    "tipo_crime_a":"Ameaça",
+    "tipo_crime_b":"Feminicídio Consumado",
+    "rho":0.2699030493,
+    "p_valor":0.000000001,
+    "significativo_5pct":true
+  },
+  {
+    "tipo_crime_a":"Estupro",
+    "tipo_crime_b":"Feminicídio Tentado",
+    "rho":0.2552977287,
+    "p_valor":0.0000000078,
+    "significativo_5pct":true
+  },
+  {
+    "tipo_crime_a":"Feminicídio Consumado",
+    "tipo_crime_b":"Lesão Corporal",
+    "rho":0.2366859115,
+    "p_valor":0.0000000933,
+    "significativo_5pct":true
+  },
+  {
+    "tipo_crime_a":"Feminicídio Consumado",
+    "tipo_crime_b":"Feminicídio Tentado",
+    "rho":0.1846133565,
+    "p_valor":0.0000345855,
+    "significativo_5pct":true
+  },
+  {
+    "tipo_crime_a":"Estupro",
+    "tipo_crime_b":"Feminicídio Consumado",
+    "rho":0.09037251,
+    "p_valor":0.044033852,
+    "significativo_5pct":true
+  }
+]

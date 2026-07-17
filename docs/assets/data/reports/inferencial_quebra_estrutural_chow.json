@@ -1,0 +1,62 @@
+[
+  {
+    "tipo_crime":"Ameaça",
+    "n_meses_pre":76,
+    "n_meses_pos":26,
+    "estatistica_f":3.003570816,
+    "p_valor":0.0541979445,
+    "significativo_5pct":false,
+    "slope_pre":-7.1474732285,
+    "slope_pos":0.7966951567,
+    "intercepto_pre":259.7539302802,
+    "intercepto_pos":-322.328034188
+  },
+  {
+    "tipo_crime":"Estupro",
+    "n_meses_pre":76,
+    "n_meses_pos":26,
+    "estatistica_f":44.7578079459,
+    "p_valor":0.0,
+    "significativo_5pct":true,
+    "slope_pre":1.5887650946,
+    "slope_pos":-1.4161823362,
+    "intercepto_pre":-57.9843928002,
+    "intercepto_pos":131.844957265
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "n_meses_pre":76,
+    "n_meses_pos":26,
+    "estatistica_f":0.5608160661,
+    "p_valor":0.5725638552,
+    "significativo_5pct":false,
+    "slope_pre":-0.0220483026,
+    "slope_pos":0.0476353276,
+    "intercepto_pre":0.7412850308,
+    "intercepto_pos":-5.9464957265
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "n_meses_pre":76,
+    "n_meses_pos":26,
+    "estatistica_f":4.4193183121,
+    "p_valor":0.0145341347,
+    "significativo_5pct":true,
+    "slope_pre":-0.1847619048,
+    "slope_pos":-0.0933903134,
+    "intercepto_pre":6.5206766917,
+    "intercepto_pos":4.6945299145
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "n_meses_pre":76,
+    "n_meses_pos":26,
+    "estatistica_f":1.3416429255,
+    "p_valor":0.2661742646,
+    "significativo_5pct":false,
+    "slope_pre":-3.3378628389,
+    "slope_pos":-6.0691737892,
+    "intercepto_pre":121.7137161085,
+    "intercepto_pos":418.044957265
+  }
+]

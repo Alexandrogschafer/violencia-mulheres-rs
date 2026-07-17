@@ -15,12 +15,17 @@ Licenciado sob [CC BY 4.0](LICENSE) — Alexandro Gularte Schäfer e Lisie Alend
 ## Estrutura do projeto
 
 ```
-data/raw/              planilhas .xlsx originais do SIP/PROCERGS (não versionadas, ver .gitignore)
+data/raw/               planilhas .xlsx originais do SIP/PROCERGS (não versionadas, ver .gitignore)
+data/processed/         dataset tratado e versionado (violencia_rs_municipio_ano.csv + dicionário de dados)
 src/load_data.py        parseia data/raw/ e gera as tabelas long em outputs/tables/
 src/fetch_populacao.py  busca população dos municípios do RS na API do IBGE
-notebooks/              análise exploratória em cima das tabelas geradas
+src/build_site_data.py  prepara data/processed/, outputs/reports/, outputs/maps/ e docs/assets/data/
+notebooks/              análise exploratória, inferencial, espacial e estudo de caso (Uruguaiana)
 outputs/tables/         CSVs gerados pelo pipeline (não versionados, regeneráveis)
-outputs/figures/        figuras exportadas, se houver
+outputs/figures/        figuras exportadas pelas notebooks (não versionadas, regeneráveis)
+outputs/reports/        tabelas de resultado estatístico das notebooks 1 e 2 (não versionadas, regeneráveis)
+outputs/maps/           geojson/json prontos para o mapa interativo (não versionados, regeneráveis)
+docs/                   portal estático (GitHub Pages) — ver "Como atualizar e publicar o portal" abaixo
 ```
 
 Mais detalhes de arquitetura e das peculiaridades de cada arquivo bruto estão em `CLAUDE.md`.
@@ -39,7 +44,7 @@ python src/load_data.py        # roda de novo: com a população presente, gera 
 
 `fetch_populacao.py` faz chamadas reais à API do IBGE (leva ~1 min) — rode antes da segunda chamada a `load_data.py` para obter a tabela de taxas; sem ele, `load_data.py` gera as duas tabelas de casos normalmente e só avisa que a tabela de taxa não foi gerada.
 
-Depois, abra `notebooks/analise_exploratoria.ipynb` (kernel do `.venv`, precisa de `ipykernel`) e rode as células em ordem.
+Depois, abra `notebooks/analise_exploratoria.ipynb` (kernel do `.venv`, precisa de `ipykernel`) e rode as células em ordem. As 4 notebooks (`analise_exploratoria`, `analise_inferencial`, `analise_espacial`, `estudo_uruguaiana`) salvam suas figuras em `outputs/figures/` e suas tabelas de resultado em `outputs/reports/`.
 
 ### Saídas geradas
 
@@ -49,6 +54,47 @@ Depois, abra `notebooks/analise_exploratoria.ipynb` (kernel do `.venv`, precisa 
 | `outputs/tables/violencia_anual_municipio.csv` | 2012-2026 | município, ano, tipo_crime, casos_total |
 | `outputs/tables/populacao_municipio_rs.csv` | 2012-2025 | município, ano, populacao |
 | `outputs/tables/violencia_anual_municipio_taxa.csv` | 2012-2026 | as colunas acima + populacao, taxa_por_100mil_hab |
+
+## Como atualizar e publicar o portal
+
+O portal em `docs/` é **estático** — HTML/CSS/JS puro, sem build step, sem servidor,
+sem banco de dados. O GitHub Pages serve o conteúdo de `docs/` diretamente do branch
+`master`; não há nenhuma etapa de compilação entre o commit e o site no ar.
+
+Para atualizar o portal depois de uma mudança nos dados ou nas notebooks:
+
+```bash
+# 1. Rodar o pipeline (se os dados brutos mudaram)
+python src/load_data.py
+python src/fetch_populacao.py
+python src/load_data.py
+
+# 2. Re-rodar as notebooks (gera/atualiza outputs/figures/ e outputs/reports/)
+jupyter execute --inplace notebooks/analise_exploratoria.ipynb
+jupyter execute --inplace notebooks/analise_inferencial.ipynb
+jupyter execute --inplace notebooks/analise_espacial.ipynb
+jupyter execute --inplace notebooks/estudo_uruguaiana.ipynb
+
+# 3. Gerar data/processed/, outputs/maps/ e publicar em docs/assets/data/
+python -m src.build_site_data
+
+# 4. Commitar e publicar (docs/ e data/processed/ SÃO versionados — outputs/ não é)
+git add docs/ data/processed/
+git commit -m "Atualiza portal e dataset tratado"
+git push
+```
+
+`src/build_site_data.py` é idempotente — pode ser rodado quantas vezes forem necessárias,
+sempre a partir do estado atual de `outputs/tables/`, `outputs/reports/`, `outputs/figures/`
+e `data/raw/malha_municipios_rs.geojson`. Para testar localmente antes de publicar:
+
+```bash
+cd docs && python3 -m http.server 8000
+# depois abra http://localhost:8000 no navegador
+```
+
+(Abrir `docs/index.html` direto como arquivo, via `file://`, não funciona — as páginas
+buscam os JSONs de `assets/data/` via `fetch()`, que exige um servidor http.)
 
 ## Limitações de dados (leia antes de interpretar qualquer número)
 

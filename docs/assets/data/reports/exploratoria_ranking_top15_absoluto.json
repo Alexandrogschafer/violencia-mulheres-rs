@@ -1,0 +1,377 @@
+[
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"PORTO ALEGRE",
+    "casos_total":57760
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"CAXIAS DO SUL",
+    "casos_total":18421
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"CANOAS",
+    "casos_total":17696
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"SANTA MARIA",
+    "casos_total":15762
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"PASSO FUNDO",
+    "casos_total":14844
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"PELOTAS",
+    "casos_total":14301
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"GRAVATAI",
+    "casos_total":14112
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"VIAMAO",
+    "casos_total":13654
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"ALVORADA",
+    "casos_total":12640
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"NOVO HAMBURGO",
+    "casos_total":12129
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"SAO LEOPOLDO",
+    "casos_total":11480
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"RIO GRANDE",
+    "casos_total":8331
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"ERECHIM",
+    "casos_total":7981
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"SAPUCAIA DO SUL",
+    "casos_total":6889
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"SANTA CRUZ DO SUL",
+    "casos_total":6881
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"PORTO ALEGRE",
+    "casos_total":3671
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"GRAVATAI",
+    "casos_total":1115
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"CANOAS",
+    "casos_total":1104
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"VIAMAO",
+    "casos_total":976
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"ALVORADA",
+    "casos_total":851
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"SANTA MARIA",
+    "casos_total":756
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"CAXIAS DO SUL",
+    "casos_total":701
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"PELOTAS",
+    "casos_total":696
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"PASSO FUNDO",
+    "casos_total":673
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"NOVO HAMBURGO",
+    "casos_total":662
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"SAO LEOPOLDO",
+    "casos_total":623
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"RIO GRANDE",
+    "casos_total":456
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"SAPUCAIA DO SUL",
+    "casos_total":391
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"URUGUAIANA",
+    "casos_total":387
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"CACHOEIRINHA",
+    "casos_total":379
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"PORTO ALEGRE",
+    "casos_total":131
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"CAXIAS DO SUL",
+    "casos_total":58
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"PELOTAS",
+    "casos_total":35
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"PASSO FUNDO",
+    "casos_total":28
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"RIO GRANDE",
+    "casos_total":28
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"ALVORADA",
+    "casos_total":27
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"CANOAS",
+    "casos_total":27
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"SAO LEOPOLDO",
+    "casos_total":27
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"VIAMAO",
+    "casos_total":25
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"GRAVATAI",
+    "casos_total":22
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"NOVO HAMBURGO",
+    "casos_total":21
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"SANTA MARIA",
+    "casos_total":21
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"SAPUCAIA DO SUL",
+    "casos_total":20
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"URUGUAIANA",
+    "casos_total":20
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"SANTA CRUZ DO SUL",
+    "casos_total":19
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"PORTO ALEGRE",
+    "casos_total":719
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"PASSO FUNDO",
+    "casos_total":126
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"CAXIAS DO SUL",
+    "casos_total":121
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"CANOAS",
+    "casos_total":117
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"SANTA MARIA",
+    "casos_total":109
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"SAO LEOPOLDO",
+    "casos_total":107
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"VIAMAO",
+    "casos_total":100
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"NOVO HAMBURGO",
+    "casos_total":96
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"GRAVATAI",
+    "casos_total":91
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"RIO GRANDE",
+    "casos_total":91
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"PELOTAS",
+    "casos_total":90
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"ALVORADA",
+    "casos_total":89
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"SAPUCAIA DO SUL",
+    "casos_total":62
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"URUGUAIANA",
+    "casos_total":61
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"BAGE",
+    "casos_total":46
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"PORTO ALEGRE",
+    "casos_total":46098
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"CAXIAS DO SUL",
+    "casos_total":11028
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"PELOTAS",
+    "casos_total":10572
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"CANOAS",
+    "casos_total":10284
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"SANTA MARIA",
+    "casos_total":9508
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"VIAMAO",
+    "casos_total":7890
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"PASSO FUNDO",
+    "casos_total":7889
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"GRAVATAI",
+    "casos_total":7711
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"ALVORADA",
+    "casos_total":7446
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"SAO LEOPOLDO",
+    "casos_total":7030
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"RIO GRANDE",
+    "casos_total":6969
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"NOVO HAMBURGO",
+    "casos_total":6249
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"ERECHIM",
+    "casos_total":4818
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"URUGUAIANA",
+    "casos_total":4227
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"SAPUCAIA DO SUL",
+    "casos_total":4050
+  }
+]

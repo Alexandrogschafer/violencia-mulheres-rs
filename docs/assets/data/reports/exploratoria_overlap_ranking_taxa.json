@@ -1,0 +1,27 @@
+[
+  {
+    "tipo_crime":"Ameaça",
+    "municipios_em_comum":10,
+    "de":15
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipios_em_comum":6,
+    "de":15
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipios_em_comum":8,
+    "de":15
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipios_em_comum":4,
+    "de":15
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipios_em_comum":10,
+    "de":15
+  }
+]

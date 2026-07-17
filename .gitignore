@@ -20,6 +20,15 @@ outputs/tables/*.csv
 outputs/figures/*
 !outputs/figures/.gitkeep
 
+# Tabelas de resultado estatístico das notebooks (analise_exploratoria.ipynb,
+# analise_inferencial.ipynb) e dados geoespaciais prontos para o portal
+# (src/build_site_data.py) — regeneráveis, mesma lógica de outputs/tables/.
+# A cópia publicada fica em docs/assets/data/, essa sim versionada.
+outputs/reports/*
+!outputs/reports/.gitkeep
+outputs/maps/*
+!outputs/maps/.gitkeep
+
 # Jupyter
 .ipynb_checkpoints/
 

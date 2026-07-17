@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dados — Violência contra as mulheres no RS</title>
+<meta name="description" content="Download do dataset tratado e dicionário de colunas dos dados de violência contra as mulheres no RS.">
+<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#0b0b0b">
+<link rel="canonical" href="https://alexandrogschafer.github.io/violencia-mulheres-rs/dados.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Violência contra as mulheres no RS">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Dados — Violência contra as mulheres no RS">
+<meta property="og:description" content="Download do dataset tratado e dicionário de colunas dos dados de violência contra as mulheres no RS.">
+<meta property="og:url" content="https://alexandrogschafer.github.io/violencia-mulheres-rs/dados.html">
+<meta property="og:image" content="https://alexandrogschafer.github.io/violencia-mulheres-rs/assets/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dados — Violência contra as mulheres no RS">
+<meta name="twitter:description" content="Download do dataset tratado e dicionário de colunas dos dados de violência contra as mulheres no RS.">
+<meta name="twitter:image" content="https://alexandrogschafer.github.io/violencia-mulheres-rs/assets/img/og-cover.png">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+<header class="site-header">
+  <nav class="site-nav">
+    <span class="brand"><a href="index.html">Violência contra as mulheres no RS</a></span>
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="metodologia.html">Metodologia</a></li>
+      <li><a href="resultados.html">Resultados</a></li>
+      <li><a href="municipios.html">Municípios</a></li>
+      <li><a href="mapas.html">Mapas</a></li>
+      <li><a href="dados.html">Dados</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main-content">
+  <h1>Dados</h1>
+  <p class="lede muted">Dataset tratado, pronto para download e reuso — mesmos dados que alimentam este painel.</p>
+
+  <div class="card">
+    <h2>Dataset principal</h2>
+    <p><code>violencia_rs_municipio_ano.csv</code> — um registro por município × ano × tipo de crime, com casos, população e taxa por 100 mil hab.</p>
+    <p>
+      <a href="https://github.com/Alexandrogschafer/violencia-mulheres-rs/raw/master/data/processed/violencia_rs_municipio_ano.csv">⬇ Baixar CSV</a>
+      · <a href="https://github.com/Alexandrogschafer/violencia-mulheres-rs/blob/master/data/processed/README.md">Dicionário de dados completo</a>
+    </p>
+    <div class="table-scroll">
+      <table>
+        <caption>Colunas de <code>violencia_rs_municipio_ano.csv</code></caption>
+        <thead><tr><th>Coluna</th><th>Descrição</th></tr></thead>
+        <tbody>
+          <tr><td><code>municipio</code></td><td>Nome do município (maiúsculas, sem acento), ou <code>NÃO INFORMADO</code></td></tr>
+          <tr><td><code>ano</code></td><td>Ano de referência (2012–2026)</td></tr>
+          <tr><td><code>tipo_crime</code></td><td>Ameaça, Estupro, Feminicídio Consumado, Feminicídio Tentado ou Lesão Corporal</td></tr>
+          <tr><td><code>casos_total</code></td><td>Total de casos no ano, no município, para o tipo de crime</td></tr>
+          <tr><td><code>populacao</code></td><td>População total do município no ano (estimativa IBGE)</td></tr>
+          <tr><td><code>taxa_por_100mil_hab</code></td><td><code>casos_total / populacao × 100.000</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Dados brutos e pipeline completo</h2>
+    <p>
+      As planilhas originais da SIP/PROCERGS e o código completo de extração/análise estão no
+      repositório GitHub — inclui as tabelas de população (IBGE), a malha geográfica dos
+      municípios, e todas as tabelas intermediárias em <code>outputs/tables/</code>
+      (regeneráveis rodando o pipeline localmente, ver <code>README.md</code>).
+    </p>
+    <p><a href="https://github.com/Alexandrogschafer/violencia-mulheres-rs">Ver repositório completo →</a></p>
+  </div>
+
+  <div class="callout warn">
+    <h2>Antes de usar estes dados, leia as limitações</h2>
+    <p>
+      Taxa usa população total (não só mulheres); população de 2023 é interpolada; 2026 é
+      ano parcial; "NÃO INFORMADO" não é um município real. Detalhes completos na página
+      <a href="metodologia.html">Metodologia</a>.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Licença e citação</h2>
+    <p>Este dataset e o código do pipeline são distribuídos sob <a href="https://github.com/Alexandrogschafer/violencia-mulheres-rs/blob/master/LICENSE">CC BY 4.0</a>. Ver <a href="sobre.html">como citar</a>.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <strong>Violência contra as mulheres no RS</strong>
+      <p class="muted small">Schäfer, A. G. &amp; Prates, L. A. (2026)</p>
+      <div class="institutional-logo footer-logo">
+        <img src="assets/img/logo_petclima.png" alt="Logotipo do PET Saúde Clima" width="772" height="212">
+      </div>
+    </div>
+    <div>
+      <span class="muted">Links</span>
+      <ul>
+        <li><a href="https://github.com/Alexandrogschafer/violencia-mulheres-rs">Repositório no GitHub</a></li>
+        <li><a href="https://github.com/Alexandrogschafer/violencia-mulheres-rs/blob/master/LICENSE">Licença: CC BY 4.0</a></li>
+        <li><a href="https://doi.org/10.5281/zenodo.21403499">DOI: 10.5281/zenodo.21403499</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>

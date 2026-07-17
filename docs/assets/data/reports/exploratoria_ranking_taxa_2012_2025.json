@@ -1,0 +1,377 @@
+[
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"LAGOA VERMELHA",
+    "taxa_por_100mil_hab":652.1497657073
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"IRAI",
+    "taxa_por_100mil_hab":640.5706907239
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"PALMEIRA DAS MISSOES",
+    "taxa_por_100mil_hab":589.6152713942
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"SOLEDADE",
+    "taxa_por_100mil_hab":585.3701534334
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"TRAMANDAI",
+    "taxa_por_100mil_hab":579.745793478
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"SOBRADINHO",
+    "taxa_por_100mil_hab":559.1887376417
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"CAMPO NOVO",
+    "taxa_por_100mil_hab":556.418037963
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"CIDREIRA",
+    "taxa_por_100mil_hab":537.4470763142
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"VACARIA",
+    "taxa_por_100mil_hab":537.0561994788
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"CRUZ ALTA",
+    "taxa_por_100mil_hab":536.2790039567
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"ERECHIM",
+    "taxa_por_100mil_hab":532.4553739957
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"IMBE",
+    "taxa_por_100mil_hab":526.1989527969
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"AMETISTA DO SUL",
+    "taxa_por_100mil_hab":523.1417078655
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"MACHADINHO",
+    "taxa_por_100mil_hab":522.2704511636
+  },
+  {
+    "tipo_crime":"Ameaça",
+    "municipio":"PASSO FUNDO",
+    "taxa_por_100mil_hab":513.9899387349
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"CIDREIRA",
+    "taxa_por_100mil_hab":54.3807193711
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"SERTAO SANTANA",
+    "taxa_por_100mil_hab":34.7270114633
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"NOVA HARTZ",
+    "taxa_por_100mil_hab":33.994082704
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"PALMARES DO SUL",
+    "taxa_por_100mil_hab":33.1183444728
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"NOVA PALMA",
+    "taxa_por_100mil_hab":31.4094822819
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"MAQUINE",
+    "taxa_por_100mil_hab":31.2612015466
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"ARARICA",
+    "taxa_por_100mil_hab":30.5465988018
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"NOVA SANTA RITA",
+    "taxa_por_100mil_hab":30.1815169107
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"BOQUEIRAO DO LEAO",
+    "taxa_por_100mil_hab":29.9891384265
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"ALVORADA",
+    "taxa_por_100mil_hab":29.3532075046
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"TRIUNFO",
+    "taxa_por_100mil_hab":29.2988383834
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"JULIO DE CASTILHOS",
+    "taxa_por_100mil_hab":29.1492946477
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"ARROIO DO SAL",
+    "taxa_por_100mil_hab":28.8368827636
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"PORTAO",
+    "taxa_por_100mil_hab":28.4003135792
+  },
+  {
+    "tipo_crime":"Estupro",
+    "municipio":"TRAMANDAI",
+    "taxa_por_100mil_hab":28.3170106305
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"SAO NICOLAU",
+    "taxa_por_100mil_hab":3.9409730652
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"ITAARA",
+    "taxa_por_100mil_hab":3.8752906588
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"BALNEARIO PINHAL",
+    "taxa_por_100mil_hab":3.769517408
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"SERTAO",
+    "taxa_por_100mil_hab":3.7440882816
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"BARAO DO TRIUNFO",
+    "taxa_por_100mil_hab":3.3550467075
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"MORRO REDONDO",
+    "taxa_por_100mil_hab":3.2692151726
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"NOVA ARACA",
+    "taxa_por_100mil_hab":2.861816661
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"ESPUMOSO",
+    "taxa_por_100mil_hab":2.7268832661
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"TENENTE PORTELA",
+    "taxa_por_100mil_hab":2.5815158557
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"SENTINELA DO SUL",
+    "taxa_por_100mil_hab":2.5696033005
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"SALTO DO JACUI",
+    "taxa_por_100mil_hab":2.5591995869
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"BOM JESUS",
+    "taxa_por_100mil_hab":2.5108021733
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"MACHADINHO",
+    "taxa_por_100mil_hab":2.4839273259
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"ESTACAO",
+    "taxa_por_100mil_hab":2.4504340639
+  },
+  {
+    "tipo_crime":"Feminicídio Consumado",
+    "municipio":"RODEIO BONITO",
+    "taxa_por_100mil_hab":2.2909314544
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"IRAI",
+    "taxa_por_100mil_hab":12.3230568828
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"FORMIGUEIRO",
+    "taxa_por_100mil_hab":6.8860191408
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"LINDOLFO COLLOR",
+    "taxa_por_100mil_hab":6.4083017456
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"BALNEARIO PINHAL",
+    "taxa_por_100mil_hab":5.7100428594
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"CONDOR",
+    "taxa_por_100mil_hab":5.6944631955
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"ARROIO DO SAL",
+    "taxa_por_100mil_hab":5.0641350065
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"TENENTE PORTELA",
+    "taxa_por_100mil_hab":4.9963210738
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"PALMARES DO SUL",
+    "taxa_por_100mil_hab":4.9066237075
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"NOVA PALMA",
+    "taxa_por_100mil_hab":4.8823551543
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"PASSO FUNDO",
+    "taxa_por_100mil_hab":4.7533151854
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"BROCHIER",
+    "taxa_por_100mil_hab":4.5717420484
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"CANDIOTA",
+    "taxa_por_100mil_hab":4.5102268662
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"SELBACH",
+    "taxa_por_100mil_hab":4.5081414566
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"PALMITINHO",
+    "taxa_por_100mil_hab":4.2212975187
+  },
+  {
+    "tipo_crime":"Feminicídio Tentado",
+    "municipio":"SANTANA DO LIVRAMENTO",
+    "taxa_por_100mil_hab":4.2069849165
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"CIDREIRA",
+    "taxa_por_100mil_hab":405.8139765402
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"IMBE",
+    "taxa_por_100mil_hab":389.6355169312
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"TRAMANDAI",
+    "taxa_por_100mil_hab":389.5205928138
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"CAPAO DA CANOA",
+    "taxa_por_100mil_hab":329.2983065491
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"ERECHIM",
+    "taxa_por_100mil_hab":323.6891422044
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"BALNEARIO PINHAL",
+    "taxa_por_100mil_hab":314.4831590699
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"CRUZ ALTA",
+    "taxa_por_100mil_hab":308.8410713163
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"ARROIO DO SAL",
+    "taxa_por_100mil_hab":290.8869830739
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"CANELA",
+    "taxa_por_100mil_hab":278.9842658261
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"TORRES",
+    "taxa_por_100mil_hab":277.3062026711
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"PASSO FUNDO",
+    "taxa_por_100mil_hab":272.6544965613
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"SOBRADINHO",
+    "taxa_por_100mil_hab":271.7946458079
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"XANGRILA",
+    "taxa_por_100mil_hab":271.1620482838
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"SOLEDADE",
+    "taxa_por_100mil_hab":265.3024129693
+  },
+  {
+    "tipo_crime":"Lesão Corporal",
+    "municipio":"SAO LUIZ GONZAGA",
+    "taxa_por_100mil_hab":263.2618213753
+  }
+]
