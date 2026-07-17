@@ -1,0 +1,30 @@
+# Ambiente Python
+.venv/
+__pycache__/
+*.pyc
+
+# Dados brutos: arquivos oficiais grandes e binários (.xlsx não diferencia
+# bem em git), re-obteníveis na fonte (SIP/PROCERGS). O 2026 em particular
+# é atualizado periodicamente ao longo do ano, o que infla o histórico do
+# git a cada nova versão se for versionado.
+data/raw/*.xlsx
+
+# Malha geográfica dos municípios do RS: buscada via API do IBGE
+# (src/fetch_malha_municipios.py), mesma lógica de outputs/tables/*.csv —
+# regenerável, não precisa ficar no histórico do git.
+data/raw/*.geojson
+
+# Saídas geradas pelo pipeline (src/load_data.py, src/fetch_populacao.py) —
+# regeneráveis a partir de data/raw/, não precisam ser versionadas.
+outputs/tables/*.csv
+outputs/figures/*
+!outputs/figures/.gitkeep
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Estado local do Claude Code (não é configuração compartilhada do projeto)
+.claude/
+
+# SO
+.DS_Store

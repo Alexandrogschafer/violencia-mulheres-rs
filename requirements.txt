@@ -1,0 +1,20 @@
+pandas>=3.0
+openpyxl>=3.1
+matplotlib>=3.9
+scipy>=1.13
+
+# Camada 3 (análise espacial): geopandas usa pyogrio como engine de
+# leitura/escrita geoespacial por padrão (não fiona) -- pyogrio já embute o
+# GDAL num wheel pré-compilado, então nenhuma dependência de sistema (apt)
+# é necessária para instalar nada abaixo.
+geopandas>=1.1
+esda>=2.10
+libpysal>=4.15
+
+# Para rodar notebooks/analise_exploratoria.ipynb (não é importado por
+# nenhum script de src/, mas é o kernel que executa o notebook).
+ipykernel>=6.29
+
+# Dependências de desenvolvimento/teste (execução automatizada de
+# notebooks, não necessárias para rodar o pipeline) ficam em
+# requirements-dev.txt, não aqui.

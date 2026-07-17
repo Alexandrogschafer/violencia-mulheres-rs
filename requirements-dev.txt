@@ -1,0 +1,9 @@
+# Dependências de desenvolvimento/teste -- não são necessárias para rodar
+# o pipeline (src/) nem os notebooks manualmente, só para executar os
+# notebooks de ponta a ponta via script (nbclient), como checagem
+# automatizada de que ainda rodam sem erro após uma mudança.
+#
+# Instale com: pip install -r requirements.txt -r requirements-dev.txt
+
+nbclient>=0.11
+nbformat>=5.10
