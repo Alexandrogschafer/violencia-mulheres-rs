@@ -249,10 +249,38 @@ def preparar_dados_docs() -> None:
     )
 
 
+def gerar_populacao_censo(municipio: str, ano_censo: int = 2022) -> None:
+    """População oficial do último Censo (2022) para um município -- não é
+    uma estimativa intercensitária (o Censo substitui a estimativa no seu
+    próprio ano, ver docstring de src/fetch_populacao.py). Não depende de
+    nenhum notebook: lê direto de outputs/tables/populacao_municipio_rs.csv,
+    a mesma tabela que load_data.py já usa para calcular taxa_por_100mil_hab.
+    Genérico por município -- reaproveitável por qualquer estudo de caso."""
+    pop = pd.read_csv(TABLES_DIR / "populacao_municipio_rs.csv")
+    linha = pop[(pop.municipio == municipio) & (pop.ano == ano_censo)]
+    if linha.empty:
+        print(f"AVISO: sem população de {ano_censo} para {municipio} — {municipio}_populacao_censo.json não gerado")
+        return
+
+    docs_tables = DOCS_DATA_DIR / "tables"
+    docs_tables.mkdir(parents=True, exist_ok=True)
+    slug = municipio.lower().replace(" ", "_")
+    dados = {
+        "municipio": municipio,
+        "ano_censo": ano_censo,
+        "populacao_censo": int(linha.populacao.iloc[0]),
+    }
+    (docs_tables / f"{slug}_populacao_censo.json").write_text(
+        json.dumps(dados, ensure_ascii=False), encoding="utf-8"
+    )
+    print(f"{slug}_populacao_censo.json pronto — {municipio}, Censo {ano_censo}: {dados['populacao_censo']} hab.")
+
+
 def main() -> None:
     preparar_dataset_processado()
     gerar_dados_mapas()
     preparar_dados_docs()
+    gerar_populacao_censo("URUGUAIANA")
 
 
 if __name__ == "__main__":

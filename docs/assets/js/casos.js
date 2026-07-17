@@ -37,9 +37,12 @@
 
   // ---------- componentes reaproveitáveis por qualquer estudo de caso ----------
 
-  function montarGaleria(container, itens) {
+  // layout: "grid" (padrão, várias colunas) ou "stack" (uma figura por
+  // linha, largura total -- melhor pra figuras largas/baixas, tipo small
+  // multiples, onde encolher pra meia tela prejudica a leitura).
+  function montarGaleria(container, itens, layout) {
     container.innerHTML = "";
-    container.className = "gallery";
+    container.className = layout === "stack" ? "gallery-stack" : "gallery";
     itens.forEach(function (item) {
       var fig = document.createElement("figure");
       var img = document.createElement("img");
@@ -125,8 +128,13 @@
       "<h2>Visualizações</h2>" +
       '<div id="uru-galeria"></div>' +
       '<div class="map-controls"><label for="uru-select-mapa" class="small muted">Tipo de crime:</label><select id="uru-select-mapa"></select></div>' +
-      '<div id="uru-map" role="application" aria-label="Mapa interativo do RS enquadrado em Uruguaiana"></div>' +
-      '<div id="uru-map-legend" class="map-legend" style="margin-top:0.75rem"></div>' +
+      '<div class="map-frame">' +
+      '<div id="uru-map" class="case-map" role="application" aria-label="Mapa interativo do RS enquadrado em Uruguaiana"></div>' +
+      '<div class="map-legend map-legend-overlay">' +
+      '<div class="map-legend-title">Taxa por 100 mil habitantes</div>' +
+      '<div id="uru-map-legend"></div>' +
+      "</div>" +
+      "</div>" +
       "</section>" +
       '<div class="callout">' +
       "<h2>Leitura geral</h2>" +
@@ -154,17 +162,19 @@
     Promise.all([
       fetchJSON("reports/uruguaiana_perfil.json"),
       fetchJSON("reports/uruguaiana_resumo_corede.json"),
+      fetchJSON("tables/uruguaiana_populacao_censo.json"),
     ]).then(function (res) {
       var perfil = res[0];
       var resumo = res[1][0];
+      var censo = res[2];
 
       // Uruguaiana em números
       var geral = (resumo.media_taxa_geral_uruguaiana_2012_2025 / resumo.media_taxa_geral_estado_2012_2025 - 1) * 100;
       var tilesEl = document.getElementById("uru-tiles");
       tilesEl.innerHTML = "";
       [
-        { valor: fmtN(resumo.populacao_2025), label: "📍 População estimada (2025)" },
-        { valor: "COREDE " + resumo.corede, label: "🗺️ Posição regional — maior cidade da região (" + resumo.pct_populacao_corede_2025 + "% da população)" },
+        { valor: fmtN(censo.populacao_censo), label: "📍 População — Censo " + censo.ano_censo + " (IBGE)" },
+        { valor: "COREDE " + resumo.corede, label: "🗺️ Posição regional — maior cidade da região (" + resumo.pct_populacao_corede_2025 + "% da população em 2025)" },
         { valor: (geral >= 0 ? "+" : "") + geral.toFixed(0) + "%", label: "⚖️ Taxa geral de violência vs. média estadual" },
         { valor: "Lesão Corporal", label: "⚠️ Tipo de violência com maior destaque" },
       ].forEach(function (t) {
@@ -191,10 +201,14 @@
       });
 
       // Visualizações
-      montarGaleria(document.getElementById("uru-galeria"), [
-        { arquivo: "uruguaiana_perfil_taxa_vs_estado.png", alt: "Uruguaiana vs. média estadual, taxa por 100 mil hab., acumulada 2012-2025", legenda: "Uruguaiana vs. média estadual — taxa por 100 mil hab. (2012–2025)" },
-        { arquivo: "uruguaiana_serie_anual.png", alt: "Evolução anual de Uruguaiana por tipo de crime, 2012-2026", legenda: "Evolução anual por tipo de crime (2012–2026, 2026 parcial)" },
-      ]);
+      montarGaleria(
+        document.getElementById("uru-galeria"),
+        [
+          { arquivo: "uruguaiana_perfil_taxa_vs_estado.png", alt: "Uruguaiana vs. média estadual, taxa por 100 mil hab., acumulada 2012-2025", legenda: "Uruguaiana vs. média estadual — taxa por 100 mil hab. (2012–2025)" },
+          { arquivo: "uruguaiana_serie_anual.png", alt: "Evolução anual de Uruguaiana por tipo de crime, 2012-2026", legenda: "Evolução anual por tipo de crime (2012–2026, 2026 parcial)" },
+        ],
+        "stack"
+      );
       montarMapaFoco("uru-map", "uru-select-mapa", "uru-map-legend", "URUGUAIANA", "Lesão Corporal");
     });
   }

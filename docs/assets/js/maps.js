@@ -58,6 +58,20 @@ window.SiteMaps = (function () {
       maxZoom: 12,
     }).addTo(map);
 
+    // Atribuição do Leaflet por padrão também fica no canto inferior
+    // direito -- move pra esquerda pra não sobrepor a legenda customizada
+    // (opts.legendId), que fica no inferior direito quando usada como
+    // overlay (ver .map-legend-overlay em site.css).
+    map.attributionControl.setPosition("bottomleft");
+
+    // O container pode não ter o tamanho final ainda no momento em que o
+    // Leaflet mede a área disponível (fontes/layout assíncronos, troca de
+    // aba, etc.) -- invalidateSize() força um recálculo depois que o
+    // layout assenta, evitando tiles cortados/mapa mal centralizado.
+    setTimeout(function () {
+      map.invalidateSize();
+    }, 150);
+
     var geoLayer = null;
     var infoBox = document.getElementById(opts.infoId);
 
