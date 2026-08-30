@@ -1,0 +1,757 @@
+tipo_crime,nivel,entidade,mes,mes_nome,casos,pct_do_total_anual
+Ameaça,municipio_litoral,CIDREIRA,1,Jan,86,13.31
+Ameaça,municipio_litoral,CIDREIRA,2,Fev,67,10.37
+Ameaça,municipio_litoral,CIDREIRA,3,Mar,51,7.89
+Ameaça,municipio_litoral,CIDREIRA,4,Abr,56,8.67
+Ameaça,municipio_litoral,CIDREIRA,5,Mai,49,7.59
+Ameaça,municipio_litoral,CIDREIRA,6,Jun,41,6.35
+Ameaça,municipio_litoral,CIDREIRA,7,Jul,54,8.36
+Ameaça,municipio_litoral,CIDREIRA,8,Ago,47,7.28
+Ameaça,municipio_litoral,CIDREIRA,9,Set,48,7.43
+Ameaça,municipio_litoral,CIDREIRA,10,Out,41,6.35
+Ameaça,municipio_litoral,CIDREIRA,11,Nov,52,8.05
+Ameaça,municipio_litoral,CIDREIRA,12,Dez,54,8.36
+Ameaça,municipio_litoral,TRAMANDAI,1,Jan,258,11.69
+Ameaça,municipio_litoral,TRAMANDAI,2,Fev,268,12.14
+Ameaça,municipio_litoral,TRAMANDAI,3,Mar,200,9.06
+Ameaça,municipio_litoral,TRAMANDAI,4,Abr,191,8.65
+Ameaça,municipio_litoral,TRAMANDAI,5,Mai,143,6.48
+Ameaça,municipio_litoral,TRAMANDAI,6,Jun,145,6.57
+Ameaça,municipio_litoral,TRAMANDAI,7,Jul,143,6.48
+Ameaça,municipio_litoral,TRAMANDAI,8,Ago,163,7.39
+Ameaça,municipio_litoral,TRAMANDAI,9,Set,142,6.43
+Ameaça,municipio_litoral,TRAMANDAI,10,Out,181,8.2
+Ameaça,municipio_litoral,TRAMANDAI,11,Nov,180,8.16
+Ameaça,municipio_litoral,TRAMANDAI,12,Dez,193,8.74
+Ameaça,municipio_litoral,IMBE,1,Jan,122,12.99
+Ameaça,municipio_litoral,IMBE,2,Fev,115,12.25
+Ameaça,municipio_litoral,IMBE,3,Mar,77,8.2
+Ameaça,municipio_litoral,IMBE,4,Abr,77,8.2
+Ameaça,municipio_litoral,IMBE,5,Mai,86,9.16
+Ameaça,municipio_litoral,IMBE,6,Jun,61,6.5
+Ameaça,municipio_litoral,IMBE,7,Jul,58,6.18
+Ameaça,municipio_litoral,IMBE,8,Ago,70,7.45
+Ameaça,municipio_litoral,IMBE,9,Set,52,5.54
+Ameaça,municipio_litoral,IMBE,10,Out,53,5.64
+Ameaça,municipio_litoral,IMBE,11,Nov,75,7.99
+Ameaça,municipio_litoral,IMBE,12,Dez,93,9.9
+Ameaça,municipio_litoral,CAPAO DA CANOA,1,Jan,284,13.13
+Ameaça,municipio_litoral,CAPAO DA CANOA,2,Fev,221,10.22
+Ameaça,municipio_litoral,CAPAO DA CANOA,3,Mar,204,9.43
+Ameaça,municipio_litoral,CAPAO DA CANOA,4,Abr,167,7.72
+Ameaça,municipio_litoral,CAPAO DA CANOA,5,Mai,162,7.49
+Ameaça,municipio_litoral,CAPAO DA CANOA,6,Jun,139,6.43
+Ameaça,municipio_litoral,CAPAO DA CANOA,7,Jul,146,6.75
+Ameaça,municipio_litoral,CAPAO DA CANOA,8,Ago,135,6.24
+Ameaça,municipio_litoral,CAPAO DA CANOA,9,Set,160,7.4
+Ameaça,municipio_litoral,CAPAO DA CANOA,10,Out,152,7.03
+Ameaça,municipio_litoral,CAPAO DA CANOA,11,Nov,176,8.14
+Ameaça,municipio_litoral,CAPAO DA CANOA,12,Dez,217,10.03
+Ameaça,municipio_litoral,BALNEARIO PINHAL,1,Jan,68,14.53
+Ameaça,municipio_litoral,BALNEARIO PINHAL,2,Fev,69,14.74
+Ameaça,municipio_litoral,BALNEARIO PINHAL,3,Mar,46,9.83
+Ameaça,municipio_litoral,BALNEARIO PINHAL,4,Abr,20,4.27
+Ameaça,municipio_litoral,BALNEARIO PINHAL,5,Mai,27,5.77
+Ameaça,municipio_litoral,BALNEARIO PINHAL,6,Jun,24,5.13
+Ameaça,municipio_litoral,BALNEARIO PINHAL,7,Jul,29,6.2
+Ameaça,municipio_litoral,BALNEARIO PINHAL,8,Ago,27,5.77
+Ameaça,municipio_litoral,BALNEARIO PINHAL,9,Set,36,7.69
+Ameaça,municipio_litoral,BALNEARIO PINHAL,10,Out,34,7.26
+Ameaça,municipio_litoral,BALNEARIO PINHAL,11,Nov,34,7.26
+Ameaça,municipio_litoral,BALNEARIO PINHAL,12,Dez,54,11.54
+Ameaça,municipio_litoral,XANGRILA,1,Jan,70,13.28
+Ameaça,municipio_litoral,XANGRILA,2,Fev,53,10.06
+Ameaça,municipio_litoral,XANGRILA,3,Mar,44,8.35
+Ameaça,municipio_litoral,XANGRILA,4,Abr,45,8.54
+Ameaça,municipio_litoral,XANGRILA,5,Mai,40,7.59
+Ameaça,municipio_litoral,XANGRILA,6,Jun,23,4.36
+Ameaça,municipio_litoral,XANGRILA,7,Jul,40,7.59
+Ameaça,municipio_litoral,XANGRILA,8,Ago,39,7.4
+Ameaça,municipio_litoral,XANGRILA,9,Set,36,6.83
+Ameaça,municipio_litoral,XANGRILA,10,Out,41,7.78
+Ameaça,municipio_litoral,XANGRILA,11,Nov,37,7.02
+Ameaça,municipio_litoral,XANGRILA,12,Dez,59,11.2
+Ameaça,municipio_litoral,ARROIO DO SAL,1,Jan,69,17.74
+Ameaça,municipio_litoral,ARROIO DO SAL,2,Fev,41,10.54
+Ameaça,municipio_litoral,ARROIO DO SAL,3,Mar,40,10.28
+Ameaça,municipio_litoral,ARROIO DO SAL,4,Abr,32,8.23
+Ameaça,municipio_litoral,ARROIO DO SAL,5,Mai,20,5.14
+Ameaça,municipio_litoral,ARROIO DO SAL,6,Jun,23,5.91
+Ameaça,municipio_litoral,ARROIO DO SAL,7,Jul,14,3.6
+Ameaça,municipio_litoral,ARROIO DO SAL,8,Ago,24,6.17
+Ameaça,municipio_litoral,ARROIO DO SAL,9,Set,26,6.68
+Ameaça,municipio_litoral,ARROIO DO SAL,10,Out,24,6.17
+Ameaça,municipio_litoral,ARROIO DO SAL,11,Nov,23,5.91
+Ameaça,municipio_litoral,ARROIO DO SAL,12,Dez,53,13.62
+Ameaça,municipio_litoral,TORRES,1,Jan,176,12.8
+Ameaça,municipio_litoral,TORRES,2,Fev,155,11.27
+Ameaça,municipio_litoral,TORRES,3,Mar,125,9.09
+Ameaça,municipio_litoral,TORRES,4,Abr,125,9.09
+Ameaça,municipio_litoral,TORRES,5,Mai,100,7.27
+Ameaça,municipio_litoral,TORRES,6,Jun,82,5.96
+Ameaça,municipio_litoral,TORRES,7,Jul,93,6.76
+Ameaça,municipio_litoral,TORRES,8,Ago,126,9.16
+Ameaça,municipio_litoral,TORRES,9,Set,78,5.67
+Ameaça,municipio_litoral,TORRES,10,Out,83,6.04
+Ameaça,municipio_litoral,TORRES,11,Nov,96,6.98
+Ameaça,municipio_litoral,TORRES,12,Dez,136,9.89
+Ameaça,municipio_litoral,PALMARES DO SUL,1,Jan,50,18.18
+Ameaça,municipio_litoral,PALMARES DO SUL,2,Fev,49,17.82
+Ameaça,municipio_litoral,PALMARES DO SUL,3,Mar,26,9.45
+Ameaça,municipio_litoral,PALMARES DO SUL,4,Abr,23,8.36
+Ameaça,municipio_litoral,PALMARES DO SUL,5,Mai,20,7.27
+Ameaça,municipio_litoral,PALMARES DO SUL,6,Jun,12,4.36
+Ameaça,municipio_litoral,PALMARES DO SUL,7,Jul,20,7.27
+Ameaça,municipio_litoral,PALMARES DO SUL,8,Ago,22,8.0
+Ameaça,municipio_litoral,PALMARES DO SUL,9,Set,6,2.18
+Ameaça,municipio_litoral,PALMARES DO SUL,10,Out,13,4.73
+Ameaça,municipio_litoral,PALMARES DO SUL,11,Nov,15,5.45
+Ameaça,municipio_litoral,PALMARES DO SUL,12,Dez,19,6.91
+Ameaça,municipio_controle,CAPELA DE SANTANA,1,Jan,23,9.02
+Ameaça,municipio_controle,CAPELA DE SANTANA,2,Fev,14,5.49
+Ameaça,municipio_controle,CAPELA DE SANTANA,3,Mar,24,9.41
+Ameaça,municipio_controle,CAPELA DE SANTANA,4,Abr,18,7.06
+Ameaça,municipio_controle,CAPELA DE SANTANA,5,Mai,21,8.24
+Ameaça,municipio_controle,CAPELA DE SANTANA,6,Jun,21,8.24
+Ameaça,municipio_controle,CAPELA DE SANTANA,7,Jul,19,7.45
+Ameaça,municipio_controle,CAPELA DE SANTANA,8,Ago,30,11.76
+Ameaça,municipio_controle,CAPELA DE SANTANA,9,Set,22,8.63
+Ameaça,municipio_controle,CAPELA DE SANTANA,10,Out,23,9.02
+Ameaça,municipio_controle,CAPELA DE SANTANA,11,Nov,18,7.06
+Ameaça,municipio_controle,CAPELA DE SANTANA,12,Dez,22,8.63
+Ameaça,municipio_controle,CRISSIUMAL,1,Jan,43,9.62
+Ameaça,municipio_controle,CRISSIUMAL,2,Fev,35,7.83
+Ameaça,municipio_controle,CRISSIUMAL,3,Mar,40,8.95
+Ameaça,municipio_controle,CRISSIUMAL,4,Abr,26,5.82
+Ameaça,municipio_controle,CRISSIUMAL,5,Mai,30,6.71
+Ameaça,municipio_controle,CRISSIUMAL,6,Jun,31,6.94
+Ameaça,municipio_controle,CRISSIUMAL,7,Jul,45,10.07
+Ameaça,municipio_controle,CRISSIUMAL,8,Ago,50,11.19
+Ameaça,municipio_controle,CRISSIUMAL,9,Set,41,9.17
+Ameaça,municipio_controle,CRISSIUMAL,10,Out,39,8.72
+Ameaça,municipio_controle,CRISSIUMAL,11,Nov,26,5.82
+Ameaça,municipio_controle,CRISSIUMAL,12,Dez,41,9.17
+Ameaça,municipio_controle,ESPUMOSO,1,Jan,36,9.11
+Ameaça,municipio_controle,ESPUMOSO,2,Fev,42,10.63
+Ameaça,municipio_controle,ESPUMOSO,3,Mar,44,11.14
+Ameaça,municipio_controle,ESPUMOSO,4,Abr,31,7.85
+Ameaça,municipio_controle,ESPUMOSO,5,Mai,23,5.82
+Ameaça,municipio_controle,ESPUMOSO,6,Jun,32,8.1
+Ameaça,municipio_controle,ESPUMOSO,7,Jul,31,7.85
+Ameaça,municipio_controle,ESPUMOSO,8,Ago,28,7.09
+Ameaça,municipio_controle,ESPUMOSO,9,Set,24,6.08
+Ameaça,municipio_controle,ESPUMOSO,10,Out,24,6.08
+Ameaça,municipio_controle,ESPUMOSO,11,Nov,36,9.11
+Ameaça,municipio_controle,ESPUMOSO,12,Dez,44,11.14
+Ameaça,municipio_controle,GETULIO VARGAS,1,Jan,42,9.72
+Ameaça,municipio_controle,GETULIO VARGAS,2,Fev,42,9.72
+Ameaça,municipio_controle,GETULIO VARGAS,3,Mar,32,7.41
+Ameaça,municipio_controle,GETULIO VARGAS,4,Abr,33,7.64
+Ameaça,municipio_controle,GETULIO VARGAS,5,Mai,34,7.87
+Ameaça,municipio_controle,GETULIO VARGAS,6,Jun,25,5.79
+Ameaça,municipio_controle,GETULIO VARGAS,7,Jul,33,7.64
+Ameaça,municipio_controle,GETULIO VARGAS,8,Ago,42,9.72
+Ameaça,municipio_controle,GETULIO VARGAS,9,Set,32,7.41
+Ameaça,municipio_controle,GETULIO VARGAS,10,Out,31,7.18
+Ameaça,municipio_controle,GETULIO VARGAS,11,Nov,45,10.42
+Ameaça,municipio_controle,GETULIO VARGAS,12,Dez,41,9.49
+Ameaça,municipio_controle,SERAFINA CORREA,1,Jan,20,7.14
+Ameaça,municipio_controle,SERAFINA CORREA,2,Fev,30,10.71
+Ameaça,municipio_controle,SERAFINA CORREA,3,Mar,27,9.64
+Ameaça,municipio_controle,SERAFINA CORREA,4,Abr,23,8.21
+Ameaça,municipio_controle,SERAFINA CORREA,5,Mai,26,9.29
+Ameaça,municipio_controle,SERAFINA CORREA,6,Jun,22,7.86
+Ameaça,municipio_controle,SERAFINA CORREA,7,Jul,27,9.64
+Ameaça,municipio_controle,SERAFINA CORREA,8,Ago,16,5.71
+Ameaça,municipio_controle,SERAFINA CORREA,9,Set,24,8.57
+Ameaça,municipio_controle,SERAFINA CORREA,10,Out,26,9.29
+Ameaça,municipio_controle,SERAFINA CORREA,11,Nov,13,4.64
+Ameaça,municipio_controle,SERAFINA CORREA,12,Dez,26,9.29
+Ameaça,municipio_controle,VERA CRUZ,1,Jan,68,9.66
+Ameaça,municipio_controle,VERA CRUZ,2,Fev,63,8.95
+Ameaça,municipio_controle,VERA CRUZ,3,Mar,57,8.1
+Ameaça,municipio_controle,VERA CRUZ,4,Abr,59,8.38
+Ameaça,municipio_controle,VERA CRUZ,5,Mai,53,7.53
+Ameaça,municipio_controle,VERA CRUZ,6,Jun,54,7.67
+Ameaça,municipio_controle,VERA CRUZ,7,Jul,57,8.1
+Ameaça,municipio_controle,VERA CRUZ,8,Ago,57,8.1
+Ameaça,municipio_controle,VERA CRUZ,9,Set,47,6.68
+Ameaça,municipio_controle,VERA CRUZ,10,Out,65,9.23
+Ameaça,municipio_controle,VERA CRUZ,11,Nov,62,8.81
+Ameaça,municipio_controle,VERA CRUZ,12,Dez,62,8.81
+Ameaça,municipio_controle,SAO LOURENCO DO SUL,1,Jan,81,13.94
+Ameaça,municipio_controle,SAO LOURENCO DO SUL,2,Fev,83,14.29
+Ameaça,municipio_controle,SAO LOURENCO DO SUL,3,Mar,57,9.81
+Ameaça,municipio_controle,SAO LOURENCO DO SUL,4,Abr,43,7.4
+Ameaça,municipio_controle,SAO LOURENCO DO SUL,5,Mai,44,7.57
+Ameaça,municipio_controle,SAO LOURENCO DO SUL,6,Jun,33,5.68
+Ameaça,municipio_controle,SAO LOURENCO DO SUL,7,Jul,42,7.23
+Ameaça,municipio_controle,SAO LOURENCO DO SUL,8,Ago,40,6.88
+Ameaça,municipio_controle,SAO LOURENCO DO SUL,9,Set,28,4.82
+Ameaça,municipio_controle,SAO LOURENCO DO SUL,10,Out,32,5.51
+Ameaça,municipio_controle,SAO LOURENCO DO SUL,11,Nov,42,7.23
+Ameaça,municipio_controle,SAO LOURENCO DO SUL,12,Dez,56,9.64
+Ameaça,municipio_controle,TAQUARA,1,Jan,141,10.06
+Ameaça,municipio_controle,TAQUARA,2,Fev,129,9.21
+Ameaça,municipio_controle,TAQUARA,3,Mar,134,9.56
+Ameaça,municipio_controle,TAQUARA,4,Abr,107,7.64
+Ameaça,municipio_controle,TAQUARA,5,Mai,100,7.14
+Ameaça,municipio_controle,TAQUARA,6,Jun,89,6.35
+Ameaça,municipio_controle,TAQUARA,7,Jul,86,6.14
+Ameaça,municipio_controle,TAQUARA,8,Ago,105,7.49
+Ameaça,municipio_controle,TAQUARA,9,Set,122,8.71
+Ameaça,municipio_controle,TAQUARA,10,Out,118,8.42
+Ameaça,municipio_controle,TAQUARA,11,Nov,127,9.06
+Ameaça,municipio_controle,TAQUARA,12,Dez,143,10.21
+Ameaça,municipio_controle,VACARIA,1,Jan,226,9.16
+Ameaça,municipio_controle,VACARIA,2,Fev,208,8.43
+Ameaça,municipio_controle,VACARIA,3,Mar,229,9.28
+Ameaça,municipio_controle,VACARIA,4,Abr,195,7.9
+Ameaça,municipio_controle,VACARIA,5,Mai,236,9.56
+Ameaça,municipio_controle,VACARIA,6,Jun,200,8.1
+Ameaça,municipio_controle,VACARIA,7,Jul,183,7.41
+Ameaça,municipio_controle,VACARIA,8,Ago,200,8.1
+Ameaça,municipio_controle,VACARIA,9,Set,188,7.62
+Ameaça,municipio_controle,VACARIA,10,Out,213,8.63
+Ameaça,municipio_controle,VACARIA,11,Nov,169,6.85
+Ameaça,municipio_controle,VACARIA,12,Dez,221,8.95
+Ameaça,grupo_litoral,Litoral Norte (9 municípios),1,Jan,1183,13.16
+Ameaça,grupo_litoral,Litoral Norte (9 municípios),2,Fev,1038,11.55
+Ameaça,grupo_litoral,Litoral Norte (9 municípios),3,Mar,813,9.04
+Ameaça,grupo_litoral,Litoral Norte (9 municípios),4,Abr,736,8.19
+Ameaça,grupo_litoral,Litoral Norte (9 municípios),5,Mai,647,7.2
+Ameaça,grupo_litoral,Litoral Norte (9 municípios),6,Jun,550,6.12
+Ameaça,grupo_litoral,Litoral Norte (9 municípios),7,Jul,597,6.64
+Ameaça,grupo_litoral,Litoral Norte (9 municípios),8,Ago,653,7.26
+Ameaça,grupo_litoral,Litoral Norte (9 municípios),9,Set,584,6.5
+Ameaça,grupo_litoral,Litoral Norte (9 municípios),10,Out,622,6.92
+Ameaça,grupo_litoral,Litoral Norte (9 municípios),11,Nov,688,7.65
+Ameaça,grupo_litoral,Litoral Norte (9 municípios),12,Dez,878,9.77
+Ameaça,grupo_controle,Controle não-litorâneo (9 municípios),1,Jan,680,9.77
+Ameaça,grupo_controle,Controle não-litorâneo (9 municípios),2,Fev,646,9.28
+Ameaça,grupo_controle,Controle não-litorâneo (9 municípios),3,Mar,644,9.25
+Ameaça,grupo_controle,Controle não-litorâneo (9 municípios),4,Abr,535,7.68
+Ameaça,grupo_controle,Controle não-litorâneo (9 municípios),5,Mai,567,8.14
+Ameaça,grupo_controle,Controle não-litorâneo (9 municípios),6,Jun,507,7.28
+Ameaça,grupo_controle,Controle não-litorâneo (9 municípios),7,Jul,523,7.51
+Ameaça,grupo_controle,Controle não-litorâneo (9 municípios),8,Ago,568,8.16
+Ameaça,grupo_controle,Controle não-litorâneo (9 municípios),9,Set,528,7.58
+Ameaça,grupo_controle,Controle não-litorâneo (9 municípios),10,Out,571,8.2
+Ameaça,grupo_controle,Controle não-litorâneo (9 municípios),11,Nov,538,7.73
+Ameaça,grupo_controle,Controle não-litorâneo (9 municípios),12,Dez,656,9.42
+Ameaça,estado,Rio Grande do Sul (497 municípios),1,Jan,27218,10.08
+Ameaça,estado,Rio Grande do Sul (497 municípios),2,Fev,24462,9.06
+Ameaça,estado,Rio Grande do Sul (497 municípios),3,Mar,24603,9.12
+Ameaça,estado,Rio Grande do Sul (497 municípios),4,Abr,21520,7.97
+Ameaça,estado,Rio Grande do Sul (497 municípios),5,Mai,20046,7.43
+Ameaça,estado,Rio Grande do Sul (497 municípios),6,Jun,19344,7.17
+Ameaça,estado,Rio Grande do Sul (497 municípios),7,Jul,20420,7.57
+Ameaça,estado,Rio Grande do Sul (497 municípios),8,Ago,21795,8.07
+Ameaça,estado,Rio Grande do Sul (497 municípios),9,Set,20709,7.67
+Ameaça,estado,Rio Grande do Sul (497 municípios),10,Out,22608,8.38
+Ameaça,estado,Rio Grande do Sul (497 municípios),11,Nov,22996,8.52
+Ameaça,estado,Rio Grande do Sul (497 municípios),12,Dez,24196,8.96
+Estupro,municipio_litoral,CIDREIRA,1,Jan,14,17.07
+Estupro,municipio_litoral,CIDREIRA,2,Fev,12,14.63
+Estupro,municipio_litoral,CIDREIRA,3,Mar,8,9.76
+Estupro,municipio_litoral,CIDREIRA,4,Abr,7,8.54
+Estupro,municipio_litoral,CIDREIRA,5,Mai,7,8.54
+Estupro,municipio_litoral,CIDREIRA,6,Jun,6,7.32
+Estupro,municipio_litoral,CIDREIRA,7,Jul,5,6.1
+Estupro,municipio_litoral,CIDREIRA,8,Ago,4,4.88
+Estupro,municipio_litoral,CIDREIRA,9,Set,2,2.44
+Estupro,municipio_litoral,CIDREIRA,10,Out,6,7.32
+Estupro,municipio_litoral,CIDREIRA,11,Nov,7,8.54
+Estupro,municipio_litoral,CIDREIRA,12,Dez,4,4.88
+Estupro,municipio_litoral,TRAMANDAI,1,Jan,21,14.19
+Estupro,municipio_litoral,TRAMANDAI,2,Fev,13,8.78
+Estupro,municipio_litoral,TRAMANDAI,3,Mar,12,8.11
+Estupro,municipio_litoral,TRAMANDAI,4,Abr,9,6.08
+Estupro,municipio_litoral,TRAMANDAI,5,Mai,16,10.81
+Estupro,municipio_litoral,TRAMANDAI,6,Jun,6,4.05
+Estupro,municipio_litoral,TRAMANDAI,7,Jul,10,6.76
+Estupro,municipio_litoral,TRAMANDAI,8,Ago,9,6.08
+Estupro,municipio_litoral,TRAMANDAI,9,Set,9,6.08
+Estupro,municipio_litoral,TRAMANDAI,10,Out,10,6.76
+Estupro,municipio_litoral,TRAMANDAI,11,Nov,18,12.16
+Estupro,municipio_litoral,TRAMANDAI,12,Dez,15,10.14
+Estupro,municipio_litoral,IMBE,1,Jan,7,8.97
+Estupro,municipio_litoral,IMBE,2,Fev,9,11.54
+Estupro,municipio_litoral,IMBE,3,Mar,7,8.97
+Estupro,municipio_litoral,IMBE,4,Abr,3,3.85
+Estupro,municipio_litoral,IMBE,5,Mai,6,7.69
+Estupro,municipio_litoral,IMBE,6,Jun,5,6.41
+Estupro,municipio_litoral,IMBE,7,Jul,3,3.85
+Estupro,municipio_litoral,IMBE,8,Ago,10,12.82
+Estupro,municipio_litoral,IMBE,9,Set,7,8.97
+Estupro,municipio_litoral,IMBE,10,Out,11,14.1
+Estupro,municipio_litoral,IMBE,11,Nov,6,7.69
+Estupro,municipio_litoral,IMBE,12,Dez,4,5.13
+Estupro,municipio_litoral,CAPAO DA CANOA,1,Jan,21,13.64
+Estupro,municipio_litoral,CAPAO DA CANOA,2,Fev,13,8.44
+Estupro,municipio_litoral,CAPAO DA CANOA,3,Mar,15,9.74
+Estupro,municipio_litoral,CAPAO DA CANOA,4,Abr,8,5.19
+Estupro,municipio_litoral,CAPAO DA CANOA,5,Mai,15,9.74
+Estupro,municipio_litoral,CAPAO DA CANOA,6,Jun,17,11.04
+Estupro,municipio_litoral,CAPAO DA CANOA,7,Jul,13,8.44
+Estupro,municipio_litoral,CAPAO DA CANOA,8,Ago,11,7.14
+Estupro,municipio_litoral,CAPAO DA CANOA,9,Set,7,4.55
+Estupro,municipio_litoral,CAPAO DA CANOA,10,Out,7,4.55
+Estupro,municipio_litoral,CAPAO DA CANOA,11,Nov,11,7.14
+Estupro,municipio_litoral,CAPAO DA CANOA,12,Dez,16,10.39
+Estupro,municipio_litoral,BALNEARIO PINHAL,1,Jan,4,12.9
+Estupro,municipio_litoral,BALNEARIO PINHAL,2,Fev,3,9.68
+Estupro,municipio_litoral,BALNEARIO PINHAL,3,Mar,2,6.45
+Estupro,municipio_litoral,BALNEARIO PINHAL,4,Abr,3,9.68
+Estupro,municipio_litoral,BALNEARIO PINHAL,5,Mai,0,0.0
+Estupro,municipio_litoral,BALNEARIO PINHAL,6,Jun,3,9.68
+Estupro,municipio_litoral,BALNEARIO PINHAL,7,Jul,2,6.45
+Estupro,municipio_litoral,BALNEARIO PINHAL,8,Ago,5,16.13
+Estupro,municipio_litoral,BALNEARIO PINHAL,9,Set,3,9.68
+Estupro,municipio_litoral,BALNEARIO PINHAL,10,Out,1,3.23
+Estupro,municipio_litoral,BALNEARIO PINHAL,11,Nov,2,6.45
+Estupro,municipio_litoral,BALNEARIO PINHAL,12,Dez,3,9.68
+Estupro,municipio_litoral,XANGRILA,1,Jan,4,8.16
+Estupro,municipio_litoral,XANGRILA,2,Fev,6,12.24
+Estupro,municipio_litoral,XANGRILA,3,Mar,4,8.16
+Estupro,municipio_litoral,XANGRILA,4,Abr,4,8.16
+Estupro,municipio_litoral,XANGRILA,5,Mai,0,0.0
+Estupro,municipio_litoral,XANGRILA,6,Jun,1,2.04
+Estupro,municipio_litoral,XANGRILA,7,Jul,1,2.04
+Estupro,municipio_litoral,XANGRILA,8,Ago,3,6.12
+Estupro,municipio_litoral,XANGRILA,9,Set,11,22.45
+Estupro,municipio_litoral,XANGRILA,10,Out,7,14.29
+Estupro,municipio_litoral,XANGRILA,11,Nov,2,4.08
+Estupro,municipio_litoral,XANGRILA,12,Dez,6,12.24
+Estupro,municipio_litoral,ARROIO DO SAL,1,Jan,3,8.57
+Estupro,municipio_litoral,ARROIO DO SAL,2,Fev,3,8.57
+Estupro,municipio_litoral,ARROIO DO SAL,3,Mar,0,0.0
+Estupro,municipio_litoral,ARROIO DO SAL,4,Abr,3,8.57
+Estupro,municipio_litoral,ARROIO DO SAL,5,Mai,7,20.0
+Estupro,municipio_litoral,ARROIO DO SAL,6,Jun,1,2.86
+Estupro,municipio_litoral,ARROIO DO SAL,7,Jul,2,5.71
+Estupro,municipio_litoral,ARROIO DO SAL,8,Ago,2,5.71
+Estupro,municipio_litoral,ARROIO DO SAL,9,Set,1,2.86
+Estupro,municipio_litoral,ARROIO DO SAL,10,Out,5,14.29
+Estupro,municipio_litoral,ARROIO DO SAL,11,Nov,4,11.43
+Estupro,municipio_litoral,ARROIO DO SAL,12,Dez,4,11.43
+Estupro,municipio_litoral,TORRES,1,Jan,15,18.75
+Estupro,municipio_litoral,TORRES,2,Fev,4,5.0
+Estupro,municipio_litoral,TORRES,3,Mar,4,5.0
+Estupro,municipio_litoral,TORRES,4,Abr,3,3.75
+Estupro,municipio_litoral,TORRES,5,Mai,8,10.0
+Estupro,municipio_litoral,TORRES,6,Jun,6,7.5
+Estupro,municipio_litoral,TORRES,7,Jul,7,8.75
+Estupro,municipio_litoral,TORRES,8,Ago,4,5.0
+Estupro,municipio_litoral,TORRES,9,Set,3,3.75
+Estupro,municipio_litoral,TORRES,10,Out,5,6.25
+Estupro,municipio_litoral,TORRES,11,Nov,7,8.75
+Estupro,municipio_litoral,TORRES,12,Dez,14,17.5
+Estupro,municipio_litoral,PALMARES DO SUL,1,Jan,9,20.93
+Estupro,municipio_litoral,PALMARES DO SUL,2,Fev,11,25.58
+Estupro,municipio_litoral,PALMARES DO SUL,3,Mar,0,0.0
+Estupro,municipio_litoral,PALMARES DO SUL,4,Abr,3,6.98
+Estupro,municipio_litoral,PALMARES DO SUL,5,Mai,2,4.65
+Estupro,municipio_litoral,PALMARES DO SUL,6,Jun,6,13.95
+Estupro,municipio_litoral,PALMARES DO SUL,7,Jul,4,9.3
+Estupro,municipio_litoral,PALMARES DO SUL,8,Ago,2,4.65
+Estupro,municipio_litoral,PALMARES DO SUL,9,Set,1,2.33
+Estupro,municipio_litoral,PALMARES DO SUL,10,Out,0,0.0
+Estupro,municipio_litoral,PALMARES DO SUL,11,Nov,3,6.98
+Estupro,municipio_litoral,PALMARES DO SUL,12,Dez,2,4.65
+Estupro,municipio_controle,CAPELA DE SANTANA,1,Jan,2,7.41
+Estupro,municipio_controle,CAPELA DE SANTANA,2,Fev,2,7.41
+Estupro,municipio_controle,CAPELA DE SANTANA,3,Mar,3,11.11
+Estupro,municipio_controle,CAPELA DE SANTANA,4,Abr,2,7.41
+Estupro,municipio_controle,CAPELA DE SANTANA,5,Mai,1,3.7
+Estupro,municipio_controle,CAPELA DE SANTANA,6,Jun,1,3.7
+Estupro,municipio_controle,CAPELA DE SANTANA,7,Jul,2,7.41
+Estupro,municipio_controle,CAPELA DE SANTANA,8,Ago,1,3.7
+Estupro,municipio_controle,CAPELA DE SANTANA,9,Set,2,7.41
+Estupro,municipio_controle,CAPELA DE SANTANA,10,Out,1,3.7
+Estupro,municipio_controle,CAPELA DE SANTANA,11,Nov,6,22.22
+Estupro,municipio_controle,CAPELA DE SANTANA,12,Dez,4,14.81
+Estupro,municipio_controle,CRISSIUMAL,1,Jan,1,20.0
+Estupro,municipio_controle,CRISSIUMAL,2,Fev,0,0.0
+Estupro,municipio_controle,CRISSIUMAL,3,Mar,0,0.0
+Estupro,municipio_controle,CRISSIUMAL,4,Abr,0,0.0
+Estupro,municipio_controle,CRISSIUMAL,5,Mai,1,20.0
+Estupro,municipio_controle,CRISSIUMAL,6,Jun,1,20.0
+Estupro,municipio_controle,CRISSIUMAL,7,Jul,0,0.0
+Estupro,municipio_controle,CRISSIUMAL,8,Ago,0,0.0
+Estupro,municipio_controle,CRISSIUMAL,9,Set,0,0.0
+Estupro,municipio_controle,CRISSIUMAL,10,Out,0,0.0
+Estupro,municipio_controle,CRISSIUMAL,11,Nov,0,0.0
+Estupro,municipio_controle,CRISSIUMAL,12,Dez,2,40.0
+Estupro,municipio_controle,ESPUMOSO,1,Jan,2,16.67
+Estupro,municipio_controle,ESPUMOSO,2,Fev,0,0.0
+Estupro,municipio_controle,ESPUMOSO,3,Mar,1,8.33
+Estupro,municipio_controle,ESPUMOSO,4,Abr,3,25.0
+Estupro,municipio_controle,ESPUMOSO,5,Mai,2,16.67
+Estupro,municipio_controle,ESPUMOSO,6,Jun,0,0.0
+Estupro,municipio_controle,ESPUMOSO,7,Jul,0,0.0
+Estupro,municipio_controle,ESPUMOSO,8,Ago,2,16.67
+Estupro,municipio_controle,ESPUMOSO,9,Set,0,0.0
+Estupro,municipio_controle,ESPUMOSO,10,Out,0,0.0
+Estupro,municipio_controle,ESPUMOSO,11,Nov,1,8.33
+Estupro,municipio_controle,ESPUMOSO,12,Dez,1,8.33
+Estupro,municipio_controle,GETULIO VARGAS,1,Jan,2,11.76
+Estupro,municipio_controle,GETULIO VARGAS,2,Fev,4,23.53
+Estupro,municipio_controle,GETULIO VARGAS,3,Mar,1,5.88
+Estupro,municipio_controle,GETULIO VARGAS,4,Abr,2,11.76
+Estupro,municipio_controle,GETULIO VARGAS,5,Mai,1,5.88
+Estupro,municipio_controle,GETULIO VARGAS,6,Jun,1,5.88
+Estupro,municipio_controle,GETULIO VARGAS,7,Jul,1,5.88
+Estupro,municipio_controle,GETULIO VARGAS,8,Ago,1,5.88
+Estupro,municipio_controle,GETULIO VARGAS,9,Set,1,5.88
+Estupro,municipio_controle,GETULIO VARGAS,10,Out,1,5.88
+Estupro,municipio_controle,GETULIO VARGAS,11,Nov,1,5.88
+Estupro,municipio_controle,GETULIO VARGAS,12,Dez,1,5.88
+Estupro,municipio_controle,SERAFINA CORREA,1,Jan,1,5.56
+Estupro,municipio_controle,SERAFINA CORREA,2,Fev,0,0.0
+Estupro,municipio_controle,SERAFINA CORREA,3,Mar,2,11.11
+Estupro,municipio_controle,SERAFINA CORREA,4,Abr,1,5.56
+Estupro,municipio_controle,SERAFINA CORREA,5,Mai,3,16.67
+Estupro,municipio_controle,SERAFINA CORREA,6,Jun,1,5.56
+Estupro,municipio_controle,SERAFINA CORREA,7,Jul,1,5.56
+Estupro,municipio_controle,SERAFINA CORREA,8,Ago,1,5.56
+Estupro,municipio_controle,SERAFINA CORREA,9,Set,2,11.11
+Estupro,municipio_controle,SERAFINA CORREA,10,Out,0,0.0
+Estupro,municipio_controle,SERAFINA CORREA,11,Nov,5,27.78
+Estupro,municipio_controle,SERAFINA CORREA,12,Dez,1,5.56
+Estupro,municipio_controle,VERA CRUZ,1,Jan,7,14.29
+Estupro,municipio_controle,VERA CRUZ,2,Fev,5,10.2
+Estupro,municipio_controle,VERA CRUZ,3,Mar,0,0.0
+Estupro,municipio_controle,VERA CRUZ,4,Abr,4,8.16
+Estupro,municipio_controle,VERA CRUZ,5,Mai,4,8.16
+Estupro,municipio_controle,VERA CRUZ,6,Jun,5,10.2
+Estupro,municipio_controle,VERA CRUZ,7,Jul,0,0.0
+Estupro,municipio_controle,VERA CRUZ,8,Ago,1,2.04
+Estupro,municipio_controle,VERA CRUZ,9,Set,7,14.29
+Estupro,municipio_controle,VERA CRUZ,10,Out,10,20.41
+Estupro,municipio_controle,VERA CRUZ,11,Nov,1,2.04
+Estupro,municipio_controle,VERA CRUZ,12,Dez,5,10.2
+Estupro,municipio_controle,SAO LOURENCO DO SUL,1,Jan,5,11.36
+Estupro,municipio_controle,SAO LOURENCO DO SUL,2,Fev,1,2.27
+Estupro,municipio_controle,SAO LOURENCO DO SUL,3,Mar,3,6.82
+Estupro,municipio_controle,SAO LOURENCO DO SUL,4,Abr,2,4.55
+Estupro,municipio_controle,SAO LOURENCO DO SUL,5,Mai,2,4.55
+Estupro,municipio_controle,SAO LOURENCO DO SUL,6,Jun,2,4.55
+Estupro,municipio_controle,SAO LOURENCO DO SUL,7,Jul,4,9.09
+Estupro,municipio_controle,SAO LOURENCO DO SUL,8,Ago,4,9.09
+Estupro,municipio_controle,SAO LOURENCO DO SUL,9,Set,5,11.36
+Estupro,municipio_controle,SAO LOURENCO DO SUL,10,Out,10,22.73
+Estupro,municipio_controle,SAO LOURENCO DO SUL,11,Nov,2,4.55
+Estupro,municipio_controle,SAO LOURENCO DO SUL,12,Dez,4,9.09
+Estupro,municipio_controle,TAQUARA,1,Jan,10,8.85
+Estupro,municipio_controle,TAQUARA,2,Fev,14,12.39
+Estupro,municipio_controle,TAQUARA,3,Mar,10,8.85
+Estupro,municipio_controle,TAQUARA,4,Abr,7,6.19
+Estupro,municipio_controle,TAQUARA,5,Mai,9,7.96
+Estupro,municipio_controle,TAQUARA,6,Jun,11,9.73
+Estupro,municipio_controle,TAQUARA,7,Jul,5,4.42
+Estupro,municipio_controle,TAQUARA,8,Ago,6,5.31
+Estupro,municipio_controle,TAQUARA,9,Set,7,6.19
+Estupro,municipio_controle,TAQUARA,10,Out,16,14.16
+Estupro,municipio_controle,TAQUARA,11,Nov,9,7.96
+Estupro,municipio_controle,TAQUARA,12,Dez,9,7.96
+Estupro,municipio_controle,VACARIA,1,Jan,4,5.0
+Estupro,municipio_controle,VACARIA,2,Fev,6,7.5
+Estupro,municipio_controle,VACARIA,3,Mar,12,15.0
+Estupro,municipio_controle,VACARIA,4,Abr,4,5.0
+Estupro,municipio_controle,VACARIA,5,Mai,11,13.75
+Estupro,municipio_controle,VACARIA,6,Jun,4,5.0
+Estupro,municipio_controle,VACARIA,7,Jul,9,11.25
+Estupro,municipio_controle,VACARIA,8,Ago,8,10.0
+Estupro,municipio_controle,VACARIA,9,Set,7,8.75
+Estupro,municipio_controle,VACARIA,10,Out,4,5.0
+Estupro,municipio_controle,VACARIA,11,Nov,4,5.0
+Estupro,municipio_controle,VACARIA,12,Dez,7,8.75
+Estupro,grupo_litoral,Litoral Norte (9 municípios),1,Jan,98,14.0
+Estupro,grupo_litoral,Litoral Norte (9 municípios),2,Fev,74,10.57
+Estupro,grupo_litoral,Litoral Norte (9 municípios),3,Mar,52,7.43
+Estupro,grupo_litoral,Litoral Norte (9 municípios),4,Abr,43,6.14
+Estupro,grupo_litoral,Litoral Norte (9 municípios),5,Mai,61,8.71
+Estupro,grupo_litoral,Litoral Norte (9 municípios),6,Jun,51,7.29
+Estupro,grupo_litoral,Litoral Norte (9 municípios),7,Jul,47,6.71
+Estupro,grupo_litoral,Litoral Norte (9 municípios),8,Ago,50,7.14
+Estupro,grupo_litoral,Litoral Norte (9 municípios),9,Set,44,6.29
+Estupro,grupo_litoral,Litoral Norte (9 municípios),10,Out,52,7.43
+Estupro,grupo_litoral,Litoral Norte (9 municípios),11,Nov,60,8.57
+Estupro,grupo_litoral,Litoral Norte (9 municípios),12,Dez,68,9.71
+Estupro,grupo_controle,Controle não-litorâneo (9 municípios),1,Jan,34,9.32
+Estupro,grupo_controle,Controle não-litorâneo (9 municípios),2,Fev,32,8.77
+Estupro,grupo_controle,Controle não-litorâneo (9 municípios),3,Mar,32,8.77
+Estupro,grupo_controle,Controle não-litorâneo (9 municípios),4,Abr,25,6.85
+Estupro,grupo_controle,Controle não-litorâneo (9 municípios),5,Mai,34,9.32
+Estupro,grupo_controle,Controle não-litorâneo (9 municípios),6,Jun,26,7.12
+Estupro,grupo_controle,Controle não-litorâneo (9 municípios),7,Jul,22,6.03
+Estupro,grupo_controle,Controle não-litorâneo (9 municípios),8,Ago,24,6.58
+Estupro,grupo_controle,Controle não-litorâneo (9 municípios),9,Set,31,8.49
+Estupro,grupo_controle,Controle não-litorâneo (9 municípios),10,Out,42,11.51
+Estupro,grupo_controle,Controle não-litorâneo (9 municípios),11,Nov,29,7.95
+Estupro,grupo_controle,Controle não-litorâneo (9 municípios),12,Dez,34,9.32
+Estupro,estado,Rio Grande do Sul (497 municípios),1,Jan,1968,10.51
+Estupro,estado,Rio Grande do Sul (497 municípios),2,Fev,1585,8.46
+Estupro,estado,Rio Grande do Sul (497 municípios),3,Mar,1565,8.36
+Estupro,estado,Rio Grande do Sul (497 municípios),4,Abr,1357,7.25
+Estupro,estado,Rio Grande do Sul (497 municípios),5,Mai,1430,7.64
+Estupro,estado,Rio Grande do Sul (497 municípios),6,Jun,1356,7.24
+Estupro,estado,Rio Grande do Sul (497 municípios),7,Jul,1411,7.53
+Estupro,estado,Rio Grande do Sul (497 municípios),8,Ago,1631,8.71
+Estupro,estado,Rio Grande do Sul (497 municípios),9,Set,1546,8.26
+Estupro,estado,Rio Grande do Sul (497 municípios),10,Out,1654,8.83
+Estupro,estado,Rio Grande do Sul (497 municípios),11,Nov,1610,8.6
+Estupro,estado,Rio Grande do Sul (497 municípios),12,Dez,1613,8.61
+Lesão Corporal,municipio_litoral,CIDREIRA,1,Jan,94,19.3
+Lesão Corporal,municipio_litoral,CIDREIRA,2,Fev,70,14.37
+Lesão Corporal,municipio_litoral,CIDREIRA,3,Mar,29,5.95
+Lesão Corporal,municipio_litoral,CIDREIRA,4,Abr,37,7.6
+Lesão Corporal,municipio_litoral,CIDREIRA,5,Mai,22,4.52
+Lesão Corporal,municipio_litoral,CIDREIRA,6,Jun,24,4.93
+Lesão Corporal,municipio_litoral,CIDREIRA,7,Jul,28,5.75
+Lesão Corporal,municipio_litoral,CIDREIRA,8,Ago,30,6.16
+Lesão Corporal,municipio_litoral,CIDREIRA,9,Set,24,4.93
+Lesão Corporal,municipio_litoral,CIDREIRA,10,Out,42,8.62
+Lesão Corporal,municipio_litoral,CIDREIRA,11,Nov,28,5.75
+Lesão Corporal,municipio_litoral,CIDREIRA,12,Dez,59,12.11
+Lesão Corporal,municipio_litoral,TRAMANDAI,1,Jan,207,15.15
+Lesão Corporal,municipio_litoral,TRAMANDAI,2,Fev,166,12.15
+Lesão Corporal,municipio_litoral,TRAMANDAI,3,Mar,129,9.44
+Lesão Corporal,municipio_litoral,TRAMANDAI,4,Abr,105,7.69
+Lesão Corporal,municipio_litoral,TRAMANDAI,5,Mai,81,5.93
+Lesão Corporal,municipio_litoral,TRAMANDAI,6,Jun,68,4.98
+Lesão Corporal,municipio_litoral,TRAMANDAI,7,Jul,90,6.59
+Lesão Corporal,municipio_litoral,TRAMANDAI,8,Ago,85,6.22
+Lesão Corporal,municipio_litoral,TRAMANDAI,9,Set,77,5.64
+Lesão Corporal,municipio_litoral,TRAMANDAI,10,Out,97,7.1
+Lesão Corporal,municipio_litoral,TRAMANDAI,11,Nov,108,7.91
+Lesão Corporal,municipio_litoral,TRAMANDAI,12,Dez,153,11.2
+Lesão Corporal,municipio_litoral,IMBE,1,Jan,109,14.73
+Lesão Corporal,municipio_litoral,IMBE,2,Fev,97,13.11
+Lesão Corporal,municipio_litoral,IMBE,3,Mar,73,9.86
+Lesão Corporal,municipio_litoral,IMBE,4,Abr,53,7.16
+Lesão Corporal,municipio_litoral,IMBE,5,Mai,49,6.62
+Lesão Corporal,municipio_litoral,IMBE,6,Jun,29,3.92
+Lesão Corporal,municipio_litoral,IMBE,7,Jul,40,5.41
+Lesão Corporal,municipio_litoral,IMBE,8,Ago,37,5.0
+Lesão Corporal,municipio_litoral,IMBE,9,Set,46,6.22
+Lesão Corporal,municipio_litoral,IMBE,10,Out,54,7.3
+Lesão Corporal,municipio_litoral,IMBE,11,Nov,52,7.03
+Lesão Corporal,municipio_litoral,IMBE,12,Dez,101,13.65
+Lesão Corporal,municipio_litoral,CAPAO DA CANOA,1,Jan,221,16.18
+Lesão Corporal,municipio_litoral,CAPAO DA CANOA,2,Fev,185,13.54
+Lesão Corporal,municipio_litoral,CAPAO DA CANOA,3,Mar,121,8.86
+Lesão Corporal,municipio_litoral,CAPAO DA CANOA,4,Abr,96,7.03
+Lesão Corporal,municipio_litoral,CAPAO DA CANOA,5,Mai,79,5.78
+Lesão Corporal,municipio_litoral,CAPAO DA CANOA,6,Jun,78,5.71
+Lesão Corporal,municipio_litoral,CAPAO DA CANOA,7,Jul,63,4.61
+Lesão Corporal,municipio_litoral,CAPAO DA CANOA,8,Ago,77,5.64
+Lesão Corporal,municipio_litoral,CAPAO DA CANOA,9,Set,89,6.52
+Lesão Corporal,municipio_litoral,CAPAO DA CANOA,10,Out,92,6.73
+Lesão Corporal,municipio_litoral,CAPAO DA CANOA,11,Nov,108,7.91
+Lesão Corporal,municipio_litoral,CAPAO DA CANOA,12,Dez,157,11.49
+Lesão Corporal,municipio_litoral,BALNEARIO PINHAL,1,Jan,73,19.57
+Lesão Corporal,municipio_litoral,BALNEARIO PINHAL,2,Fev,55,14.75
+Lesão Corporal,municipio_litoral,BALNEARIO PINHAL,3,Mar,31,8.31
+Lesão Corporal,municipio_litoral,BALNEARIO PINHAL,4,Abr,20,5.36
+Lesão Corporal,municipio_litoral,BALNEARIO PINHAL,5,Mai,15,4.02
+Lesão Corporal,municipio_litoral,BALNEARIO PINHAL,6,Jun,18,4.83
+Lesão Corporal,municipio_litoral,BALNEARIO PINHAL,7,Jul,11,2.95
+Lesão Corporal,municipio_litoral,BALNEARIO PINHAL,8,Ago,25,6.7
+Lesão Corporal,municipio_litoral,BALNEARIO PINHAL,9,Set,18,4.83
+Lesão Corporal,municipio_litoral,BALNEARIO PINHAL,10,Out,33,8.85
+Lesão Corporal,municipio_litoral,BALNEARIO PINHAL,11,Nov,29,7.77
+Lesão Corporal,municipio_litoral,BALNEARIO PINHAL,12,Dez,45,12.06
+Lesão Corporal,municipio_litoral,XANGRILA,1,Jan,62,18.96
+Lesão Corporal,municipio_litoral,XANGRILA,2,Fev,33,10.09
+Lesão Corporal,municipio_litoral,XANGRILA,3,Mar,29,8.87
+Lesão Corporal,municipio_litoral,XANGRILA,4,Abr,26,7.95
+Lesão Corporal,municipio_litoral,XANGRILA,5,Mai,17,5.2
+Lesão Corporal,municipio_litoral,XANGRILA,6,Jun,13,3.98
+Lesão Corporal,municipio_litoral,XANGRILA,7,Jul,21,6.42
+Lesão Corporal,municipio_litoral,XANGRILA,8,Ago,14,4.28
+Lesão Corporal,municipio_litoral,XANGRILA,9,Set,24,7.34
+Lesão Corporal,municipio_litoral,XANGRILA,10,Out,18,5.5
+Lesão Corporal,municipio_litoral,XANGRILA,11,Nov,36,11.01
+Lesão Corporal,municipio_litoral,XANGRILA,12,Dez,34,10.4
+Lesão Corporal,municipio_litoral,ARROIO DO SAL,1,Jan,37,15.55
+Lesão Corporal,municipio_litoral,ARROIO DO SAL,2,Fev,26,10.92
+Lesão Corporal,municipio_litoral,ARROIO DO SAL,3,Mar,17,7.14
+Lesão Corporal,municipio_litoral,ARROIO DO SAL,4,Abr,21,8.82
+Lesão Corporal,municipio_litoral,ARROIO DO SAL,5,Mai,10,4.2
+Lesão Corporal,municipio_litoral,ARROIO DO SAL,6,Jun,13,5.46
+Lesão Corporal,municipio_litoral,ARROIO DO SAL,7,Jul,10,4.2
+Lesão Corporal,municipio_litoral,ARROIO DO SAL,8,Ago,20,8.4
+Lesão Corporal,municipio_litoral,ARROIO DO SAL,9,Set,8,3.36
+Lesão Corporal,municipio_litoral,ARROIO DO SAL,10,Out,21,8.82
+Lesão Corporal,municipio_litoral,ARROIO DO SAL,11,Nov,18,7.56
+Lesão Corporal,municipio_litoral,ARROIO DO SAL,12,Dez,37,15.55
+Lesão Corporal,municipio_litoral,TORRES,1,Jan,113,13.48
+Lesão Corporal,municipio_litoral,TORRES,2,Fev,102,12.17
+Lesão Corporal,municipio_litoral,TORRES,3,Mar,63,7.52
+Lesão Corporal,municipio_litoral,TORRES,4,Abr,61,7.28
+Lesão Corporal,municipio_litoral,TORRES,5,Mai,73,8.71
+Lesão Corporal,municipio_litoral,TORRES,6,Jun,41,4.89
+Lesão Corporal,municipio_litoral,TORRES,7,Jul,57,6.8
+Lesão Corporal,municipio_litoral,TORRES,8,Ago,48,5.73
+Lesão Corporal,municipio_litoral,TORRES,9,Set,49,5.85
+Lesão Corporal,municipio_litoral,TORRES,10,Out,58,6.92
+Lesão Corporal,municipio_litoral,TORRES,11,Nov,75,8.95
+Lesão Corporal,municipio_litoral,TORRES,12,Dez,98,11.69
+Lesão Corporal,municipio_litoral,PALMARES DO SUL,1,Jan,36,16.36
+Lesão Corporal,municipio_litoral,PALMARES DO SUL,2,Fev,34,15.45
+Lesão Corporal,municipio_litoral,PALMARES DO SUL,3,Mar,18,8.18
+Lesão Corporal,municipio_litoral,PALMARES DO SUL,4,Abr,9,4.09
+Lesão Corporal,municipio_litoral,PALMARES DO SUL,5,Mai,17,7.73
+Lesão Corporal,municipio_litoral,PALMARES DO SUL,6,Jun,5,2.27
+Lesão Corporal,municipio_litoral,PALMARES DO SUL,7,Jul,11,5.0
+Lesão Corporal,municipio_litoral,PALMARES DO SUL,8,Ago,8,3.64
+Lesão Corporal,municipio_litoral,PALMARES DO SUL,9,Set,12,5.45
+Lesão Corporal,municipio_litoral,PALMARES DO SUL,10,Out,11,5.0
+Lesão Corporal,municipio_litoral,PALMARES DO SUL,11,Nov,25,11.36
+Lesão Corporal,municipio_litoral,PALMARES DO SUL,12,Dez,34,15.45
+Lesão Corporal,municipio_controle,CAPELA DE SANTANA,1,Jan,18,16.22
+Lesão Corporal,municipio_controle,CAPELA DE SANTANA,2,Fev,5,4.5
+Lesão Corporal,municipio_controle,CAPELA DE SANTANA,3,Mar,15,13.51
+Lesão Corporal,municipio_controle,CAPELA DE SANTANA,4,Abr,7,6.31
+Lesão Corporal,municipio_controle,CAPELA DE SANTANA,5,Mai,7,6.31
+Lesão Corporal,municipio_controle,CAPELA DE SANTANA,6,Jun,7,6.31
+Lesão Corporal,municipio_controle,CAPELA DE SANTANA,7,Jul,8,7.21
+Lesão Corporal,municipio_controle,CAPELA DE SANTANA,8,Ago,9,8.11
+Lesão Corporal,municipio_controle,CAPELA DE SANTANA,9,Set,9,8.11
+Lesão Corporal,municipio_controle,CAPELA DE SANTANA,10,Out,8,7.21
+Lesão Corporal,municipio_controle,CAPELA DE SANTANA,11,Nov,10,9.01
+Lesão Corporal,municipio_controle,CAPELA DE SANTANA,12,Dez,8,7.21
+Lesão Corporal,municipio_controle,CRISSIUMAL,1,Jan,20,12.2
+Lesão Corporal,municipio_controle,CRISSIUMAL,2,Fev,21,12.8
+Lesão Corporal,municipio_controle,CRISSIUMAL,3,Mar,10,6.1
+Lesão Corporal,municipio_controle,CRISSIUMAL,4,Abr,10,6.1
+Lesão Corporal,municipio_controle,CRISSIUMAL,5,Mai,9,5.49
+Lesão Corporal,municipio_controle,CRISSIUMAL,6,Jun,11,6.71
+Lesão Corporal,municipio_controle,CRISSIUMAL,7,Jul,5,3.05
+Lesão Corporal,municipio_controle,CRISSIUMAL,8,Ago,9,5.49
+Lesão Corporal,municipio_controle,CRISSIUMAL,9,Set,21,12.8
+Lesão Corporal,municipio_controle,CRISSIUMAL,10,Out,12,7.32
+Lesão Corporal,municipio_controle,CRISSIUMAL,11,Nov,24,14.63
+Lesão Corporal,municipio_controle,CRISSIUMAL,12,Dez,12,7.32
+Lesão Corporal,municipio_controle,ESPUMOSO,1,Jan,19,10.73
+Lesão Corporal,municipio_controle,ESPUMOSO,2,Fev,20,11.3
+Lesão Corporal,municipio_controle,ESPUMOSO,3,Mar,14,7.91
+Lesão Corporal,municipio_controle,ESPUMOSO,4,Abr,9,5.08
+Lesão Corporal,municipio_controle,ESPUMOSO,5,Mai,15,8.47
+Lesão Corporal,municipio_controle,ESPUMOSO,6,Jun,8,4.52
+Lesão Corporal,municipio_controle,ESPUMOSO,7,Jul,14,7.91
+Lesão Corporal,municipio_controle,ESPUMOSO,8,Ago,12,6.78
+Lesão Corporal,municipio_controle,ESPUMOSO,9,Set,16,9.04
+Lesão Corporal,municipio_controle,ESPUMOSO,10,Out,13,7.34
+Lesão Corporal,municipio_controle,ESPUMOSO,11,Nov,17,9.6
+Lesão Corporal,municipio_controle,ESPUMOSO,12,Dez,20,11.3
+Lesão Corporal,municipio_controle,GETULIO VARGAS,1,Jan,32,11.03
+Lesão Corporal,municipio_controle,GETULIO VARGAS,2,Fev,30,10.34
+Lesão Corporal,municipio_controle,GETULIO VARGAS,3,Mar,21,7.24
+Lesão Corporal,municipio_controle,GETULIO VARGAS,4,Abr,24,8.28
+Lesão Corporal,municipio_controle,GETULIO VARGAS,5,Mai,12,4.14
+Lesão Corporal,municipio_controle,GETULIO VARGAS,6,Jun,19,6.55
+Lesão Corporal,municipio_controle,GETULIO VARGAS,7,Jul,18,6.21
+Lesão Corporal,municipio_controle,GETULIO VARGAS,8,Ago,24,8.28
+Lesão Corporal,municipio_controle,GETULIO VARGAS,9,Set,22,7.59
+Lesão Corporal,municipio_controle,GETULIO VARGAS,10,Out,31,10.69
+Lesão Corporal,municipio_controle,GETULIO VARGAS,11,Nov,31,10.69
+Lesão Corporal,municipio_controle,GETULIO VARGAS,12,Dez,26,8.97
+Lesão Corporal,municipio_controle,SERAFINA CORREA,1,Jan,15,9.49
+Lesão Corporal,municipio_controle,SERAFINA CORREA,2,Fev,12,7.59
+Lesão Corporal,municipio_controle,SERAFINA CORREA,3,Mar,11,6.96
+Lesão Corporal,municipio_controle,SERAFINA CORREA,4,Abr,8,5.06
+Lesão Corporal,municipio_controle,SERAFINA CORREA,5,Mai,6,3.8
+Lesão Corporal,municipio_controle,SERAFINA CORREA,6,Jun,20,12.66
+Lesão Corporal,municipio_controle,SERAFINA CORREA,7,Jul,12,7.59
+Lesão Corporal,municipio_controle,SERAFINA CORREA,8,Ago,13,8.23
+Lesão Corporal,municipio_controle,SERAFINA CORREA,9,Set,16,10.13
+Lesão Corporal,municipio_controle,SERAFINA CORREA,10,Out,19,12.03
+Lesão Corporal,municipio_controle,SERAFINA CORREA,11,Nov,14,8.86
+Lesão Corporal,municipio_controle,SERAFINA CORREA,12,Dez,12,7.59
+Lesão Corporal,municipio_controle,VERA CRUZ,1,Jan,25,8.2
+Lesão Corporal,municipio_controle,VERA CRUZ,2,Fev,24,7.87
+Lesão Corporal,municipio_controle,VERA CRUZ,3,Mar,21,6.89
+Lesão Corporal,municipio_controle,VERA CRUZ,4,Abr,24,7.87
+Lesão Corporal,municipio_controle,VERA CRUZ,5,Mai,23,7.54
+Lesão Corporal,municipio_controle,VERA CRUZ,6,Jun,21,6.89
+Lesão Corporal,municipio_controle,VERA CRUZ,7,Jul,24,7.87
+Lesão Corporal,municipio_controle,VERA CRUZ,8,Ago,24,7.87
+Lesão Corporal,municipio_controle,VERA CRUZ,9,Set,22,7.21
+Lesão Corporal,municipio_controle,VERA CRUZ,10,Out,27,8.85
+Lesão Corporal,municipio_controle,VERA CRUZ,11,Nov,23,7.54
+Lesão Corporal,municipio_controle,VERA CRUZ,12,Dez,47,15.41
+Lesão Corporal,municipio_controle,SAO LOURENCO DO SUL,1,Jan,57,13.13
+Lesão Corporal,municipio_controle,SAO LOURENCO DO SUL,2,Fev,50,11.52
+Lesão Corporal,municipio_controle,SAO LOURENCO DO SUL,3,Mar,35,8.06
+Lesão Corporal,municipio_controle,SAO LOURENCO DO SUL,4,Abr,27,6.22
+Lesão Corporal,municipio_controle,SAO LOURENCO DO SUL,5,Mai,33,7.6
+Lesão Corporal,municipio_controle,SAO LOURENCO DO SUL,6,Jun,28,6.45
+Lesão Corporal,municipio_controle,SAO LOURENCO DO SUL,7,Jul,33,7.6
+Lesão Corporal,municipio_controle,SAO LOURENCO DO SUL,8,Ago,31,7.14
+Lesão Corporal,municipio_controle,SAO LOURENCO DO SUL,9,Set,26,5.99
+Lesão Corporal,municipio_controle,SAO LOURENCO DO SUL,10,Out,34,7.83
+Lesão Corporal,municipio_controle,SAO LOURENCO DO SUL,11,Nov,30,6.91
+Lesão Corporal,municipio_controle,SAO LOURENCO DO SUL,12,Dez,50,11.52
+Lesão Corporal,municipio_controle,TAQUARA,1,Jan,73,8.24
+Lesão Corporal,municipio_controle,TAQUARA,2,Fev,80,9.03
+Lesão Corporal,municipio_controle,TAQUARA,3,Mar,88,9.93
+Lesão Corporal,municipio_controle,TAQUARA,4,Abr,61,6.88
+Lesão Corporal,municipio_controle,TAQUARA,5,Mai,68,7.67
+Lesão Corporal,municipio_controle,TAQUARA,6,Jun,56,6.32
+Lesão Corporal,municipio_controle,TAQUARA,7,Jul,69,7.79
+Lesão Corporal,municipio_controle,TAQUARA,8,Ago,74,8.35
+Lesão Corporal,municipio_controle,TAQUARA,9,Set,65,7.34
+Lesão Corporal,municipio_controle,TAQUARA,10,Out,87,9.82
+Lesão Corporal,municipio_controle,TAQUARA,11,Nov,61,6.88
+Lesão Corporal,municipio_controle,TAQUARA,12,Dez,104,11.74
+Lesão Corporal,municipio_controle,VACARIA,1,Jan,127,10.47
+Lesão Corporal,municipio_controle,VACARIA,2,Fev,106,8.74
+Lesão Corporal,municipio_controle,VACARIA,3,Mar,108,8.9
+Lesão Corporal,municipio_controle,VACARIA,4,Abr,80,6.6
+Lesão Corporal,municipio_controle,VACARIA,5,Mai,105,8.66
+Lesão Corporal,municipio_controle,VACARIA,6,Jun,91,7.5
+Lesão Corporal,municipio_controle,VACARIA,7,Jul,97,8.0
+Lesão Corporal,municipio_controle,VACARIA,8,Ago,95,7.83
+Lesão Corporal,municipio_controle,VACARIA,9,Set,91,7.5
+Lesão Corporal,municipio_controle,VACARIA,10,Out,93,7.67
+Lesão Corporal,municipio_controle,VACARIA,11,Nov,96,7.91
+Lesão Corporal,municipio_controle,VACARIA,12,Dez,124,10.22
+Lesão Corporal,grupo_litoral,Litoral Norte (9 municípios),1,Jan,952,15.99
+Lesão Corporal,grupo_litoral,Litoral Norte (9 municípios),2,Fev,768,12.9
+Lesão Corporal,grupo_litoral,Litoral Norte (9 municípios),3,Mar,510,8.56
+Lesão Corporal,grupo_litoral,Litoral Norte (9 municípios),4,Abr,428,7.19
+Lesão Corporal,grupo_litoral,Litoral Norte (9 municípios),5,Mai,363,6.1
+Lesão Corporal,grupo_litoral,Litoral Norte (9 municípios),6,Jun,289,4.85
+Lesão Corporal,grupo_litoral,Litoral Norte (9 municípios),7,Jul,331,5.56
+Lesão Corporal,grupo_litoral,Litoral Norte (9 municípios),8,Ago,344,5.78
+Lesão Corporal,grupo_litoral,Litoral Norte (9 municípios),9,Set,347,5.83
+Lesão Corporal,grupo_litoral,Litoral Norte (9 municípios),10,Out,426,7.15
+Lesão Corporal,grupo_litoral,Litoral Norte (9 municípios),11,Nov,479,8.04
+Lesão Corporal,grupo_litoral,Litoral Norte (9 municípios),12,Dez,718,12.06
+Lesão Corporal,grupo_controle,Controle não-litorâneo (9 municípios),1,Jan,386,10.33
+Lesão Corporal,grupo_controle,Controle não-litorâneo (9 municípios),2,Fev,348,9.31
+Lesão Corporal,grupo_controle,Controle não-litorâneo (9 municípios),3,Mar,323,8.64
+Lesão Corporal,grupo_controle,Controle não-litorâneo (9 municípios),4,Abr,250,6.69
+Lesão Corporal,grupo_controle,Controle não-litorâneo (9 municípios),5,Mai,278,7.44
+Lesão Corporal,grupo_controle,Controle não-litorâneo (9 municípios),6,Jun,261,6.98
+Lesão Corporal,grupo_controle,Controle não-litorâneo (9 municípios),7,Jul,280,7.49
+Lesão Corporal,grupo_controle,Controle não-litorâneo (9 municípios),8,Ago,291,7.78
+Lesão Corporal,grupo_controle,Controle não-litorâneo (9 municípios),9,Set,288,7.7
+Lesão Corporal,grupo_controle,Controle não-litorâneo (9 municípios),10,Out,324,8.67
+Lesão Corporal,grupo_controle,Controle não-litorâneo (9 municípios),11,Nov,306,8.19
+Lesão Corporal,grupo_controle,Controle não-litorâneo (9 municípios),12,Dez,403,10.78
+Lesão Corporal,estado,Rio Grande do Sul (497 municípios),1,Jan,16071,10.36
+Lesão Corporal,estado,Rio Grande do Sul (497 municípios),2,Fev,14304,9.22
+Lesão Corporal,estado,Rio Grande do Sul (497 municípios),3,Mar,14463,9.33
+Lesão Corporal,estado,Rio Grande do Sul (497 municípios),4,Abr,11994,7.73
+Lesão Corporal,estado,Rio Grande do Sul (497 municípios),5,Mai,10561,6.81
+Lesão Corporal,estado,Rio Grande do Sul (497 municípios),6,Jun,10316,6.65
+Lesão Corporal,estado,Rio Grande do Sul (497 municípios),7,Jul,10590,6.83
+Lesão Corporal,estado,Rio Grande do Sul (497 municípios),8,Ago,11322,7.3
+Lesão Corporal,estado,Rio Grande do Sul (497 municípios),9,Set,11997,7.74
+Lesão Corporal,estado,Rio Grande do Sul (497 municípios),10,Out,13301,8.58
+Lesão Corporal,estado,Rio Grande do Sul (497 municípios),11,Nov,13942,8.99
+Lesão Corporal,estado,Rio Grande do Sul (497 municípios),12,Dez,16201,10.45

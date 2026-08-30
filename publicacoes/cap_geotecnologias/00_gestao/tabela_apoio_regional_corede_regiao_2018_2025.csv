@@ -1,0 +1,109 @@
+tipo_crime,nivel_agregacao,posicao,regiao,n_municipios_elegiveis,casos_total,taxa_por_100mil_hab
+Ameaça,corede,1,Médio Alto Uruguai,11,4178,450.31
+Ameaça,corede,2,Celeiro,9,3428,431.45
+Ameaça,corede,3,Campos de Cima da Serra,3,2864,429.81
+Ameaça,corede,4,Alto da Serra do Botucaraí,5,2446,422.0
+Ameaça,corede,5,Norte,9,5448,414.68
+Ameaça,corede,6,Produção,4,10660,410.09
+Ameaça,corede,7,Litoral,15,11251,404.94
+Ameaça,corede,8,Rio da Várzea,6,2853,385.77
+Ameaça,corede,9,Alto Jacuí,7,4098,381.31
+Ameaça,corede,10,Nordeste,6,2704,380.91
+Ameaça,corede,11,Missões,13,6144,364.82
+Ameaça,corede,12,Central,9,10938,360.93
+Ameaça,corede,13,Noroeste Colonial,7,4560,342.43
+Ameaça,corede,14,Fronteira Noroeste,11,4890,340.22
+Ameaça,corede,15,Vale do Rio Pardo,16,10423,314.54
+Ameaça,corede,16,Fronteira Oeste,9,12212,302.28
+Ameaça,corede,17,Vale do Rio dos Sinos,14,32863,296.73
+Ameaça,corede,18,Hortênsias,6,3371,294.86
+Ameaça,corede,19,Vale do Jaguari,5,2291,290.03
+Ameaça,corede,20,Paranhana Encosta da Serra,8,4894,286.05
+Ameaça,corede,21,Vale do Taquari,14,6837,283.84
+Ameaça,corede,22,Metropolitano Delta do Jacuí,10,56217,281.03
+Ameaça,corede,23,Campanha,6,4842,279.87
+Ameaça,corede,24,Vale do Caí,11,3649,276.28
+Ameaça,corede,25,Jacuí Centro,4,2727,268.86
+Ameaça,corede,26,Centro-Sul,14,5274,265.03
+Ameaça,corede,27,Sul,19,17102,251.64
+Ameaça,corede,28,Serra,15,17859,237.77
+Ameaça,regiao_intermediaria,1,Passo Fundo,49,32989,404.39
+Ameaça,regiao_intermediaria,2,Ijuí,40,19022,362.49
+Ameaça,regiao_intermediaria,3,Santa Maria,21,18414,332.94
+Ameaça,regiao_intermediaria,4,Santa Cruz do Sul - Lajeado,29,16921,300.98
+Ameaça,regiao_intermediaria,5,Porto Alegre,72,114168,294.04
+Ameaça,regiao_intermediaria,6,Uruguaiana,8,10394,292.5
+Ameaça,regiao_intermediaria,7,Pelotas,20,20689,257.1
+Ameaça,regiao_intermediaria,8,Caxias do Sul,27,24426,256.32
+Estupro,corede,1,Litoral,15,862,31.02
+Estupro,corede,2,Alto Jacuí,7,292,27.17
+Estupro,corede,3,Metropolitano Delta do Jacuí,10,5002,25.01
+Estupro,corede,4,Médio Alto Uruguai,11,229,24.68
+Estupro,corede,5,Central,9,720,23.76
+Estupro,corede,6,Vale do Rio dos Sinos,14,2590,23.39
+Estupro,corede,7,Vale do Caí,11,305,23.09
+Estupro,corede,8,Hortênsias,6,262,22.92
+Estupro,corede,9,Produção,4,583,22.43
+Estupro,corede,10,Paranhana Encosta da Serra,8,374,21.86
+Estupro,corede,11,Centro-Sul,14,432,21.71
+Estupro,corede,12,Fronteira Oeste,9,810,20.05
+Estupro,corede,13,Missões,13,325,19.3
+Estupro,corede,14,Vale do Rio Pardo,16,633,19.1
+Estupro,corede,15,Campanha,6,327,18.9
+Estupro,corede,16,Norte,9,245,18.65
+Estupro,corede,17,Alto da Serra do Botucaraí,5,104,17.94
+Estupro,corede,18,Sul,19,1158,17.04
+Estupro,corede,19,Noroeste Colonial,7,222,16.67
+Estupro,corede,20,Campos de Cima da Serra,3,111,16.66
+Estupro,corede,21,Vale do Taquari,14,397,16.48
+Estupro,corede,22,Vale do Jaguari,5,124,15.7
+Estupro,corede,23,Rio da Várzea,6,113,15.28
+Estupro,corede,24,Celeiro,9,121,15.23
+Estupro,corede,25,Fronteira Noroeste,11,215,14.96
+Estupro,corede,26,Jacuí Centro,4,138,13.61
+Estupro,corede,27,Serra,15,981,13.06
+Estupro,corede,28,Nordeste,6,69,9.72
+Estupro,regiao_intermediaria,1,Porto Alegre,72,9567,24.64
+Estupro,regiao_intermediaria,2,Uruguaiana,8,734,20.66
+Estupro,regiao_intermediaria,3,Passo Fundo,49,1675,20.53
+Estupro,regiao_intermediaria,4,Santa Maria,21,1088,19.67
+Estupro,regiao_intermediaria,5,Santa Cruz do Sul - Lajeado,29,1009,17.95
+Estupro,regiao_intermediaria,6,Pelotas,20,1409,17.51
+Estupro,regiao_intermediaria,7,Ijuí,40,883,16.83
+Estupro,regiao_intermediaria,8,Caxias do Sul,27,1379,14.47
+Lesão Corporal,corede,1,Litoral,15,7151,257.37
+Lesão Corporal,corede,2,Norte,9,3174,241.59
+Lesão Corporal,corede,3,Campos de Cima da Serra,3,1427,214.15
+Lesão Corporal,corede,4,Produção,4,5397,207.62
+Lesão Corporal,corede,5,Alto Jacuí,7,2124,197.63
+Lesão Corporal,corede,6,Noroeste Colonial,7,2618,196.6
+Lesão Corporal,corede,7,Celeiro,9,1562,196.6
+Lesão Corporal,corede,8,Fronteira Oeste,9,7907,195.72
+Lesão Corporal,corede,9,Metropolitano Delta do Jacuí,10,38051,190.22
+Lesão Corporal,corede,10,Hortênsias,6,2157,188.67
+Lesão Corporal,corede,11,Central,9,5668,187.03
+Lesão Corporal,corede,12,Paranhana Encosta da Serra,8,3119,182.3
+Lesão Corporal,corede,13,Campanha,6,3097,179.01
+Lesão Corporal,corede,14,Missões,13,2989,177.48
+Lesão Corporal,corede,15,Sul,19,12055,177.38
+Lesão Corporal,corede,16,Médio Alto Uruguai,11,1639,176.65
+Lesão Corporal,corede,17,Vale do Jaguari,5,1320,167.1
+Lesão Corporal,corede,18,Vale do Rio dos Sinos,14,18143,163.82
+Lesão Corporal,corede,19,Alto da Serra do Botucaraí,5,932,160.79
+Lesão Corporal,corede,20,Centro-Sul,14,3112,156.38
+Lesão Corporal,corede,21,Jacuí Centro,4,1580,155.77
+Lesão Corporal,corede,22,Nordeste,6,1092,153.83
+Lesão Corporal,corede,23,Vale do Rio Pardo,16,4991,150.62
+Lesão Corporal,corede,24,Rio da Várzea,6,1103,149.14
+Lesão Corporal,corede,25,Fronteira Noroeste,11,2001,139.22
+Lesão Corporal,corede,26,Serra,15,10368,138.04
+Lesão Corporal,corede,27,Vale do Caí,11,1719,130.15
+Lesão Corporal,corede,28,Vale do Taquari,14,2864,118.9
+Lesão Corporal,regiao_intermediaria,1,Uruguaiana,8,6931,195.05
+Lesão Corporal,regiao_intermediaria,2,Passo Fundo,49,15721,192.71
+Lesão Corporal,regiao_intermediaria,3,Porto Alegre,72,71272,183.56
+Lesão Corporal,regiao_intermediaria,4,Santa Maria,21,10050,181.71
+Lesão Corporal,regiao_intermediaria,5,Pelotas,20,14380,178.7
+Lesão Corporal,regiao_intermediaria,6,Ijuí,40,9170,174.75
+Lesão Corporal,regiao_intermediaria,7,Caxias do Sul,27,14131,148.28
+Lesão Corporal,regiao_intermediaria,8,Santa Cruz do Sul - Lajeado,29,7705,137.05

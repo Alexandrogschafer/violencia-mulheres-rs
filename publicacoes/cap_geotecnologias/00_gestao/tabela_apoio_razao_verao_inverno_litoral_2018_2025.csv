@@ -1,0 +1,64 @@
+tipo_crime,nivel,entidade,casos_dez_jan_fev,casos_jun_jul_ago,razao_verao_inverno
+Ameaça,municipio_litoral,CIDREIRA,207,142,1.458
+Ameaça,municipio_litoral,TRAMANDAI,719,451,1.594
+Ameaça,municipio_litoral,IMBE,330,189,1.746
+Ameaça,municipio_litoral,CAPAO DA CANOA,722,420,1.719
+Ameaça,municipio_litoral,BALNEARIO PINHAL,191,80,2.388
+Ameaça,municipio_litoral,XANGRILA,182,102,1.784
+Ameaça,municipio_litoral,ARROIO DO SAL,163,61,2.672
+Ameaça,municipio_litoral,TORRES,467,301,1.551
+Ameaça,municipio_litoral,PALMARES DO SUL,118,54,2.185
+Ameaça,municipio_controle,CAPELA DE SANTANA,59,70,0.843
+Ameaça,municipio_controle,CRISSIUMAL,119,126,0.944
+Ameaça,municipio_controle,ESPUMOSO,122,91,1.341
+Ameaça,municipio_controle,GETULIO VARGAS,125,100,1.25
+Ameaça,municipio_controle,SERAFINA CORREA,76,65,1.169
+Ameaça,municipio_controle,VERA CRUZ,193,168,1.149
+Ameaça,municipio_controle,SAO LOURENCO DO SUL,220,115,1.913
+Ameaça,municipio_controle,TAQUARA,413,280,1.475
+Ameaça,municipio_controle,VACARIA,655,583,1.123
+Ameaça,grupo_litoral,Litoral Norte (9 municípios),3099,1800,1.722
+Ameaça,grupo_controle,Controle não-litorâneo (9 municípios),1982,1598,1.24
+Ameaça,estado,Rio Grande do Sul (497 municípios),75876,61559,1.233
+Estupro,municipio_litoral,CIDREIRA,30,15,2.0
+Estupro,municipio_litoral,TRAMANDAI,49,25,1.96
+Estupro,municipio_litoral,IMBE,20,18,1.111
+Estupro,municipio_litoral,CAPAO DA CANOA,50,41,1.22
+Estupro,municipio_litoral,BALNEARIO PINHAL,10,10,1.0
+Estupro,municipio_litoral,XANGRILA,16,5,3.2
+Estupro,municipio_litoral,ARROIO DO SAL,10,5,2.0
+Estupro,municipio_litoral,TORRES,33,17,1.941
+Estupro,municipio_litoral,PALMARES DO SUL,22,12,1.833
+Estupro,municipio_controle,CAPELA DE SANTANA,8,4,2.0
+Estupro,municipio_controle,CRISSIUMAL,3,1,3.0
+Estupro,municipio_controle,ESPUMOSO,3,2,1.5
+Estupro,municipio_controle,GETULIO VARGAS,7,3,2.333
+Estupro,municipio_controle,SERAFINA CORREA,2,3,0.667
+Estupro,municipio_controle,VERA CRUZ,17,6,2.833
+Estupro,municipio_controle,SAO LOURENCO DO SUL,10,10,1.0
+Estupro,municipio_controle,TAQUARA,33,22,1.5
+Estupro,municipio_controle,VACARIA,17,21,0.81
+Estupro,grupo_litoral,Litoral Norte (9 municípios),240,148,1.622
+Estupro,grupo_controle,Controle não-litorâneo (9 municípios),100,72,1.389
+Estupro,estado,Rio Grande do Sul (497 municípios),5166,4398,1.175
+Lesão Corporal,municipio_litoral,CIDREIRA,223,82,2.72
+Lesão Corporal,municipio_litoral,TRAMANDAI,526,243,2.165
+Lesão Corporal,municipio_litoral,IMBE,307,106,2.896
+Lesão Corporal,municipio_litoral,CAPAO DA CANOA,563,218,2.583
+Lesão Corporal,municipio_litoral,BALNEARIO PINHAL,173,54,3.204
+Lesão Corporal,municipio_litoral,XANGRILA,129,48,2.688
+Lesão Corporal,municipio_litoral,ARROIO DO SAL,100,43,2.326
+Lesão Corporal,municipio_litoral,TORRES,313,146,2.144
+Lesão Corporal,municipio_litoral,PALMARES DO SUL,104,24,4.333
+Lesão Corporal,municipio_controle,CAPELA DE SANTANA,31,24,1.292
+Lesão Corporal,municipio_controle,CRISSIUMAL,53,25,2.12
+Lesão Corporal,municipio_controle,ESPUMOSO,59,34,1.735
+Lesão Corporal,municipio_controle,GETULIO VARGAS,88,61,1.443
+Lesão Corporal,municipio_controle,SERAFINA CORREA,39,45,0.867
+Lesão Corporal,municipio_controle,VERA CRUZ,96,69,1.391
+Lesão Corporal,municipio_controle,SAO LOURENCO DO SUL,157,92,1.707
+Lesão Corporal,municipio_controle,TAQUARA,257,199,1.291
+Lesão Corporal,municipio_controle,VACARIA,357,283,1.261
+Lesão Corporal,grupo_litoral,Litoral Norte (9 municípios),2438,964,2.529
+Lesão Corporal,grupo_controle,Controle não-litorâneo (9 municípios),1137,832,1.367
+Lesão Corporal,estado,Rio Grande do Sul (497 municípios),46576,32228,1.445
