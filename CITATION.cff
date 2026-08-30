@@ -6,6 +6,10 @@ authors:
     given-names: "Alexandro Gularte"
   - family-names: "Prates"
     given-names: "Lisie Alende"
+  - family-names: "Schäfer"
+    given-names: "Luiza Pinheiro"
+  - family-names: "Fernandes"
+    given-names: "Maria Antonia Dutra"
 date-released: 2026-07-16
 repository-code: "https://github.com/Alexandrogschafer/violencia-mulheres-rs"
 license: CC-BY-4.0

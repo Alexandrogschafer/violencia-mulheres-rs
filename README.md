@@ -16,11 +16,17 @@ Os resultados podem ser explorados diretamente pelo **portal web** acima — gr�
 
 Se utilizar este software/dataset, cite-o conforme abaixo (ver também `CITATION.cff`):
 
-> Schäfer, A. G., & Prates, L. A. (2026). *Pipeline de análise da violência contra a mulher no RS (2012-2026)* [Software]. https://github.com/Alexandrogschafer/violencia-mulheres-rs. DOI: [10.5281/zenodo.21403499](https://doi.org/10.5281/zenodo.21403499)
+> Schäfer, A. G., Prates, L. A., Schäfer, L. P., & Fernandes, M. A. D. (2026). *Pipeline de análise da violência contra a mulher no RS (2012-2026)* [Software]. https://github.com/Alexandrogschafer/violencia-mulheres-rs. DOI: [10.5281/zenodo.21403499](https://doi.org/10.5281/zenodo.21403499)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21403499.svg)](https://doi.org/10.5281/zenodo.21403499)
 
 Licenciado sob [CC BY 4.0](LICENSE) — Alexandro Gularte Schäfer e Lisie Alende Prates, 2026.
+
+<!-- Titularidade da licença pendente de alinhamento com a DIT/Unipampa
+     (enquadramento das coautoras: coautoria de software vs. autoria de
+     conteúdo). A lista de autores da citação acima e do CITATION.cff já
+     contempla as 4 pessoas; esta linha e o LICENSE seguem com 2 até a
+     definição. -->
 
 ## Portal Web
 
