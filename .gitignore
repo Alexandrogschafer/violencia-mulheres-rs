@@ -17,6 +17,12 @@ data/raw/*.geojson
 # Saídas geradas pelo pipeline (src/load_data.py, src/fetch_populacao.py) —
 # regeneráveis a partir de data/raw/, não precisam ser versionadas.
 outputs/tables/*.csv
+# Exceção: proveniência dos brutos (src/verificar_proveniencia.py) não é
+# regenerável a partir de data/raw/ sozinho -- data/raw/*.xlsx é ignorado
+# (regra acima), então esse CSV é o único registro no repositório de qual
+# versão da SSP/RS foi consumida (hash, data "Atualizado em" declarada,
+# metadado OOXML). Pequeno e textual, por isso versionado.
+!outputs/tables/proveniencia_dados_brutos.csv
 outputs/figures/*
 !outputs/figures/.gitkeep
 
@@ -37,3 +43,24 @@ outputs/maps/*
 
 # SO
 .DS_Store
+
+# Material editorial do capítulo (publicacoes/cap_geotecnologias/) — fora do
+# escopo do registro de programa de computador junto ao INPE/DIT (src/, docs/).
+# PDFs de referências são material de terceiros, não versionado; escopo
+# restrito a 01_referencias/ de propósito — não ignora publicacoes/ como um
+# todo, nem *.pdf/*.png/*.svg em geral: as figuras finais do capítulo em
+# 03_figuras/ SÃO versionadas (produto final, como data/processed/ e docs/).
+publicacoes/cap_geotecnologias/01_referencias/*.pdf
+!publicacoes/cap_geotecnologias/01_referencias/.gitkeep
+
+# Temporários de compilação LaTeX/Word — restritos a publicacoes/ para não
+# capturar arquivos de outras partes do repositório (ex.: log de execução
+# do pipeline).
+publicacoes/**/*.aux
+publicacoes/**/*.log
+publicacoes/**/*.out
+publicacoes/**/*.bbl
+publicacoes/**/*.blg
+publicacoes/**/*.toc
+publicacoes/**/*.synctex.gz
+publicacoes/**/~$*.docx

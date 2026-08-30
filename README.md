@@ -106,7 +106,8 @@ src/load_data.py        parseia data/raw/ e gera as tabelas long em outputs/tabl
 src/fetch_populacao.py  busca população dos municípios do RS na API do IBGE
 src/build_site_data.py  prepara data/processed/, outputs/reports/, outputs/maps/ e docs/assets/data/
 notebooks/              análise exploratória, inferencial, espacial e estudo de caso (Uruguaiana)
-outputs/tables/         CSVs gerados pelo pipeline (não versionados, regeneráveis)
+outputs/tables/         CSVs gerados pelo pipeline (não versionados, regeneráveis -- exceto
+                        proveniencia_dados_brutos.csv, ver "Proveniência dos dados brutos" abaixo)
 outputs/figures/        figuras exportadas pelas notebooks (não versionadas, regeneráveis)
 outputs/reports/        tabelas de resultado estatístico das notebooks 1, 2 e estudos de caso (não versionadas, regeneráveis)
 outputs/maps/           geojson/json prontos para o mapa interativo (não versionados, regeneráveis)
@@ -114,6 +115,18 @@ docs/                   portal estático (GitHub Pages) — ver "Como atualizar 
 ```
 
 Mais detalhes de arquitetura e das peculiaridades de cada arquivo bruto estão em `CLAUDE.md`.
+
+## Proveniência dos dados brutos
+
+A SSP/RS revisa retroativamente os arquivos que publica (ex.: em 2026, a página mostra 2023 e 2024 "atualizados em janeiro de 2026", e 2021 "em dezembro de 2023") — os números de um mesmo ano podem mudar entre uma extração e outra. Como `data/raw/*.xlsx` não é versionado (ver `.gitignore`), `outputs/tables/proveniencia_dados_brutos.csv` é o registro de **qual versão exata** deste projeto consumiu: hash SHA-256 de cada arquivo, a data "Atualizado em" que a própria SSP/RS escreve na planilha (célula "Fonte:" da aba Geral) e o metadado interno do `.xlsx` (`docProps/core.xml`, também gravado pela SSP/RS ao salvar o arquivo) — as duas fontes concordam entre si em todos os arquivos verificados. Diferente da maioria de `outputs/tables/`, **este CSV é versionado** (exceção explícita no `.gitignore`): é pequeno, textual, e não é regenerável a partir de mais nada no repositório, já que depende dos `.xlsx` brutos que não estão no git.
+
+Regerar depois de atualizar `data/raw/`:
+
+```bash
+python -m src.verificar_proveniencia
+```
+
+Limitações registradas no próprio CSV: a coluna de data de download é rotulada `mtime_local_aproximacao_download` porque não temos um registro real de quando cada arquivo foi baixado — é só o mtime local, uma aproximação, não uma data confirmada. A coluna `url_origem` fica vazia de propósito, para preenchimento manual (a URL de origem de cada arquivo não está registrada em lugar nenhum do projeto).
 
 ## Como atualizar e publicar o portal
 
