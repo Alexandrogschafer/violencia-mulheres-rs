@@ -1,13 +1,23 @@
 """Correlação de Spearman entre os 5 tipos de crime, calculada por
 município: cada município vira uma observação, e a variável é o total
-acumulado 2012-2026 daquele tipo de crime ali. Mede se municípios com mais
-casos de um tipo tendem a ter mais (ou menos) casos de outro tipo -- não diz
-nada sobre a relação mês a mês dentro de um município.
+acumulado 2018-2025 (periodo_padrao.py) daquele tipo de crime ali. Mede se
+municípios com mais casos de um tipo tendem a ter mais (ou menos) casos de
+outro tipo -- não diz nada sobre a relação mês a mês dentro de um
+município.
 
 Usa Spearman (não Pearson) porque a relação entre volumes de crime entre
 municípios tende a ser monotônica mas não linear (municípios grandes têm
 muito mais casos de tudo, de forma desproporcional), e Spearman é robusto a
 outliers como a capital/região metropolitana.
+
+ANO_INICIO_ANALISE/ANO_FIM_ANALISE vêm do ponto único de decisão em
+periodo_padrao.py -- as duas variantes (casos absolutos e taxa) usavam
+janelas diferentes entre si (2012-2026 vs. 2012-2025, ver
+carregar_taxas_por_municipio) só porque a taxa precisa de população e 2026
+não tem estimativa do IBGE ainda; com o recorte comum a 2018-2025 essa
+diferença desaparece -- 2026 já sai das duas por ser parcial, e agora
+2012-2017 também sai (fora do escopo desta rodada: alinha correlação ao
+mesmo recorte de tendência/sazonalidade/quebra/mapas).
 """
 
 from itertools import combinations
@@ -16,6 +26,7 @@ from pathlib import Path
 import pandas as pd
 from scipy import stats
 
+from src.analysis.periodo_padrao import ANO_FIM_ANALISE, ANO_INICIO_ANALISE
 from src.load_data import CASOS_POR_HABITANTES
 
 TABLES_DIR = Path(__file__).resolve().parent.parent.parent / "outputs" / "tables"
@@ -29,12 +40,17 @@ MUNICIPIO_NAO_IDENTIFICADO = "NÃO INFORMADO"
 
 
 def carregar_totais_por_municipio(caminho: Path | None = None) -> pd.DataFrame:
-    """Total acumulado 2012-2026 por município e tipo de crime, em formato
-    largo (uma coluna por tipo de crime, uma linha por município).
+    """Total acumulado ANO_INICIO_ANALISE-ANO_FIM_ANALISE por município e
+    tipo de crime, em formato largo (uma coluna por tipo de crime, uma
+    linha por município).
     """
     caminho = caminho or TABLES_DIR / "violencia_anual_municipio.csv"
     df = pd.read_csv(caminho)
-    df = df[df["municipio"] != MUNICIPIO_NAO_IDENTIFICADO]
+    df = df[
+        (df["municipio"] != MUNICIPIO_NAO_IDENTIFICADO)
+        & (df["ano"] >= ANO_INICIO_ANALISE)
+        & (df["ano"] <= ANO_FIM_ANALISE)
+    ]
     totais = df.groupby(["municipio", "tipo_crime"], as_index=False)["casos_total"].sum()
     return totais.pivot(index="municipio", columns="tipo_crime", values="casos_total")
 
@@ -48,13 +64,18 @@ def carregar_taxas_por_municipio(caminho: Path | None = None) -> pd.DataFrame:
     incidência usada em epidemiologia), em vez de dar peso igual a um ano
     com população pequena e um com população grande.
 
-    2026 fica de fora: ainda não tem estimativa de população do IBGE (ver
-    fetch_populacao.py), então soma(população-ano) ficaria incompleta. Isso
-    difere da versão em número absoluto de casos, que inclui 2026.
+    Restrito a ANO_INICIO_ANALISE-ANO_FIM_ANALISE, igual à versão em
+    número absoluto de casos (periodo_padrao.py já exclui 2026 nos dois
+    casos -- o dropna(populacao) abaixo continua aqui como salvaguarda,
+    não como o filtro principal de 2026).
     """
     caminho = caminho or TABLES_DIR / "violencia_anual_municipio_taxa.csv"
     df = pd.read_csv(caminho)
-    df = df[df["municipio"] != MUNICIPIO_NAO_IDENTIFICADO]
+    df = df[
+        (df["municipio"] != MUNICIPIO_NAO_IDENTIFICADO)
+        & (df["ano"] >= ANO_INICIO_ANALISE)
+        & (df["ano"] <= ANO_FIM_ANALISE)
+    ]
     df = df.dropna(subset=["populacao"])
     agregado = df.groupby(["municipio", "tipo_crime"], as_index=False).agg(
         casos_total=("casos_total", "sum"),
@@ -100,10 +121,10 @@ def identificar_pares_fortes(matriz_corr: pd.DataFrame, matriz_pvalor: pd.DataFr
 
 
 def main() -> dict[str, tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]]:
-    """Roda a correlação nas duas variantes: número absoluto de casos
-    acumulados (inclui 2026) e taxa por 100 mil habitantes (exclui 2026,
-    ver carregar_taxas_por_municipio). A versão em taxa controla o efeito
-    óbvio de município grande = mais casos de tudo.
+    """Roda a correlação nas duas variantes -- número absoluto de casos
+    acumulados e taxa por 100 mil habitantes --, ambas na mesma janela
+    ANO_INICIO_ANALISE-ANO_FIM_ANALISE (periodo_padrao.py). A versão em
+    taxa controla o efeito óbvio de município grande = mais casos de tudo.
     """
     resultados = {}
     for nome, carregar in [

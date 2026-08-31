@@ -27,6 +27,7 @@ from pathlib import Path
 import pandas as pd
 from scipy import stats
 
+from src.analysis.periodo_padrao import ANO_FIM_ANALISE, ANO_INICIO_ANALISE
 from src.analysis.sazonalidade import MESES_NOMES
 
 TABLES_DIR = Path(__file__).resolve().parent.parent.parent / "outputs" / "tables"
@@ -34,16 +35,23 @@ TABLES_DIR = Path(__file__).resolve().parent.parent.parent / "outputs" / "tables
 ANO_ENCHENTE = 2024
 MES_ENCHENTE = 5  # maio/2024
 
+# Conjuntos de anos próprios do Mann-Whitney (pré-enchente vs. 2024/2025) --
+# não usam ANO_FIM_ANALISE porque já não incluem 2026 por construção; não
+# precisam do ponto único de periodo_padrao.py.
 ANOS_ANTES_MANN_WHITNEY = set(range(2018, ANO_ENCHENTE))
 ANOS_DEPOIS_MANN_WHITNEY = {2024, 2025}
 
 
 def carregar_serie_mensal_estado(caminho: Path | None = None) -> pd.DataFrame:
     """Casos totais por tipo_crime, ano e mês, somados entre municípios,
-    ordenados cronologicamente dentro de cada tipo de crime.
+    ordenados cronologicamente dentro de cada tipo de crime, restrito a
+    ANO_INICIO_ANALISE-ANO_FIM_ANALISE (periodo_padrao.py) -- usado pelo
+    teste de Chow. 2026 fica de fora: um ano parcial nos meses finais da
+    série pós-quebra distorceria a regressão "depois" do teste.
     """
     caminho = caminho or TABLES_DIR / "violencia_mensal_municipio.csv"
     df = pd.read_csv(caminho)
+    df = df[(df["ano"] >= ANO_INICIO_ANALISE) & (df["ano"] <= ANO_FIM_ANALISE)]
     serie = df.groupby(["tipo_crime", "ano", "mes"], as_index=False)["casos"].sum()
     return serie.sort_values(["tipo_crime", "ano", "mes"]).reset_index(drop=True)
 

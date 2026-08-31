@@ -18,6 +18,7 @@ from matplotlib.patches import Patch
 from shapely import concave_hull
 from shapely.ops import unary_union
 
+from src.analysis.periodo_padrao import ANO_FIM_ANALISE, ANO_INICIO_ANALISE
 from src.fetch_malha_municipios import carregar_malha_com_municipio
 from src.load_data import CASOS_POR_HABITANTES
 
@@ -27,13 +28,22 @@ FIGURES_DIR = Path(__file__).resolve().parent.parent.parent / "outputs" / "figur
 MUNICIPIO_NAO_IDENTIFICADO = "NÃO INFORMADO"
 
 TIPO_CRIME_PADRAO = "Estupro"
-ANO_INICIO_PADRAO = 2021
-ANO_FIM_PADRAO = 2025
+# Vêm de periodo_padrao.py (ponto único de decisão) -- autocorrelacao_
+# espacial.py, clusters_lisa.py e notebooks/analise_espacial.ipynb (que
+# chama gerar_mapa()/gerar_mapa_lisa() sem passar ano_inicio/ano_fim)
+# herdam este recorte por default de parâmetro.
+ANO_INICIO_PADRAO = ANO_INICIO_ANALISE
+ANO_FIM_PADRAO = ANO_FIM_ANALISE
 
 # CRS projetado (SIRGAS 2000 / Brazil Polyconic) só para desenhar o mapa com
 # proporção correta -- a malha crua vem em graus (EPSG:4326), que distorce a
 # forma do RS num plot com eixos 1:1.
 CRS_PLOT = "EPSG:5880"
+
+# Comprimento fixo da escala gráfica (ver _adiciona_escala_e_norte) -- valor
+# redondo e constante entre as figuras do capítulo, não recalculado pela
+# largura do eixo de cada mapa.
+BARRA_ESCALA_KM = 100
 
 # Rampa sequencial azul (claro->escuro) da paleta padrão do projeto, para
 # codificar magnitude (taxa) -- um hue só, nunca arco-íris.
@@ -182,6 +192,76 @@ def _corpos_dagua(malha: gpd.GeoSeries, ratio: float = 0.05, n_maiores: int = 2)
     return gpd.GeoSeries(geoms[:n_maiores], crs=malha.crs)
 
 
+def _adiciona_escala_e_norte(ax, espaco_vertical: float = 1.0) -> None:
+    """Escala gráfica (km) e seta de norte, discretas, no canto inferior
+    direito -- só fazem sentido geometricamente porque gerar_mapa desenha
+    em CRS_PLOT (EPSG:5880, métrico) com aspecto 1:1 (padrão do
+    GeoDataFrame.plot do geopandas): 1 unidade de eixo = 1 metro tanto em
+    x quanto em y, então uma barra de N metros de comprimento em
+    coordenadas de dados representa N metros reais no terreno, em
+    qualquer direção.
+
+    Sem dependência nova (matplotlib-scalebar não está instalado, e o
+    projeto evita adicionar dependências quando dá para resolver com o
+    que já está disponível) -- desenhada com matplotlib puro: uma linha
+    com marcas nas pontas, rótulo em km, e uma seta com "N" logo acima.
+
+    Posição calculada a partir dos limites atuais dos eixos (xlim/ylim já
+    reflete a extensão de tudo que foi plotado -- municípios, piso, água),
+    não do canto absoluto da figura: a barra fica em ~90% da largura (não
+    100%) e ~8% da altura a partir da base, para não cair sobre a Lagoa
+    dos Patos nem sobre o litoral, que ocupam a quina inferior direita do
+    recorte do RS.
+
+    BARRA_ESCALA_KM é fixo em 100 km (não escolhido pela largura do eixo):
+    escalas gráficas se leem por múltiplos redondos, e um valor variável
+    por figura (ex. 150 km) atrapalha a leitura comparada entre as
+    figuras do capítulo. Decisão editorial, não recalcular automaticamente.
+
+    espaco_vertical multiplica os deslocamentos verticais entre a barra, o
+    rótulo "N km" e a seta de norte -- todos calculados como fração de
+    altura_m (extensão do eixo em METROS, fixa pela geografia do RS,
+    independente do tamanho físico do painel em polegadas). Um painel bem
+    menor (poucas polegadas de largura, caso do painel MAUP de 3 mapas)
+    tem menos polegadas por metro de dado; como a fonte e a seta têm
+    tamanho fixo em pontos (unidade física, não de dado), o mesmo espaço
+    em fração de altura_m que era folgado num painel de 8 pol. vira
+    espaço insuficiente e a seta passa a sobrepor o texto "100 km". Nos
+    painéis grandes (fig02-04 do capítulo, default=1.0) o espaçamento
+    original é preservado.
+    """
+    xlim = ax.get_xlim()
+    ylim = ax.get_ylim()
+    largura_m = xlim[1] - xlim[0]
+    altura_m = ylim[1] - ylim[0]
+
+    barra_km = BARRA_ESCALA_KM
+    barra_m = barra_km * 1000
+
+    cor = "#3a3a3a"
+    x_fim = xlim[0] + 0.90 * largura_m
+    x_ini = x_fim - barra_m
+    y_barra = ylim[0] + 0.08 * altura_m
+    marca = altura_m * 0.006
+
+    ax.plot([x_ini, x_fim], [y_barra, y_barra], color=cor, linewidth=1.2, solid_capstyle="butt")
+    for x in (x_ini, x_fim):
+        ax.plot([x, x], [y_barra - marca, y_barra + marca], color=cor, linewidth=1.2)
+    ax.text(
+        (x_ini + x_fim) / 2, y_barra + altura_m * 0.014 * espaco_vertical, f"{barra_km} km",
+        ha="center", va="bottom", fontsize=7, color=cor,
+    )
+
+    x_norte = x_fim
+    y_base = y_barra + altura_m * 0.05 * espaco_vertical
+    y_topo = y_base + altura_m * 0.045
+    ax.annotate(
+        "", xy=(x_norte, y_topo), xytext=(x_norte, y_base),
+        arrowprops={"arrowstyle": "-|>", "color": cor, "lw": 1.2},
+    )
+    ax.text(x_norte, y_topo + altura_m * 0.008, "N", ha="center", va="bottom", fontsize=8, color=cor)
+
+
 def montar_geodataframe(tipo_crime: str, ano_inicio: int, ano_fim: int) -> gpd.GeoDataFrame:
     """Malha geográfica dos municípios do RS já com a taxa do período
     juntada (por nome de município, após a malha já ter sido resolvida por
@@ -215,15 +295,36 @@ def gerar_mapa(
     formato: str = "png",
     paleta: str = "azul",
     mostrar_corpos_dagua: bool = False,
+    mostrar_titulo: bool = True,
+    mostrar_escala: bool = False,
 ) -> tuple[Path, gpd.GeoDataFrame]:
     """Gera o mapa choropleth de um tipo de crime.
 
     Os defaults (classificacao="continua", pop_minima=None, dpi=150,
-    formato="png", paleta="azul", mostrar_corpos_dagua=False) reproduzem
-    exatamente o comportamento original -- rampa contínua min-max sobre os
-    13 tons de RAMPA_SEQUENCIAL_AZUL, sem piso populacional, sem corpos
-    d'água -- para não alterar a saída de quem já chama esta função
+    formato="png", paleta="azul", mostrar_corpos_dagua=False,
+    mostrar_titulo=True, mostrar_escala=False) reproduzem exatamente o
+    comportamento original --
+    rampa contínua min-max sobre os 13 tons de RAMPA_SEQUENCIAL_AZUL, sem
+    piso populacional, sem corpos d'água, com o título embutido na figura
+    -- para não alterar a saída de quem já chama esta função
     (build_site_data.py via carregar_taxa_periodo, notebooks/analise_espacial.ipynb).
+
+    mostrar_titulo=False omite o título de duas linhas (categoria/período,
+    "Rio Grande do Sul, por município") -- usado por
+    src/analysis/figuras_capitulo.py, cuja legenda vem no texto do
+    capítulo, acima da figura, tornando o título embutido redundante.
+    Quando omitido, a margem superior da figura é reduzida (fig.subplots_
+    adjust) para que o mapa não fique deslocado para baixo pelo espaço que
+    sobraria no topo.
+
+    mostrar_escala=True desenha escala gráfica (km) e seta de norte,
+    discretas, no canto inferior direito (ver _adiciona_escala_e_norte) --
+    só é geometricamente correto porque o CRS de plot (EPSG:5880) é
+    métrico com aspecto 1:1. No modo "quantis" (usado pelo capítulo) o
+    canto inferior direito está livre, já que a legenda de classes fica no
+    inferior esquerdo; no modo "continua" com piso, a legenda do piso já
+    ocupa o inferior direito -- não combine mostrar_escala=True com esse
+    caso sem revisar a sobreposição visualmente.
 
     paleta escolhe a rampa sequencial ("azul"/"roxo"/"verde", ver PALETAS).
     mostrar_corpos_dagua=True desenha Lagoa dos Patos e Lagoa Mirim (ver
@@ -277,7 +378,13 @@ def gerar_mapa(
 
     fig, ax = plt.subplots(figsize=(8, 8))
 
-    if classificacao == "continua" and not piso_mask.any() and not mostrar_corpos_dagua and paleta == "azul":
+    if (
+        classificacao == "continua"
+        and not piso_mask.any()
+        and not mostrar_corpos_dagua
+        and paleta == "azul"
+        and not mostrar_escala
+    ):
         # Caminho original, inalterado -- garante saída idêntica ao
         # comportamento anterior para os defaults de sempre (e também
         # quando pop_minima é informado mas ninguém fica abaixo dele).
@@ -375,7 +482,15 @@ def gerar_mapa(
         )
 
     ax.set_axis_off()
-    ax.set_title(f"{tipo_crime} — taxa por 100 mil hab. ({ano_inicio}–{ano_fim})\nRio Grande do Sul, por município")
+    if mostrar_titulo:
+        ax.set_title(f"{tipo_crime} — taxa por 100 mil hab. ({ano_inicio}–{ano_fim})\nRio Grande do Sul, por município")
+    else:
+        # Sem título, o layout padrão de plt.subplots() ainda reserva a
+        # margem superior para ele -- reduz para o mapa ocupar o espaço.
+        fig.subplots_adjust(top=0.98, bottom=0.02, left=0.02, right=0.98)
+
+    if mostrar_escala:
+        _adiciona_escala_e_norte(ax)
 
     caminho_saida = caminho_saida or (
         FIGURES_DIR / f"choropleth_{slug_tipo_crime(tipo_crime)}_{ano_inicio}_{ano_fim}.{formato}"

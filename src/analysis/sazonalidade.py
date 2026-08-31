@@ -1,8 +1,11 @@
 """Testa se existe diferença estatisticamente significativa entre os meses
-do ano na série mensal (2018-2026), por tipo de crime.
+do ano na série mensal (2018-2025), por tipo de crime.
 
-2026 entra com os meses já ocorridos (o mensal_municipio.csv simplesmente
-não tem linhas para meses futuros, então nada precisa ser filtrado aqui).
+2026 fica de fora (ano parcial, meses incompletos não são comparáveis aos
+outros anos) -- ANO_INICIO_ANALISE/ANO_FIM_ANALISE vêm de periodo_padrao.py,
+ponto único de decisão do recorte, compartilhado com tendencia.py,
+quebra_estrutural.py, correlacao.py e (via mapa_choropleth.py)
+autocorrelacao_espacial.py/clusters_lisa.py.
 """
 
 from pathlib import Path
@@ -10,6 +13,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from scipy import stats
+
+from src.analysis.periodo_padrao import ANO_FIM_ANALISE, ANO_INICIO_ANALISE
 
 TABLES_DIR = Path(__file__).resolve().parent.parent.parent / "outputs" / "tables"
 
@@ -21,10 +26,11 @@ MESES_NOMES = {
 
 def carregar_serie_mensal_estado(caminho: Path | None = None) -> pd.DataFrame:
     """Casos totais por tipo_crime, ano e mês, somados entre todos os
-    municípios (nível estado).
+    municípios (nível estado), restrito a ANO_INICIO_ANALISE-ANO_FIM_ANALISE.
     """
     caminho = caminho or TABLES_DIR / "violencia_mensal_municipio.csv"
     df = pd.read_csv(caminho)
+    df = df[(df["ano"] >= ANO_INICIO_ANALISE) & (df["ano"] <= ANO_FIM_ANALISE)]
     return df.groupby(["tipo_crime", "ano", "mes"], as_index=False)["casos"].sum()
 
 

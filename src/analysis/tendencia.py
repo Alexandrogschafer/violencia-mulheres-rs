@@ -5,6 +5,11 @@
 2012-2017 fica de fora porque não tem quebra mensal (irrelevante aqui, mas
 mantém a série anual consistente com o restante da Camada 2); 2026 fica de
 fora por ser ano parcial (o total ainda não é comparável aos anos fechados).
+
+ANO_INICIO/ANO_FIM vêm de periodo_padrao.py -- ponto único de decisão do
+recorte, compartilhado com sazonalidade.py, quebra_estrutural.py,
+correlacao.py e (via mapa_choropleth.ANO_INICIO_PADRAO/ANO_FIM_PADRAO)
+autocorrelacao_espacial.py/clusters_lisa.py.
 """
 
 from pathlib import Path
@@ -12,10 +17,12 @@ from pathlib import Path
 import pandas as pd
 from scipy import stats
 
+from src.analysis.periodo_padrao import ANO_FIM_ANALISE, ANO_INICIO_ANALISE
+
 TABLES_DIR = Path(__file__).resolve().parent.parent.parent / "outputs" / "tables"
 
-ANO_INICIO = 2018
-ANO_FIM = 2025
+ANO_INICIO = ANO_INICIO_ANALISE
+ANO_FIM = ANO_FIM_ANALISE
 
 
 def carregar_serie_anual_estado(caminho: Path | None = None) -> pd.DataFrame:
