@@ -112,6 +112,7 @@
       '<section>' +
       "<h2>Comparação com o estado</h2>" +
       '<p class="muted small">Taxa por 100 mil hab. acumulada (2012–2025), por tipo de crime, comparada com a média do Rio Grande do Sul.</p>' +
+      '<p class="muted small"><strong>Recorte:</strong> 2012–2025, período completo disponível na fonte. 2026 fica de fora por estar incompleto.</p>' +
       '<div id="uru-comparacao"></div>' +
       "</section>" +
       '<section>' +

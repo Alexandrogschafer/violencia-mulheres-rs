@@ -52,6 +52,7 @@
 
   <h2>1. Tendência anual (2018–2025)</h2>
   <p class="muted small">Regressão linear simples (ano → casos) por tipo de crime, com Mann-Kendall como checagem cruzada.</p>
+  <p class="muted small"><strong>Recorte:</strong> 2018–2025. A série começa em 2018, primeiro ano com granularidade mensal e layout padronizado na fonte, e termina em 2025 porque 2026 ainda está incompleto.</p>
   <figure class="chart-figure" id="fig-tendencia">
     <div class="chart-toolbar"><button class="btn-toggle" type="button" aria-pressed="false">Ver como tabela</button></div>
     <div class="chart-canvas-wrap" style="height:340px">
@@ -64,8 +65,9 @@
     <p>Ameaça, Estupro e Feminicídio Tentado têm tendência significativa a 5% (queda para Ameaça e Feminicídio Tentado, alta para Estupro). Feminicídio Consumado e Lesão Corporal não atingem significância — com n=8 anos, o poder estatístico é baixo.</p>
   </div>
 
-  <h2>2. Sazonalidade mensal (2018–2026)</h2>
+  <h2>2. Sazonalidade mensal (2018–2025)</h2>
   <p class="muted small">Kruskal-Wallis entre os 12 meses do ano, por tipo de crime. Onde significativo, os meses em destaque vêm de um post-hoc Mann-Whitney U mês-vs-resto com correção de Holm-Bonferroni.</p>
+  <p class="muted small"><strong>Recorte:</strong> 2018–2025. A série começa em 2018, primeiro ano com granularidade mensal e layout padronizado na fonte, e termina em 2025 porque 2026 ainda está incompleto.</p>
   <div class="table-controls">
     <label for="select-sazonalidade" class="small muted">Tipo de crime:</label>
     <select id="select-sazonalidade"></select>
@@ -80,11 +82,12 @@
   <div id="table-kruskal-wrap" class="table-scroll" style="margin-bottom:1.25rem"></div>
   <div class="callout">
     <h3>Leitura</h3>
-    <p>Ameaça, Estupro e Lesão Corporal têm diferença significativa entre meses. Janeiro se destaca para cima nos três; junho (e maio/julho para Lesão Corporal) se destaca para baixo. Feminicídio (tentado ou consumado) não mostra sazonalidade detectável — esperado para eventos raros, com pouca contagem mensal.</p>
+    <p>Ameaça e Lesão Corporal têm diferença significativa entre meses. Estupro fica perto do limiar (p=0,053) mas não passa a 5% neste recorte de 2018–2025 (era significativo em 2018–2026, com o parcial de 2026 incluído). Janeiro se destaca para cima nos dois; junho (e maio/julho para Lesão Corporal) se destaca para baixo. Feminicídio (tentado ou consumado) não mostra sazonalidade detectável — esperado para eventos raros, com pouca contagem mensal.</p>
   </div>
 
   <h2>3. Correlação entre tipos de crime, por município</h2>
-  <p class="muted small">Spearman entre os 5 tipos de crime, por município. Duas variantes: número absoluto de casos (2012–2026) e taxa por 100 mil hab. (2012–2025).</p>
+  <p class="muted small">Spearman entre os 5 tipos de crime, por município, 2018–2025. Duas variantes: número absoluto de casos e taxa por 100 mil hab.</p>
+  <p class="muted small"><strong>Recorte:</strong> 2018–2025. A série começa em 2018, primeiro ano com granularidade mensal e layout padronizado na fonte, e termina em 2025 porque 2026 ainda está incompleto.</p>
   <div class="grid-2">
     <div>
       <h3 class="small">Número absoluto de casos</h3>
@@ -97,11 +100,12 @@
   </div>
   <div class="callout">
     <h3>Leitura</h3>
-    <p>Boa parte da correlação em números absolutos é só efeito de porte do município — ao controlar por população, a maioria dos pares cai bastante (de ~0,7–0,9 para ~0,2–0,4). A exceção é <strong>Ameaça × Lesão Corporal</strong>, que continua forte mesmo em taxa (0,82) — os dois parecem de fato andar juntos, e não só porque cidades grandes têm mais casos de tudo.</p>
+    <p>Boa parte da correlação em números absolutos é só efeito de porte do município — ao controlar por população, a maioria dos pares cai bastante (de ~0,55–0,97 para ~0,06–0,34). A exceção é <strong>Ameaça × Lesão Corporal</strong>, que continua a mais forte mesmo em taxa (0,74) — os dois parecem de fato andar juntos, e não só porque cidades grandes têm mais casos de tudo.</p>
   </div>
 
   <h2>4. Quebra estrutural em torno das enchentes de maio/2024</h2>
   <p class="muted small">Teste de Chow sobre a série mensal dessazonalizada (resíduo em relação à média histórica pré-enchente): compara um único ajuste linear contra dois ajustes separados (pré e pós maio/2024).</p>
+  <p class="muted small"><strong>Recorte:</strong> 2018–2025. A série começa em 2018, primeiro ano com granularidade mensal e layout padronizado na fonte, e termina em 2025 porque 2026 ainda está incompleto.</p>
   <div class="gallery">
     <figure>
       <img src="assets/data/figures/inferencial_quebra_estrutural.png" alt="Série dessazonalizada com quebra estrutural em maio de 2024, por tipo de crime" loading="lazy">
@@ -111,7 +115,7 @@
   <div id="table-chow-wrap" class="table-scroll" style="margin:1rem 0"></div>
   <div class="callout">
     <h3>Leitura</h3>
-    <p>Estupro tem a quebra mais nítida (p=1,6e-14) — a tendência de alta que vinha desde 2018 se inverte após maio/2024. Feminicídio Tentado também mostra quebra significativa (p=0,015). Ameaça fica no limiar (p=0,054). Lesão Corporal e Feminicídio Consumado não mostram quebra detectável neste desenho. O post-hoc por mês equivalente (Mann-Whitney U) não detecta significância em nenhum mês/tipo — com n=6 vs n=2, o menor p-valor exato possível é 0,143, então serve só como referência descritiva.</p>
+    <p>Estupro tem a quebra mais nítida (p=7,8e-10) — a tendência de alta que vinha desde 2018 se inverte após maio/2024. Ameaça e Feminicídio Tentado também mostram quebra significativa (p=0,0068 e p=0,018 — Ameaça passou a ser significativa neste recorte de 2018–2025; com o parcial de 2026 incluído ficava no limiar, p=0,054). Lesão Corporal e Feminicídio Consumado não mostram quebra detectável neste desenho. O post-hoc por mês equivalente (Mann-Whitney U) não detecta significância em nenhum mês/tipo — com n=6 vs n=2, o menor p-valor exato possível é 0,143, então serve só como referência descritiva.</p>
   </div>
 </main>
 
@@ -119,7 +123,7 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <strong>Violência contra as mulheres no RS</strong>
-      <p class="muted small">Schäfer, A. G. &amp; Prates, L. A. (2026)</p>
+      <p class="muted small">Schäfer, A. G., Prates, L. A., Schäfer, L. P. &amp; Fernandes, M. A. D. (2026)</p>
       <div class="institutional-logo footer-logo">
         <img src="assets/img/logo_petclima.png" alt="Logotipo do PET Saúde Clima" width="772" height="212">
       </div>

@@ -49,6 +49,7 @@
     Taxa por 100 mil hab. acumulada em 2018–2025, por município, com seletor de tipo de
     crime. Mesma metodologia e mesmo recorte de <code>notebooks/analise_espacial.ipynb</code>.
   </p>
+  <p class="muted small"><strong>Recorte:</strong> 2018–2025. A série começa em 2018, primeiro ano com granularidade mensal e layout padronizado na fonte, e termina em 2025 porque 2026 ainda está incompleto. Todos os municípios são exibidos, inclusive os de população reduzida, cujas taxas são instáveis.</p>
 
   <div class="map-controls">
     <label for="select-mapa" class="small muted">Tipo de crime:</label>
@@ -63,6 +64,7 @@
 
   <h2>Índice de Moran Global (2018–2025)</h2>
   <p class="muted small">Testa se existe autocorrelação espacial (clustering) na taxa de cada tipo de crime — matriz de vizinhança Queen, 999 permutações.</p>
+  <p class="muted small"><strong>Recorte:</strong> 2018–2025. A série começa em 2018, primeiro ano com granularidade mensal e layout padronizado na fonte, e termina em 2025 porque 2026 ainda está incompleto.</p>
   <div class="gallery">
     <figure><img src="assets/data/figures/choropleth_ameaca_2018_2025.png" alt="Mapa choropleth de Ameaça, taxa por 100 mil hab, RS, 2018-2025" loading="lazy"><figcaption>Ameaça — I=0,299, p=0,001 (significativo)</figcaption></figure>
     <figure><img src="assets/data/figures/choropleth_estupro_2018_2025.png" alt="Mapa choropleth de Estupro, taxa por 100 mil hab, RS, 2018-2025" loading="lazy"><figcaption>Estupro — I=0,176, p=0,001 (significativo)</figcaption></figure>
@@ -81,6 +83,7 @@
     instabilidade de pequenos números para não mapear Feminicídio por município, e um I tão
     baixo é exatamente esse tipo de sinal frágil.
   </p>
+  <p class="muted small"><strong>Recorte:</strong> 2018–2025. A série começa em 2018, primeiro ano com granularidade mensal e layout padronizado na fonte, e termina em 2025 porque 2026 ainda está incompleto.</p>
   <div class="gallery">
     <figure><img src="assets/data/figures/lisa_ameaca_2018_2025.png" alt="Clusters LISA de Ameaça, RS, 2018-2025" loading="lazy"><figcaption>Ameaça — 113/497 municípios em cluster significativo. Hotspot principal: Missões/Alto Uruguai (Iraí, Miraguaí, Ametista do Sul, Vicente Dutra, Tenente Portela); grupo secundário no litoral norte (Osório, Imbé, Tramandaí).</figcaption></figure>
     <figure><img src="assets/data/figures/lisa_estupro_2018_2025.png" alt="Clusters LISA de Estupro, RS, 2018-2025" loading="lazy"><figcaption>Estupro — 84/497 municípios. Dois grupos principais: metro Porto Alegre + litoral (Porto Alegre, Cachoeirinha, Gravataí, Viamão, Osório, Tramandaí), e Alto Uruguai/norte (Frederico Westphalen, Iraí, Vicente Dutra); grupo menor na região central (Dona Francisca, Faxinal do Soturno, Nova Palma).</figcaption></figure>
@@ -92,7 +95,7 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <strong>Violência contra as mulheres no RS</strong>
-      <p class="muted small">Schäfer, A. G. &amp; Prates, L. A. (2026)</p>
+      <p class="muted small">Schäfer, A. G., Prates, L. A., Schäfer, L. P. &amp; Fernandes, M. A. D. (2026)</p>
       <div class="institutional-logo footer-logo">
         <img src="assets/img/logo_petclima.png" alt="Logotipo do PET Saúde Clima" width="772" height="212">
       </div>
