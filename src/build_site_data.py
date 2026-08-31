@@ -14,6 +14,7 @@ from pathlib import Path
 import pandas as pd
 
 from src.analysis.mapa_choropleth import carregar_taxa_periodo
+from src.analysis.periodo_padrao import ANO_FIM_ANALISE, ANO_INICIO_ANALISE
 from src.fetch_malha_municipios import carregar_malha_com_municipio
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -33,24 +34,33 @@ TIPOS_CRIME = [
 ]
 MUNICIPIO_NAO_IDENTIFICADO = "NÃO INFORMADO"
 
-# Mesmo recorte (2021-2025) usado em notebooks/analise_espacial.ipynb para os
-# mapas e o ranking por taxa -- mantém o portal consistente com o notebook.
-ANO_INICIO_MAPA = 2021
-ANO_FIM_MAPA = 2025
+# Mesmo recorte (periodo_padrao.py, ver ANO_INICIO_ANALISE/ANO_FIM_ANALISE)
+# usado em notebooks/analise_espacial.ipynb para os mapas e o ranking por
+# taxa -- mantém o portal consistente com o notebook e com a Camada 2
+# (tendência/sazonalidade/quebra/correlação). Import direto, não literal:
+# este é o mesmo ponto único de decisão, não uma cópia que pode divergir.
+ANO_INICIO_MAPA = ANO_INICIO_ANALISE
+ANO_FIM_MAPA = ANO_FIM_ANALISE
 
 # PNGs de outputs/figures/ que o portal embute como imagem estática (mapas
 # LISA e a série de escolhas do estudo de Uruguaiana não são recomputáveis em
 # JS; os demais também são copiados para complementar os gráficos
 # interativos com a figura exata gerada pela notebook).
+#
+# choropleth_*/lisa_* (Camada 3, analise_espacial.ipynb) usam o sufixo
+# {ANO_INICIO_ANALISE}_{ANO_FIM_ANALISE} = 2018_2025. exploratoria_ranking_
+# taxa_2021_2025.png abaixo é diferente -- vem da Camada 1 (analise_
+# exploratoria.ipynb), fora do escopo desta rodada, e continua com seu
+# próprio recorte (2021-2025) independente deste.
 FIGURAS_PARA_PORTAL = [
-    "choropleth_ameaca_2021_2025.png",
-    "choropleth_estupro_2021_2025.png",
-    "choropleth_feminicidio_consumado_2021_2025.png",
-    "choropleth_feminicidio_tentado_2021_2025.png",
-    "choropleth_lesao_corporal_2021_2025.png",
-    "lisa_ameaca_2021_2025.png",
-    "lisa_estupro_2021_2025.png",
-    "lisa_lesao_corporal_2021_2025.png",
+    "choropleth_ameaca_2018_2025.png",
+    "choropleth_estupro_2018_2025.png",
+    "choropleth_feminicidio_consumado_2018_2025.png",
+    "choropleth_feminicidio_tentado_2018_2025.png",
+    "choropleth_lesao_corporal_2018_2025.png",
+    "lisa_ameaca_2018_2025.png",
+    "lisa_estupro_2018_2025.png",
+    "lisa_lesao_corporal_2018_2025.png",
     "uruguaiana_perfil_taxa_vs_estado.png",
     "uruguaiana_serie_anual.png",
     "uruguaiana_serie_mensal.png",
@@ -163,8 +173,9 @@ def gerar_dados_mapas() -> None:
 
 
 def gerar_tabela_municipios_resumo() -> pd.DataFrame:
-    """Tabela compacta município x taxa por tipo de crime (2021-2025, mesmo
-    recorte do mapa), para a tabela pesquisável/ordenável de municipios.html.
+    """Tabela compacta município x taxa por tipo de crime (ANO_INICIO_MAPA-
+    ANO_FIM_MAPA, mesmo recorte do mapa), para a tabela pesquisável/
+    ordenável de municipios.html.
     Não é um output do pipeline nem de notebook -- é só uma pivotagem para
     exibição, feita aqui mesmo."""
     partes = []

@@ -46,7 +46,7 @@
 <main id="main-content">
   <h1>Mapas</h1>
   <p class="lede muted">
-    Taxa por 100 mil hab. acumulada em 2021–2025, por município, com seletor de tipo de
+    Taxa por 100 mil hab. acumulada em 2018–2025, por município, com seletor de tipo de
     crime. Mesma metodologia e mesmo recorte de <code>notebooks/analise_espacial.ipynb</code>.
   </p>
 
@@ -61,25 +61,30 @@
     não têm dado de taxa no período (população ausente).
   </p>
 
-  <h2>Índice de Moran Global (2021–2025)</h2>
+  <h2>Índice de Moran Global (2018–2025)</h2>
   <p class="muted small">Testa se existe autocorrelação espacial (clustering) na taxa de cada tipo de crime — matriz de vizinhança Queen, 999 permutações.</p>
   <div class="gallery">
-    <figure><img src="assets/data/figures/choropleth_ameaca_2021_2025.png" alt="Mapa choropleth de Ameaça, taxa por 100 mil hab, RS, 2021-2025" loading="lazy"><figcaption>Ameaça — I=0,308, p=0,001 (significativo)</figcaption></figure>
-    <figure><img src="assets/data/figures/choropleth_estupro_2021_2025.png" alt="Mapa choropleth de Estupro, taxa por 100 mil hab, RS, 2021-2025" loading="lazy"><figcaption>Estupro — I=0,104, p=0,001 (significativo)</figcaption></figure>
-    <figure><img src="assets/data/figures/choropleth_lesao_corporal_2021_2025.png" alt="Mapa choropleth de Lesão Corporal, taxa por 100 mil hab, RS, 2021-2025" loading="lazy"><figcaption>Lesão Corporal — I=0,267, p=0,001 (significativo)</figcaption></figure>
-    <figure><img src="assets/data/figures/choropleth_feminicidio_tentado_2021_2025.png" alt="Mapa choropleth de Feminicídio Tentado, taxa por 100 mil hab, RS, 2021-2025" loading="lazy"><figcaption>Feminicídio Tentado — I=0,026, p=0,139 (não significativo)</figcaption></figure>
-    <figure><img src="assets/data/figures/choropleth_feminicidio_consumado_2021_2025.png" alt="Mapa choropleth de Feminicídio Consumado, taxa por 100 mil hab, RS, 2021-2025" loading="lazy"><figcaption>Feminicídio Consumado — I=-0,002, p=0,500 (não significativo)</figcaption></figure>
+    <figure><img src="assets/data/figures/choropleth_ameaca_2018_2025.png" alt="Mapa choropleth de Ameaça, taxa por 100 mil hab, RS, 2018-2025" loading="lazy"><figcaption>Ameaça — I=0,299, p=0,001 (significativo)</figcaption></figure>
+    <figure><img src="assets/data/figures/choropleth_estupro_2018_2025.png" alt="Mapa choropleth de Estupro, taxa por 100 mil hab, RS, 2018-2025" loading="lazy"><figcaption>Estupro — I=0,176, p=0,001 (significativo)</figcaption></figure>
+    <figure><img src="assets/data/figures/choropleth_lesao_corporal_2018_2025.png" alt="Mapa choropleth de Lesão Corporal, taxa por 100 mil hab, RS, 2018-2025" loading="lazy"><figcaption>Lesão Corporal — I=0,281, p=0,001 (significativo)</figcaption></figure>
+    <figure><img src="assets/data/figures/choropleth_feminicidio_tentado_2018_2025.png" alt="Mapa choropleth de Feminicídio Tentado, taxa por 100 mil hab, RS, 2018-2025" loading="lazy"><figcaption>Feminicídio Tentado — I=0,075, p=0,005 (significativo)</figcaption></figure>
+    <figure><img src="assets/data/figures/choropleth_feminicidio_consumado_2018_2025.png" alt="Mapa choropleth de Feminicídio Consumado, taxa por 100 mil hab, RS, 2018-2025" loading="lazy"><figcaption>Feminicídio Consumado — I=-0,009, p=0,390 (não significativo)</figcaption></figure>
   </div>
 
   <h2>Clusters locais (LISA)</h2>
   <p class="muted small">
-    Calculado só para os 3 tipos com Moran Global significativo — Feminicídio Tentado e
-    Consumado não têm cluster espacial estatisticamente significativo neste desenho.
+    Calculado para Ameaça, Estupro e Lesão Corporal. Feminicídio Consumado não tem
+    autocorrelação espacial global significativa (ver tabela acima). Feminicídio Tentado
+    passou a ter (I=0,075, p=0,005) neste recorte, mas é autocorrelação muito fraca — menos
+    de um terço da mais fraca das três categorias mapeadas (Estupro, I=0,176) — e fica de
+    fora do LISA por decisão editorial: o capítulo que acompanha este portal já usa a
+    instabilidade de pequenos números para não mapear Feminicídio por município, e um I tão
+    baixo é exatamente esse tipo de sinal frágil.
   </p>
   <div class="gallery">
-    <figure><img src="assets/data/figures/lisa_ameaca_2021_2025.png" alt="Clusters LISA de Ameaça, RS, 2021-2025" loading="lazy"><figcaption>Ameaça — 110/497 municípios em cluster significativo. Hotspot: Missões/noroeste (Iraí, Miraguaí, Ametista do Sul, Vicente Dutra, Tenente Portela).</figcaption></figure>
-    <figure><img src="assets/data/figures/lisa_estupro_2021_2025.png" alt="Clusters LISA de Estupro, RS, 2021-2025" loading="lazy"><figcaption>Estupro — 76/497 municípios. Dois grupos: metro Porto Alegre + litoral, e Alto Uruguai/norte (Erechim, Frederico Westphalen).</figcaption></figure>
-    <figure><img src="assets/data/figures/lisa_lesao_corporal_2021_2025.png" alt="Clusters LISA de Lesão Corporal, RS, 2021-2025" loading="lazy"><figcaption>Lesão Corporal — 102/497 municípios. Dois grupos: oeste/Fronteira Oeste (Uruguaiana, Alegrete, Rosário do Sul, Santana do Livramento), e litoral norte (Imbé, Cidreira, Balneário Pinhal, Tramandaí).</figcaption></figure>
+    <figure><img src="assets/data/figures/lisa_ameaca_2018_2025.png" alt="Clusters LISA de Ameaça, RS, 2018-2025" loading="lazy"><figcaption>Ameaça — 113/497 municípios em cluster significativo. Hotspot principal: Missões/Alto Uruguai (Iraí, Miraguaí, Ametista do Sul, Vicente Dutra, Tenente Portela); grupo secundário no litoral norte (Osório, Imbé, Tramandaí).</figcaption></figure>
+    <figure><img src="assets/data/figures/lisa_estupro_2018_2025.png" alt="Clusters LISA de Estupro, RS, 2018-2025" loading="lazy"><figcaption>Estupro — 84/497 municípios. Dois grupos principais: metro Porto Alegre + litoral (Porto Alegre, Cachoeirinha, Gravataí, Viamão, Osório, Tramandaí), e Alto Uruguai/norte (Frederico Westphalen, Iraí, Vicente Dutra); grupo menor na região central (Dona Francisca, Faxinal do Soturno, Nova Palma).</figcaption></figure>
+    <figure><img src="assets/data/figures/lisa_lesao_corporal_2018_2025.png" alt="Clusters LISA de Lesão Corporal, RS, 2018-2025" loading="lazy"><figcaption>Lesão Corporal — 96/497 municípios. Três grupos: Fronteira Oeste (Uruguaiana, Alegrete, Rosário do Sul, Santana do Livramento), litoral norte + metro (Imbé, Cidreira, Balneário Pinhal, Tramandaí, Porto Alegre) e — novo neste recorte — noroeste/Missões (Erechim, Miraguaí, Tenente Portela, Redentora).</figcaption></figure>
   </div>
 </main>
 

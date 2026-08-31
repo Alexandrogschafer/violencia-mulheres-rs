@@ -2,61 +2,61 @@
   {
     "tipo_crime":"Ameaça",
     "n_meses_pre":76,
-    "n_meses_pos":26,
-    "estatistica_f":3.003570816,
-    "p_valor":0.0541979445,
-    "significativo_5pct":false,
+    "n_meses_pos":20,
+    "estatistica_f":5.2669609609,
+    "p_valor":0.006828603,
+    "significativo_5pct":true,
     "slope_pre":-7.1474732285,
-    "slope_pos":0.7966951567,
+    "slope_pos":11.2929824561,
     "intercepto_pre":259.7539302802,
-    "intercepto_pos":-322.328034188
+    "intercepto_pos":-1195.8
   },
   {
     "tipo_crime":"Estupro",
     "n_meses_pre":76,
-    "n_meses_pos":26,
-    "estatistica_f":44.7578079459,
-    "p_valor":0.0,
+    "n_meses_pos":20,
+    "estatistica_f":26.5741137999,
+    "p_valor":0.0000000008,
     "significativo_5pct":true,
     "slope_pre":1.5887650946,
-    "slope_pos":-1.4161823362,
+    "slope_pos":0.306641604,
     "intercepto_pre":-57.9843928002,
-    "intercepto_pos":131.844957265
+    "intercepto_pos":-11.3095238095
   },
   {
     "tipo_crime":"Feminicídio Consumado",
     "n_meses_pre":76,
-    "n_meses_pos":26,
-    "estatistica_f":0.5608160661,
-    "p_valor":0.5725638552,
+    "n_meses_pos":20,
+    "estatistica_f":0.9649897698,
+    "p_valor":0.38480932,
     "significativo_5pct":false,
     "slope_pre":-0.0220483026,
-    "slope_pos":0.0476353276,
+    "slope_pos":0.1186716792,
     "intercepto_pre":0.7412850308,
-    "intercepto_pos":-5.9464957265
+    "intercepto_pos":-11.9380952381
   },
   {
     "tipo_crime":"Feminicídio Tentado",
     "n_meses_pre":76,
-    "n_meses_pos":26,
-    "estatistica_f":4.4193183121,
-    "p_valor":0.0145341347,
+    "n_meses_pos":20,
+    "estatistica_f":4.2102811784,
+    "p_valor":0.0177991064,
     "significativo_5pct":true,
     "slope_pre":-0.1847619048,
-    "slope_pos":-0.0933903134,
+    "slope_pos":-0.022556391,
     "intercepto_pre":6.5206766917,
-    "intercepto_pos":4.6945299145
+    "intercepto_pos":-1.3547619048
   },
   {
     "tipo_crime":"Lesão Corporal",
     "n_meses_pre":76,
-    "n_meses_pos":26,
-    "estatistica_f":1.3416429255,
-    "p_valor":0.2661742646,
+    "n_meses_pos":20,
+    "estatistica_f":1.5433684188,
+    "p_valor":0.219140501,
     "significativo_5pct":false,
     "slope_pre":-3.3378628389,
-    "slope_pos":-6.0691737892,
+    "slope_pos":-1.0313283208,
     "intercepto_pre":121.7137161085,
-    "intercepto_pos":418.044957265
+    "intercepto_pos":0.3285714286
   }
 ]

@@ -2,22 +2,22 @@
   {
     "tipo_crime":"Ameaça",
     "categoria_lisa":"Não significativo",
-    "taxa_2021_2025":269.05,
-    "moran_local_i":0.002,
-    "p_valor_permutacao":0.44
+    "taxa_2018_2025":288.04,
+    "moran_local_i":0.044,
+    "p_valor_permutacao":0.298
   },
   {
     "tipo_crime":"Estupro",
     "categoria_lisa":"Não significativo",
-    "taxa_2021_2025":24.31,
-    "moran_local_i":0.028,
-    "p_valor_permutacao":0.351
+    "taxa_2018_2025":25.16,
+    "moran_local_i":0.22,
+    "p_valor_permutacao":0.226
   },
   {
     "tipo_crime":"Lesão Corporal",
     "categoria_lisa":"Alto-Alto",
-    "taxa_2021_2025":203.07,
-    "moran_local_i":1.512,
-    "p_valor_permutacao":0.01
+    "taxa_2018_2025":216.71,
+    "moran_local_i":1.983,
+    "p_valor_permutacao":0.006
   }
 ]

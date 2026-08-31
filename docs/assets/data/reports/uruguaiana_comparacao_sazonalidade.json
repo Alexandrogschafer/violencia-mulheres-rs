@@ -1,46 +1,46 @@
 [
   {
     "tipo_crime":"Ameaça",
-    "estatistica_h_uruguaiana":14.0757476096,
-    "p_valor_uruguaiana":0.2288303606,
+    "estatistica_h_uruguaiana":13.9786027922,
+    "p_valor_uruguaiana":0.234179736,
     "significativo_5pct_uruguaiana":false,
-    "estatistica_h_estado":59.6615126028,
-    "p_valor_estado":0.0000000107,
+    "estatistica_h_estado":54.7617816228,
+    "p_valor_estado":0.0000000857,
     "significativo_5pct_estado":true
   },
   {
     "tipo_crime":"Estupro",
-    "estatistica_h_uruguaiana":11.4866830151,
-    "p_valor_uruguaiana":0.4034357637,
+    "estatistica_h_uruguaiana":9.3641305872,
+    "p_valor_uruguaiana":0.5883201824,
     "significativo_5pct_uruguaiana":false,
-    "estatistica_h_estado":23.4752264491,
-    "p_valor_estado":0.0151364589,
-    "significativo_5pct_estado":true
+    "estatistica_h_estado":19.4998948539,
+    "p_valor_estado":0.0526895794,
+    "significativo_5pct_estado":false
   },
   {
     "tipo_crime":"Feminicídio Consumado",
-    "estatistica_h_uruguaiana":10.2295008818,
-    "p_valor_uruguaiana":0.5098693077,
+    "estatistica_h_uruguaiana":10.2894322623,
+    "p_valor_uruguaiana":0.5045558569,
     "significativo_5pct_uruguaiana":false,
-    "estatistica_h_estado":12.0822340024,
-    "p_valor_estado":0.3574938169,
+    "estatistica_h_estado":12.0668194797,
+    "p_valor_estado":0.3586416365,
     "significativo_5pct_estado":false
   },
   {
     "tipo_crime":"Feminicídio Tentado",
-    "estatistica_h_uruguaiana":6.6020962414,
-    "p_valor_uruguaiana":0.8303309804,
+    "estatistica_h_uruguaiana":6.8308243266,
+    "p_valor_uruguaiana":0.8126135029,
     "significativo_5pct_uruguaiana":false,
-    "estatistica_h_estado":15.7416948225,
-    "p_valor_estado":0.1509944964,
+    "estatistica_h_estado":13.8534387643,
+    "p_valor_estado":0.2412096876,
     "significativo_5pct_estado":false
   },
   {
     "tipo_crime":"Lesão Corporal",
-    "estatistica_h_uruguaiana":20.1976656017,
-    "p_valor_uruguaiana":0.0427024116,
+    "estatistica_h_uruguaiana":20.9487539687,
+    "p_valor_uruguaiana":0.033905883,
     "significativo_5pct_uruguaiana":true,
-    "estatistica_h_estado":76.8832520082,
+    "estatistica_h_estado":72.6094303214,
     "p_valor_estado":0.0,
     "significativo_5pct_estado":true
   }

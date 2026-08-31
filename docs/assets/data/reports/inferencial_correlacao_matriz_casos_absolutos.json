@@ -2,41 +2,41 @@
   {
     "tipo_crime":"Ameaça",
     "Ameaça":1.0,
-    "Estupro":0.9003019142,
-    "Feminicídio Consumado":0.7276309368,
-    "Feminicídio Tentado":0.8018520788,
-    "Lesão Corporal":0.9776577563
+    "Estupro":0.8893265228,
+    "Feminicídio Consumado":0.6596273575,
+    "Feminicídio Tentado":0.7399431171,
+    "Lesão Corporal":0.9680686446
   },
   {
     "tipo_crime":"Estupro",
-    "Ameaça":0.9003019142,
+    "Ameaça":0.8893265228,
     "Estupro":1.0,
-    "Feminicídio Consumado":0.6834998419,
-    "Feminicídio Tentado":0.7757146088,
-    "Lesão Corporal":0.9060033694
+    "Feminicídio Consumado":0.607471219,
+    "Feminicídio Tentado":0.7130525257,
+    "Lesão Corporal":0.8908650575
   },
   {
     "tipo_crime":"Feminicídio Consumado",
-    "Ameaça":0.7276309368,
-    "Estupro":0.6834998419,
+    "Ameaça":0.6596273575,
+    "Estupro":0.607471219,
     "Feminicídio Consumado":1.0,
-    "Feminicídio Tentado":0.6626329958,
-    "Lesão Corporal":0.7152190437
+    "Feminicídio Tentado":0.5524048934,
+    "Lesão Corporal":0.6508463117
   },
   {
     "tipo_crime":"Feminicídio Tentado",
-    "Ameaça":0.8018520788,
-    "Estupro":0.7757146088,
-    "Feminicídio Consumado":0.6626329958,
+    "Ameaça":0.7399431171,
+    "Estupro":0.7130525257,
+    "Feminicídio Consumado":0.5524048934,
     "Feminicídio Tentado":1.0,
-    "Lesão Corporal":0.7997600489
+    "Lesão Corporal":0.7377307471
   },
   {
     "tipo_crime":"Lesão Corporal",
-    "Ameaça":0.9776577563,
-    "Estupro":0.9060033694,
-    "Feminicídio Consumado":0.7152190437,
-    "Feminicídio Tentado":0.7997600489,
+    "Ameaça":0.9680686446,
+    "Estupro":0.8908650575,
+    "Feminicídio Consumado":0.6508463117,
+    "Feminicídio Tentado":0.7377307471,
     "Lesão Corporal":1.0
   }
 ]

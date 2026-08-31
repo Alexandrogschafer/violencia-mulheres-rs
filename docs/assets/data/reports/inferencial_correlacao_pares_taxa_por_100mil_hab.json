@@ -2,71 +2,71 @@
   {
     "tipo_crime_a":"Ameaça",
     "tipo_crime_b":"Lesão Corporal",
-    "rho":0.8225493654,
-    "p_valor":2.012155897e-123,
+    "rho":0.7421784887,
+    "p_valor":4.519806022e-88,
     "significativo_5pct":true
   },
   {
     "tipo_crime_a":"Estupro",
     "tipo_crime_b":"Lesão Corporal",
-    "rho":0.4059044555,
-    "p_valor":3.891947768e-21,
-    "significativo_5pct":true
-  },
-  {
-    "tipo_crime_a":"Feminicídio Tentado",
-    "tipo_crime_b":"Lesão Corporal",
-    "rho":0.383261042,
-    "p_valor":7.75990458e-19,
+    "rho":0.3357090535,
+    "p_valor":0.0,
     "significativo_5pct":true
   },
   {
     "tipo_crime_a":"Ameaça",
     "tipo_crime_b":"Estupro",
-    "rho":0.3832175728,
-    "p_valor":7.836140491e-19,
+    "rho":0.3343112665,
+    "p_valor":0.0,
+    "significativo_5pct":true
+  },
+  {
+    "tipo_crime_a":"Feminicídio Tentado",
+    "tipo_crime_b":"Lesão Corporal",
+    "rho":0.3166796385,
+    "p_valor":0.0,
     "significativo_5pct":true
   },
   {
     "tipo_crime_a":"Ameaça",
     "tipo_crime_b":"Feminicídio Tentado",
-    "rho":0.3531818211,
-    "p_valor":4.783405016e-16,
-    "significativo_5pct":true
-  },
-  {
-    "tipo_crime_a":"Ameaça",
-    "tipo_crime_b":"Feminicídio Consumado",
-    "rho":0.2699030493,
-    "p_valor":0.000000001,
-    "significativo_5pct":true
-  },
-  {
-    "tipo_crime_a":"Estupro",
-    "tipo_crime_b":"Feminicídio Tentado",
-    "rho":0.2552977287,
-    "p_valor":0.0000000078,
+    "rho":0.2818410808,
+    "p_valor":0.0000000002,
     "significativo_5pct":true
   },
   {
     "tipo_crime_a":"Feminicídio Consumado",
     "tipo_crime_b":"Lesão Corporal",
-    "rho":0.2366859115,
-    "p_valor":0.0000000933,
+    "rho":0.2414744494,
+    "p_valor":0.0000000502,
+    "significativo_5pct":true
+  },
+  {
+    "tipo_crime_a":"Ameaça",
+    "tipo_crime_b":"Feminicídio Consumado",
+    "rho":0.2245371563,
+    "p_valor":0.000000424,
+    "significativo_5pct":true
+  },
+  {
+    "tipo_crime_a":"Estupro",
+    "tipo_crime_b":"Feminicídio Tentado",
+    "rho":0.1814532458,
+    "p_valor":0.0000472424,
     "significativo_5pct":true
   },
   {
     "tipo_crime_a":"Feminicídio Consumado",
     "tipo_crime_b":"Feminicídio Tentado",
-    "rho":0.1846133565,
-    "p_valor":0.0000345855,
+    "rho":0.1369711018,
+    "p_valor":0.0022110698,
     "significativo_5pct":true
   },
   {
     "tipo_crime_a":"Estupro",
     "tipo_crime_b":"Feminicídio Consumado",
-    "rho":0.09037251,
-    "p_valor":0.044033852,
-    "significativo_5pct":true
+    "rho":0.0603646673,
+    "p_valor":0.1790854022,
+    "significativo_5pct":false
   }
 ]

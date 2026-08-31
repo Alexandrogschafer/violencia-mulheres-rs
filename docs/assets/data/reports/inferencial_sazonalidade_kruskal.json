@@ -1,36 +1,36 @@
 [
   {
     "tipo_crime":"Ameaça",
-    "n_obs":102,
-    "estatistica_h":59.6615126028,
-    "p_valor":0.0000000107,
+    "n_obs":96,
+    "estatistica_h":54.7617816228,
+    "p_valor":0.0000000857,
     "significativo_5pct":true
   },
   {
     "tipo_crime":"Estupro",
-    "n_obs":102,
-    "estatistica_h":23.4752264491,
-    "p_valor":0.0151364589,
-    "significativo_5pct":true
+    "n_obs":96,
+    "estatistica_h":19.4998948539,
+    "p_valor":0.0526895794,
+    "significativo_5pct":false
   },
   {
     "tipo_crime":"Feminicídio Consumado",
-    "n_obs":102,
-    "estatistica_h":12.0822340024,
-    "p_valor":0.3574938169,
+    "n_obs":96,
+    "estatistica_h":12.0668194797,
+    "p_valor":0.3586416365,
     "significativo_5pct":false
   },
   {
     "tipo_crime":"Feminicídio Tentado",
-    "n_obs":102,
-    "estatistica_h":15.7416948225,
-    "p_valor":0.1509944964,
+    "n_obs":96,
+    "estatistica_h":13.8534387643,
+    "p_valor":0.2412096876,
     "significativo_5pct":false
   },
   {
     "tipo_crime":"Lesão Corporal",
-    "n_obs":102,
-    "estatistica_h":76.8832520082,
+    "n_obs":96,
+    "estatistica_h":72.6094303214,
     "p_valor":0.0,
     "significativo_5pct":true
   }
