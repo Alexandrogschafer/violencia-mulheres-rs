@@ -38,9 +38,23 @@ escala de cinza). azul e verde foram descartadas e apagadas; o parâmetro
 seja preciso comparar de novo no futuro, só não é mais gerado por padrão
 aqui.
 
+Sem título embutido (mostrar_titulo=False, ver mapa_choropleth.gerar_mapa):
+a norma da editora coloca a legenda da figura no texto do capítulo, acima
+da imagem -- um título de duas linhas embutido na própria figura duplicaria
+essa informação. Sem o título, o layout padrão do matplotlib deixaria uma
+faixa vazia no topo; gerar_mapa reduz a margem superior nesse caso para que
+o mapa preencha o quadro.
+
+Com escala gráfica e seta de norte (mostrar_escala=True): só faz sentido
+geometricamente porque gerar_mapa desenha em EPSG:5880 (métrico, aspecto
+1:1) -- ver _adiciona_escala_e_norte em mapa_choropleth.py. Posicionadas no
+canto inferior direito, livre porque a legenda de classes do modo
+"quantis" fica no inferior esquerdo.
+
 Gera, só na paleta oficial:
-1. Top-level (fig03/04/05_choropleth_*.png -- ver NUMERACAO_FIGURAS): 5
-   classes, piso e corpos d'água, paleta roxo.
+1. Top-level (fig02/03/04_choropleth_*.png -- ver NUMERACAO_FIGURAS): 5
+   classes, piso, corpos d'água, escala gráfica e seta de norte, paleta
+   roxo, sem título embutido.
 2. pb/: as mesmas 3 figuras convertidas para escala de cinza (simulando
    fotocópia monocromática), para checar a distinguibilidade das classes
    sem depender de cor.
@@ -69,15 +83,14 @@ FIGURAS_DIR = (
 #
 # NUMERACAO_FIGURAS mapeia categoria -> número da figura no texto do
 # capítulo, e define também a ordem de geração (dict preserva ordem de
-# inserção). Figuras 1 e 2 são reservadas a duas figuras produzidas fora
-# deste script (Seção 4: fluxograma do pipeline; Seção 5: captura de tela
-# do portal) -- por isso os mapas começam em 3, não em 1. A ordem de
-# leitura do texto NÃO é alfabética: Lesão Corporal (fig. 4) vem antes de
-# Estupro (fig. 5).
+# inserção). Figura 1 é reservada ao fluxograma do pipeline (Seção 4),
+# produzido fora deste script -- por isso os mapas começam em 2, não em 1.
+# A ordem de leitura do texto NÃO é alfabética: Lesão Corporal (fig. 3) vem
+# antes de Estupro (fig. 4).
 NUMERACAO_FIGURAS = {
-    "Ameaça": 3,
-    "Lesão Corporal": 4,
-    "Estupro": 5,
+    "Ameaça": 2,
+    "Lesão Corporal": 3,
+    "Estupro": 4,
 }
 
 # 2018-2025: mesmo critério documentado em src/analysis/tendencia.py (linhas
@@ -113,6 +126,8 @@ def _gerar_conjunto(diretorio: Path, paleta: str) -> list[dict]:
             formato=FORMATO_IMPRESSAO,
             paleta=paleta,
             mostrar_corpos_dagua=True,
+            mostrar_titulo=False,
+            mostrar_escala=True,
         )
         resultados.append(
             {
@@ -144,6 +159,16 @@ def main() -> None:
         caminho_pb = diretorio_pb / r["caminho"].name
         _gerar_pb(r["caminho"], caminho_pb)
     print(f"  -> {len(resultados)} versão(ões) em escala de cinza em {diretorio_pb}\n")
+
+    print("=== Cortes de classe por categoria (4 casas decimais) ===")
+    for r in resultados:
+        edges = r["quantis_edges"]
+        minimo, maximo = edges[0], edges[-1]
+        razao = maximo / minimo if minimo else float("inf")
+        edges_fmt = ", ".join(f"{v:.4f}" for v in edges)
+        print(f"{r['tipo_crime']}:")
+        print(f"    cortes: [{edges_fmt}]")
+        print(f"    mínimo: {minimo:.4f}  máximo: {maximo:.4f}  razão (máximo/mínimo): {razao:.4f}")
 
 
 def _imprimir_resultados(diretorio: Path, paleta: str, resultados: list[dict]) -> None:
