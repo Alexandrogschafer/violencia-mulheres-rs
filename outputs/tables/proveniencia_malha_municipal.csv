@@ -1,0 +1,18 @@
+campo,valor
+fonte,Instituto Brasileiro de Geografia e Estatística (IBGE)
+edicao_referencia,Malha Municipal Digital 2025
+url_api_utilizada,"https://servicodados.ibge.gov.br/api/v3/malhas/estados/43?formato=application/vnd.geo+json&intrarregiao=municipio&qualidade=intermediaria"
+sha256_geojson_utilizado,6b0be8e386459641c453c37fb5284c21f12774cf772264640dfce32557aeb5cc
+arquivo_geojson_preservado,data/reference/malha_municipios_rs_2025_intermediaria.geojson
+sha256_geojson_preservado,bb4e02e12ba5fa55d915cc5ad6fa8ba01bce0e812bdd857f40547eba762aefcd
+url_pacote_oficial_2025,https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2025/UFs/RS/RS_Municipios_2025.zip
+sha256_pacote_oficial_2025,d70d47ccd1c2722e78a6dcc7fa4a00715679684785aa137ed2bf11999de28513
+data_validacao,2026-09-04
+crs_oficial,EPSG:4674 (SIRGAS 2000)
+feicoes_pacote_oficial,499
+areas_operacionais_excluidas,"4300001 Área Operacional Lagoa Mirim; 4300002 Área Operacional Lagoa dos Patos"
+municipios_analisados,497
+pares_vizinhos_queen_geojson_utilizado,1400
+pares_vizinhos_queen_malha_2025,1400
+matriz_queen_identica,sim
+resultado_reexecucao,"cinco índices de Moran Global idênticos; conclusões de significância preservadas"

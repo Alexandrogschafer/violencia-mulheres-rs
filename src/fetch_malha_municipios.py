@@ -19,12 +19,30 @@ import pandas as pd
 from src.fetch_populacao import get_json, normaliza_municipio
 
 RAW_DIR = Path(__file__).resolve().parent.parent / "data" / "raw"
+REFERENCE_DIR = Path(__file__).resolve().parent.parent / "data" / "reference"
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "outputs" / "tables"
 
 MALHA_PATH = RAW_DIR / "malha_municipios_rs.geojson"
+MALHA_REFERENCIA_PATH = REFERENCE_DIR / "malha_municipios_rs_2025_intermediaria.geojson"
 CODIGO_NOME_PATH = OUTPUT_DIR / "municipio_codigo_ibge.csv"
 
 UF_RS = 43
+
+# A API v3 não aceita um parâmetro de edição. O arquivo consumido pelo
+# estudo foi preservado por hash e comparado com a Malha Municipal Digital
+# 2025, edição oficial mais recente na validação de 4 set. 2026. Excluídas
+# as duas áreas operacionais de lagoas do pacote oficial, ambas produziram
+# os mesmos 497 municípios e os mesmos 1.400 pares de vizinhos Queen.
+EDICAO_REFERENCIA = 2025
+SHA256_MALHA_UTILIZADA = "6b0be8e386459641c453c37fb5284c21f12774cf772264640dfce32557aeb5cc"
+SHA256_MALHA_REFERENCIA = "bb4e02e12ba5fa55d915cc5ad6fa8ba01bce0e812bdd857f40547eba762aefcd"
+URL_MALHA_OFICIAL_REFERENCIA = (
+    "https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/"
+    "malhas_municipais/municipio_2025/UFs/RS/RS_Municipios_2025.zip"
+)
+SHA256_ZIP_OFICIAL_REFERENCIA = (
+    "d70d47ccd1c2722e78a6dcc7fa4a00715679684785aa137ed2bf11999de28513"
+)
 
 # "intermediaria" (~900KB) em vez de "maxima" (~3.8MB): resolução de borda
 # mais que suficiente tanto para o choropleth estadual quanto para o cálculo
@@ -41,9 +59,14 @@ URL_LOCALIDADES = (
 
 
 def busca_malha() -> dict:
-    """Busca o geojson dos ~497 municípios do RS. Cada feature tem só
-    properties.codarea (código IBGE de 7 dígitos) -- sem nome de município.
+    """Carrega a cópia fixada da malha usada no estudo.
+
+    A consulta à API fica como fallback para instalações antigas que ainda
+    não contenham data/reference/. Cada feature tem apenas properties.codarea
+    (código IBGE de 7 dígitos), sem nome de município.
     """
+    if MALHA_REFERENCIA_PATH.exists():
+        return json.loads(MALHA_REFERENCIA_PATH.read_text(encoding="utf-8"))
     return get_json(URL_MALHA)
 
 

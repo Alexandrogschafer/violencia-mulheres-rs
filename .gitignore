@@ -23,6 +23,7 @@ outputs/tables/*.csv
 # versão da SSP/RS foi consumida (hash, data "Atualizado em" declarada,
 # metadado OOXML). Pequeno e textual, por isso versionado.
 !outputs/tables/proveniencia_dados_brutos.csv
+!outputs/tables/proveniencia_malha_municipal.csv
 outputs/figures/*
 !outputs/figures/.gitkeep
 
