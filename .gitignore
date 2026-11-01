@@ -65,3 +65,15 @@ publicacoes/**/*.blg
 publicacoes/**/*.toc
 publicacoes/**/*.synctex.gz
 publicacoes/**/~$*.docx
+publicacoes/artigo_reciis/01_referencias/pdfs/
+*:Zone.Identifier
+publicacoes/*/01_referencias/pdfs/
+publicacoes/*/03_submissao/*.docx
+publicacoes/*/04_submissao/*.docx
+publicacoes/*/04_submissao/*.pdf
+publicacoes/*/03_submissao/*.docx
+publicacoes/*/03_submissao/*.pdf
+publicacoes/*/03_submissao/figuras/
+
+# Texto integral de artigos de terceiros, inclusive de editoras comerciais.
+publicacoes/*/01_referencias/txt/
