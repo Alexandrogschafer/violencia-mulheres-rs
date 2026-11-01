@@ -20,6 +20,7 @@
   --crime-fem-consumado: #eda100;
   --crime-fem-tentado: #008300;
   --crime-lesao: #4a3aa7;
+  --sig-yes: #0f7a52;
 
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -43,6 +44,7 @@
 
     --crime-fem-consumado: #bb8a28;
     --crime-lesao: #8a7ad1;
+    --sig-yes: #1baf7a;
   }
 }
 
@@ -498,7 +500,7 @@ th[data-sort="desc"]::after { content: "↓"; color: var(--ink-primary); }
   margin: 0 0.3em 0.3em 0;
 }
 
-.sig-yes { color: var(--crime-estupro); font-weight: 600; }
+.sig-yes { color: var(--sig-yes); font-weight: 600; }
 .sig-no { color: var(--muted); }
 
 /* ---------- figure gallery ---------- */
@@ -562,6 +564,14 @@ th[data-sort="desc"]::after { content: "↓"; color: var(--ink-primary); }
   height: 560px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
+}
+/* Fundo liso (sem mapa-base). Branco, não o cinza --grid: esse cinza é o
+   mesmo de COR_SEM_DADO em maps.js e confundiria "sem dado" com o fundo.
+   Seletor composto porque leaflet.css carrega depois deste arquivo e o
+   #ddd de .leaflet-container venceria uma classe sozinha (.case-map). */
+#map.leaflet-container,
+.case-map.leaflet-container {
+  background: var(--surface-raised);
 }
 .map-controls {
   display: flex;
@@ -679,11 +689,14 @@ th[data-sort="desc"]::after { content: "↓"; color: var(--ink-primary); }
   #map,
   .case-map { height: 420px; }
   .compare-valor { margin-left: 0; }
+  /* Em tela estreita a legenda sobreposta cobre a atribuição das fontes e o
+     município em destaque -- passa a ser um bloco abaixo do mapa. */
   .map-legend-overlay {
-    max-width: 190px;
+    position: static;
+    max-width: none;
+    margin-top: 0.75rem;
+    box-shadow: none;
     font-size: 0.72rem;
-    right: 8px;
-    bottom: 8px;
     padding: 0.4rem 0.6rem;
   }
 }

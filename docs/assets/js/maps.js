@@ -1,13 +1,22 @@
 // Mapa interativo Leaflet -- choropleth client-side, com seletor de tipo de
-// crime. Reaproveita a mesma rampa sequencial azul (claro->escuro) usada nos
-// mapas estáticos gerados por src/analysis/mapa_choropleth.py, para manter a
-// mesma linguagem visual entre o mapa interativo e as figuras PNG.
+// crime. A rampa sequencial (tons) vem de taxasPorTipo.paleta (JSON gerado
+// por build_site_data.py, que lê de src/analysis/mapa_choropleth.py -- a
+// mesma paleta oficial usada nas figuras estáticas do capítulo/artigo, ver
+// PALETA_OFICIAL em figuras_capitulo.py), não mais hardcoded aqui -- assim
+// uma troca de paleta lá se reflete aqui sem editar este arquivo.
 window.SiteMaps = (function () {
-  var RAMPA_SEQUENCIAL_AZUL = [
-    "#cde2fb", "#b7d3f6", "#9ec5f4", "#86b6ef", "#6da7ec", "#5598e7",
-    "#3987e5", "#2a78d6", "#256abf", "#1c5cab", "#184f95", "#104281", "#0d366b",
-  ];
-  var COR_SEM_DADO = "#c9c7c0";
+  var COR_SEM_DADO = "#e1e0d9";
+  // Município abaixo do piso populacional: preenchimento sólido próprio,
+  // fora da rampa quantitativa -- mesma cor das figuras estáticas do
+  // capítulo (mapa_choropleth.py, COR_ABAIXO_PISO), para a mesma
+  // convenção visual valer no mapa interativo e nos PNGs.
+  var COR_ABAIXO_PISO = "#c5c0b1";
+  // No zoom 11 o menor município da malha (São Vendelino) ocupa ~100 px;
+  // acima disso a tela vira um único preenchimento, sem nada de referência.
+  var ZOOM_MAXIMO = 11;
+  var MARGEM_LIMITES = 0.05;
+  var ATRIBUICAO_FONTES =
+    'Malha municipal: <a href="https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/15774-malhas.html">IBGE</a> · Dados: SSP/RS';
 
   function hexToRgb(hex) {
     var v = parseInt(hex.replace("#", ""), 16);
@@ -24,17 +33,18 @@ window.SiteMaps = (function () {
     );
   }
 
-  // Interpola dentro da rampa de 13 tons (mesma lógica de uma
-  // LinearSegmentedColormap contínua do matplotlib).
-  function rampColor(t) {
+  // Interpola dentro dos tons de `ramp` (mesma lógica de uma
+  // LinearSegmentedColormap contínua do matplotlib) -- `ramp` vem de
+  // taxasPorTipo.paleta, gravado por build_site_data.py.
+  function rampColor(ramp, t) {
     t = Math.max(0, Math.min(1, t));
-    var n = RAMPA_SEQUENCIAL_AZUL.length - 1;
+    var n = ramp.length - 1;
     var pos = t * n;
     var i0 = Math.floor(pos);
     var i1 = Math.min(i0 + 1, n);
     var frac = pos - i0;
-    var c0 = hexToRgb(RAMPA_SEQUENCIAL_AZUL[i0]);
-    var c1 = hexToRgb(RAMPA_SEQUENCIAL_AZUL[i1]);
+    var c0 = hexToRgb(ramp[i0]);
+    var c1 = hexToRgb(ramp[i1]);
     var mix = c0.map(function (v, idx) {
       return v + (c1[idx] - v) * frac;
     });
@@ -51,12 +61,32 @@ window.SiteMaps = (function () {
     var tipoAtual = opts.tipoInicial || tipos[0];
     var destaque = opts.destacarMunicipio || null;
 
-    var map = L.map(elementId, { scrollWheelZoom: false }).setView([-30.0, -53.2], 6.4);
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png", {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      maxZoom: 12,
-    }).addTo(map);
+    // Sem mapa-base: só os polígonos municipais sobre o fundo do contêiner
+    // (ver #map em site.css). Fora da malha não há nada para ver, então o
+    // enquadramento e o arraste ficam presos aos limites dela (com a pequena
+    // folga de MARGEM_LIMITES), e o zoom mínimo é o que mostra o estado
+    // inteiro no tamanho atual do contêiner. zoomSnap fracionário: sem tiles
+    // não há imagem a borrar, e o estado aproveita melhor a área do mapa.
+    var limites = L.geoJSON(geojson).getBounds();
+    var map = L.map(elementId, {
+      scrollWheelZoom: false,
+      zoomSnap: 0.25,
+      maxZoom: ZOOM_MAXIMO,
+      maxBounds: limites.pad(MARGEM_LIMITES),
+      maxBoundsViscosity: 1,
+    });
+
+    function ajustarZoomMinimo() {
+      // getBoundsZoom limita o resultado ao minZoom vigente -- zera antes,
+      // senão o mínimo nunca desce quando o contêiner encolhe.
+      map.options.minZoom = 0;
+      map.setMinZoom(map.getBoundsZoom(limites));
+    }
+    ajustarZoomMinimo();
+    map.fitBounds(limites);
+    map.on("resize", ajustarZoomMinimo);
+
+    map.attributionControl.addAttribution(ATRIBUICAO_FONTES);
 
     // Atribuição do Leaflet por padrão também fica no canto inferior
     // direito -- move pra esquerda pra não sobrepor a legenda customizada
@@ -67,7 +97,7 @@ window.SiteMaps = (function () {
     // O container pode não ter o tamanho final ainda no momento em que o
     // Leaflet mede a área disponível (fontes/layout assíncronos, troca de
     // aba, etc.) -- invalidateSize() força um recálculo depois que o
-    // layout assenta, evitando tiles cortados/mapa mal centralizado.
+    // layout assenta, evitando mapa mal centralizado.
     setTimeout(function () {
       map.invalidateSize();
     }, 150);
@@ -75,29 +105,50 @@ window.SiteMaps = (function () {
     var geoLayer = null;
     var infoBox = document.getElementById(opts.infoId);
 
+    // Auditoria metodológica, item 8: o mapa continua mostrando os 497
+    // municípios (nunca esconde nenhum) -- mas, como nas figuras do
+    // capítulo e na tabela de municípios (piso de 5.000 hab.), os
+    // municípios abaixo do piso saem da rampa quantitativa (cor sólida
+    // própria, ver COR_ABAIXO_PISO e corPara) e são marcados como
+    // instáveis no popup, para não apresentar como diretamente comparável
+    // um valor que o manuscrito trata como estatisticamente instável.
+    var abaixoDoPiso = {};
+    (taxasPorTipo.municipios_abaixo_piso || []).forEach(function (m) {
+      abaixoDoPiso[m] = true;
+    });
+    function fmtPiso(n) {
+      return Number(n).toLocaleString("pt-BR");
+    }
+
     function valoresDoTipo(tipo) {
       return taxasPorTipo.taxas[tipo] || {};
     }
 
-    function corPara(tipo, valores, municipio) {
+    function dominioDoTipo(tipo) {
+      return (taxasPorTipo.dominio_por_tipo || {})[tipo] || { min: 0, max: 0 };
+    }
+
+    function corPara(tipo, valores, municipio, dominio) {
+      // Abaixo do piso: cor sólida própria, fora da rampa quantitativa --
+      // não entra no min/max (já calculado sem eles em build_site_data.py),
+      // então nem tenta posicionar esses municípios na escala.
+      if (abaixoDoPiso[municipio]) return COR_ABAIXO_PISO;
       var v = valores[municipio];
       if (v === undefined || v === null) return COR_SEM_DADO;
-      var vals = Object.values(valores);
-      var min = Math.min.apply(null, vals);
-      var max = Math.max.apply(null, vals);
-      var t = max > min ? (v - min) / (max - min) : 0.5;
-      return rampColor(t);
+      var t = dominio.max > dominio.min ? (v - dominio.min) / (dominio.max - dominio.min) : 0.5;
+      return rampColor(taxasPorTipo.paleta, t);
     }
 
     function desenhar(tipo) {
       var valores = valoresDoTipo(tipo);
+      var dominio = dominioDoTipo(tipo);
       if (geoLayer) map.removeLayer(geoLayer);
       var camadaDestaque = null;
       geoLayer = L.geoJSON(geojson, {
         style: function (feature) {
           var emDestaque = destaque && feature.properties.municipio === destaque;
           return {
-            fillColor: corPara(tipo, valores, feature.properties.municipio),
+            fillColor: corPara(tipo, valores, feature.properties.municipio, dominio),
             weight: emDestaque ? 3 : 0.6,
             color: emDestaque ? "#0b0b0b" : "#ffffff",
             fillOpacity: 0.9,
@@ -113,6 +164,12 @@ window.SiteMaps = (function () {
             tipo +
             ": " +
             (v === undefined || v === null ? "sem dado" : v.toFixed(1) + " / 100 mil hab.");
+          if (abaixoDoPiso[municipio]) {
+            texto +=
+              '<br><span class="muted small">População abaixo de ' +
+              fmtPiso(taxasPorTipo.piso_populacional_instabilidade) +
+              " hab. — taxa instável, poucos casos podem deslocá-la muito. Não comparável diretamente aos demais municípios.</span>";
+          }
           layer.bindTooltip(texto, { sticky: true });
           layer.on({
             mouseover: function (e) {
@@ -128,19 +185,18 @@ window.SiteMaps = (function () {
           if (destaque && municipio === destaque) camadaDestaque = layer;
         },
       }).addTo(map);
-      atualizarLegenda(tipo, valores);
+      atualizarLegenda(tipo, dominio);
       if (camadaDestaque) {
         camadaDestaque.bringToFront();
         map.fitBounds(camadaDestaque.getBounds(), { padding: [60, 60], maxZoom: 10 });
       }
     }
 
-    function atualizarLegenda(tipo, valores) {
+    function atualizarLegenda(tipo, dominio) {
       var legendEl = document.getElementById(opts.legendId);
       if (!legendEl) return;
-      var vals = Object.values(valores);
-      var min = Math.min.apply(null, vals);
-      var max = Math.max.apply(null, vals);
+      var min = dominio.min;
+      var max = dominio.max;
       var passos = 5;
       var html =
         "<strong>" +
@@ -154,9 +210,26 @@ window.SiteMaps = (function () {
         var t = i / passos;
         var v = min + t * (max - min);
         html +=
-          '<span class="ramp" style="background:' + rampColor(t) + '"></span>' + v.toFixed(1) + " ";
+          '<span class="ramp" style="background:' + rampColor(taxasPorTipo.paleta, t) + '"></span>' + v.toFixed(1) + " ";
       }
       html += '<span class="ramp" style="background:' + COR_SEM_DADO + '"></span>sem dado';
+      var nAbaixoPiso = (taxasPorTipo.municipios_abaixo_piso || []).length;
+      if (nAbaixoPiso > 0) {
+        // Entrada própria, fora da rampa quantitativa (mesmo texto das
+        // figuras estáticas do capítulo, ver mapa_choropleth.py) -- não é
+        // mais uma nota textual solta, é um item de legenda com a mesma
+        // amostra de cor usada no preenchimento desses municípios.
+        html +=
+          '<br><span class="ramp" style="background:' +
+          COR_ABAIXO_PISO +
+          '"></span>População inferior a ' +
+          fmtPiso(taxasPorTipo.piso_populacional_instabilidade) +
+          " hab.";
+        html +=
+          '<br><span class="muted small">' +
+          nAbaixoPiso +
+          " municípios (marcados no mapa ao passar o mouse) têm taxa instável — poucos casos deslocam muito o valor. Não são diretamente comparáveis aos demais.</span>";
+      }
       legendEl.innerHTML = html;
     }
 
