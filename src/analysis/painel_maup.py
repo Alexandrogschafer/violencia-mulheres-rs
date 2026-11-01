@@ -124,7 +124,7 @@ def _monta_camada(nivel: str) -> tuple[gpd.GeoDataFrame, pd.Series]:
         return camada.to_crs(CRS_PLOT), None
 
 
-def gerar_painel() -> dict:
+def gerar_painel(caminho_saida: Path | None = None) -> dict:
     cmap = PALETAS[PALETA]["cmap"]()
     faixa_lo, faixa_hi = PALETAS[PALETA]["faixa"]
 
@@ -225,7 +225,8 @@ def gerar_painel() -> dict:
         bbox_to_anchor=(0.5, 0.01),
     )
 
-    caminho_saida = FIGURAS_DIR / "fig05_maup_tres_niveis.png"
+    if caminho_saida is None:
+        caminho_saida = FIGURAS_DIR / "fig05_maup_tres_niveis.png"
     caminho_saida.parent.mkdir(parents=True, exist_ok=True)
     # Sem bbox_inches="tight": recortar a figura depois mudaria a largura
     # final em relação aos 15 cm pretendidos, alterando o tamanho impresso
