@@ -98,16 +98,16 @@
     <h3>Camada 3 — Espacial</h3>
     <p>
       Autocorrelação espacial da taxa por 100 mil hab. (2018–2025), com matriz de vizinhança
-      Queen (contiguidade), padronizada por linha, 999 permutações, semente 12345. A malha
+      Queen (contiguidade), padronizada por linha, 99.999 permutações, semente 12345. A malha
       consumida pela API do IBGE foi validada contra a Malha Municipal Digital 2025: após
       excluir as áreas operacionais Lagoa Mirim e Lagoa dos Patos, permaneceram 497 municípios
       e os mesmos 1.400 pares de vizinhos.
     </p>
     <ul>
-      <li><strong>Índice de Moran Global:</strong> testa se existe autocorrelação espacial (clustering) para cada tipo de crime.</li>
+      <li><strong>Índice de Moran Global:</strong> testa se existe autocorrelação espacial (clustering) para cada tipo de crime, com o índice ajustado para taxas segundo Assunção e Reis (1999), a partir dos casos e da população-ano de cada município.</li>
       <li><strong>LISA (Local Indicators of Spatial Association):</strong> a análise de aglomerados locais está em revisão metodológica e será republicada.</li>
     </ul>
-    <p><span class="method-tag">Moran's I Global</span><span class="method-tag">LISA (em revisão)</span></p>
+    <p><span class="method-tag">Moran's I Global ajustado para taxas</span><span class="method-tag">LISA (em revisão)</span></p>
     <p class="small"><a href="https://github.com/Alexandrogschafer/violencia-mulheres-rs/blob/master/notebooks/analise_espacial.ipynb">Ver notebook completo →</a> · mapas na página <a href="mapas.html">Mapas</a></p>
   </div>
 
