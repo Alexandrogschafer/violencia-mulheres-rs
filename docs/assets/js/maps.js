@@ -7,11 +7,10 @@
 window.SiteMaps = (function () {
   var COR_SEM_DADO = "#e1e0d9";
   // Município abaixo do piso populacional: preenchimento sólido próprio,
-  // fora da rampa quantitativa. Cinza neutro mais claro que o das figuras
-  // estáticas do capítulo (mapa_choropleth.py, COR_ABAIXO_PISO, #c5c0b1),
-  // de propósito: aqui deve recuar diante da rampa fria. Não clarear mais:
-  // perto de #dcdad5 fica indistinguível de COR_SEM_DADO.
-  var COR_ABAIXO_PISO = "#d4d3d0";
+  // fora da rampa quantitativa -- mesma cor das figuras estáticas do
+  // capítulo (mapa_choropleth.py, COR_ABAIXO_PISO), para a mesma
+  // convenção visual valer no mapa interativo e nos PNGs.
+  var COR_ABAIXO_PISO = "#c5c0b1";
   // No zoom 11 o menor município da malha (São Vendelino) ocupa ~100 px;
   // acima disso a tela vira um único preenchimento, sem nada de referência.
   var ZOOM_MAXIMO = 11;
