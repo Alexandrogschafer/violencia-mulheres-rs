@@ -77,3 +77,9 @@ LibreOffice/`ssconvert`). If you need to inspect a workbook's contents ad hoc wi
 `.xlsx` as a zip of OOXML: read `xl/workbook.xml` + `xl/_rels/workbook.xml.rels` to resolve sheet names to
 `xl/worksheets/sheetN.xml`, and resolve `t="s"` cell values via the `<si>` entries in `xl/sharedStrings.xml`
 (both readable with Python's stdlib `zipfile` + `xml.etree.ElementTree`, no third-party packages needed).
+
+## Convenções de commit
+
+- Mensagens em português, no imperativo ou presente, sem prefixos convencionais.
+- Não incluir rodapé de coautoria, atribuição a assistente ou identificadores de sessão.
+- Uma mensagem por tema: separar mudanças de código, de texto e de dados em commits distintos.
