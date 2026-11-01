@@ -77,3 +77,6 @@ publicacoes/*/03_submissao/figuras/
 
 # Texto integral de artigos de terceiros, inclusive de editoras comerciais.
 publicacoes/*/01_referencias/txt/
+
+# PDFs de editora das referências do artigo espacial: não podem ser versionados.
+publicacoes/artigo_espacial/01_referencias/pdf/
