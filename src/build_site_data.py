@@ -13,7 +13,8 @@ from pathlib import Path
 
 import pandas as pd
 
-from src.analysis.mapa_choropleth import carregar_taxa_periodo
+from src.analysis.figuras_capitulo import PALETA_OFICIAL
+from src.analysis.mapa_choropleth import _populacao_referencia, carregar_taxa_periodo, paleta_stops
 from src.analysis.periodo_padrao import ANO_FIM_ANALISE, ANO_INICIO_ANALISE
 from src.fetch_malha_municipios import carregar_malha_com_municipio
 
@@ -41,6 +42,17 @@ MUNICIPIO_NAO_IDENTIFICADO = "NÃO INFORMADO"
 # este é o mesmo ponto único de decisão, não uma cópia que pode divergir.
 ANO_INICIO_MAPA = ANO_INICIO_ANALISE
 ANO_FIM_MAPA = ANO_FIM_ANALISE
+
+# Auditoria metodológica, item 8: o mapa interativo mostra os 497
+# municípios (nunca esconde nenhum, ao contrário das figuras estáticas do
+# capítulo e da tabela de municípios, que já usam POP_MINIMA=5000 -- ver
+# figuras_capitulo.py e tabela_agregacao_regional.py), mas os municípios
+# abaixo do piso (a) são marcados como instáveis no popup/tooltip e (b)
+# saem do cálculo do domínio (min/max) da rampa de cores -- mesmo piso e
+# mesmo princípio de "sólido fora da rampa" das figuras estáticas
+# (mapa_choropleth.py, COR_ABAIXO_PISO), aplicado aqui só à escala
+# cromática do mapa interativo, não à visibilidade dos municípios.
+POP_MINIMA_INSTABILIDADE = 5000
 
 # PNGs de outputs/figures/ que o portal embute como imagem estática (mapas
 # LISA e a série de escolhas do estudo de Uruguaiana não são recomputáveis em
@@ -158,18 +170,55 @@ def gerar_dados_mapas() -> None:
         taxas[tipo] = {
             row.municipio: round(row.taxa_por_100mil_hab, 3) for row in agregado.itertuples()
         }
+
+    pop_referencia = _populacao_referencia(ANO_FIM_MAPA)
+    municipios_abaixo_piso = sorted(pop_referencia[pop_referencia < POP_MINIMA_INSTABILIDADE].index)
+
+    # Domínio da rampa de cores calculado aqui (server-side), não no cliente:
+    # exclui os municípios abaixo do piso do min/max de cada tipo de crime,
+    # para eles não esticarem a escala cromática dos ~266 municípios
+    # elegíveis -- mesmo princípio das figuras estáticas do capítulo
+    # (mapa_choropleth.py, classificacao="continua" com pop_minima), que já
+    # tiram o piso da normalização da rampa contínua. Os municípios abaixo
+    # do piso continuam em "taxas" (a consulta municipal precisa encontrá-
+    # los) -- só saem do cálculo de min/max.
+    abaixo_piso_set = set(municipios_abaixo_piso)
+    dominio_por_tipo: dict[str, dict[str, float]] = {}
+    for tipo, valores in taxas.items():
+        elegiveis = [v for m, v in valores.items() if m not in abaixo_piso_set]
+        dominio_por_tipo[tipo] = {
+            "min": round(min(elegiveis), 3),
+            "max": round(max(elegiveis), 3),
+        }
+
+    # Paleta gravada aqui, não hardcoded em maps.js: mesma fonte (PALETAS em
+    # mapa_choropleth.py) e mesma paleta (PALETA_OFICIAL, hoje "roxo") que
+    # figuras_capitulo.py usa para as figuras estáticas do capítulo/artigo --
+    # ponto único de decisão de cor, o mapa interativo herda qualquer troca
+    # futura de PALETA_OFICIAL sem editar JS. Ver mapa_choropleth.paleta_stops
+    # e docs/assets/js/maps.js:rampColor (interpola linearmente entre esses
+    # tons, mesma lógica de antes, só que os tons vêm do JSON agora).
+    paleta_tons = paleta_stops(PALETA_OFICIAL)
+
     (MAPS_DIR / "taxa_por_municipio.json").write_text(
         json.dumps(
             {
                 "ano_inicio": ANO_INICIO_MAPA,
                 "ano_fim": ANO_FIM_MAPA,
                 "taxas": taxas,
+                "dominio_por_tipo": dominio_por_tipo,
+                "piso_populacional_instabilidade": POP_MINIMA_INSTABILIDADE,
+                "municipios_abaixo_piso": municipios_abaixo_piso,
+                "paleta": paleta_tons,
             },
             ensure_ascii=False,
         ),
         encoding="utf-8",
     )
-    print(f"outputs/maps/ pronto — malha de {len(malha)} municípios + taxas de {len(TIPOS_CRIME)} tipos de crime")
+    print(
+        f"outputs/maps/ pronto — malha de {len(malha)} municípios + taxas de {len(TIPOS_CRIME)} tipos de crime "
+        f"+ {len(municipios_abaixo_piso)} municípios marcados abaixo do piso de {POP_MINIMA_INSTABILIDADE}"
+    )
 
 
 def gerar_tabela_municipios_resumo() -> pd.DataFrame:

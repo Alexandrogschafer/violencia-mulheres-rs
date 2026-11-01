@@ -13,7 +13,7 @@ import geopandas as gpd
 import matplotlib.pyplot as plt
 import pandas as pd
 from matplotlib import colormaps
-from matplotlib.colors import LinearSegmentedColormap
+from matplotlib.colors import LinearSegmentedColormap, to_hex
 from matplotlib.patches import Patch
 from shapely import concave_hull
 from shapely.ops import unary_union
@@ -92,6 +92,28 @@ PALETAS = {
         "cor_agua": "#8b93d9",  # azul-violeta, afastado dos tons verde-azulados da rampa BuGn
     },
 }
+
+
+def paleta_stops(paleta: str, n: int = 13) -> list[str]:
+    """Amostra `n` tons hexadecimais de `paleta` (ver PALETAS), igualmente
+    espaçados dentro da faixa configurada -- mesma amostragem de faixa_lo/
+    faixa_hi usada em gerar_mapa() para as classes de quantis (cores_
+    classes). Fonte única para portar a rampa contínua usada nas figuras
+    estáticas (matplotlib) para o mapa interativo (Leaflet/JS), que
+    interpola linearmente entre tons hex -- ver build_site_data.py:
+    gerar_dados_mapas() (grava esses tons no JSON) e docs/assets/js/
+    maps.js:rampColor() (interpola entre eles no cliente). n=13 replica a
+    resolução da antiga rampa hardcoded (RAMPA_SEQUENCIAL_AZUL) para não
+    perder suavidade na interpolação cliente.
+    """
+    if paleta not in PALETAS:
+        raise ValueError(f"paleta inválida: {paleta!r} (use {', '.join(repr(p) for p in PALETAS)})")
+    cmap = PALETAS[paleta]["cmap"]()
+    faixa_lo, faixa_hi = PALETAS[paleta]["faixa"]
+    return [
+        to_hex(cmap(faixa_lo + (faixa_hi - faixa_lo) * i / max(n - 1, 1)))
+        for i in range(n)
+    ]
 
 
 def carregar_taxa_periodo(
