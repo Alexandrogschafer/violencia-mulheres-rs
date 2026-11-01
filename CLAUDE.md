@@ -83,3 +83,10 @@ LibreOffice/`ssconvert`). If you need to inspect a workbook's contents ad hoc wi
 - Mensagens em português, no imperativo ou presente, sem prefixos convencionais.
 - Não incluir rodapé de coautoria, atribuição a assistente ou identificadores de sessão.
 - Uma mensagem por tema: separar mudanças de código, de texto e de dados em commits distintos.
+
+## Relatórios finais
+
+codigo_projeto: VIOLENCIA-MULHERES-RS
+
+- Pasta de relatórios deste repositório: `/mnt/c/Users/alsch/Desktop/projetos_claude/violencia_mulheres/`.
+- Nome do arquivo: `VIOLENCIA-MULHERES-RS_AAAA-MM-DD_HHhMM_assunto.md`.
