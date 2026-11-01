@@ -54,12 +54,12 @@ ANO_FIM_MAPA = ANO_FIM_ANALISE
 # cromática do mapa interativo, não à visibilidade dos municípios.
 POP_MINIMA_INSTABILIDADE = 5000
 
-# PNGs de outputs/figures/ que o portal embute como imagem estática (mapas
-# LISA e a série de escolhas do estudo de Uruguaiana não são recomputáveis em
+# PNGs de outputs/figures/ que o portal embute como imagem estática (a série
+# de escolhas do estudo de Uruguaiana não é recomputável em
 # JS; os demais também são copiados para complementar os gráficos
 # interativos com a figura exata gerada pela notebook).
 #
-# choropleth_*/lisa_* (Camada 3, analise_espacial.ipynb) usam o sufixo
+# choropleth_* (Camada 3, analise_espacial.ipynb) usam o sufixo
 # {ANO_INICIO_ANALISE}_{ANO_FIM_ANALISE} = 2018_2025. exploratoria_ranking_
 # taxa_2021_2025.png abaixo é diferente -- vem da Camada 1 (analise_
 # exploratoria.ipynb), fora do escopo desta rodada, e continua com seu
@@ -70,9 +70,6 @@ FIGURAS_PARA_PORTAL = [
     "choropleth_feminicidio_consumado_2018_2025.png",
     "choropleth_feminicidio_tentado_2018_2025.png",
     "choropleth_lesao_corporal_2018_2025.png",
-    "lisa_ameaca_2018_2025.png",
-    "lisa_estupro_2018_2025.png",
-    "lisa_lesao_corporal_2018_2025.png",
     "uruguaiana_perfil_taxa_vs_estado.png",
     "uruguaiana_serie_anual.png",
     "uruguaiana_serie_mensal.png",
