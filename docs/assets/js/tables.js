@@ -32,6 +32,7 @@ window.SiteTables = (function () {
       var input = document.createElement("input");
       input.type = "search";
       input.placeholder = opts.searchPlaceholder || "Pesquisar…";
+      input.setAttribute("aria-label", opts.searchPlaceholder || "Pesquisar na tabela");
       input.addEventListener("input", function () {
         state.query = input.value.trim().toLowerCase();
         renderBody();
