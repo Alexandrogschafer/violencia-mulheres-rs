@@ -49,7 +49,7 @@ possa ser reconhecido quando aparecer.
 
 ## Critério de interpretação
 
-- **Esperado ≥ 5 eventos**, calculado como pessoas-ano × taxa estadual do desfecho / 100
+- **Esperado ≥ 5 eventos**, calculado como mulheres-ano × taxa estadual do desfecho / 100
   mil. Pares abaixo disso **permanecem no cálculo** — excluí-los mudaria a matriz de pesos
   e portanto os resultados — mas **não entram na interpretação substantiva**. Caem 5 dos 67
   pares.
@@ -94,7 +94,7 @@ possa ser reconhecido quando aparecer.
 | Métodos | As permutações como justificativa dos parâmetros |
 
 **Sobre a sobreposição:** não escrever que "não há sobreposição". Sob independência, o
-esperado para três desfechos é 0,03 município, então observar zero não informa nada. A
+esperado para três desfechos é 0,056 município, então observar zero não informa nada. A
 coincidência Lesão Corporal + Estupro em AA tem 3 observados contra 0,05 esperados sob
 independência, cerca de 60 vezes. O esperado é calculado dentro do quadrante: municípios AA
 em Lesão Corporal × municípios AA em Estupro / 497 (5 × 5 / 497). O achado é a **seletividade**,
