@@ -44,7 +44,7 @@ municípios do Rio Grande do Sul.
 ### Fonte e desfechos
 
 Os dados provêm dos registros administrativos da Secretaria da Segurança Pública do Rio
-Grande do Sul, em planilhas de divulgação pública por município e ano. Foram analisados
+Grande do Sul, em planilhas de divulgação pública por município e ano [n]. Foram analisados
 quatro desfechos de violência contra a mulher no período de 2018 a 2025: ameaça, lesão
 corporal, estupro e feminicídio tentado. O feminicídio consumado foi analisado apenas
 quanto à autocorrelação global, pela baixa ocorrência.
@@ -54,7 +54,7 @@ que são tipos penais distintos. Os arquivos divulgados são revisados retroativ
 secretaria, de modo que a mesma consulta em datas diferentes pode retornar valores
 distintos; registrou-se a proveniência de cada extração, com data e soma de verificação.
 
-As populações municipais anuais vieram das estimativas do IBGE. O denominador adotado foi a
+As populações municipais anuais vieram das estimativas do IBGE [n]. O denominador adotado foi a
 população feminina, estimada como a população total de cada ano multiplicada pela razão entre
 população feminina e total do município no Censo 2022. Essa razão mostrou-se estável entre
 os Censos de 2010 e 2022, com variação mediana de 0,32 ponto percentual e nenhum município
@@ -64,8 +64,8 @@ população feminina anual é estimada, não medida.
 ### Autocorrelação espacial
 
 A vizinhança foi definida por contiguidade do tipo rainha, com matriz padronizada por
-linha. A autocorrelação global e local foi estimada pelo índice de Moran com o ajuste de
-Assunção e Reis [n], apropriado a taxas calculadas sobre populações de tamanhos muito
+linha. A autocorrelação foi estimada pelo índice de Moran global e pelo indicador local de
+associação espacial (LISA) [n], ambos com o ajuste de Assunção e Reis [n], apropriado a taxas calculadas sobre populações de tamanhos muito
 desiguais, em que a variância da taxa é maior nos municípios menores. O ajuste opera sobre
 a contagem e a população sob risco, e não sobre taxas previamente suavizadas: suavizar por
 método bayesiano e em seguida testar autocorrelação induziria dependência por construção,
@@ -77,9 +77,11 @@ A significância foi avaliada por permutação condicional, com **99.999 permuta
 semente fixada em **12345**. A multiplicidade foi tratada pelo procedimento de
 Benjamini-Hochberg a 5%, aplicado ao valor p direcional.
 
-O número de permutações não é escolha indiferente. O menor valor p obtenível por permutação
-é 1/(m+1); sob o procedimento de Benjamini-Hochberg com n áreas ao nível q, rejeitar uma
-hipótese nesse piso exige m+1 ≥ n/(q·i) [n,n]. Com 497 municípios ao nível de 5%, as 999
+O número de permutações não é escolha indiferente. O menor valor p obtenível com m
+permutações é 1/(m+1) [n], e o procedimento de Benjamini-Hochberg, com n áreas ao nível q,
+rejeita as hipóteses até o maior posto i cujo valor p ordenado não excede q·i/n [n].
+Combinando as duas expressões, o que nenhuma das duas fontes enuncia, rejeitar uma
+hipótese nesse piso exige m+1 ≥ n/(q·i). Com 497 municípios ao nível de 5%, as 999
 permutações usuais só permitiriam rejeição se ao menos dez municípios atingissem o piso
 simultaneamente. Em verificação com vinte sementes, o feminicídio tentado não apresentou
 nenhum município significativo em nenhuma das vinte execuções com 999 permutações, e
