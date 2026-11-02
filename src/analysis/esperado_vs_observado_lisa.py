@@ -1,4 +1,4 @@
-"""Esperado sob a taxa estadual frente ao observado, nos 68 pares significativos do LISA.
+"""Esperado sob a taxa estadual frente ao observado, nos pares significativos do LISA.
 
 Esperado = pessoas-ano do município em 2018-2025 × taxa estadual do desfecho / 100 mil. As
 pessoas-ano são a soma das oito populações anuais, o mesmo denominador da taxa que entra no
@@ -8,33 +8,49 @@ esperado também é calculado com a população de 2025 × 8.
 
 Poisson na direção do quadrante: AA e AB (o próprio município é alto) usam P(X ≥ obs); BB e BA
 (o próprio município é baixo) usam P(X ≤ obs). É descritivo e não substitui o LISA: o esperado
-ignora a vizinhança, e os 68 pares não são independentes.
+ignora a vizinhança, e os pares não são independentes.
 
-Uso: python -m src.analysis.esperado_vs_observado_lisa
+Denominador: --denominador feminina (padrão: mulheres-ano estimadas, taxa estadual por
+população feminina, que é outra e dá outro esperado) ou total (pessoas-ano, grava com o
+sufixo _pop_total). Ver src/analysis/denominador.py.
+
+Uso: python -m src.analysis.esperado_vs_observado_lisa [--denominador D]
 """
 
+import argparse
 from pathlib import Path
 
 import pandas as pd
 from scipy.stats import poisson
 
 from src.analysis.caracterizacao_municipios_significativos import br, carregar, componentes, markdown
+from src.analysis.denominador import DESCRICAO, UNIDADE, adicionar_argumento, caminho, fator
 from src.analysis.mapa_choropleth import carregar_taxa_periodo
 from src.analysis.moran_lisa_assuncao_reis import ANO_FIM, ANO_INICIO, TIPOS_MORAN
 
 SAIDA = Path(__file__).resolve().parent.parent.parent / "outputs" / "tables" / "esperado_vs_observado_lisa.md"
 LIMIAR = 5
-N_PARES = 68
-N_BLOCO_NORTE = 21
+# Guardas contra deriva, por denominador.
+N_PARES = {"total": 68, "feminina": 67}
+N_BLOCO_NORTE = {"total": 21, "feminina": 21}
 ALTO = {"AA", "AB"}
 
 
-def calcular() -> tuple[pd.DataFrame, dict, list[str]]:
-    d = carregar()
+def taxa_periodo(tipo: str, denominador: str) -> pd.DataFrame:
+    """carregar_taxa_periodo com as pessoas-ano multiplicadas pelo fator do denominador
+    (exatamente 1 no total, a razão feminina no feminino)."""
+    x = carregar_taxa_periodo(tipo, ANO_INICIO, ANO_FIM)
+    x["populacao_pessoas_ano"] = x["populacao_pessoas_ano"] * fator(x["municipio"], denominador)
+    return x.set_index("municipio")
+
+
+def calcular(denominador: str) -> tuple[pd.DataFrame, dict, list[str]]:
+    d = carregar(denominador)
     sig = d["sig"]
-    if len(sig) != N_PARES:
-        raise ValueError(f"{len(sig)} pares significativos, esperados {N_PARES}.")
-    taxas = {t: carregar_taxa_periodo(t, ANO_INICIO, ANO_FIM).set_index("municipio") for t in TIPOS_MORAN}
+    if len(sig) != N_PARES[denominador]:
+        raise ValueError(f"{len(sig)} pares significativos, esperados {N_PARES[denominador]}.")
+    taxas = {t: taxa_periodo(t, denominador) for t in TIPOS_MORAN}
+    r2025 = pd.Series(fator(d["pop"].index.to_series(), denominador), index=d["pop"].index)
     estadual = {t: x["casos_total"].sum() / x["populacao_pessoas_ano"].sum() * 100_000 for t, x in taxas.items()}
     linhas = []
     for _, r in sig.iterrows():
@@ -42,7 +58,7 @@ def calcular() -> tuple[pd.DataFrame, dict, list[str]]:
         x = taxas[t].loc[m]
         obs = int(x["casos_total"])
         esp = x["populacao_pessoas_ano"] * estadual[t] / 100_000
-        esp_2025 = d["pop"][m] * 8 * estadual[t] / 100_000
+        esp_2025 = d["pop"][m] * r2025[m] * 8 * estadual[t] / 100_000
         p = poisson.sf(obs - 1, esp) if q in ALTO else poisson.cdf(obs, esp)
         linhas.append({"municipio": m, "desfecho": t, "quadrante": q, "observado": obs, "esperado": esp,
                        "esperado_pop2025x8": esp_2025, "razao": obs / esp, "p_poisson": p})
@@ -51,8 +67,9 @@ def calcular() -> tuple[pd.DataFrame, dict, list[str]]:
     aa = sorted(d["quadrante"].index[d["quadrante"] == "AA"])
     blocos = componentes(aa, d["vizinhos"])
     norte = blocos[0]
-    if len(norte) != N_BLOCO_NORTE:
-        raise ValueError(f"Maior bloco AA tem {len(norte)} municípios, esperados {N_BLOCO_NORTE}.")
+    esperado_norte = N_BLOCO_NORTE[denominador]
+    if len(norte) != esperado_norte:
+        raise ValueError(f"Maior bloco AA tem {len(norte)} municípios, esperados {esperado_norte}.")
     return pares, estadual, norte
 
 
@@ -84,7 +101,13 @@ def tabela_pares(p: pd.DataFrame) -> pd.DataFrame:
 
 
 def main() -> None:
-    p, estadual, norte = calcular()
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    adicionar_argumento(parser)
+    denominador = parser.parse_args().denominador
+    unidade = UNIDADE[denominador]
+    n_pares = N_PARES[denominador]
+    pop_2025 = "população de 2025" if denominador == "total" else "população feminina estimada de 2025"
+    p, estadual, norte = calcular(denominador)
     pn = p[p["municipio"].isin(norte)]
     por_mun = pn.groupby("municipio").agg(
         pares=("desfecho", "size"), algum=("esperado", lambda s: bool((s >= LIMIAR).any())),
@@ -93,13 +116,17 @@ def main() -> None:
     caem = pn[pn["esperado"] < LIMIAR]
     alto = p["quadrante"].isin(ALTO)
     contra = p[(alto & (p["razao"] < 1)) | (~alto & (p["razao"] > 1))]
+    if (~alto & (p["razao"] > 1)).any():
+        raise ValueError("Há par em quadrante baixo com observado acima do esperado; o texto abaixo afirma que não.")
     taxa_txt = "; ".join(f"{t} {br(v, 2)}" for t, v in estadual.items())
     texto = f"""# Esperado sob a taxa estadual frente ao observado, nos pares significativos do LISA
 
-São os {N_PARES} pares município-desfecho significativos no LISA de Assunção e Reis, 2018-2025 (semente 12345, 99.999 permutações, FDR sobre o p direcional). Gerada por `src/analysis/esperado_vs_observado_lisa.py`.
+**Denominador:** {DESCRICAO[denominador]}.
 
-- **Esperado** = pessoas-ano do município em 2018-2025 × taxa estadual / 100 mil. As pessoas-ano são a soma das oito populações anuais, o mesmo denominador do LISA, e equivalem a "população × 8 anos". Como verificação, há também uma coluna com a população de 2025 × 8.
-- **Taxa estadual por 100 mil pessoas-ano**, soma dos 497 municípios, sem "NÃO INFORMADO": {taxa_txt}.
+São os {n_pares} pares município-desfecho significativos no LISA de Assunção e Reis, 2018-2025 (semente 12345, 99.999 permutações, FDR sobre o p direcional). Gerada por `src/analysis/esperado_vs_observado_lisa.py`.
+
+- **Esperado** = {unidade} do município em 2018-2025 × taxa estadual / 100 mil. As {unidade} são a soma das oito populações anuais, o mesmo denominador do LISA, e equivalem a "população × 8 anos". Como verificação, há também uma coluna com a {pop_2025} × 8.
+- **Taxa estadual por 100 mil {unidade}**, soma dos 497 municípios, sem "NÃO INFORMADO": {taxa_txt}.
 - **Poisson na direção do quadrante:** P(X ≥ obs) em AA e AB; P(X ≤ obs) em BB e BA. É descritivo: não corrige para múltiplas comparações e ignora a vizinhança, que é o que o LISA mede.
 
 ## Por quadrante
@@ -122,11 +149,11 @@ São os {N_PARES} pares município-desfecho significativos no LISA de Assunção
 
 {markdown(tabela_pares(contra))}
 
-## Os {N_PARES} pares
+## Os {n_pares} pares
 
 {markdown(tabela_pares(p))}
 """
-    SAIDA.write_text(texto, encoding="utf-8")
+    caminho(SAIDA, denominador).write_text(texto, encoding="utf-8")
     print(texto)
 
 

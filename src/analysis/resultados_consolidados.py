@@ -11,21 +11,24 @@ direcional do esda (critério fdr), na configuração de Assunção e Reis para 
   suplementar. Antes de gravar, confere que as linhas de população total das duas
   tabelas coincidem. Eventos, mediana e zeros, de montar_geodataframe, não dependem do
   denominador.
-- sobreposicao_desfechos.md: lê o LISA por município de estabilidade_lisa_sementes.csv e
-  confere as contagens com moran_lisa_assuncao_reis_2018_2025.csv antes de gravar. Segue
-  com POPULAÇÃO TOTAL: as vinte sementes não foram recalculadas com o denominador feminino.
+- sobreposicao_desfechos.md: lê o LISA por município de estabilidade_lisa_sementes.csv do
+  denominador escolhido (--denominador feminina, padrão, ou total, que grava
+  sobreposicao_desfechos_pop_total.md) e confere as contagens com a tabela de Moran do
+  mesmo denominador antes de gravar. A tabela consolidada sai igual nos dois casos.
 
 Feminicídio Consumado não tem LISA em moran_lisa_assuncao_reis.py, logo não entra na
 sobreposição.
 
-Uso: python -m src.analysis.resultados_consolidados
+Uso: python -m src.analysis.resultados_consolidados [--denominador D]
 """
 
+import argparse
 from itertools import combinations
 from pathlib import Path
 
 import pandas as pd
 
+from src.analysis.denominador import DESCRICAO, adicionar_argumento, caminho
 from src.analysis.denominador_feminino import NOTA_DENOMINADOR, SAIDA_RESUMO as FEMININO_CSV
 from src.analysis.mapa_choropleth import montar_geodataframe
 from src.analysis.moran_lisa_assuncao_reis import (
@@ -66,9 +69,10 @@ def carregar_moran() -> pd.DataFrame:
     return moran
 
 
-def carregar_lisa(moran: pd.DataFrame) -> pd.DataFrame:
-    """LISA por município, conferido contra as contagens de moran_lisa_assuncao_reis."""
-    t = pd.read_csv(ESTABILIDADE_CSV)
+def carregar_lisa(moran: pd.DataFrame, denominador: str) -> pd.DataFrame:
+    """LISA por município, conferido contra as contagens da tabela de Moran do mesmo
+    denominador (moran_lisa_assuncao_reis no total; a do denominador feminino no feminino)."""
+    t = pd.read_csv(caminho(ESTABILIDADE_CSV, denominador))
     t = t[(t["semente"] == SEED) & (t["permutacoes"] == PERMUTACOES)]
     referencia = moran[moran["configuracao"] == "assuncao_reis"].set_index("tipo_crime")
     for tipo in LISA:
@@ -151,7 +155,8 @@ As colunas sem sufixo usam o denominador feminino e são as do artigo. As coluna
 medidas com população total, o denominador do portal, e vão para a tabela suplementar; no Moran bruto, a taxa é por
 100 mil pessoas-ano. Eventos, mediana e municípios com zero não dependem do denominador.
 
-`sobreposicao_desfechos.md`, gerada pelo mesmo script, segue com população total.
+`sobreposicao_desfechos.md`, gerada pelo mesmo script, usa o denominador feminino; a versão com população total,
+para a suplementar, é `sobreposicao_desfechos_pop_total.md`.
 
 Gerada por `src/analysis/resultados_consolidados.py`.
 
@@ -189,11 +194,12 @@ def combinacoes(conjuntos: dict[str, set]) -> pd.DataFrame:
     return pd.DataFrame(linhas)
 
 
-def sobreposicao(lisa: pd.DataFrame, todas: pd.DataFrame) -> str:
+def sobreposicao(lisa: pd.DataFrame, todas: pd.DataFrame, denominador: str) -> str:
     sig = lisa[lisa["sobrevive_fdr"] & lisa["tipo_crime"].isin(LISA)]
     gerais = {d: set(sig.loc[sig["tipo_crime"] == d, "municipio"]) for d in LISA}
     secoes = [
         "# Sobreposição do LISA entre desfechos",
+        f"**Denominador:** {DESCRICAO[denominador]}.",
         f"Semente {SEED}, {br(PERMUTACOES, 0)} permutações, FDR sobre o p direcional, ajuste de Assunção e Reis. Quatro "
         "desfechos com LISA. Diagonal das matrizes: municípios significativos naquele desfecho.",
         "## Qualquer quadrante",
@@ -267,13 +273,18 @@ def sobreposicao(lisa: pd.DataFrame, todas: pd.DataFrame) -> str:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    adicionar_argumento(parser)
+    denominador = parser.parse_args().denominador
     moran = carregar_moran()
-    todas = pd.read_csv(ESTABILIDADE_CSV)
-    lisa = carregar_lisa(moran)
     feminino = carregar_feminino(moran)
+    referencia = moran if denominador == "total" else feminino
+    todas = pd.read_csv(caminho(ESTABILIDADE_CSV, denominador))
+    lisa = carregar_lisa(referencia, denominador)
+    saida_sobreposicao = caminho(SAIDA_SOBREPOSICAO, denominador)
     SAIDA_CONSOLIDADO.write_text(consolidado(moran, feminino), encoding="utf-8")
-    SAIDA_SOBREPOSICAO.write_text(sobreposicao(lisa, todas), encoding="utf-8")
-    print(f"Gravados {SAIDA_CONSOLIDADO} e {SAIDA_SOBREPOSICAO}")
+    saida_sobreposicao.write_text(sobreposicao(lisa, todas, denominador), encoding="utf-8")
+    print(f"Gravados {SAIDA_CONSOLIDADO} e {saida_sobreposicao}")
 
 
 if __name__ == "__main__":

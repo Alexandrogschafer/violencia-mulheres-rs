@@ -17,7 +17,10 @@ sementes; logo, a categoria só muda quando o status muda.
 O pico de memória é o maior RSS do processo. As configurações rodam em ordem
 crescente de permutações, então o valor lido ao fim de cada uma é o pico acumulado.
 
-Uso: python -m src.analysis.estabilidade_lisa_sementes [--n-sementes N] [--saida CSV] [--resumo MD]
+Denominador: --denominador feminina (padrão, nomes canônicos) ou total (sufixo _pop_total,
+reproduz a versão anterior). Ver src/analysis/denominador.py.
+
+Uso: python -m src.analysis.estabilidade_lisa_sementes [--denominador D] [--n-sementes N] [--saida CSV] [--resumo MD]
 """
 
 import argparse
@@ -29,7 +32,7 @@ import numpy as np
 import pandas as pd
 
 from src.analysis.autocorrelacao_espacial import montar_pesos_espaciais
-from src.analysis.mapa_choropleth import montar_geodataframe
+from src.analysis.denominador import DESCRICAO, adicionar_argumento, caminho, montar_geodataframe_denominador
 from src.analysis.moran_lisa_assuncao_reis import (
     ANO_FIM,
     ANO_INICIO,
@@ -59,10 +62,10 @@ def pico_memoria_mb() -> float:
     return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
 
 
-def carregar_dados() -> list[tuple]:
+def carregar_dados(denominador: str) -> list[tuple]:
     dados = []
     for tipo in TIPOS_LISA:
-        gdf = montar_geodataframe(tipo, ANO_INICIO, ANO_FIM)
+        gdf = montar_geodataframe_denominador(tipo, ANO_INICIO, ANO_FIM, denominador)
         w = montar_pesos_espaciais(gdf)
         casos = gdf["casos_total"].to_numpy(dtype=float)
         pop = gdf["populacao_pessoas_ano"].to_numpy(dtype=float)
@@ -78,9 +81,9 @@ def categorias(q: np.ndarray, mascara: np.ndarray) -> np.ndarray:
     return rotulos
 
 
-def calcular(n_sementes: int = N_SEMENTES) -> tuple[pd.DataFrame, pd.DataFrame]:
+def calcular(denominador: str, n_sementes: int = N_SEMENTES) -> tuple[pd.DataFrame, pd.DataFrame]:
     sementes = [SEED + i * PASSO_SEMENTE for i in range(n_sementes)]
-    dados = carregar_dados()
+    dados = carregar_dados(denominador)
     blocos, execucao = [], []
 
     for permutacoes in PERMUTACOES:
@@ -223,13 +226,14 @@ def tabela_markdown(df: pd.DataFrame) -> str:
     return "\n".join("| " + " | ".join(map(str, linha)) + " |" for linha in linhas)
 
 
-def escrever_resumo(tabela: pd.DataFrame, execucao: pd.DataFrame, destino: Path) -> str:
+def escrever_resumo(tabela: pd.DataFrame, execucao: pd.DataFrame, destino: Path, denominador: str) -> str:
     dist = distribuicao(tabela)
     contagens, lista = instabilidade(tabela)
     n_sementes = tabela["semente"].nunique()
     texto = "\n\n".join(
         [
             "# Estabilidade do LISA de Assunção e Reis frente à semente",
+            f"**Denominador:** {DESCRICAO[denominador]}.",
             f"{n_sementes} sementes, de {tabela['semente'].min()} a {tabela['semente'].max()}, "
             f"de {PASSO_SEMENTE} em {PASSO_SEMENTE}. Critério `fdr`: Benjamini-Hochberg sobre o p_sim do esda. "
             "Critério `fdr_p2x`: sobre o dobro dele, limitado a 1.",
@@ -251,15 +255,18 @@ def escrever_resumo(tabela: pd.DataFrame, execucao: pd.DataFrame, destino: Path)
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--n-sementes", type=int, default=N_SEMENTES)
-    parser.add_argument("--saida", type=Path, default=SAIDA_PADRAO)
-    parser.add_argument("--resumo", type=Path, default=RESUMO_PADRAO)
+    parser.add_argument("--saida", type=Path, default=None)
+    parser.add_argument("--resumo", type=Path, default=None)
+    adicionar_argumento(parser)
     args = parser.parse_args()
+    args.saida = args.saida or caminho(SAIDA_PADRAO, args.denominador)
+    args.resumo = args.resumo or caminho(RESUMO_PADRAO, args.denominador)
 
     inicio = time.perf_counter()
-    tabela, execucao = calcular(args.n_sementes)
+    tabela, execucao = calcular(args.denominador, args.n_sementes)
     args.saida.parent.mkdir(parents=True, exist_ok=True)
     tabela.to_csv(args.saida, index=False)
-    texto = escrever_resumo(tabela, execucao, args.resumo)
+    texto = escrever_resumo(tabela, execucao, args.resumo, args.denominador)
     print(texto)
     print(f"\nTabela gravada em {args.saida}")
     print(f"Resumo gravado em {args.resumo}")

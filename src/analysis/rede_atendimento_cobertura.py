@@ -5,15 +5,20 @@ mesmo conjunto significativo de caracterizacao_municipios_significativos (sement
 99.999 permutações, FDR sobre o p direcional, 2018-2025). Os de "poucos eventos" são pares
 município-desfecho, contados aqui pelo município do par.
 
+Denominador do LISA: --denominador feminina (padrão) ou total (sufixo _pop_total). Ver
+src/analysis/denominador.py.
+
 Pré-requisito: python -m src.fetch_rede_atendimento
-Uso: python -m src.analysis.rede_atendimento_cobertura
+Uso: python -m src.analysis.rede_atendimento_cobertura [--denominador D]
 """
 
+import argparse
 from pathlib import Path
 
 import pandas as pd
 
 from src.analysis.caracterizacao_municipios_significativos import carregar, markdown, pares
+from src.analysis.denominador import DESCRICAO, adicionar_argumento, caminho
 
 RAIZ = Path(__file__).resolve().parent.parent.parent
 REDE = RAIZ / "data" / "processed" / "rede_atendimento_municipio.csv"
@@ -30,8 +35,15 @@ COLUNAS = [
 ]
 
 
-def grupos() -> dict[str, list[str]]:
-    d = carregar()
+# Guardas contra deriva: municípios por grupo, por denominador.
+ESPERADO = {
+    "total": {"Zero evento, significativos": 3, "Pares com até 5 eventos": 9, "AA": 28, "BB": 24},
+    "feminina": {"Zero evento, significativos": 3, "Pares com até 5 eventos": 9, "AA": 27, "BB": 24},
+}
+
+
+def grupos(denominador: str) -> dict[str, list[str]]:
+    d = carregar(denominador)
     p = pares(d)
     q = d["quadrante"]
     g = {
@@ -41,8 +53,7 @@ def grupos() -> dict[str, list[str]]:
         "AA": sorted(q.index[q == "AA"]),
         "BB": sorted(q.index[q == "BB"]),
     }
-    esperado = {"Zero evento, significativos": 3, "Pares com até 5 eventos": 9, "AA": 28, "BB": 24}
-    for k, n in esperado.items():
+    for k, n in ESPERADO[denominador].items():
         if len(g[k]) != n:
             raise ValueError(f"{k}: {len(g[k])} municípios, esperados {n}.")
     g["pares"] = p
@@ -122,10 +133,15 @@ def sem_resposta(rede: pd.DataFrame, g: dict) -> pd.DataFrame:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    adicionar_argumento(parser)
+    denominador = parser.parse_args().denominador
     rede = pd.read_csv(REDE)
-    g = grupos()
+    g = grupos(denominador)
     t = tabela(rede, g)
     texto = f"""# Rede de atendimento nos municípios significativos do LISA
+
+**Denominador do LISA:** {DESCRICAO[denominador]}.
 
 Pergunta: os municípios com zero ou poucos eventos e resultado significativo no LISA são desprovidos de serviço? Validação de medida, descritiva, sem teste de hipótese. Gerada por `src/analysis/rede_atendimento_cobertura.py` a partir de `data/processed/rede_atendimento_municipio.csv` (`src/fetch_rede_atendimento.py`). Grupos do LISA de Assunção e Reis, 2018-2025, semente 12345, 99.999 permutações, FDR sobre o p direcional.
 
@@ -153,7 +169,7 @@ Nenhum município do RS recusou a MUNIC inteira nessas edições: a falta de res
 
 {markdown(sem_resposta(rede, g))}
 """
-    SAIDA.write_text(texto, encoding="utf-8")
+    caminho(SAIDA, denominador).write_text(texto, encoding="utf-8")
     print(texto)
 
 

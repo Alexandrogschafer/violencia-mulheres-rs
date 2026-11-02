@@ -7,9 +7,15 @@ script interrompe a execução se deixar de ser.
 Sem dado de urbanização no repositório, a densidade demográfica entra como informação
 própria, não como aproximação do grau de urbanização. Área em projeção cônica de Albers.
 
-Uso: python -m src.analysis.caracterizacao_municipios_significativos
+Denominador: --denominador feminina (padrão) ou total (ver src/analysis/denominador.py). O
+denominador afeta o conjunto significativo e as taxas; população, piso e densidade seguem em
+população total, porque medem o porte do município. O conjunto significativo é conferido
+contra o LISA calculado à parte por denominador_feminino.py.
+
+Uso: python -m src.analysis.caracterizacao_municipios_significativos [--denominador D]
 """
 
+import argparse
 from pathlib import Path
 
 import numpy as np
@@ -17,7 +23,14 @@ import pandas as pd
 from scipy.stats import hypergeom, mannwhitneyu
 
 from src.analysis.autocorrelacao_espacial import montar_pesos_espaciais
-from src.analysis.mapa_choropleth import _populacao_referencia, montar_geodataframe
+from src.analysis.denominador import (
+    DESCRICAO,
+    adicionar_argumento,
+    caminho,
+    lisa_referencia,
+    montar_geodataframe_denominador,
+)
+from src.analysis.mapa_choropleth import _populacao_referencia
 from src.analysis.moran_lisa_assuncao_reis import (
     ANO_FIM,
     ANO_INICIO,
@@ -30,7 +43,8 @@ TABLES_DIR = Path(__file__).resolve().parent.parent.parent / "outputs" / "tables
 SAIDA = TABLES_DIR / "caracterizacao_municipios_significativos.md"
 ESTABILIDADE = TABLES_DIR / "estabilidade_lisa_sementes.csv"
 PERMUTACOES = 99_999
-N_ESPERADO = 59
+# Municípios significativos em ao menos um desfecho, por denominador: guarda contra deriva.
+N_ESPERADO = {"total": 59, "feminina": 58}
 QUADRANTES = ["AA", "BB", "AB", "BA"]
 ALBERS_RS = "+proj=aea +lat_1=-27 +lat_2=-33 +lat_0=-30 +lon_0=-53 +datum=WGS84 +units=m"
 FAIXAS = [(0, 3000), (3000, 5000), (5000, 6000), (6000, 7500), (7500, 10000), (10000, 50000), (50000, np.inf)]
@@ -69,17 +83,21 @@ def componentes(nomes: list[str], vizinhos: dict[str, set]) -> list[list[str]]:
     return sorted(saida, key=lambda g: (-len(g), g))
 
 
-def carregar() -> dict:
-    t = pd.read_csv(ESTABILIDADE)
+def carregar(denominador: str) -> dict:
+    t = pd.read_csv(caminho(ESTABILIDADE, denominador))
     alto = t[t["permutacoes"] == PERMUTACOES]
     sig = alto[(alto["semente"] == SEED) & alto["sobrevive_fdr"]]
-    if sig["municipio"].nunique() != N_ESPERADO or sig.groupby("municipio")["categoria"].nunique().max() != 1:
+    if sig["municipio"].nunique() != N_ESPERADO[denominador] or sig.groupby("municipio")["categoria"].nunique().max() != 1:
         raise ValueError("Conjunto significativo diferente do esperado.")
+    chave = ["tipo_crime", "municipio", "categoria"]
+    ref = lisa_referencia(denominador)
+    if set(map(tuple, sig[chave].to_numpy())) != set(map(tuple, ref[chave].to_numpy())):
+        raise ValueError("Conjunto significativo diverge do LISA de denominador_feminino.py.")
     estabilidade = alto.groupby(["tipo_crime", "municipio"])["sobrevive_fdr"].sum()
 
     casos = {}
     for tipo in TIPOS_MORAN:
-        gdf = montar_geodataframe(tipo, ANO_INICIO, ANO_FIM)
+        gdf = montar_geodataframe_denominador(tipo, ANO_INICIO, ANO_FIM, denominador)
         casos[tipo] = gdf.set_index("municipio")["casos_total"].astype(int)
         taxa = gdf.set_index("municipio")
         casos[f"pessoas_ano_{tipo}"] = taxa["populacao_pessoas_ano"]
@@ -95,6 +113,7 @@ def carregar() -> dict:
     corede = pd.read_csv(TABLES_DIR / "municipio_corede.csv").set_index("municipio")
     regioes = pd.read_csv(TABLES_DIR / "municipio_regioes_ibge.csv").set_index("municipio")
     return dict(
+        denominador=denominador,
         sig=sig,
         estabilidade=estabilidade,
         casos=casos_df,
@@ -294,11 +313,15 @@ REDE = pd.DataFrame(
 
 
 def main() -> None:
-    d = carregar()
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    adicionar_argumento(parser)
+    denominador = parser.parse_args().denominador
+    d = carregar(denominador)
     q = d["quadrante"]
+    n_sig = N_ESPERADO[denominador]
     desc = pd.DataFrame(
         [descrever_pop(g, d["pop"][q.index[q == g]]) for g in QUADRANTES]
-        + [descrever_pop("Os 59", d["pop"][q.index]), descrever_pop("Os 497", d["pop"])]
+        + [descrever_pop(f"Os {n_sig}", d["pop"][q.index]), descrever_pop("Os 497", d["pop"])]
     )
     aa, bb = d["pop"][q.index[q == "AA"]], d["pop"][q.index[q == "BB"]]
     mw = mannwhitneyu(aa, bb, alternative="two-sided")
@@ -307,6 +330,8 @@ def main() -> None:
     pares_abaixo = int((p["pop"] < PISO_POPULACIONAL).sum())
     faixa_bb = int(((bb >= 5000) & (bb < 7500)).sum())
     faixa_aa = int(((aa >= 5000) & (aa < 7500)).sum())
+    faixa_497 = int(((d["pop"] >= 5000) & (d["pop"] < 7500)).sum())
+    n_497 = len(d["pop"])
     frageis = p[p["eventos"] <= 5].sort_values(["eventos", "tipo", "municipio"]).assign(
         sementes=lambda g: [int(d["estabilidade"][t, m]) for t, m in zip(g["tipo"], g["municipio"])]
     )
@@ -323,17 +348,19 @@ def main() -> None:
     texto = "\n\n".join(
         [
             "# Caracterização dos municípios significativos no LISA",
-            f"{N_ESPERADO} municípios significativos em ao menos um de quatro desfechos, {ANO_INICIO}-{ANO_FIM}, semente {SEED}, "
+            f"**Denominador das taxas e do LISA:** {DESCRICAO[denominador]}. População, piso e densidade: população total.",
+            f"{n_sig} municípios significativos em ao menos um de quatro desfechos, {ANO_INICIO}-{ANO_FIM}, semente {SEED}, "
             f"{br(PERMUTACOES)} permutações, FDR sobre o p direcional. Piso populacional do projeto: {br(PISO_POPULACIONAL)} habitantes, "
             f"avaliado na população de {ANO_FIM}. Gerada por `src/analysis/caracterizacao_municipios_significativos.py`.",
             "## 1. Verificação de método",
-            f"**O LISA foi calculado sobre os 497 municípios, sem aplicar o piso.** {abaixo} dos {N_ESPERADO} municípios e "
+            f"**O LISA foi calculado sobre os 497 municípios, sem aplicar o piso.** {abaixo} dos {n_sig} municípios e "
             f"{pares_abaixo} dos {len(p)} pares município-desfecho estão abaixo dele. O piso existe no projeto para marcar "
             "taxas instáveis nos mapas, e esses municípios são tratados lá como instáveis.",
-            f"**BB está mais concentrado logo acima do piso do que o conjunto dos 497: {faixa_bb}/24 entre 5.000 e 7.499 habitantes, "
-            f"contra {br(24 * 75 / 497, 1)} esperados; AA tem {faixa_aa}/28, contra {br(28 * 75 / 497, 1)}.** Como o LISA não usa o piso, "
+            f"**BB está mais concentrado logo acima do piso do que o conjunto dos 497: {faixa_bb}/{len(bb)} entre 5.000 e 7.499 habitantes, "
+            f"contra {br(len(bb) * faixa_497 / n_497, 1)} esperados; AA tem {faixa_aa}/{len(aa)}, contra {br(len(aa) * faixa_497 / n_497, 1)}.** Como o LISA não usa o piso, "
             "ele não pode ter selecionado esses municípios. Mas a faixa foi escolhida depois de ver os dados, o excesso enfraquece "
-            f"com outros cortes, e {int((bb < PISO_POPULACIONAL).sum())}/24 dos BB estão abaixo do piso, proporção próxima à dos 497 (46,5%). "
+            f"com outros cortes, e {int((bb < PISO_POPULACIONAL).sum())}/{len(bb)} dos BB estão abaixo do piso, proporção próxima à dos 497 "
+            f"({br(100 * (d['pop'] < PISO_POPULACIONAL).mean(), 1)}%). "
             "É uma questão de método a declarar e investigar, não um achado.",
             "**Há pares significativos sustentados por pouquíssimos eventos, e eles são a fragilidade mais direta:** ver a lista abaixo.",
             "### Distribuição de população, 2025",
@@ -348,7 +375,7 @@ def main() -> None:
             markdown(eventos_por_par(d)),
             "### Pares significativos com até 5 eventos",
             markdown(frageis),
-            "### Os 59 municípios",
+            f"### Os {n_sig} municípios",
             "Eventos no período inteiro. Entre parênteses, as sementes em que o par é significativo, de 20.",
             markdown(tabela_municipios(d)),
             "## 2. Caracterização territorial",
@@ -359,7 +386,7 @@ def main() -> None:
             markdown(resumo_blocos(d)),
             "### Blocos verificados",
             markdown(blocos_especificos(d)),
-            "### Território dos 59",
+            f"### Território dos {n_sig}",
             markdown(tabela_territorio(d)),
             "## 3. Rede de atendimento",
             "**Os dados não estão no repositório, e nenhuma comparação de cobertura foi feita.** A busca cobriu nomes de "
@@ -369,7 +396,7 @@ def main() -> None:
             "`codigo_ibge` com `outputs/tables/municipio_codigo_ibge.csv`, que já cobre os 497.",
         ]
     )
-    SAIDA.write_text(texto + "\n", encoding="utf-8")
+    caminho(SAIDA, denominador).write_text(texto + "\n", encoding="utf-8")
     print(texto)
 
 

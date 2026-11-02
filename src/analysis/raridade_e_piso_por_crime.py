@@ -8,18 +8,20 @@ O limiar é o menor k tal que piso <= q * k / n, isto é, quantos municípios pr
 estar no piso para que o FDR aceite esse p. Não se confunde com uma exigência geral:
 um p maior que o piso tem limiar próprio, sempre mais alto.
 
-Taxa: casos por 100 mil pessoas-ano, com a população total do município como
-denominador, como em carregar_taxa_periodo.
+Taxa: casos por 100 mil, com o denominador escolhido (--denominador feminina, padrão, em
+mulheres-ano; ou total, em pessoas-ano, como em carregar_taxa_periodo). Lê e grava os
+arquivos do mesmo denominador (ver src/analysis/denominador.py).
 
-Uso: python -m src.analysis.raridade_e_piso_por_crime
+Uso: python -m src.analysis.raridade_e_piso_por_crime [--denominador D]
 """
 
+import argparse
 import math
 from pathlib import Path
 
 import pandas as pd
 
-from src.analysis.mapa_choropleth import montar_geodataframe
+from src.analysis.denominador import DESCRICAO, UNIDADE, adicionar_argumento, caminho, montar_geodataframe_denominador
 from src.analysis.moran_lisa_assuncao_reis import ALFA, ANO_FIM, ANO_INICIO, N_MUNICIPIOS, TIPOS_LISA
 
 TABLES_DIR = Path(__file__).resolve().parent.parent.parent / "outputs" / "tables"
@@ -38,8 +40,8 @@ def limiar(permutacoes: int) -> int:
     return math.ceil(N_MUNICIPIOS / (ALFA * (permutacoes + 1)) - 1e-9)
 
 
-def raridade(tipo: str) -> dict:
-    gdf = montar_geodataframe(tipo, ANO_INICIO, ANO_FIM)
+def raridade(tipo: str, denominador: str) -> dict:
+    gdf = montar_geodataframe_denominador(tipo, ANO_INICIO, ANO_FIM, denominador)
     casos = gdf["casos_total"].astype(float)
     if len(gdf) != N_MUNICIPIOS or casos.isna().any():
         raise ValueError(f"{tipo}: universo diferente de {N_MUNICIPIOS} municípios completos.")
@@ -71,13 +73,17 @@ def resumo_piso(g: pd.DataFrame) -> str:
 
 
 def main() -> None:
-    tabela = pd.read_csv(ENTRADA)
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    adicionar_argumento(parser)
+    denominador = parser.parse_args().denominador
+    entrada, saida = caminho(ENTRADA, denominador), caminho(SAIDA, denominador)
+    tabela = pd.read_csv(entrada)
     baixo, alto = piso(tabela, 999), piso(tabela, 99_999)
     if baixo["semente"].nunique() != N_SEMENTES or alto["semente"].nunique() != N_SEMENTES:
         raise ValueError("Entrada não tem as vinte sementes esperadas.")
     limiar_baixo, limiar_alto = limiar(999), limiar(99_999)
 
-    linhas = {tipo: raridade(tipo) for tipo in TIPOS_LISA}
+    linhas = {tipo: raridade(tipo, denominador) for tipo in TIPOS_LISA}
     ordem = sorted(TIPOS_LISA, key=lambda t: (-linhas[t]["mediana"], -linhas[t]["total"]))
     cruzada = []
     for tipo in ordem:
@@ -109,9 +115,11 @@ def main() -> None:
     sem_piso = alto[alto["no_piso"] == 0]
     texto = f"""# Raridade do desfecho e piso de p, por crime
 
+**Denominador:** {DESCRICAO[denominador]}.
+
 Quatro crimes com LISA, {N_MUNICIPIOS} municípios, {ANO_INICIO}-{ANO_FIM}. Linhas da menor para a maior raridade,
-pela contagem municipal mediana. Contagens no período inteiro; taxas por 100 mil pessoas-ano, com a população
-total como denominador. No piso significa p = 0,001 a 999 permutações e p = 0,00001 a 99.999. Significativo
+pela contagem municipal mediana. Contagens no período inteiro; taxas por 100 mil {UNIDADE[denominador]}, com a {"população" if denominador == "total" else "população feminina"}
+{"total" if denominador == "total" else "estimada"} como denominador. No piso significa p = 0,001 a 999 permutações e p = 0,00001 a 99.999. Significativo
 significa sobreviver ao FDR de Benjamini-Hochberg com q = 0,05 sobre o `p_sim`.
 
 {tabela_md}
@@ -133,7 +141,7 @@ significa sobreviver ao FDR de Benjamini-Hochberg com q = 0,05 sobre o `p_sim`.
   significativos vai de {int(sem_piso['significativos'].min())} a {int(sem_piso['significativos'].max())}.
 - Nenhuma combinação fica sem significativos: o FDR não precisa que algum município atinja o piso.
 """
-    SAIDA.write_text(texto, encoding="utf-8")
+    saida.write_text(texto, encoding="utf-8")
     print(texto)
 
 

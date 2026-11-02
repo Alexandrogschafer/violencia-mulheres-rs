@@ -10,15 +10,21 @@ confirma isso), então vale para todas as sementes em que ele aparece.
 
 Critério principal: fdr. Critério de referência: fdr_p2x, sobre o dobro do p.
 
-Uso: python -m src.analysis.composicao_quadrantes_por_permutacoes
+Denominador: --denominador feminina (padrão) ou total; lê e grava os arquivos do mesmo
+denominador (ver src/analysis/denominador.py).
+
+Uso: python -m src.analysis.composicao_quadrantes_por_permutacoes [--denominador D]
 """
 
+import argparse
 from itertools import combinations
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 from scipy.stats import binomtest
+
+from src.analysis.denominador import DESCRICAO, adicionar_argumento, caminho
 
 TABLES_DIR = Path(__file__).resolve().parent.parent.parent / "outputs" / "tables"
 ENTRADA = TABLES_DIR / "estabilidade_lisa_sementes.csv"
@@ -245,7 +251,11 @@ def secao_criterio(tabela: pd.DataFrame, criterio: str) -> tuple[str, dict, pd.D
 
 
 def main() -> None:
-    tabela = pd.read_csv(ENTRADA)
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    adicionar_argumento(parser)
+    denominador = parser.parse_args().denominador
+    entrada, saida = caminho(ENTRADA, denominador), caminho(SAIDA, denominador)
+    tabela = pd.read_csv(entrada)
     if tabela["semente"].nunique() != N_SEMENTES or set(tabela["permutacoes"]) != set(PERMUTACOES):
         raise ValueError("Entrada não tem as vinte sementes e as duas configurações esperadas.")
 
@@ -259,6 +269,7 @@ def main() -> None:
 
     conclusao = (
         "# Composição por quadrante com 999 e 99.999 permutações\n\n"
+        f"**Denominador:** {DESCRICAO[denominador]}.\n\n"
         "## Conclusão: indeterminado\n\n"
         f"Os dados não têm poder para responder a pergunta. Com 99.999 permutações, há só **{n_out} pares outlier** "
         f"no critério `fdr` ({contagem['AB']} AB e {contagem['BA']} BA), contra "
@@ -268,8 +279,8 @@ def main() -> None:
         f"Critério adotado: menos de {MIN_PARES_OUTLIER} pares outlier leva a “indeterminado”. "
         "O limiar é um julgamento, não uma regra estatística."
     )
-    SAIDA.write_text("\n\n".join([conclusao, secao_fdr, secao_p2x]) + "\n", encoding="utf-8")
-    print(f"Gravado em {SAIDA}")
+    saida.write_text("\n\n".join([conclusao, secao_fdr, secao_p2x]) + "\n", encoding="utf-8")
+    print(f"Gravado em {saida}")
 
 
 if __name__ == "__main__":
