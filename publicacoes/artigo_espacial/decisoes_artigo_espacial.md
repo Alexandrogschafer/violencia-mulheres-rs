@@ -25,7 +25,8 @@ possa ser reconhecido quando aparecer.
   feminina do município no Censo 2022. Verificado: a razão é estável entre os Censos 2010 e
   2022 (mediana de variação 0,32 p.p.; 1% dos municípios acima de 2 p.p.; nenhum deles
   significativo no LISA). A troca para o denominador feminino muda o Moran global em no
-  máximo 0,014 e altera 3 de 497 municípios por desfecho. **Declarar no texto que a
+  máximo 0,014 e, nos quatro desfechos somados, altera o status de significância de 3
+  municípios, no máximo 1 por desfecho, e o quadrante de 1. **Declarar no texto que a
   população feminina anual é estimada, não medida.**
   - O **portal usa população total**. A diferença é imaterial e vai para **tabela
     suplementar**, com os dois denominadores lado a lado. A RESS permite duas suplementares
@@ -134,8 +135,8 @@ foram citados errado de memória três vezes durante o desenvolvimento.
 
 **Epidemiologia e Serviços de Saúde (RESS)**, artigo original. Verificado empiricamente em
 três artigos publicados do v. 35 (2026): o limite de 3.500 palavras vale **só para o corpo
-do texto**. Resumo (196–251), referências (902–993), conteúdo de tabelas e legendas
-(135–167) ficam de fora. Artigos publicados têm 2.894 a 3.571 palavras de prosa, mediana
+do texto**. Resumo (196–251), referências (902–993) e tabelas — tanto o conteúdo
+(582–1.253) quanto os títulos e legendas (135–167) — ficam de fora. Artigos publicados têm 2.894 a 3.571 palavras de prosa, mediana
 2.928.
 
 Evidência adicional a favor da RESS e contra *Cadernos de Saúde Pública*: a CSP recusou de
