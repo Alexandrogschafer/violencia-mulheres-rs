@@ -13,7 +13,8 @@ As colunas sem sufixo usam o denominador feminino e são as do artigo. As coluna
 medidas com população total, o denominador do portal, e vão para a tabela suplementar; no Moran bruto, a taxa é por
 100 mil pessoas-ano. Eventos, mediana e municípios com zero não dependem do denominador.
 
-`sobreposicao_desfechos.md`, gerada pelo mesmo script, segue com população total.
+`sobreposicao_desfechos.md`, gerada pelo mesmo script, usa o denominador feminino; a versão com população total,
+para a suplementar, é `sobreposicao_desfechos_pop_total.md`.
 
 Gerada por `src/analysis/resultados_consolidados.py`.
 
