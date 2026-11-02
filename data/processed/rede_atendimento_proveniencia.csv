@@ -1,0 +1,4 @@
+fonte,edicao,url,sha256,bytes
+MUNIC/IBGE,2018,https://ftp.ibge.gov.br/Perfil_Municipios/2018/Base_de_Dados/Base_MUNIC_2018_xlsx_20201103.zip,ef0b1668d6562a96c3cc9153cd268b3596a36613c4aed605ace160bf7e2761c9,20700702
+MUNIC/IBGE,2019,https://ftp.ibge.gov.br/Perfil_Municipios/2019/Base_de_Dados/Base_MUNIC_2019_20210817.xlsx,a8ca1e21de0d51234e53e5e1e042620a46bd440f029f94ebb034283ce140892b,24797051
+MUNIC/IBGE,2023,https://ftp.ibge.gov.br/Perfil_Municipios/2023/Base_de_Dados/Base_MUNIC_2023.xlsx,511d50a24472d0c0fa8277e7557e6f74634bab55ced3fe191849390c6717c759,23324260
