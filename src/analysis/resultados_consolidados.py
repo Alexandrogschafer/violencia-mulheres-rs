@@ -3,11 +3,17 @@
 Tudo com semente 12345, 99.999 permutações e FDR de Benjamini-Hochberg sobre o p
 direcional do esda (critério fdr), na configuração de Assunção e Reis para o LISA.
 
-- resultados_consolidados.md: fonte única de números do artigo. Moran e contagens por
-  quadrante vêm de moran_lisa_assuncao_reis_2018_2025.csv; eventos, mediana e zeros, de
-  montar_geodataframe.
+- resultados_consolidados.md: fonte única de números do artigo. Denominador principal:
+  população feminina ESTIMADA (população total do ano × razão feminina do município no
+  Censo 2022; ver denominador_feminino.py), com Moran e contagens por quadrante lidos de
+  moran_lisa_denominador_feminino_2018_2025.csv. Ao lado, identificado, o mesmo bloco com
+  população total, lido de moran_lisa_assuncao_reis_2018_2025.csv: vai para a tabela
+  suplementar. Antes de gravar, confere que as linhas de população total das duas
+  tabelas coincidem. Eventos, mediana e zeros, de montar_geodataframe, não dependem do
+  denominador.
 - sobreposicao_desfechos.md: lê o LISA por município de estabilidade_lisa_sementes.csv e
-  confere as contagens com o CSV acima antes de gravar.
+  confere as contagens com moran_lisa_assuncao_reis_2018_2025.csv antes de gravar. Segue
+  com POPULAÇÃO TOTAL: as vinte sementes não foram recalculadas com o denominador feminino.
 
 Feminicídio Consumado não tem LISA em moran_lisa_assuncao_reis.py, logo não entra na
 sobreposição.
@@ -20,6 +26,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from src.analysis.denominador_feminino import NOTA_DENOMINADOR, SAIDA_RESUMO as FEMININO_CSV
 from src.analysis.mapa_choropleth import montar_geodataframe
 from src.analysis.moran_lisa_assuncao_reis import (
     ALFA,
@@ -74,9 +81,45 @@ def carregar_lisa(moran: pd.DataFrame) -> pd.DataFrame:
     return t
 
 
-def consolidado(moran: pd.DataFrame) -> str:
+def carregar_feminino(moran: pd.DataFrame) -> pd.DataFrame:
+    """Moran e LISA com denominador feminino, conferidos contra o CSV de população total:
+    as linhas de população total da tabela feminina têm de reproduzir as publicadas."""
+    fem = pd.read_csv(FEMININO_CSV)
+    if set(fem["semente"]) != {SEED} or set(fem["permutacoes"]) != {PERMUTACOES}:
+        raise ValueError("A tabela do denominador feminino não está em semente 12345 e 99.999 permutações.")
+    ref = moran.set_index(["tipo_crime", "configuracao"])
+    for _, lin in fem[fem["denominador"] == "total"].iterrows():
+        a = ref.loc[(lin["tipo_crime"], lin["configuracao"])]
+        cols = ["moran_i", "moran_p_sim"] + (
+            [f"lisa_{q.lower()}_fdr" for q in QUADRANTES] + ["lisa_total_fdr"] if pd.notna(lin["lisa_total_fdr"]) else []
+        )
+        if not all(abs(float(lin[c]) - float(a[c])) < 1e-12 for c in cols):
+            raise ValueError(f"{lin['tipo_crime']}, {lin['configuracao']}: população total diverge entre as tabelas.")
+    esperado = {(t, c) for t in TIPOS_MORAN for c in ("bruta", "assuncao_reis")}
+    obtido = set(map(tuple, fem.loc[fem["denominador"] == "feminina", ["tipo_crime", "configuracao"]].to_numpy()))
+    if obtido != esperado:
+        raise ValueError(f"Faltam linhas na tabela feminina: {sorted(esperado - obtido)}")
+    return fem[fem["denominador"] == "feminina"]
+
+
+def bloco(bruta: pd.DataFrame, ajustada: pd.DataFrame, tipo: str, sufixo: str) -> dict:
+    linha = {
+        f"Moran bruto{sufixo}": br(bruta.loc[tipo, "moran_i"], 4),
+        f"p bruto{sufixo}": br(bruta.loc[tipo, "moran_p_sim"], 5),
+        f"Moran ajustado{sufixo}": br(ajustada.loc[tipo, "moran_i"], 4),
+        f"p ajustado{sufixo}": br(ajustada.loc[tipo, "moran_p_sim"], 5),
+    }
+    for q in QUADRANTES + ["total"]:
+        valor = ajustada.loc[tipo, f"lisa_{q.lower()}_fdr"]
+        linha[f"LISA {q}{sufixo}"] = "não calculado" if pd.isna(valor) else int(valor)
+    return linha
+
+
+def consolidado(moran: pd.DataFrame, feminino: pd.DataFrame) -> str:
     bruta = moran[moran["configuracao"] == "bruta"].set_index("tipo_crime")
     ajustada = moran[moran["configuracao"] == "assuncao_reis"].set_index("tipo_crime")
+    bruta_f = feminino[feminino["configuracao"] == "bruta"].set_index("tipo_crime")
+    ajustada_f = feminino[feminino["configuracao"] == "assuncao_reis"].set_index("tipo_crime")
     if set(ORDEM_DESFECHOS) != set(TIPOS_MORAN):
         raise ValueError("Desfechos diferentes dos de moran_lisa_assuncao_reis.")
     linhas = []
@@ -89,23 +132,26 @@ def consolidado(moran: pd.DataFrame) -> str:
             "Eventos": br(casos.sum(), 0),
             "Mediana municipal": br(casos.median(), 1),
             "Municípios com zero": f"{br(100 * (casos == 0).mean(), 1)}%",
-            "Moran bruto": br(bruta.loc[tipo, "moran_i"], 4),
-            "p bruto": br(bruta.loc[tipo, "moran_p_sim"], 5),
-            "Moran ajustado": br(ajustada.loc[tipo, "moran_i"], 4),
-            "p ajustado": br(ajustada.loc[tipo, "moran_p_sim"], 5),
+            **bloco(bruta_f, ajustada_f, tipo, ""),
+            **bloco(bruta, ajustada, tipo, " (pop. total)"),
         }
-        for q in QUADRANTES:
-            valor = ajustada.loc[tipo, f"lisa_{q.lower()}_fdr"]
-            linha[f"LISA {q}"] = "não calculado" if pd.isna(valor) else int(valor)
-        valor = ajustada.loc[tipo, "lisa_total_fdr"]
-        linha["LISA total"] = "não calculado" if pd.isna(valor) else int(valor)
         linhas.append(linha)
     return f"""# Resultados consolidados
 
+> **Denominador: {NOTA_DENOMINADOR}.**
+> O IBGE só publica população municipal por sexo nos Censos. A suposição foi testada com o Censo 2010 em
+> `denominador_feminino_vs_total.md`.
+
 Fonte única de números do artigo. {N_MUNICIPIOS} municípios, {ANO_INICIO}-{ANO_FIM}, contiguidade de rainha padronizada
-por linha, semente {SEED}, {br(PERMUTACOES, 0)} permutações. Moran bruto: taxa por 100 mil pessoas-ano. Moran ajustado e
+por linha, semente {SEED}, {br(PERMUTACOES, 0)} permutações. Moran bruto: taxa por 100 mil mulheres-ano. Moran ajustado e
 LISA: ajuste de Assunção e Reis. LISA: municípios que sobrevivem ao FDR de Benjamini-Hochberg com q = {br(ALFA, 2)}, por
 desfecho, sobre o p direcional do esda. O menor p possível é 0,00001.
+
+As colunas sem sufixo usam o denominador feminino e são as do artigo. As colunas marcadas **(pop. total)** repetem as
+medidas com população total, o denominador do portal, e vão para a tabela suplementar; no Moran bruto, a taxa é por
+100 mil pessoas-ano. Eventos, mediana e municípios com zero não dependem do denominador.
+
+`sobreposicao_desfechos.md`, gerada pelo mesmo script, segue com população total.
 
 Gerada por `src/analysis/resultados_consolidados.py`.
 
@@ -224,7 +270,8 @@ def main() -> None:
     moran = carregar_moran()
     todas = pd.read_csv(ESTABILIDADE_CSV)
     lisa = carregar_lisa(moran)
-    SAIDA_CONSOLIDADO.write_text(consolidado(moran), encoding="utf-8")
+    feminino = carregar_feminino(moran)
+    SAIDA_CONSOLIDADO.write_text(consolidado(moran, feminino), encoding="utf-8")
     SAIDA_SOBREPOSICAO.write_text(sobreposicao(lisa, todas), encoding="utf-8")
     print(f"Gravados {SAIDA_CONSOLIDADO} e {SAIDA_SOBREPOSICAO}")
 

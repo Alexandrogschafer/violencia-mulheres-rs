@@ -50,6 +50,7 @@ from src.analysis.moran_lisa_assuncao_reis import (
     QUADRANTES,
     SEED,
     TIPOS_LISA,
+    TIPOS_MORAN,
     benjamini_hochberg,
     rodar_global,
     rodar_local,
@@ -110,7 +111,7 @@ def montar_populacao_censos() -> pd.DataFrame:
     return base.sort_values("municipio").reset_index(drop=True)
 
 
-def rodar(tipo: str, razao: pd.Series) -> tuple[list[dict], list[dict]]:
+def montar_base(tipo: str, razao: pd.Series):
     gdf = montar_geodataframe(tipo, ANO_INICIO, ANO_FIM)
     w = montar_pesos_espaciais(gdf)
     casos = gdf["casos_total"].to_numpy(dtype=float)
@@ -118,7 +119,42 @@ def rodar(tipo: str, razao: pd.Series) -> tuple[list[dict], list[dict]]:
     r = gdf["municipio"].map(razao).to_numpy(dtype=float)
     if len(gdf) != N_MUNICIPIOS or np.isnan(casos).any() or np.isnan(pop_total).any() or np.isnan(r).any():
         raise ValueError(f"{tipo}: universo diferente de {N_MUNICIPIOS} municípios completos.")
-    denominadores = {"total": pop_total, "feminina": pop_total * r}
+    return gdf, w, casos, {"total": pop_total, "feminina": pop_total * r}
+
+
+def linha_global(tipo, config, nome, moran, w) -> dict:
+    return {
+        "tipo_crime": tipo,
+        "configuracao": config,
+        "denominador": nome,
+        "n_municipios": w.n,
+        "permutacoes": N_PERMUTACOES,
+        "semente": SEED,
+        "moran_i": moran.I,
+        "moran_ei": moran.EI,
+        "moran_z_sim": moran.z_sim,
+        "moran_p_sim": moran.p_sim,
+        "observacao": NOTA_DENOMINADOR if nome == "feminina" else "população total (pipeline atual)",
+    }
+
+
+def rodar_globais_complementares(tipo: str, razao: pd.Series) -> list[dict]:
+    """Moran global que resultados_consolidados.md também reporta: o da taxa bruta
+    (todos os desfechos) e o ajustado de desfechos sem LISA (Feminicídio Consumado)."""
+    _, w, casos, denominadores = montar_base(tipo, razao)
+    configs = ["bruta"] + ([] if tipo in TIPOS_LISA else ["assuncao_reis"])
+    linhas = []
+    for config in configs:
+        for nome, pop in denominadores.items():
+            taxa = casos / pop * 100_000
+            moran = rodar_global(config, casos, pop, taxa, w, N_PERMUTACOES, SEED)
+            linhas.append(linha_global(tipo, config, nome, moran, w))
+            print(f"{tipo} | {config} | {nome}: I={moran.I:.4f} p={moran.p_sim:.5f}", flush=True)
+    return linhas
+
+
+def rodar(tipo: str, razao: pd.Series) -> tuple[list[dict], list[dict]]:
+    gdf, w, casos, denominadores = montar_base(tipo, razao)
 
     resumo, municipios = [], []
     for nome, pop in denominadores.items():
@@ -129,18 +165,9 @@ def rodar(tipo: str, razao: pd.Series) -> tuple[list[dict], list[dict]]:
         sig = benjamini_hochberg(p)
         q = np.asarray(lisa.q)
         linha = {
-            "tipo_crime": tipo,
-            "denominador": nome,
-            "n_municipios": w.n,
-            "permutacoes": N_PERMUTACOES,
-            "semente": SEED,
-            "moran_i": moran.I,
-            "moran_ei": moran.EI,
-            "moran_z_sim": moran.z_sim,
-            "moran_p_sim": moran.p_sim,
+            **linha_global(tipo, "assuncao_reis", nome, moran, w),
             "lisa_total_fdr": int(sig.sum()),
             **{f"lisa_{qn}_fdr": int(((q == qc) & sig).sum()) for qc, qn in QUADRANTES.items()},
-            "observacao": NOTA_DENOMINADOR if nome == "feminina" else "população total (pipeline atual)",
         }
         resumo.append(linha)
         for i, mun in enumerate(gdf["municipio"]):
@@ -156,18 +183,20 @@ def rodar(tipo: str, razao: pd.Series) -> tuple[list[dict], list[dict]]:
 
 
 def validar_contra_atual(resumo: pd.DataFrame) -> pd.DataFrame:
-    """A versão total precisa reproduzir o CSV publicado do pipeline."""
-    atual = pd.read_csv(CSV_ATUAL)
-    atual = atual[atual["configuracao"] == "assuncao_reis"].set_index("tipo_crime")
+    """A versão total precisa reproduzir o CSV publicado do pipeline, em todas as
+    linhas calculadas aqui (Moran ajustado e bruto; LISA onde houver)."""
+    atual = pd.read_csv(CSV_ATUAL).set_index(["tipo_crime", "configuracao"])
+    cols = ["lisa_total_fdr", "lisa_aa_fdr", "lisa_ba_fdr", "lisa_bb_fdr", "lisa_ab_fdr"]
     linhas = []
     for _, lin in resumo[resumo["denominador"] == "total"].iterrows():
-        a = atual.loc[lin["tipo_crime"]]
-        cols = ["lisa_total_fdr", "lisa_aa_fdr", "lisa_ba_fdr", "lisa_bb_fdr", "lisa_ab_fdr"]
+        a = atual.loc[(lin["tipo_crime"], lin["configuracao"])]
+        tem_lisa = pd.notna(lin.get("lisa_total_fdr"))
         ok = np.isclose(lin["moran_i"], a["moran_i"]) and np.isclose(lin["moran_p_sim"], a["moran_p_sim"]) \
-            and all(int(lin[c]) == int(a[c]) for c in cols)
-        linhas.append({"tipo_crime": lin["tipo_crime"], "moran_i_atual": a["moran_i"],
-                       "moran_i_recalculado": lin["moran_i"], "lisa_fdr_atual": int(a["lisa_total_fdr"]),
-                       "lisa_fdr_recalculado": int(lin["lisa_total_fdr"]), "reproduz": ok})
+            and (not tem_lisa or all(int(lin[c]) == int(a[c]) for c in cols))
+        linhas.append({"tipo_crime": lin["tipo_crime"], "configuracao": lin["configuracao"],
+                       "moran_i_atual": a["moran_i"], "moran_i_recalculado": lin["moran_i"],
+                       "lisa_fdr_atual": int(a["lisa_total_fdr"]) if tem_lisa else "—",
+                       "lisa_fdr_recalculado": int(lin["lisa_total_fdr"]) if tem_lisa else "—", "reproduz": ok})
     val = pd.DataFrame(linhas)
     if not val["reproduz"].all():
         raise RuntimeError(f"Versão total não reproduz o CSV atual:\n{val}")
@@ -207,6 +236,11 @@ def tabela_md(df: pd.DataFrame) -> str:
 
 
 def escrever_md(pop, resumo, comp, val, mun) -> None:
+    # O relatório mostra só o Moran ajustado dos desfechos com LISA; as linhas
+    # complementares (bruto, Feminicídio Consumado) servem a resultados_consolidados.py.
+    resumo = resumo[(resumo["configuracao"] == "assuncao_reis") & resumo["tipo_crime"].isin(TIPOS_LISA)]
+    val = val[(val["configuracao"] == "assuncao_reis") & val["tipo_crime"].isin(TIPOS_LISA)]
+    val = val.drop(columns="configuracao")
     r22 = pop["razao_feminina_2022"]
     v = pop["variacao_pp_2010_2022"].dropna()
     va = v.abs()
@@ -323,6 +357,8 @@ def main() -> None:
         r, m = rodar(tipo, razao)
         resumo += r
         mun += m
+    for tipo in TIPOS_MORAN:
+        resumo += rodar_globais_complementares(tipo, razao)
     resumo, mun = pd.DataFrame(resumo), pd.DataFrame(mun)
     val = validar_contra_atual(resumo)
     resumo.to_csv(SAIDA_RESUMO, index=False)
