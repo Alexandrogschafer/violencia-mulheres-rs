@@ -1,0 +1,1 @@
+("spatial autocorrelation"[tiab] OR "spatial analysis"[tiab] OR Moran[tiab] OR LISA[tiab] OR "Getis-Ord"[tiab] OR "Spatial Analysis"[MeSH Terms]) AND (violence[tiab] OR femicide[tiab] OR homicide[tiab] OR "external causes"[tiab] OR suicide[tiab] OR "Violence"[MeSH Terms]) AND (Brazil[tiab] OR "Brazil"[MeSH Terms]) AND ("2010"[dp] : "2026"[dp])
