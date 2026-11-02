@@ -54,8 +54,12 @@ que são tipos penais distintos. Os arquivos divulgados são revisados retroativ
 secretaria, de modo que a mesma consulta em datas diferentes pode retornar valores
 distintos; registrou-se a proveniência de cada extração, com data e soma de verificação.
 
-As populações municipais anuais vieram das estimativas do IBGE. As taxas foram calculadas
-por 100 mil pessoas-ano, com a população total como denominador.
+As populações municipais anuais vieram das estimativas do IBGE. O denominador adotado foi a
+população feminina, estimada como a população total de cada ano multiplicada pela razão entre
+população feminina e total do município no Censo 2022. Essa razão mostrou-se estável entre
+os Censos de 2010 e 2022, com variação mediana de 0,32 ponto percentual e nenhum município
+acima de 5 pontos. As taxas são expressas por 100 mil mulheres-ano. Registre-se que a
+população feminina anual é estimada, não medida.
 
 ### Autocorrelação espacial
 
@@ -82,12 +86,12 @@ nenhum município significativo em nenhuma das vinte execuções com 999 permuta
 apresentou de cinco a seis com 99.999 — diferença atribuível exclusivamente ao parâmetro.
 
 Como análise de sensibilidade, o procedimento foi repetido aplicando o controle de
-multiplicidade ao dobro do valor p direcional; os resultados constam de seção própria.
+multiplicidade ao dobro do valor p direcional; os resultados constam da seção de Resultados.
 
 ### Critério de interpretação
 
 Para cada par município-desfecho significativo calculou-se o número esperado de eventos sob
-a taxa estadual do desfecho, como pessoas-ano acumuladas no período multiplicadas pela taxa
+a taxa estadual do desfecho, como mulheres-ano acumuladas no período multiplicadas pela taxa
 e divididas por 100 mil. Pares com valor esperado inferior a cinco foram mantidos no
 cálculo — excluí-los alteraria a matriz de vizinhança e, portanto, os resultados dos demais
 — mas não receberam interpretação substantiva. A razão entre observado e esperado é
@@ -219,7 +223,7 @@ baixos.
 
 ### O bloco do norte
 
-O achado de maior extensão é um conjunto contíguo de 21 municípios no noroeste do estado.
+O achado de maior extensão é um conjunto contíguo de 21 municípios no norte do estado.
 Trata-se de municípios pequenos, e a contiguidade do bloco deve ser lida com reserva, já
 que o indicador local compartilha vizinhos entre áreas adjacentes e tende, por construção,
 a produzir conjuntos contíguos.
@@ -238,10 +242,10 @@ acaso e sempre na mesma direção. Nenhum município apresentou valores altos pa
 baixos para outra. Isso é compatível com uma propensão municipal ao registro, que afeta
 todas as formas, mais do que com uma especificidade por tipo de violência.
 
-A coincidência entre lesão corporal e estupro em três municípios contíguos do litoral norte
-merece ressalva adicional. A região recebe população flutuante expressiva no verão, e o
-denominador utilizado é a população feminina residente. Eventos envolvendo pessoas não
-residentes inflam o numerador sem alterar o denominador, de modo que parte do excesso pode
+A coincidência entre lesão corporal e estupro em três municípios contíguos do Conselho
+Regional de Desenvolvimento Litoral merece ressalva adicional. A região litorânea recebe
+população flutuante expressiva no verão, e o denominador utilizado é a população feminina
+residente. Eventos envolvendo pessoas não residentes inflam o numerador sem alterar o denominador, de modo que parte do excesso pode
 ser artefato de medida, e não concentração do fenômeno.
 
 ### Zero não é ausência
