@@ -4,7 +4,7 @@ Arquivo de referência para quem trabalhar neste artigo, humano ou agente. Decis
 tomadas: **não reabrir sem motivo novo**. Cada uma traz a razão, para que o motivo novo
 possa ser reconhecido quando aparecer.
 
-Última atualização: 2026-11-02.
+Última atualização: 2026-11-02 (denominador, periódico, orçamento).
 
 ## Escopo e destino
 
@@ -21,6 +21,19 @@ possa ser reconhecido quando aparecer.
 
 ## Parâmetros da análise
 
+- **Denominador: população feminina**, estimada como população total do ano × razão
+  feminina do município no Censo 2022. Verificado: a razão é estável entre os Censos 2010 e
+  2022 (mediana de variação 0,32 p.p.; 1% dos municípios acima de 2 p.p.; nenhum deles
+  significativo no LISA). A troca para o denominador feminino muda o Moran global em no
+  máximo 0,014 e altera 3 de 497 municípios por desfecho. **Declarar no texto que a
+  população feminina anual é estimada, não medida.**
+  - O **portal usa população total**. A diferença é imaterial e vai para **tabela
+    suplementar**, com os dois denominadores lado a lado. A RESS permite duas suplementares
+    e elas não contam no limite de palavras.
+  - **Porto Alegre em Estupro passa de AA para BA** com o denominador feminino, por ter a
+    maior razão feminina do estado (0,540). Único caso em que a classificação muda. Merece
+    uma frase: a capital não é aglomerado robusto nesse desfecho sob nenhum dos dois
+    denominadores.
 - **Autocorrelação:** Moran global e local com ajuste de Assunção e Reis (1999), pesos de
   contiguidade queen padronizados por linha.
 - **Permutações: 99.999. Semente: 12345.** Não usar 999: com 497 áreas e FDR a 5%, o piso
@@ -28,7 +41,8 @@ possa ser reconhecido quando aparecer.
   Em Feminicídio Tentado isso dá zero significativos em 20 de 20 sementes.
 - **Multiplicidade: Benjamini-Hochberg a 5% sobre o p direcional do esda**, que é a
   convenção do GeoDa e da literatura. O FDR sobre o dobro do p entra como **análise de
-  sensibilidade em seção própria**, nunca como critério principal.
+  sensibilidade**, nunca como critério principal. **Correção de 02/11:** não cabe seção
+  própria no orçamento de 3.500 palavras; vira duas ou três frases nos Resultados.
 - **Declarar a semente publicada:** 12345 dá o mínimo das vinte em Ameaça e Estupro pelo
   critério de sensibilidade.
 
@@ -114,3 +128,26 @@ foram citados errado de memória três vezes durante o desenvolvimento.
 - **Viés por quadrante** (outliers penalizados frente a agrupamentos): refutado. Comparados
   a agrupamentos de p próximo, os outliers retêm igual. O piso age sobre o tamanho do p.
 - **Rede de atendimento como teste de validade:** sem poder discriminante, ver acima.
+
+
+## Periódico e orçamento — fixados em 2026-11-02
+
+**Epidemiologia e Serviços de Saúde (RESS)**, artigo original. Verificado empiricamente em
+três artigos publicados do v. 35 (2026): o limite de 3.500 palavras vale **só para o corpo
+do texto**. Resumo (196–251), referências (902–993), conteúdo de tabelas e legendas
+(135–167) ficam de fora. Artigos publicados têm 2.894 a 3.571 palavras de prosa, mediana
+2.928.
+
+Evidência adicional a favor da RESS e contra *Cadernos de Saúde Pública*: a CSP recusou de
+bancada, em quatro dias e sem avaliação por pares, o `CLIMAPAMPA-A01` — artigo descritivo de
+epidemiologia municipal do mesmo projeto.
+
+**Orçamento de palavras:** introdução 450, métodos 730, resultados 950, discussão 950,
+conclusão 150. Total 3.230.
+
+**Cinco figuras/tabelas, e o que não cabe:** o painel do MAUP fica fora. Todo detalhe por
+município vai para tabela, que não conta palavras. O parágrafo sobre o levantamento
+exploratório dos oito trabalhos é o primeiro a cair se faltar espaço.
+
+**Registro:** `CLIMAPAMPA-I01` do repositório `publicacoes` é a entrada deste artigo, a ser
+promovida. A metade temporal daquela ideia se desmembra em ideia própria.
