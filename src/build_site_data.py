@@ -64,6 +64,42 @@ POP_MINIMA_INSTABILIDADE = 5000
 # taxa_2021_2025.png abaixo é diferente -- vem da Camada 1 (analise_
 # exploratoria.ipynb), fora do escopo desta rodada, e continua com seu
 # próprio recorte (2021-2025) independente deste.
+# Relatórios de outputs/reports/ publicados em docs/assets/data/reports/, um
+# JSON por CSV. A lista é a decisão de publicar, não o conteúdo da pasta: um
+# CSV novo em outputs/reports/ só entra no portal se for acrescentado aqui
+# (uruguaiana_lisa ficou de fora de propósito em 379f6b3).
+RELATORIOS_PARA_PORTAL = [
+    "exploratoria_concentracao_resumo",
+    "exploratoria_concentracao_top10_com_poa",
+    "exploratoria_concentracao_top10_sem_poa",
+    "exploratoria_overlap_ranking_taxa",
+    "exploratoria_poa_vs_estado_taxa",
+    "exploratoria_ranking_taxa_2012_2025",
+    "exploratoria_ranking_taxa_2021_2025",
+    "exploratoria_ranking_top15_absoluto",
+    "exploratoria_serie_anual_tipo",
+    "exploratoria_totais_por_tipo",
+    "inferencial_correlacao_matriz_casos_absolutos",
+    "inferencial_correlacao_matriz_taxa_por_100mil_hab",
+    "inferencial_correlacao_pares_casos_absolutos",
+    "inferencial_correlacao_pares_taxa_por_100mil_hab",
+    "inferencial_correlacao_pvalor_casos_absolutos",
+    "inferencial_correlacao_pvalor_taxa_por_100mil_hab",
+    "inferencial_quebra_estrutural_chow",
+    "inferencial_quebra_estrutural_mannwhitney",
+    "inferencial_sazonalidade_destaques",
+    "inferencial_sazonalidade_kruskal",
+    "inferencial_tendencia_anual",
+    "uruguaiana_comparacao_corede",
+    "uruguaiana_comparacao_porte",
+    "uruguaiana_comparacao_sazonalidade",
+    "uruguaiana_comparacao_tendencia",
+    "uruguaiana_perfil",
+    "uruguaiana_ranking_percentil",
+    "uruguaiana_resumo_corede",
+    "uruguaiana_resumo_porte",
+]
+
 FIGURAS_PARA_PORTAL = [
     "choropleth_ameaca_2018_2025.png",
     "choropleth_estupro_2018_2025.png",
@@ -259,14 +295,10 @@ def preparar_dados_docs() -> None:
     for d in (docs_tables, docs_reports, docs_maps, docs_figures):
         d.mkdir(parents=True, exist_ok=True)
 
-    # reports/ -- todas as tabelas de resultado estatístico geradas pelas
-    # notebooks (exploratória, inferencial, estudos de caso), convertidas 1:1
-    # para JSON. Genérico por design: qualquer novo notebook que salve um CSV
-    # em outputs/reports/ é publicado aqui automaticamente, sem precisar tocar
-    # este script -- é assim que um futuro estudo de caso de outro município
-    # entra no portal.
-    for csv_path in sorted(REPORTS_DIR.glob("*.csv")):
-        _csv_para_json(csv_path, docs_reports / f"{csv_path.stem}.json")
+    # reports/ -- tabelas de resultado das notebooks, convertidas 1:1 para
+    # JSON, só as de RELATORIOS_PARA_PORTAL.
+    for nome in RELATORIOS_PARA_PORTAL:
+        _csv_para_json(REPORTS_DIR / f"{nome}.csv", docs_reports / f"{nome}.json")
 
     # tables/ -- série anual estadual (gráfico da index.html) e resumo por
     # município (tabela pesquisável de municipios.html).
