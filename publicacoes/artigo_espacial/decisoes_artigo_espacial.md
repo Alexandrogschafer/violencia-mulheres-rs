@@ -121,9 +121,8 @@ foram citados errado de memória três vezes durante o desenvolvimento.
 
 - ASSUNÇÃO; REIS (1999) — o ajuste.
 - ANSELIN (1995) — LISA.
-- FISCHER; RAMDAS, arXiv:2404.15586 — o limite inferior de permutações sob correção de
+- FISCHER; BARRY; RAMDAS, arXiv:2404.15586 — o limite inferior de permutações sob correção de
   multiplicidade. **Citar, não reivindicar:** a desigualdade não é contribuição nossa.
-- KNIJNENBURG et al., Bioinformatics 25(12), 2009 — limite de resolução do p por permutação.
 - ARBIA; CARDILE; NARDELLI; SALVINI, arXiv:2610.13472 — correção de multiplicidade para
   LISA ajustada por dependência espacial, de outubro de 2026.
 
