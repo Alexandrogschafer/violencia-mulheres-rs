@@ -139,7 +139,9 @@ def preparar_dataset_processado() -> None:
     ano_min, ano_max = int(df.ano.min()), int(df.ano.max())
     n_linhas = len(df)
 
-    readme = f"""# data/processed/violencia_rs_municipio_ano.csv
+    readme = f"""<!-- Arquivo gerado por src/build_site_data.py: não edite à mão, a próxima execução sobrescreve. -->
+
+# data/processed/violencia_rs_municipio_ano.csv
 
 Dataset tratado e citável do projeto -- consolida casos de violência contra as mulheres
 e meninas no Rio Grande do Sul (fonte: SIP/PROCERGS) com população (IBGE) e taxa por
@@ -177,6 +179,10 @@ localmente.
 - **"NÃO INFORMADO"** é um valor de município em 2018 (Ameaça e Lesão Corporal): casos
   sem município identificado na base original, mantidos para não perder casos do total,
   mas não é um município real -- exclua-o de qualquer análise por município.
+
+## Outros arquivos desta pasta
+
+Os demais conjuntos de `data/processed/` têm README próprio, `*_README.md` (ex.: `rede_atendimento_README.md`).
 
 ## Licença e citação
 
