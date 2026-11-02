@@ -51,7 +51,7 @@ possa ser reconhecido quando aparecer.
 
 - **Esperado ≥ 5 eventos**, calculado como pessoas-ano × taxa estadual do desfecho / 100
   mil. Pares abaixo disso **permanecem no cálculo** — excluí-los mudaria a matriz de pesos
-  e portanto os resultados — mas **não entram na interpretação substantiva**. Caem 6 dos 68
+  e portanto os resultados — mas **não entram na interpretação substantiva**. Caem 5 dos 67
   pares.
 - **Não exigir Poisson p < 0,05 junto.** São perguntas diferentes: esperado ≥ 5 é
   suficiência de dado; o Poisson contra a taxa estadual pergunta se o município é incomum
@@ -60,7 +60,7 @@ possa ser reconhecido quando aparecer.
 - **Reportar a razão observado/esperado ao lado de cada município significativo**, para que
   o leitor veja sozinho se um aglomerado é alto em termos absolutos ou só relativamente.
 - O critério **não é contagem observada**. "Dez eventos observados", considerado antes, é o
-  instrumento errado: Canudos do Vale tem 1 evento observado contra 23,24 esperados e é o
+  instrumento errado: Canudos do Vale tem 1 evento observado contra 21,77 esperados e é o
   achado mais forte; Vale Verde tem 0 contra 0,64 esperados e não é nada.
 
 ## Linguagem obrigatória
@@ -68,16 +68,20 @@ possa ser reconhecido quando aparecer.
 - **Não escrever "aglomerado de alta incidência".** O `Moran_Local_Rate` centra os valores
   padronizados na média municipal, que é negativa nos quatro desfechos porque a taxa
   estadual é ponderada por população e puxada pelas cidades. "Alto" no LISA significa
-  **acima da média dos municípios, não acima da taxa estadual**. Seis pares em quadrante
-  alto têm observado abaixo do esperado estadual, entre eles Porto Alegre em Estupro (0,98)
-  e Capivari do Sul em Lesão Corporal (0,75). Usar "valores relativamente altos", com a
-  referência explicitada.
+  **acima da média dos municípios, não acima da taxa estadual**. Quatro pares em quadrante
+  alto têm observado abaixo do esperado estadual, entre eles Capivari do Sul em Lesão
+  Corporal (0,77). Usar "valores relativamente altos", com a referência explicitada.
 - **Não descrever os quatro BB da sobreposição como "da Serra".** Estão em quatro COREDEs
   distintos — Serra, Vale do Caí, Hortênsias e Paranhana Encosta da Serra — e apenas três
   são contíguos. "Litoral Norte" também não é categoria dos dados: usar COREDE Litoral.
 - **Ressalva obrigatória no bloco norte:** vizinhos compartilham vizinhos no cálculo do I
   local, portanto parte da contiguidade é esperada por construção e não é evidência
   independente de extensão.
+- **Porto Alegre em Estupro** é significativa como BA com observado em 0,94 do esperado e
+  p = 0,0006. A significância vem do tamanho da população, não da magnitude do desvio. Não
+  apresentar como achado substantivo; reportar a razão observado/esperado e registrar na
+  discussão que o teste local é subdimensionado nos municípios pequenos e
+  superdimensionado na capital.
 
 ## Estrutura de achados
 
@@ -85,13 +89,15 @@ possa ser reconhecido quando aparecer.
 |---|---|
 | Principal | Bloco contíguo de 21 municípios AA no norte — COREDEs Médio Alto Uruguai, Celeiro, Rio da Várzea |
 | Secundário | Sobreposição seletiva Lesão Corporal + Estupro em AA no COREDE Litoral, acima do acaso |
-| Validade de medida | Déficits acentuados: Canudos do Vale (1 contra 23,24), Mariana Pimentel (0 contra 6,54), Dr. Maurício Cardoso (2 contra 7,54) |
-| Nulo reportado | Feminicídio Consumado sem estrutura espacial: Moran ajustado 0,0114, p = 0,31 |
+| Validade de medida | Déficits acentuados: Canudos do Vale (1 contra 21,77), Mariana Pimentel (0 contra 6,15), Dr. Maurício Cardoso (2 contra 7,33) |
+| Nulo reportado | Feminicídio Consumado sem estrutura espacial: Moran ajustado 0,0122, p = 0,29 |
 | Métodos | As permutações como justificativa dos parâmetros |
 
 **Sobre a sobreposição:** não escrever que "não há sobreposição". Sob independência, o
-esperado para três desfechos é 0,03 município, então observar zero não informa nada. As
-sobreposições que ocorrem estão 5 a 6 vezes acima do acaso. O achado é a **seletividade**,
+esperado para três desfechos é 0,03 município, então observar zero não informa nada. A
+coincidência Lesão Corporal + Estupro em AA tem 3 observados contra 0,05 esperados sob
+independência, cerca de 60 vezes. O esperado é calculado dentro do quadrante: municípios AA
+em Lesão Corporal × municípios AA em Estupro / 497 (5 × 5 / 497). O achado é a **seletividade**,
 não a ausência.
 
 ## Rede de atendimento — encerrado
