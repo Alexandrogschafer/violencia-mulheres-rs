@@ -62,15 +62,15 @@ secretaria, de modo que a mesma consulta em datas diferentes pode retornar valor
 distintos; registrou-se a proveniência de cada extração, com data e soma de verificação.
 
 As populações municipais anuais vieram do IBGE: de 2018 a 2021 e em 2024 e 2025, das
-estimativas populacionais [11]; em 2022, ano censitário sem estimativa, do Censo
-Demográfico [12]. Como o IBGE não publicou estimativa municipal para 2023, a população
-desse ano foi interpolada linearmente entre 2022 e 2024, como a média dos dois anos
-arredondada ao inteiro. O denominador adotado foi a população feminina, estimada como a
-população total de cada ano multiplicada pela razão entre população feminina e total do
-município no Censo 2022 [12]. Essa razão mostrou-se estável entre os Censos de 2010 [13] e
-2022, com variação mediana absoluta de 0,48 ponto percentual e máximo de 2,60. As taxas
-são expressas por 100 mil mulheres-ano. Registre-se que a população feminina anual é
-estimada, não medida.
+estimativas populacionais [11]; em 2022, do Censo Demográfico [12], porque a série de
+estimativas não traz o ano censitário e, onde existe, a contagem medida é preferível à
+projetada. Como o IBGE não publicou estimativa municipal para 2023, a população desse ano
+foi interpolada linearmente entre 2022 e 2024, como a média dos dois anos arredondada ao
+inteiro. O denominador adotado foi a população feminina, estimada como a população total
+de cada ano multiplicada pela razão entre população feminina e total do município no Censo
+2022 [12]. Essa razão mostrou-se estável entre os Censos de 2010 [13] e 2022, com variação
+mediana absoluta de 0,48 ponto percentual e máximo de 2,60. As taxas são expressas por 100
+mil mulheres-ano. Registre-se que a população feminina anual é estimada, não medida.
 
 ### Autocorrelação espacial
 
@@ -131,7 +131,7 @@ versão etiquetada correspondente aos resultados aqui apresentados [17].
 Entre 2018 e 2025 foram registradas, nos 497 municípios do Rio Grande do Sul, 269.917
 ameaças, 155.062 lesões corporais, 18.726 estupros, 2.286 feminicídios tentados e 739
 feminicídios consumados contra mulheres. As taxas estaduais por 100 mil mulheres-ano foram
-de 579,91; 333,15; 40,23; 4,91 e 1,59, respectivamente.
+de 579,91; 333,15; 40,23; 4,91 e 1,59, respectivamente (Tabela 1).
 
 Os desfechos diferem em ordem de grandeza e, com isso, na densidade com que ocorrem no
 território. A contagem municipal mediana foi de 116 ameaças e 52 lesões corporais, contra 8
@@ -142,9 +142,9 @@ feminicídio tentado e 53,1% não registraram feminicídio consumado.
 ### Autocorrelação global
 
 O índice de Moran ajustado decresceu de forma monótona na mesma ordem: 0,3198 para ameaça,
-0,2962 para lesão corporal, 0,2194 para estupro e 0,0948 para feminicídio tentado, todos com
-p < 0,001. O feminicídio consumado foi o único desfecho sem autocorrelação detectável
-(I = 0,0122; p = 0,29).
+0,2962 para lesão corporal, 0,2194 para estupro e 0,0948 para feminicídio tentado, todos
+com p < 0,001. O feminicídio consumado foi o único desfecho sem autocorrelação detectável
+(I = 0,0122; p = 0,29; Tabela 1).
 
 Os índices calculados sobre a taxa bruta foram menores que os ajustados nos desfechos mais
 raros — 0,1713 contra 0,2194 no estupro —, como se espera quando a instabilidade da taxa em
@@ -153,11 +153,12 @@ populações pequenas atenua a medida.
 ### Agrupamentos locais
 
 Foram identificados 67 pares município-desfecho significativos, distribuídos entre 58
-municípios: 31 em ameaça, 15 em lesão corporal, 15 em estupro e 6 em feminicídio tentado.
-Por quadrante, 32 pares foram de valores altos cercados de altos, 28 de baixos cercados de
-baixos, 4 de altos cercados de baixos e 3 de baixos cercados de altos. Cinco pares
-apresentaram menos de cinco eventos esperados sob a taxa estadual e foram excluídos da
-interpretação, embora mantidos no cálculo.
+municípios: 31 em ameaça, 15 em lesão corporal, 15 em estupro e 6 em feminicídio tentado
+(Tabela 2; pares listados na Tabela suplementar 2). Por quadrante, 32 pares foram de
+valores altos cercados de altos, 28 de baixos cercados de baixos, 4 de altos cercados de
+baixos e 3 de baixos cercados de altos. Cinco pares apresentaram menos de cinco eventos
+esperados sob a taxa estadual e foram excluídos da interpretação, embora mantidos no
+cálculo.
 
 O achado de maior extensão foi um bloco contíguo de 21 municípios em quadrante alto-alto,
 no norte do estado, distribuídos pelos Conselhos Regionais de Desenvolvimento Médio Alto
@@ -172,7 +173,7 @@ outliers espaciais, nos quadrantes alto-baixo e baixo-alto, ocorreram todos isol
 ### Coincidência entre desfechos
 
 Dos 58 municípios significativos, 49 o foram em um único desfecho e 9 em dois; nenhum em
-três ou mais. A ausência de coincidências triplas corresponde ao esperado sob
+três ou mais (Tabela 3). A ausência de coincidências triplas corresponde ao esperado sob
 independência, inferior a uma unidade, e não constitui achado.
 
 As coincidências observadas, em compensação, excederam largamente o acaso, e foram
@@ -190,10 +191,10 @@ coincidência ocorre, a direção é a mesma nos dois.
 ### Déficits de registro
 
 Três municípios apresentaram contagens muito abaixo do previsto pela taxa estadual, em
-todas as vinte sementes testadas. Em Canudos do Vale registrou-se uma lesão corporal, contra
-21,77 esperadas (p < 0,0001). Em Mariana Pimentel não houve registro de estupro, contra 6,15
-esperados (p = 0,0021). Em Doutor Maurício Cardoso registraram-se dois estupros, contra 7,33
-esperados (p = 0,0230).
+todas as vinte sementes testadas (Tabela suplementar 2). Em Canudos do Vale registrou-se
+uma lesão corporal, contra 21,77 esperadas (p < 0,0001). Em Mariana Pimentel não houve
+registro de estupro, contra 6,15 esperados (p = 0,0021). Em Doutor Maurício Cardoso
+registraram-se dois estupros, contra 7,33 esperados (p = 0,0230).
 
 ### Sensibilidade
 
@@ -203,13 +204,13 @@ estupro e 3 em feminicídio tentado — e ampliou a variação entre sementes, q
 a 12 municípios na lesão corporal e de 0 a 3 no feminicídio tentado.
 
 Quatro pares classificados em quadrante alto apresentaram contagem observada inferior à
-esperada pela taxa estadual, entre eles Capivari do Sul em lesão corporal, com razão de
-0,77. Porto Alegre foi classificada como baixo-alto em estupro, com observado em 0,94 do
-esperado (p = 0,0006); a significância decorre do tamanho da população do município, não da
-magnitude do desvio.
+esperada pela taxa estadual (Tabela suplementar 2), entre eles Capivari do Sul em lesão
+corporal, com razão de 0,77. Porto Alegre foi classificada como baixo-alto em estupro, com
+observado em 0,94 do esperado (p = 0,0006); a significância decorre do tamanho da
+população do município, não da magnitude do desvio.
 
 A substituição do denominador feminino pela população total, apresentada na Tabela
-Suplementar 1, alterou o índice de Moran global em no máximo 0,014, o status de
+suplementar 1, alterou o índice de Moran global em no máximo 0,014, o status de
 significância de três municípios e o quadrante de um.
 
 ## Discussão
