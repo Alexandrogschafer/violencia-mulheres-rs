@@ -9,19 +9,20 @@ mulher nos 497 municípios do Rio Grande do Sul entre 2018 e 2025 e examinar em 
 os agrupamentos identificados coincidem entre si. **Métodos:** estudo ecológico de
 delineamento transversal, com registros administrativos da Secretaria da Segurança Pública
 estadual e taxas por 100 mil mulheres-ano. Estimaram-se os índices de Moran global e local
-com o ajuste de Assunção e Reis, por permutação condicional com 99.999 permutações e
-semente fixada, com controle de multiplicidade por Benjamini-Hochberg a 5%. A
-interpretação restringiu-se aos pares com ao menos cinco eventos esperados sob a taxa
-estadual. **Resultados:** o índice ajustado decresceu com a raridade do desfecho, de 0,32
-na ameaça a 0,09 no feminicídio tentado, e não houve autocorrelação detectável no
-feminicídio consumado. Identificaram-se 67 pares município-desfecho significativos em 58
-municípios, entre eles um bloco contíguo de 21 municípios em quadrante alto-alto no norte
-do estado. A maioria dos municípios foi significativa em um único desfecho; a coincidência
-mais expressiva em relação ao acaso reuniu lesão corporal e estupro em três municípios
-contíguos do litoral. Três municípios registraram contagens muito abaixo do esperado.
-**Conclusão:** os registros apresentam estruturação espacial tanto mais nítida quanto mais
-frequente o desfecho. Os agrupamentos descrevem a distribuição do registro, não
-necessariamente a da violência, e os déficits acentuados sugerem lacunas de notificação.
+com o ajuste de Assunção e Reis, com significância por permutação aleatória no índice
+global e condicional no local, 99.999 permutações e semente fixada, e controle de
+multiplicidade por Benjamini-Hochberg a 5%. A interpretação restringiu-se aos pares com ao
+menos cinco eventos esperados sob a taxa estadual. **Resultados:** o índice ajustado
+decresceu com a raridade do desfecho, de 0,32 na ameaça a 0,09 no feminicídio tentado, e
+não houve autocorrelação detectável no feminicídio consumado. Identificaram-se 67 pares
+município-desfecho significativos em 58 municípios, entre eles um bloco contíguo de 21
+municípios em quadrante alto-alto no norte do estado. A maioria dos municípios foi
+significativa em um único desfecho; a coincidência mais expressiva em relação ao acaso
+reuniu lesão corporal e estupro em três municípios contíguos do litoral. Três municípios
+registraram contagens muito abaixo do esperado. **Conclusão:** os registros apresentam
+estruturação espacial tanto mais nítida quanto mais frequente o desfecho. Os agrupamentos
+descrevem a distribuição do registro, não necessariamente a da violência, e os déficits
+acentuados sugerem lacunas de notificação.
 
 **Palavras-chave:** Violência contra a Mulher; Análise Espacial; Sub-Registro; Estudos Ecológicos; Brasil.
 
@@ -108,9 +109,12 @@ induziria dependência por construção, já que a suavização toma emprestado 
 
 ### Parâmetros do teste
 
-A significância foi avaliada por permutação condicional, com **99.999 permutações** e
-semente fixada em **12345**. A multiplicidade foi tratada pelo procedimento de
-Benjamini-Hochberg a 5%, aplicado ao valor p direcional.
+A significância do índice global foi avaliada por permutação aleatória do vetor de taxas
+ajustadas entre os municípios, e a do indicador local por permutação condicional, que
+mantém fixo o valor de cada município e sorteia os valores de seus vizinhos entre os
+demais. Nas duas, usaram-se **99.999 permutações** e semente fixada em **12345**. A
+multiplicidade do indicador local foi tratada pelo procedimento de Benjamini-Hochberg a
+5%, aplicado ao valor p direcional.
 
 O número de permutações não é escolha indiferente. O menor valor p obtenível com m
 permutações é 1/(m+1) [16], e o procedimento de Benjamini-Hochberg, com n áreas ao nível q,
