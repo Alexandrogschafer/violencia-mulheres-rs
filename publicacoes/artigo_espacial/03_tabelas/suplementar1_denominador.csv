@@ -1,6 +1,6 @@
-Desfecho;I (pop. total);I (pop. feminina);Diferença;p (pop. total);p (pop. feminina);LISA (pop. total);LISA (pop. feminina);Só com pop. feminina;Só com pop. total;Mudam de quadrante
+Desfecho;I (pop. total);I (pop. feminina)ᵃ;Diferença;p (pop. total);p (pop. feminina);LISA (pop. total);LISA (pop. feminina);Só com pop. femininaᵇ;Só com pop. totalᵇ;Mudam de quadranteᶜ
 Ameaça;0,3055;0,3198;0,0143;0,00001;0,00001;30;31;1;0;0
-Lesão Corporal;0,2902;0,2962;0,0060;0,00001;0,00001;16;15;0;1;0
+Lesão corporal;0,2902;0,2962;0,0060;0,00001;0,00001;16;15;0;1;0
 Estupro;0,2228;0,2194;-0,0034;0,00001;0,00001;16;15;0;1;1
-Feminicídio Tentado;0,0945;0,0948;0,0003;0,00059;0,00058;6;6;0;0;0
-Feminicídio Consumado;0,0114;0,0122;0,0008;0,30563;0,29488;—;—;—;—;—
+Feminicídio tentado;0,0945;0,0948;0,0003;0,00059;0,00058;6;6;0;0;0
+Feminicídio consumadoᵈ;0,0114;0,0122;0,0008;0,30563;0,29488;—;—;—;—;—

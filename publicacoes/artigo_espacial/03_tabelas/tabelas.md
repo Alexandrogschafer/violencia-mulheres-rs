@@ -4,85 +4,75 @@
 
 ---
 
-| Desfecho | Eventos | Contagem municipal mediana | Municípios sem registro (%) | Taxa estadual por 100 mil mulheres-ano | I de Moran, taxa bruta | p (bruta) | I de Moran ajustado | p (ajustado) |
+| Desfecho | Eventos | Contagem municipal mediana | Municípios sem registro (%) | Taxa estadual por 100 mil mulheres-anoᵃ | I de Moran, taxa bruta | p (bruta)ᵇ | I de Moran ajustadoᶜ | p (ajustado)ᵇ |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Ameaça | 269.917 | 116 | 0,0 | 579,91 | 0,3134 | 0,00001 | 0,3198 | 0,00001 |
-| Lesão Corporal | 155.062 | 52 | 0,0 | 333,15 | 0,2853 | 0,00001 | 0,2962 | 0,00001 |
+| Lesão corporal | 155.062 | 52 | 0,0 | 333,15 | 0,2853 | 0,00001 | 0,2962 | 0,00001 |
 | Estupro | 18.726 | 8 | 4,6 | 40,23 | 0,1713 | 0,00001 | 0,2194 | 0,00001 |
-| Feminicídio Tentado | 2.286 | 1 | 42,3 | 4,91 | 0,0758 | 0,00470 | 0,0948 | 0,00058 |
-| Feminicídio Consumado | 739 | 0 | 53,1 | 1,59 | -0,0085 | 0,42371 | 0,0122 | 0,29488 |
+| Feminicídio tentado | 2.286 | 1 | 42,3 | 4,91 | 0,0758 | 0,00470 | 0,0948 | 0,00058 |
+| Feminicídio consumado | 739 | 0 | 53,1 | 1,59 | -0,0085 | 0,42371 | 0,0122 | 0,29488 |
 
-**Tabela 1** – Eventos registrados, distribuição municipal, taxa estadual e autocorrelação espacial global (índice de Moran), por desfecho de violência contra a mulher. Rio Grande do Sul, 2018-2025.
+**Tabela 1.** Eventos registrados, contagem municipal, taxa estadual e índice de Moran global, por desfecho de violência contra a mulher, Rio Grande do Sul, 2018-2025 (n = 497 municípios)
 
-Nota: 497 municípios. Taxa estadual = eventos do estado / mulheres-ano acumuladas × 100 mil. Moran com contiguidade do tipo rainha padronizada por linha e 99.999 permutações (semente 12345). O ajuste é o de Assunção e Reis. O menor valor p obtenível com 99.999 permutações é 0,00001. Denominador: população feminina anual estimada (população total do ano × razão feminina do município no Censo 2022).
-
-Fonte: Secretaria da Segurança Pública do Rio Grande do Sul (registros de 2018 a 2025); IBGE, estimativas populacionais e Censos Demográficos de 2010 e 2022.
+ᵃ Eventos do estado divididos pelas mulheres-ano acumuladas, multiplicados por 100 mil; ᵇ o menor valor p obtenível com 99.999 permutações é 0,00001; ᶜ com o ajuste de Assunção e Reis.
 
 ---
 
-| Desfecho | Alto-alto | Baixo-baixo | Alto-baixo | Baixo-alto | Total |
+| Desfechoᵃ | Alto-altoᵇ | Baixo-baixoᵇ | Alto-baixoᵇ | Baixo-altoᵇ | Totalᶜ |
 | --- | --- | --- | --- | --- | --- |
 | Ameaça | 21 | 8 | 1 | 1 | 31 |
-| Lesão Corporal | 5 | 10 | 0 | 0 | 15 |
+| Lesão corporal | 5 | 10 | 0 | 0 | 15 |
 | Estupro | 5 | 7 | 1 | 2 | 15 |
-| Feminicídio Tentado | 1 | 3 | 2 | 0 | 6 |
+| Feminicídio tentado | 1 | 3 | 2 | 0 | 6 |
 | Total | 32 | 28 | 4 | 3 | 67 |
 
-**Tabela 2** – Municípios com associação espacial local significativa (LISA), por desfecho e quadrante. Rio Grande do Sul, 2018-2025.
+**Tabela 2.** Pares município-desfecho com indicador local de associação espacial (LISA) significativo, por desfecho de violência contra a mulher e quadrante, Rio Grande do Sul, 2018-2025 (n = 67 pares)
 
-Nota: cada célula conta pares município-desfecho. Um município significativo em dois desfechos conta uma vez em cada um. O feminicídio consumado não foi analisado no nível local, pela baixa ocorrência. LISA com o ajuste de Assunção e Reis, contiguidade do tipo rainha padronizada por linha, 99.999 permutações condicionais, semente 12345, Benjamini-Hochberg a 5% sobre o valor p direcional. Alto-alto e baixo-baixo: município com valor alto (baixo) cercado de vizinhos com valores altos (baixos); alto-baixo e baixo-alto: outliers espaciais. «Alto» e «baixo» referem-se à média dos municípios, e não à taxa estadual. Denominador: população feminina anual estimada (população total do ano × razão feminina do município no Censo 2022).
-
-Fonte: Secretaria da Segurança Pública do Rio Grande do Sul (registros de 2018 a 2025); IBGE, estimativas populacionais e Censos Demográficos de 2010 e 2022.
+ᵃ O feminicídio consumado não foi analisado no nível local, pela baixa ocorrência; ᵇ alto-alto e baixo-baixo: município com valor alto (baixo) cercado de vizinhos com valores altos (baixos); alto-baixo e baixo-alto: outliers espaciais; «alto» e «baixo» referem-se à média dos municípios, e não à taxa estadual; ᶜ um município significativo em dois desfechos conta uma vez em cada um.
 
 ---
 
-| Desfecho | Ameaça | Lesão Corporal | Estupro | Feminicídio Tentado |
+| Desfechoᵃᵇ | Ameaça | Lesão corporal | Estupro | Feminicídio tentado |
 | --- | --- | --- | --- | --- |
 | Ameaça | 31 | 5 | 0 | 1 |
-| Lesão Corporal | 5 | 15 | 3 | 0 |
+| Lesão corporal | 5 | 15 | 3 | 0 |
 | Estupro | 0 | 3 | 15 | 0 |
-| Feminicídio Tentado | 1 | 0 | 0 | 6 |
+| Feminicídio tentado | 1 | 0 | 0 | 6 |
 
-**Tabela 3** – Sobreposição dos municípios com associação espacial local significativa entre desfechos. Rio Grande do Sul, 2018-2025. (a) Matriz desfecho por desfecho, em qualquer quadrante.
+**Tabela 3.** Municípios com indicador local de associação espacial (LISA) significativo em mais de um desfecho de violência contra a mulher, em qualquer quadrante (A) e no mesmo quadrante (B), Rio Grande do Sul, 2018-2025 (n = 58 municípios)
 
-Nota: a diagonal traz o número de municípios significativos em cada desfecho; fora da diagonal, o número de municípios significativos nos dois desfechos. Nenhum município foi significativo em dois desfechos com quadrantes diferentes, nem em três ou mais desfechos. LISA com o ajuste de Assunção e Reis, contiguidade do tipo rainha padronizada por linha, 99.999 permutações condicionais, semente 12345, Benjamini-Hochberg a 5% sobre o valor p direcional. Denominador: população feminina anual estimada (população total do ano × razão feminina do município no Censo 2022).
-
-Fonte: Secretaria da Segurança Pública do Rio Grande do Sul (registros de 2018 a 2025); IBGE, estimativas populacionais e Censos Demográficos de 2010 e 2022.
+ᵃ Na diagonal, os municípios significativos em cada desfecho; fora dela, os significativos nos dois desfechos; ᵇ nenhum município foi significativo em três ou mais desfechos, nem em dois desfechos com quadrantes diferentes.
 
 ---
 
-| Quadrante | Desfechos | Municípios | Quais |
+| Quadranteᵃ | Desfechos | Municípiosᵇ | Quais |
 | --- | --- | --- | --- |
-| Alto-alto | Ameaça e Lesão Corporal | 1 | Braga |
-| Alto-alto | Ameaça e Feminicídio Tentado | 1 | Alpestre* |
-| Alto-alto | Lesão Corporal e Estupro | 3 | Capivari do Sul, Osório, Tramandaí |
-| Baixo-baixo | Ameaça e Lesão Corporal | 4 | Boa Vista do Sul, Linha Nova, Picada Café, Presidente Lucena |
+| Alto-alto | Ameaça e Lesão corporal | 1 | Braga |
+| Alto-alto | Ameaça e Feminicídio tentado | 1 | Alpestreᶜ |
+| Alto-alto | Lesão corporal e Estupro | 3 | Capivari do Sul, Osório, Tramandaí |
+| Baixo-baixo | Ameaça e Lesão corporal | 4 | Boa Vista do Sul, Linha Nova, Picada Café, Presidente Lucena |
 
-**Tabela 3** (continuação) – (b) Combinações de desfechos no mesmo quadrante, com os municípios.
+**Tabela 3.** (continuação) (B) Combinações de desfechos no mesmo quadrante
 
-Nota: cada linha conta os municípios significativos exatamente naqueles desfechos e no mesmo quadrante. * Par com menos de 5 eventos esperados sob a taxa estadual: mantido no cálculo, sem interpretação substantiva. Alto-alto e baixo-baixo: município com valor alto (baixo) cercado de vizinhos com valores altos (baixos); alto-baixo e baixo-alto: outliers espaciais. «Alto» e «baixo» referem-se à média dos municípios, e não à taxa estadual.
-
-Fonte: Secretaria da Segurança Pública do Rio Grande do Sul (registros de 2018 a 2025); IBGE, estimativas populacionais e Censos Demográficos de 2010 e 2022.
+ᵃ Alto-alto e baixo-baixo: município com valor alto (baixo) cercado de vizinhos com valores altos (baixos); alto-baixo e baixo-alto: outliers espaciais; «alto» e «baixo» referem-se à média dos municípios, e não à taxa estadual; ᵇ municípios significativos exatamente naqueles desfechos, e em nenhum outro; ᶜ menos de 5 eventos esperados sob a taxa estadual: par mantido no cálculo, sem interpretação substantiva.
 
 ---
 
-| Desfecho | I (pop. total) | I (pop. feminina) | Diferença | p (pop. total) | p (pop. feminina) | LISA (pop. total) | LISA (pop. feminina) | Só com pop. feminina | Só com pop. total | Mudam de quadrante |
+| Desfecho | I (pop. total) | I (pop. feminina)ᵃ | Diferença | p (pop. total) | p (pop. feminina) | LISA (pop. total) | LISA (pop. feminina) | Só com pop. femininaᵇ | Só com pop. totalᵇ | Mudam de quadranteᶜ |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Ameaça | 0,3055 | 0,3198 | 0,0143 | 0,00001 | 0,00001 | 30 | 31 | 1 | 0 | 0 |
-| Lesão Corporal | 0,2902 | 0,2962 | 0,0060 | 0,00001 | 0,00001 | 16 | 15 | 0 | 1 | 0 |
+| Lesão corporal | 0,2902 | 0,2962 | 0,0060 | 0,00001 | 0,00001 | 16 | 15 | 0 | 1 | 0 |
 | Estupro | 0,2228 | 0,2194 | -0,0034 | 0,00001 | 0,00001 | 16 | 15 | 0 | 1 | 1 |
-| Feminicídio Tentado | 0,0945 | 0,0948 | 0,0003 | 0,00059 | 0,00058 | 6 | 6 | 0 | 0 | 0 |
-| Feminicídio Consumado | 0,0114 | 0,0122 | 0,0008 | 0,30563 | 0,29488 | — | — | — | — | — |
+| Feminicídio tentado | 0,0945 | 0,0948 | 0,0003 | 0,00059 | 0,00058 | 6 | 6 | 0 | 0 | 0 |
+| Feminicídio consumadoᵈ | 0,0114 | 0,0122 | 0,0008 | 0,30563 | 0,29488 | — | — | — | — | — |
 
-**Tabela Suplementar 1** – Índice de Moran global ajustado e municípios com associação espacial local significativa, com denominador de população feminina e de população total, por desfecho. Rio Grande do Sul, 2018-2025.
+**Tabela suplementar 1.** Índice de Moran global ajustado e municípios com indicador local de associação espacial (LISA) significativo, com denominador de população feminina e de população total, por desfecho de violência contra a mulher, Rio Grande do Sul, 2018-2025 (n = 497 municípios)
 
-Nota: «Só com pop. feminina» e «Só com pop. total» contam os municípios significativos em apenas uma das versões; «Mudam de quadrante», os significativos nas duas versões, em quadrantes diferentes. O feminicídio consumado não foi analisado no nível local (—). A população feminina anual é estimada como a população total do ano × razão feminina do município no Censo 2022. LISA com o ajuste de Assunção e Reis, contiguidade do tipo rainha padronizada por linha, 99.999 permutações condicionais, semente 12345, Benjamini-Hochberg a 5% sobre o valor p direcional.
-
-Fonte: Secretaria da Segurança Pública do Rio Grande do Sul (registros de 2018 a 2025); IBGE, estimativas populacionais e Censos Demográficos de 2010 e 2022.
+ᵃ População feminina anual estimada: população total do ano multiplicada pela razão feminina do município no Censo 2022; ᵇ municípios significativos em apenas uma das versões; ᶜ municípios significativos nas duas versões, em quadrantes diferentes; ᵈ não analisado no nível local, pela baixa ocorrência.
 
 ---
 
-| Município | COREDE | Desfecho | Quadrante | Observado | Esperado | Razão O/E | p de Poisson | Esperado ≥ 5 |
+| Município | COREDE | Desfecho | Quadranteᵃ | Observado | Esperadoᵇ | Razão O/E | p de Poissonᶜ | Esperado ≥ 5ᵈ |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Alpestre | Médio Alto Uruguai | Ameaça | Alto-alto | 205 | 152,41 | 1,35 | < 0,0001 | sim |
 | Ametista do Sul | Médio Alto Uruguai | Ameaça | Alto-alto | 334 | 175,47 | 1,90 | < 0,0001 | sim |
@@ -115,21 +105,21 @@ Fonte: Secretaria da Segurança Pública do Rio Grande do Sul (registros de 2018
 | Presidente Lucena | Paranhana Encosta da Serra | Ameaça | Baixo-baixo | 22 | 67,85 | 0,32 | < 0,0001 | sim |
 | Sarandi | Rio da Várzea | Ameaça | Alto-baixo | 553 | 570,91 | 0,97 | 0,7787 | sim |
 | Nova Ramada | Noroeste Colonial | Ameaça | Baixo-alto | 27 | 49,50 | 0,55 | 0,0003 | sim |
-| Braga | Celeiro | Lesão Corporal | Alto-alto | 52 | 44,11 | 1,18 | 0,1339 | sim |
-| Capivari do Sul | Litoral | Lesão Corporal | Alto-alto | 45 | 58,56 | 0,77 | 0,9711 | sim |
-| Cidreira | Litoral | Lesão Corporal | Alto-alto | 487 | 234,59 | 2,08 | < 0,0001 | sim |
-| Osório | Litoral | Lesão Corporal | Alto-alto | 704 | 646,42 | 1,09 | 0,0132 | sim |
-| Tramandaí | Litoral | Lesão Corporal | Alto-alto | 1.366 | 748,45 | 1,83 | < 0,0001 | sim |
-| Boa Vista do Sul | Serra | Lesão Corporal | Baixo-baixo | 13 | 36,06 | 0,36 | < 0,0001 | sim |
-| Campina das Missões | Fronteira Noroeste | Lesão Corporal | Baixo-baixo | 40 | 76,79 | 0,52 | < 0,0001 | sim |
-| Canudos do Vale | Vale do Taquari | Lesão Corporal | Baixo-baixo | 1 | 21,77 | 0,05 | < 0,0001 | sim |
-| Linha Nova | Vale do Caí | Lesão Corporal | Baixo-baixo | 7 | 22,71 | 0,31 | 0,0001 | sim |
-| Picada Café | Hortênsias | Lesão Corporal | Baixo-baixo | 25 | 75,91 | 0,33 | < 0,0001 | sim |
-| Presidente Lucena | Paranhana Encosta da Serra | Lesão Corporal | Baixo-baixo | 7 | 38,98 | 0,18 | < 0,0001 | sim |
-| Salvador das Missões | Missões | Lesão Corporal | Baixo-baixo | 7 | 37,24 | 0,19 | < 0,0001 | sim |
-| Salvador do Sul | Vale do Caí | Lesão Corporal | Baixo-baixo | 40 | 99,91 | 0,40 | < 0,0001 | sim |
-| São Pedro do Butiá | Missões | Lesão Corporal | Baixo-baixo | 10 | 39,49 | 0,25 | < 0,0001 | sim |
-| Tupandi | Vale do Caí | Lesão Corporal | Baixo-baixo | 31 | 65,64 | 0,47 | < 0,0001 | sim |
+| Braga | Celeiro | Lesão corporal | Alto-alto | 52 | 44,11 | 1,18 | 0,1339 | sim |
+| Capivari do Sul | Litoral | Lesão corporal | Alto-alto | 45 | 58,56 | 0,77 | 0,9711 | sim |
+| Cidreira | Litoral | Lesão corporal | Alto-alto | 487 | 234,59 | 2,08 | < 0,0001 | sim |
+| Osório | Litoral | Lesão corporal | Alto-alto | 704 | 646,42 | 1,09 | 0,0132 | sim |
+| Tramandaí | Litoral | Lesão corporal | Alto-alto | 1.366 | 748,45 | 1,83 | < 0,0001 | sim |
+| Boa Vista do Sul | Serra | Lesão corporal | Baixo-baixo | 13 | 36,06 | 0,36 | < 0,0001 | sim |
+| Campina das Missões | Fronteira Noroeste | Lesão corporal | Baixo-baixo | 40 | 76,79 | 0,52 | < 0,0001 | sim |
+| Canudos do Vale | Vale do Taquari | Lesão corporal | Baixo-baixo | 1 | 21,77 | 0,05 | < 0,0001 | sim |
+| Linha Nova | Vale do Caí | Lesão corporal | Baixo-baixo | 7 | 22,71 | 0,31 | 0,0001 | sim |
+| Picada Café | Hortênsias | Lesão corporal | Baixo-baixo | 25 | 75,91 | 0,33 | < 0,0001 | sim |
+| Presidente Lucena | Paranhana Encosta da Serra | Lesão corporal | Baixo-baixo | 7 | 38,98 | 0,18 | < 0,0001 | sim |
+| Salvador das Missões | Missões | Lesão corporal | Baixo-baixo | 7 | 37,24 | 0,19 | < 0,0001 | sim |
+| Salvador do Sul | Vale do Caí | Lesão corporal | Baixo-baixo | 40 | 99,91 | 0,40 | < 0,0001 | sim |
+| São Pedro do Butiá | Missões | Lesão corporal | Baixo-baixo | 10 | 39,49 | 0,25 | < 0,0001 | sim |
+| Tupandi | Vale do Caí | Lesão corporal | Baixo-baixo | 31 | 65,64 | 0,47 | < 0,0001 | sim |
 | Balneário Pinhal | Litoral | Estupro | Alto-alto | 31 | 24,62 | 1,26 | 0,1201 | sim |
 | Capivari do Sul | Litoral | Estupro | Alto-alto | 12 | 7,07 | 1,70 | 0,0567 | sim |
 | Osório | Litoral | Estupro | Alto-alto | 93 | 78,06 | 1,19 | 0,0542 | sim |
@@ -145,15 +135,13 @@ Fonte: Secretaria da Segurança Pública do Rio Grande do Sul (registros de 2018
 | Bento Gonçalves | Serra | Estupro | Alto-baixo | 200 | 204,98 | 0,98 | 0,6452 | sim |
 | Mariana Pimentel | Centro-Sul | Estupro | Baixo-alto | 0 | 6,15 | 0,00 | 0,0021 | sim |
 | Porto Alegre | Metropolitano Delta do Jacuí | Estupro | Baixo-alto | 2.319 | 2.479,44 | 0,94 | 0,0006 | sim |
-| Alpestre | Médio Alto Uruguai | Feminicídio Tentado | Alto-alto | 2 | 1,29 | 1,55 | 0,3699 | não |
-| Passo do Sobrado | Vale do Rio Pardo | Feminicídio Tentado | Baixo-baixo | 0 | 1,27 | 0,00 | 0,2810 | não |
-| Santa Cruz do Sul | Vale do Rio Pardo | Feminicídio Tentado | Baixo-baixo | 16 | 27,49 | 0,58 | 0,0128 | sim |
-| Vale Verde | Vale do Rio Pardo | Feminicídio Tentado | Baixo-baixo | 0 | 0,65 | 0,00 | 0,5246 | não |
-| Candelária | Vale do Rio Pardo | Feminicídio Tentado | Alto-baixo | 10 | 6,10 | 1,64 | 0,0908 | sim |
-| Santa Maria do Herval | Paranhana Encosta da Serra | Feminicídio Tentado | Alto-baixo | 3 | 1,22 | 2,45 | 0,1259 | não |
+| Alpestre | Médio Alto Uruguai | Feminicídio tentado | Alto-alto | 2 | 1,29 | 1,55 | 0,3699 | não |
+| Passo do Sobrado | Vale do Rio Pardo | Feminicídio tentado | Baixo-baixo | 0 | 1,27 | 0,00 | 0,2810 | não |
+| Santa Cruz do Sul | Vale do Rio Pardo | Feminicídio tentado | Baixo-baixo | 16 | 27,49 | 0,58 | 0,0128 | sim |
+| Vale Verde | Vale do Rio Pardo | Feminicídio tentado | Baixo-baixo | 0 | 0,65 | 0,00 | 0,5246 | não |
+| Candelária | Vale do Rio Pardo | Feminicídio tentado | Alto-baixo | 10 | 6,10 | 1,64 | 0,0908 | sim |
+| Santa Maria do Herval | Paranhana Encosta da Serra | Feminicídio tentado | Alto-baixo | 3 | 1,22 | 2,45 | 0,1259 | não |
 
-**Tabela Suplementar 2** – Pares município-desfecho com associação espacial local significativa: eventos observados, esperados sob a taxa estadual, razão entre eles e probabilidade de Poisson. Rio Grande do Sul, 2018-2025.
+**Tabela suplementar 2.** Pares município-desfecho com indicador local de associação espacial (LISA) significativo, por Conselho Regional de Desenvolvimento (COREDE), com eventos observados (O) e esperados (E), razão O/E e probabilidade de Poisson, Rio Grande do Sul, 2018-2025 (n = 67 pares)
 
-Nota: esperado = mulheres-ano acumuladas do município × taxa estadual do desfecho / 100 mil. O p de Poisson é calculado na direção do quadrante: P(X ≥ observado) em alto-alto e alto-baixo, P(X ≤ observado) em baixo-baixo e baixo-alto. É descritivo: não corrige para comparações múltiplas e ignora a vizinhança. Pares com esperado < 5 foram mantidos no cálculo, mas não receberam interpretação substantiva. COREDE: Conselho Regional de Desenvolvimento. Alto-alto e baixo-baixo: município com valor alto (baixo) cercado de vizinhos com valores altos (baixos); alto-baixo e baixo-alto: outliers espaciais. «Alto» e «baixo» referem-se à média dos municípios, e não à taxa estadual. LISA com o ajuste de Assunção e Reis, contiguidade do tipo rainha padronizada por linha, 99.999 permutações condicionais, semente 12345, Benjamini-Hochberg a 5% sobre o valor p direcional.
-
-Fonte: Secretaria da Segurança Pública do Rio Grande do Sul (registros de 2018 a 2025); IBGE, estimativas populacionais e Censos Demográficos de 2010 e 2022.
+ᵃ Alto-alto e baixo-baixo: município com valor alto (baixo) cercado de vizinhos com valores altos (baixos); alto-baixo e baixo-alto: outliers espaciais; «alto» e «baixo» referem-se à média dos municípios, e não à taxa estadual; ᵇ mulheres-ano acumuladas do município multiplicadas pela taxa estadual do desfecho e divididas por 100 mil; ᶜ P(X ≥ O) em alto-alto e alto-baixo e P(X ≤ O) em baixo-baixo e baixo-alto; descritivo, sem correção para comparações múltiplas e sem considerar a vizinhança; ᵈ pares com esperado abaixo de 5 foram mantidos no cálculo, sem interpretação substantiva.

@@ -1,6 +1,6 @@
-Desfecho;Eventos;Contagem municipal mediana;Municípios sem registro (%);Taxa estadual por 100 mil mulheres-ano;I de Moran, taxa bruta;p (bruta);I de Moran ajustado;p (ajustado)
+Desfecho;Eventos;Contagem municipal mediana;Municípios sem registro (%);Taxa estadual por 100 mil mulheres-anoᵃ;I de Moran, taxa bruta;p (bruta)ᵇ;I de Moran ajustadoᶜ;p (ajustado)ᵇ
 Ameaça;269.917;116;0,0;579,91;0,3134;0,00001;0,3198;0,00001
-Lesão Corporal;155.062;52;0,0;333,15;0,2853;0,00001;0,2962;0,00001
+Lesão corporal;155.062;52;0,0;333,15;0,2853;0,00001;0,2962;0,00001
 Estupro;18.726;8;4,6;40,23;0,1713;0,00001;0,2194;0,00001
-Feminicídio Tentado;2.286;1;42,3;4,91;0,0758;0,00470;0,0948;0,00058
-Feminicídio Consumado;739;0;53,1;1,59;-0,0085;0,42371;0,0122;0,29488
+Feminicídio tentado;2.286;1;42,3;4,91;0,0758;0,00470;0,0948;0,00058
+Feminicídio consumado;739;0;53,1;1,59;-0,0085;0,42371;0,0122;0,29488

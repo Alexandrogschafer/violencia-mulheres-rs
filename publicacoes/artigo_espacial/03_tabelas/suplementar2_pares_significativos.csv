@@ -1,4 +1,4 @@
-Município;COREDE;Desfecho;Quadrante;Observado;Esperado;Razão O/E;p de Poisson;Esperado ≥ 5
+Município;COREDE;Desfecho;Quadranteᵃ;Observado;Esperadoᵇ;Razão O/E;p de Poissonᶜ;Esperado ≥ 5ᵈ
 Alpestre;Médio Alto Uruguai;Ameaça;Alto-alto;205;152,41;1,35;< 0,0001;sim
 Ametista do Sul;Médio Alto Uruguai;Ameaça;Alto-alto;334;175,47;1,90;< 0,0001;sim
 Boa Vista das Missões;Rio da Várzea;Ameaça;Alto-alto;78;47,73;1,63;< 0,0001;sim
@@ -30,21 +30,21 @@ Picada Café;Hortênsias;Ameaça;Baixo-baixo;55;132,13;0,42;< 0,0001;sim
 Presidente Lucena;Paranhana Encosta da Serra;Ameaça;Baixo-baixo;22;67,85;0,32;< 0,0001;sim
 Sarandi;Rio da Várzea;Ameaça;Alto-baixo;553;570,91;0,97;0,7787;sim
 Nova Ramada;Noroeste Colonial;Ameaça;Baixo-alto;27;49,50;0,55;0,0003;sim
-Braga;Celeiro;Lesão Corporal;Alto-alto;52;44,11;1,18;0,1339;sim
-Capivari do Sul;Litoral;Lesão Corporal;Alto-alto;45;58,56;0,77;0,9711;sim
-Cidreira;Litoral;Lesão Corporal;Alto-alto;487;234,59;2,08;< 0,0001;sim
-Osório;Litoral;Lesão Corporal;Alto-alto;704;646,42;1,09;0,0132;sim
-Tramandaí;Litoral;Lesão Corporal;Alto-alto;1.366;748,45;1,83;< 0,0001;sim
-Boa Vista do Sul;Serra;Lesão Corporal;Baixo-baixo;13;36,06;0,36;< 0,0001;sim
-Campina das Missões;Fronteira Noroeste;Lesão Corporal;Baixo-baixo;40;76,79;0,52;< 0,0001;sim
-Canudos do Vale;Vale do Taquari;Lesão Corporal;Baixo-baixo;1;21,77;0,05;< 0,0001;sim
-Linha Nova;Vale do Caí;Lesão Corporal;Baixo-baixo;7;22,71;0,31;0,0001;sim
-Picada Café;Hortênsias;Lesão Corporal;Baixo-baixo;25;75,91;0,33;< 0,0001;sim
-Presidente Lucena;Paranhana Encosta da Serra;Lesão Corporal;Baixo-baixo;7;38,98;0,18;< 0,0001;sim
-Salvador das Missões;Missões;Lesão Corporal;Baixo-baixo;7;37,24;0,19;< 0,0001;sim
-Salvador do Sul;Vale do Caí;Lesão Corporal;Baixo-baixo;40;99,91;0,40;< 0,0001;sim
-São Pedro do Butiá;Missões;Lesão Corporal;Baixo-baixo;10;39,49;0,25;< 0,0001;sim
-Tupandi;Vale do Caí;Lesão Corporal;Baixo-baixo;31;65,64;0,47;< 0,0001;sim
+Braga;Celeiro;Lesão corporal;Alto-alto;52;44,11;1,18;0,1339;sim
+Capivari do Sul;Litoral;Lesão corporal;Alto-alto;45;58,56;0,77;0,9711;sim
+Cidreira;Litoral;Lesão corporal;Alto-alto;487;234,59;2,08;< 0,0001;sim
+Osório;Litoral;Lesão corporal;Alto-alto;704;646,42;1,09;0,0132;sim
+Tramandaí;Litoral;Lesão corporal;Alto-alto;1.366;748,45;1,83;< 0,0001;sim
+Boa Vista do Sul;Serra;Lesão corporal;Baixo-baixo;13;36,06;0,36;< 0,0001;sim
+Campina das Missões;Fronteira Noroeste;Lesão corporal;Baixo-baixo;40;76,79;0,52;< 0,0001;sim
+Canudos do Vale;Vale do Taquari;Lesão corporal;Baixo-baixo;1;21,77;0,05;< 0,0001;sim
+Linha Nova;Vale do Caí;Lesão corporal;Baixo-baixo;7;22,71;0,31;0,0001;sim
+Picada Café;Hortênsias;Lesão corporal;Baixo-baixo;25;75,91;0,33;< 0,0001;sim
+Presidente Lucena;Paranhana Encosta da Serra;Lesão corporal;Baixo-baixo;7;38,98;0,18;< 0,0001;sim
+Salvador das Missões;Missões;Lesão corporal;Baixo-baixo;7;37,24;0,19;< 0,0001;sim
+Salvador do Sul;Vale do Caí;Lesão corporal;Baixo-baixo;40;99,91;0,40;< 0,0001;sim
+São Pedro do Butiá;Missões;Lesão corporal;Baixo-baixo;10;39,49;0,25;< 0,0001;sim
+Tupandi;Vale do Caí;Lesão corporal;Baixo-baixo;31;65,64;0,47;< 0,0001;sim
 Balneário Pinhal;Litoral;Estupro;Alto-alto;31;24,62;1,26;0,1201;sim
 Capivari do Sul;Litoral;Estupro;Alto-alto;12;7,07;1,70;0,0567;sim
 Osório;Litoral;Estupro;Alto-alto;93;78,06;1,19;0,0542;sim
@@ -60,9 +60,9 @@ Tucunduva;Fronteira Noroeste;Estupro;Baixo-baixo;8;9,44;0,85;0,3991;sim
 Bento Gonçalves;Serra;Estupro;Alto-baixo;200;204,98;0,98;0,6452;sim
 Mariana Pimentel;Centro-Sul;Estupro;Baixo-alto;0;6,15;0,00;0,0021;sim
 Porto Alegre;Metropolitano Delta do Jacuí;Estupro;Baixo-alto;2.319;2.479,44;0,94;0,0006;sim
-Alpestre;Médio Alto Uruguai;Feminicídio Tentado;Alto-alto;2;1,29;1,55;0,3699;não
-Passo do Sobrado;Vale do Rio Pardo;Feminicídio Tentado;Baixo-baixo;0;1,27;0,00;0,2810;não
-Santa Cruz do Sul;Vale do Rio Pardo;Feminicídio Tentado;Baixo-baixo;16;27,49;0,58;0,0128;sim
-Vale Verde;Vale do Rio Pardo;Feminicídio Tentado;Baixo-baixo;0;0,65;0,00;0,5246;não
-Candelária;Vale do Rio Pardo;Feminicídio Tentado;Alto-baixo;10;6,10;1,64;0,0908;sim
-Santa Maria do Herval;Paranhana Encosta da Serra;Feminicídio Tentado;Alto-baixo;3;1,22;2,45;0,1259;não
+Alpestre;Médio Alto Uruguai;Feminicídio tentado;Alto-alto;2;1,29;1,55;0,3699;não
+Passo do Sobrado;Vale do Rio Pardo;Feminicídio tentado;Baixo-baixo;0;1,27;0,00;0,2810;não
+Santa Cruz do Sul;Vale do Rio Pardo;Feminicídio tentado;Baixo-baixo;16;27,49;0,58;0,0128;sim
+Vale Verde;Vale do Rio Pardo;Feminicídio tentado;Baixo-baixo;0;0,65;0,00;0,5246;não
+Candelária;Vale do Rio Pardo;Feminicídio tentado;Alto-baixo;10;6,10;1,64;0,0908;sim
+Santa Maria do Herval;Paranhana Encosta da Serra;Feminicídio tentado;Alto-baixo;3;1,22;2,45;0,1259;não
