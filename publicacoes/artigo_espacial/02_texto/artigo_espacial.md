@@ -332,7 +332,7 @@ de agrupamento da incapacidade de encontrá-lo.
 
 ## Referências
 
-<!-- Numeração em ordem de primeira aparição, gerada em 2026-11-03 a partir de chaves. -->
+<!-- Lista gerada por 01_referencias/renumerar_referencias.py em ordem de primeira aparição. Não editar à mão. -->
 
 1. Instituto Brasileiro de Geografia e Estatística. Pesquisa de Informações Básicas Municipais –
    MUNIC 2023: base de dados [Internet]. Rio de Janeiro: IBGE; 2024 [citado 2026 nov 3]. Disponível

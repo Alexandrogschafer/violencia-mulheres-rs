@@ -5,7 +5,7 @@ manuscrito e foi gerada a partir dos marcadores. Entram as referências com pass
 `verificacao_referencias.md`, mais as de fonte de dados, as de origem de método e o repositório, pelos
 critérios descritos lá. São 17 referências; o limite da RESS é 30.
 
-A lista final está também ao fim de `02_texto/artigo_espacial.md`. As duas devem ser mantidas iguais.
+A lista final está também ao fim de `02_texto/artigo_espacial.md`. As duas, e a tabela de marcadores abaixo, são geradas por `renumerar_referencias.py` a partir de `referencias.json`. Não editar à mão: citar com `{chave}` e rodar o script.
 
 ## Marcadores e números, na ordem do texto
 
@@ -22,14 +22,14 @@ A lista final está também ao fim de `02_texto/artigo_espacial.md`. As duas dev
 | 9 | A06 | 2,4 |
 | 10 | A10 | 10 |
 | 11 | A11a | 11 |
-| A11b | 12 |
-| 12 | A13 | 12 |
-| 13 | A14 | 13 |
-| 14 | A12 | 14 |
-| 15 | A07 | 15 |
-| 16 | A08a | 16 |
-| 17 | A08b | 9 |
-| 18 | A09 | 17 |
+| 12 | A11b | 12 |
+| 13 | A13 | 12 |
+| 14 | A14 | 13 |
+| 15 | A12 | 14 |
+| 16 | A07 | 15 |
+| 17 | A08a | 16 |
+| 18 | A08b | 9 |
+| 19 | A09 | 17 |
 
 ## Lista
 
