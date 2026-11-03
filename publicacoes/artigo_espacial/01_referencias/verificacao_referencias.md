@@ -66,7 +66,7 @@ referência 1 e desloca as demais. Os números desta página foram atualizados.
 | A07 | ajuste de Assunção e Reis | Origem do método; **texto completo não obtido** | 15 |
 | A08a | piso do p por permutação | Sustenta | 16 |
 | A08b | regra de Benjamini-Hochberg | Sustenta | 9 |
-| A09 | repositório público com versão etiquetada | Repositório citado; **etiqueta do artigo a criar** | 17 |
+| A09 | repositório público com versão etiquetada | Etiqueta `artigo-ress-v1` criada; **DOI da versão pendente** | 17 |
 
 As linhas seguem a ordem do texto. São 17 referências na lista; o limite da RESS é 30.
 
@@ -393,15 +393,28 @@ Pela fórmula (1), o menor valor possível é 1/(1+B), que é o 1/(m+1) do manus
 **Afirmação:** «O código, os dados processados e os parâmetros de execução estão depositados em
 repositório público, em versão etiquetada correspondente aos resultados aqui apresentados [n].»
 
-**Situação: repositório citado; a etiqueta do artigo ainda não existe.**
+**Situação: etiqueta criada; DOI da versão pendente de depósito.**
 
 - A referência é o próprio repositório (`github.com/Alexandrogschafer/violencia-mulheres-rs`). Não há
   passagem a transcrever.
-- A versão etiquetada deste artigo ainda não existe. O repositório tem as etiquetas `v1.0.0` e
-  `artigo-reciis-v1`, de outros trabalhos. A afirmação só fica verdadeira quando a etiqueta for criada.
-- Em 2026-11-03 o repositório entrou na lista como **referência 11**, por decisão do autor, com a
-  autoria e o título de `CITATION.cff`, o DOI conceitual do Zenodo (10.5281/zenodo.21403499) e a
-  versão marcada como «etiqueta do artigo a criar». Ao criar a etiqueta, substituir pelo DOI da versão.
+- Em 2026-11-03 foi criada a etiqueta anotada `artigo-ress-v1`. Antes, as tabelas e a Figura 1 foram
+  regeneradas a partir do código, e a árvore ficou idêntica à commitada. A etiqueta aponta para o commit
+  que contém essa análise e o `CITATION.cff` com a versão `artigo-ress-v1`. As outras etiquetas,
+  `v1.0.0` e `artigo-reciis-v1`, são de outros trabalhos. A etiqueta ainda **não foi enviada ao remoto**.
+- A referência 17 traz «Versão artigo-ress-v1» e, no lugar do DOI, o marcador
+  «doi:[PENDENTE: DOI da versão artigo-ress-v1 no Zenodo]». O DOI conceitual (10.5281/zenodo.21403499)
+  saiu porque resolve para a versão mais recente, não para a deste artigo.
+- **O que falta, nesta ordem:**
+  1. enviar a etiqueta: `git push origin artigo-ress-v1`;
+  2. publicar no GitHub uma *release* a partir da etiqueta; a integração do Zenodo deposita a versão e
+     gera o DOI;
+  3. em `referencias.json`, chave `repo`, trocar `[PENDENTE: DOI da versão artigo-ress-v1 no Zenodo]`
+     pelo DOI da versão (forma `10.5281/zenodo.<número>`);
+  4. sincronizar o item 17 da lista do manuscrito com o novo texto e rodar
+     `renumerar_referencias.py`, porque o script casa os itens da lista pelo texto exato e recusa
+     um item cujo texto mudou só no JSON;
+  5. opcionalmente, acrescentar o DOI da versão em `identifiers` do `CITATION.cff`, num commit posterior
+     à etiqueta.
 
 ## A10 — fonte dos dados
 

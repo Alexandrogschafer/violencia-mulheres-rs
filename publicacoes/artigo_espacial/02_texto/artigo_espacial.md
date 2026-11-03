@@ -437,6 +437,6 @@ de agrupamento da incapacidade de encontrá-lo.
     https://arxiv.org/abs/2404.15586v4
 
 17. Schäfer AG, Prates LA, Schäfer LP, Fernandes MAD. Pipeline de análise da violência contra a
-    mulher no RS (2012-2026) [Internet]. Versão [etiqueta do artigo a criar]. Zenodo; 2026 [citado
-    2026 nov 3]. doi:10.5281/zenodo.21403499. Disponível em:
+    mulher no RS (2012-2026) [Internet]. Versão artigo-ress-v1. Zenodo; 2026 [citado 2026 nov 3].
+    doi:[PENDENTE: DOI da versão artigo-ress-v1 no Zenodo]. Disponível em:
     https://github.com/Alexandrogschafer/violencia-mulheres-rs

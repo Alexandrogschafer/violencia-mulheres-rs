@@ -96,12 +96,14 @@ A lista final está também ao fim de `02_texto/artigo_espacial.md`. As duas, e 
     https://arxiv.org/abs/2404.15586v4
 
 17. Schäfer AG, Prates LA, Schäfer LP, Fernandes MAD. Pipeline de análise da violência contra a
-    mulher no RS (2012-2026) [Internet]. Versão [etiqueta do artigo a criar]. Zenodo; 2026 [citado
-    2026 nov 3]. doi:10.5281/zenodo.21403499. Disponível em:
+    mulher no RS (2012-2026) [Internet]. Versão artigo-ress-v1. Zenodo; 2026 [citado 2026 nov 3].
+    doi:[PENDENTE: DOI da versão artigo-ress-v1 no Zenodo]. Disponível em:
     https://github.com/Alexandrogschafer/violencia-mulheres-rs
 
-## Fora da lista, aguardando
+## Pendente na referência 17
 
-O repositório já está na lista, mas a frase de A09 só fica verdadeira quando a etiqueta do artigo for
-criada. A referência traz «Versão [etiqueta do artigo a criar]» e o DOI conceitual do Zenodo, que
-resolve para a versão mais recente. Trocar pelo DOI da versão quando ela for publicada.
+A etiqueta `artigo-ress-v1` foi criada em 2026-11-03 no repositório local e ainda não foi enviada ao
+remoto. A referência traz o nome da versão e, no lugar do DOI, o marcador
+«doi:[PENDENTE: DOI da versão artigo-ress-v1 no Zenodo]». O DOI conceitual (10.5281/zenodo.21403499)
+saiu da referência porque resolve para a versão mais recente, não para a deste artigo. O DOI da versão só
+existe depois do depósito, que é manual. Os passos estão em `verificacao_referencias.md`, entrada A09.
