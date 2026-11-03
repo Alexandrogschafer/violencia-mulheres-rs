@@ -154,11 +154,11 @@ populações pequenas atenua a medida.
 
 Foram identificados 67 pares município-desfecho significativos, distribuídos entre 58
 municípios: 31 em ameaça, 15 em lesão corporal, 15 em estupro e 6 em feminicídio tentado
-(Tabela 2; pares listados na Tabela suplementar 2). Por quadrante, 32 pares foram de
-valores altos cercados de altos, 28 de baixos cercados de baixos, 4 de altos cercados de
-baixos e 3 de baixos cercados de altos. Cinco pares apresentaram menos de cinco eventos
-esperados sob a taxa estadual e foram excluídos da interpretação, embora mantidos no
-cálculo.
+(Tabela 2 e Figura 1; pares listados na Tabela suplementar 2). Por quadrante, 32 pares
+foram de valores altos cercados de altos, 28 de baixos cercados de baixos, 4 de altos
+cercados de baixos e 3 de baixos cercados de altos. Cinco pares apresentaram menos de
+cinco eventos esperados sob a taxa estadual e foram excluídos da interpretação, embora
+mantidos no cálculo.
 
 O achado de maior extensão foi um bloco contíguo de 21 municípios em quadrante alto-alto,
 no norte do estado, distribuídos pelos Conselhos Regionais de Desenvolvimento Médio Alto
