@@ -9,7 +9,8 @@ e quadrante são conferidas contra `outputs/tables/resultados_consolidados.md`.
 Cartografia:
 - SIRGAS 2000 / Brazil Polyconic (EPSG:5880), o CRS de desenho do restante do projeto
   (`mapa_choropleth.CRS_PLOT`);
-- escala gráfica de 100 km e seta de norte em cada painel (`mapa_choropleth._adiciona_escala_e_norte`);
+- escala gráfica de 100 km e seta de norte com haste visível em cada painel (`escala_e_norte`, abaixo; a
+  função compartilhada do capítulo, nesse tamanho de painel, mostrava só a ponta da seta);
 - legenda única para os quatro painéis, que são identificados por letras maiúsculas, como pede a RESS
   para mosaicos.
 
@@ -47,7 +48,7 @@ from matplotlib.patches import Patch  # noqa: E402
 from PIL import Image  # noqa: E402
 
 from src.analysis.esperado_vs_observado_lisa import LIMIAR, calcular  # noqa: E402
-from src.analysis.mapa_choropleth import BARRA_ESCALA_KM, CRS_PLOT, _adiciona_escala_e_norte, montar_geodataframe  # noqa: E402
+from src.analysis.mapa_choropleth import BARRA_ESCALA_KM, CRS_PLOT, montar_geodataframe  # noqa: E402
 from src.analysis.moran_lisa_assuncao_reis import ANO_FIM, ANO_INICIO, N_MUNICIPIOS  # noqa: E402
 from src.analysis.resultados_consolidados import LISA, QUADRANTES  # noqa: E402
 
@@ -117,6 +118,41 @@ def confere_paleta() -> list[str]:
     return linhas
 
 
+# ---------------------------------------------------------------- escala e norte
+
+
+def escala_e_norte(ax) -> None:
+    """Escala gráfica de BARRA_ESCALA_KM e seta de norte, no canto inferior direito do painel.
+
+    O CRS é métrico e o aspecto é 1:1, então N metros em coordenadas de dados são N metros no terreno.
+    A seta é desenhada como haste (linha) mais ponta (triângulo), com comprimento em fração da altura do
+    eixo, para que a haste fique visível em qualquer tamanho de painel. Em EPSG:5880, o norte da grade
+    coincide com o verdadeiro no meridiano central (54° O); nas bordas do RS, a diferença é de cerca de 2°.
+    """
+    cor = "#3a3a3a"
+    (x0, x1), (y0, y1) = ax.get_xlim(), ax.get_ylim()
+    largura, altura = x1 - x0, y1 - y0
+    barra = BARRA_ESCALA_KM * 1000
+    x_fim = x0 + 0.92 * largura
+    x_ini = x_fim - barra
+    y_barra = y0 + 0.06 * altura
+    marca = altura * 0.008
+    ax.plot([x_ini, x_fim], [y_barra, y_barra], color=cor, linewidth=1.2, solid_capstyle="butt")
+    for x in (x_ini, x_fim):
+        ax.plot([x, x], [y_barra - marca, y_barra + marca], color=cor, linewidth=1.2)
+    ax.text((x_ini + x_fim) / 2, y_barra + altura * 0.02, f"{BARRA_ESCALA_KM} km", ha="center", va="bottom",
+            fontsize=7, color=cor)
+
+    x_n = x_fim - barra / 2
+    y_base = y_barra + altura * 0.10
+    y_topo = y_base + altura * 0.11
+    ax.plot([x_n, x_n], [y_base, y_topo - altura * 0.025], color=cor, linewidth=1.3, solid_capstyle="butt")
+    ax.annotate("", xy=(x_n, y_topo), xytext=(x_n, y_topo - altura * 0.03),
+                arrowprops={"arrowstyle": "-|>,head_length=0.6,head_width=0.3", "color": cor, "lw": 1.3,
+                            "shrinkA": 0, "shrinkB": 0})
+    ax.text(x_n, y_topo + altura * 0.01, "N", ha="center", va="bottom", fontsize=8, fontweight="bold", color=cor)
+
+
 # ---------------------------------------------------------------- dados
 
 
@@ -156,7 +192,7 @@ def desenha(sig, abaixo, malha):
         ax.scatter(pontos.x, pontos.y, s=22, facecolor="none", edgecolor="black", linewidth=0.8, zorder=6)
         ax.set_axis_off()
         ax.set_title(f"{letra}  {d.capitalize()}", loc="left", fontsize=9, fontweight="bold")
-        _adiciona_escala_e_norte(ax, espaco_vertical=1.6)
+        escala_e_norte(ax)
         escalas.append((ax, marcados))
     entradas = [Patch(facecolor=CORES[k], edgecolor="#9a9a9a", linewidth=0.4, label=ROTULOS[k])
                 for k in ["AA", "BB", "AB", "BA", "NS"]]
@@ -207,7 +243,7 @@ def main() -> None:
     sig, abaixo, malha = dados()
     fig, escala, marcados = desenha(sig, abaixo, malha)
     tabelas.confere(sum(marcados.values()) == len(abaixo), "marcas de esperado < 5 não batem com os pares")
-    fig.savefig(SAIDA / "figura1.pdf")
+    fig.savefig(SAIDA / "figura1.pdf", metadata={"CreationDate": None, "ModDate": None})
     fig.savefig(SAIDA / "figura1.png", dpi=300)
     plt.close(fig)
     Image.open(SAIDA / "figura1.png").convert("L").save(SAIDA / "figura1_cinza.png", dpi=(300, 300))
