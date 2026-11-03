@@ -20,6 +20,7 @@ manuscrito; Fischer et al. passaram de 9 para 10. A01 segue pendente.
 Revisão de 2026-11-03, segunda rodada: A01 foi reescrita e cita a MUNIC 2023, que entra como
 referência 1 e desloca as demais. Os números desta página foram atualizados.
 - A13 e A14 (Censos 2022 e 2010) foram acrescentados.
+- A15–A17 (Bahia et al., Moroskoski et al., Veiga e Bushatsky) foram acrescentados à Introdução.
 
 ## Como ler
 
@@ -50,20 +51,23 @@ referência 1 e desloca as demais. Os números desta página foram atualizados.
 | A01 | delegacia especializada em 38 de 496 municípios | Fonte de dados, conferida na base | 1 |
 | A02 | a distribuição não é homogênea | Sustenta | 2, 3 |
 | A03 | estudos em municípios brasileiros usam autocorrelação espacial | Sustenta | 2, 4 |
-| A04 | instabilidade das taxas em municípios pequenos e desfechos raros | Sustenta | 5 |
-| A05 | multiplicidade e falsos positivos | Sustenta | 6 |
+| A15 | MG: microrregiões de saúde, cinco agrupamentos | Sustenta | 5 |
+| A16 | PR: taxas suavizadas maiores nas regiões agrícolas | Sustenta | 6 |
+| A17 | PE: maior número de casos na Metropolitana do Recife | Sustenta | 7 |
+| A04 | instabilidade das taxas em municípios pequenos e desfechos raros | Sustenta | 8 |
+| A05 | multiplicidade e falsos positivos | Sustenta | 9 |
 | A06 | subnotificação reconhecida e variável entre territórios | Sustenta, com ressalva | 2, 4 |
-| A10 | fonte dos dados: divulgação da SSP-RS | Fonte de dados | 7 |
-| A11 | populações municipais: estimativas do IBGE | Fonte de dados, com ressalva | 8 |
-| A13 | razão feminina do Censo 2022 | Fonte de dados | 9 |
-| A14 | estabilidade da razão entre os Censos 2010 e 2022 | Fonte de dados | 10 |
-| A12 | indicador local (LISA) | Origem do método; texto completo não lido | 11 |
-| A07 | ajuste de Assunção e Reis | Origem do método; **texto completo não obtido** | 12 |
-| A08a | piso do p por permutação | Sustenta | 13 |
-| A08b | regra de Benjamini-Hochberg | Sustenta | 6 |
-| A09 | repositório público com versão etiquetada | Repositório citado; **etiqueta do artigo a criar** | 14 |
+| A10 | fonte dos dados: divulgação da SSP-RS | Fonte de dados | 10 |
+| A11 | populações municipais: estimativas do IBGE | Fonte de dados, com ressalva | 11 |
+| A13 | razão feminina do Censo 2022 | Fonte de dados | 12 |
+| A14 | estabilidade da razão entre os Censos 2010 e 2022 | Fonte de dados | 13 |
+| A12 | indicador local (LISA) | Origem do método; texto completo não lido | 14 |
+| A07 | ajuste de Assunção e Reis | Origem do método; **texto completo não obtido** | 15 |
+| A08a | piso do p por permutação | Sustenta | 16 |
+| A08b | regra de Benjamini-Hochberg | Sustenta | 9 |
+| A09 | repositório público com versão etiquetada | Repositório citado; **etiqueta do artigo a criar** | 17 |
 
-As linhas seguem a ordem do texto. São 14 referências na lista; o limite da RESS é 30.
+As linhas seguem a ordem do texto. São 17 referências na lista; o limite da RESS é 30.
 
 ---
 
@@ -161,6 +165,89 @@ Dos oito PDFs, só Barros et al. tem o município como unidade e aplica Moran à
 
 Por isso a segunda referência veio do SciELO.
 
+## A15–A17 — estudos fora da escala municipal
+
+As três frases foram acrescentadas em 2026-11-03, logo após A03, para descrever a escala, o desfecho e
+o achado de estudos do gênero em `pdf/` ainda não citados.
+
+Ficaram de fora:
+- Ceccon et al. (ES), que trata de notificações de violência por grupo etário, não de violência
+  contra a mulher;
+- Carvalho et al. 2011 e Oliveira et al. 2024 (mortalidade materna), que não são estudos de
+  distribuição de violência contra a mulher.
+
+Páginas:
+- Bahia et al. e Moroskoski et al. usam a numeração impressa no artigo, que é de paginação
+  eletrônica;
+- Veiga e Bushatsky usam a numeração «Página N» do documento RT Online. A paginação da revista
+  (p. 285-319) não aparece nas páginas.
+
+As frases introdutórias não têm marcador: «Fora da escala municipal, variam a unidade e o desfecho.»
+Elas resumem as três que seguem.
+
+### A15 — Minas Gerais
+
+**Afirmação:** «Em Minas Gerais, a análise de feminicídios e homicídios de mulheres por microrregião
+de saúde detectou cinco agrupamentos espaço-temporais, quatro deles comuns aos dois desfechos [n].»
+
+**Situação: sustenta.**
+
+**Referência 5.** Bahia CA, Pinto IV, Trindade CM, Silva CMA, Habkouk P, Simões TC, et al. Cad Saude
+Publica. 2025;41(1):e00015224.
+
+> «As unidades espaciais de análise foram as microrregiões, categorizadas conforme o Plano Diretor de
+> Regionalização da Secretaria de Estado de Saúde de Minas Gerais 21» (p. 4)
+
+> «Cinco clusters espaço-temporais multivariados significativos foram detectados na análise,
+> abrangendo dois períodos distintos: 2016 a 2017 (clusters 1 e 4) e 2019 a 2020 (clusters 2, 3 e 5).
+> Quatro dos cinco foram simultâneos para feminicídios e homicídios de mulheres, enquanto somente um
+> (cluster 3) foi caracterizado somente com feminicídios.» (p. 10)
+
+### A16 — Paraná
+
+**Afirmação:** «No Paraná, as taxas suavizadas de denúncias de feminicídio foram maiores nas regiões
+geográficas imediatas de maior área agricultável [n].»
+
+**Situação: sustenta.**
+
+**Referência 6.** Moroskoski M, Azevedo LS, Brito FAM, Oliveira NN, Pereira ND, Carreira L, et al.
+Cien Saude Colet. 2025;30(10):e10862025.
+
+> «Assim sendo, o estado do Paraná passou a ser dividido em 29 Regiões Geográficas Imediatas.» (p. 2)
+
+> «A distribuição espacial das taxas suavizadas foi apresentada em intervalos, das taxas mínimas às
+> máximas, definindo tons mais claros para taxas mais baixas e tons mais escuros para taxas mais
+> elevadas.» (p. 3)
+
+> «No que diz respeito a distribuição espacial das taxas suavizadas, evidenciou-se maior incidência de
+> denúncias nas Regiões Imediatas que possuem as maiores porções de área agricultável no estado34,35.»
+> (p. 9)
+
+A última passagem está na Discussão, mas descreve o resultado do mapa (Figura 2, p. 5). O estudo
+não aplica o Moran às taxas, só aos resíduos da regressão, e por isso a frase não fala em agrupamento.
+
+### A17 — Pernambuco
+
+**Afirmação:** «Em Pernambuco, entre os boletins de ocorrência de violência doméstica agregados por
+mesorregião, o maior número de casos esteve, em todos os anos, na Metropolitana do Recife [n].»
+
+**Situação: sustenta.**
+
+**Referência 7.** Veiga BCS, Bushatsky M. Rev Bras Cienc Crim. 2021;29(186):285-319.
+
+> «[...] investigar a existência de associação entre a localização geográfica e os registros de
+> Boletins de Ocorrência relacionados à violência doméstica e familiar contra a mulher no estado de
+> Pernambuco, identificando a incidência nas mesorregiões do estado [...]» (Página 1, resumo)
+
+> «Distribuindo espacialmente o número total de registros, verifica-se que a incidência da violência
+> se repete em todos os anos do estudo (2016 até 2019), ou seja, a mesorregião Metropolitana do Recife
+> corresponde em todo o período analisado, a mesorregião com maior número de casos de violência
+> doméstica e a mesorregião do São Francisco a que apresenta a menor incidência.» (Página 14)
+
+**Ressalva:** o resultado é de contagem de casos, não de taxa. Por isso a frase diz «maior número de
+casos», e não «maior incidência». Os Métodos (Página 13) anunciam o Moran, mas não foi localizado
+valor do índice nos Resultados. Por isso a frase também não fala em agrupamento.
+
 ## A04
 
 **Afirmação:** «A primeira é a instabilidade das taxas: municípios pequenos produzem taxas muito variáveis
@@ -168,7 +255,7 @@ a partir de poucos eventos, e desfechos raros agravam o problema [n].»
 
 **Situação: sustenta.**
 
-**Referência 5.** Carvalho AXY, Silva GDM, Almeida Júnior GR, Albuquerque PHM. Cad Saude Publica.
+**Referência 8.** Carvalho AXY, Silva GDM, Almeida Júnior GR, Albuquerque PHM. Cad Saude Publica.
 2012;28(7):1249-62.
 
 > «Quando os municípios são pequenos, a estimação de taxas brutas é pouco indicada. Por serem pouco
@@ -185,7 +272,7 @@ de multiplicidade, sem o qual a quantidade de falsos positivos deixa de ser desp
 
 **Situação: sustenta.**
 
-**Referência 6.** Benjamini Y, Hochberg Y. J R Stat Soc Series B Stat Methodol. 1995;57(1):289-300.
+**Referência 9.** Benjamini Y, Hochberg Y. J R Stat Soc Series B Stat Methodol. 1995;57(1):289-300.
 
 > «When pursuing multiple inferences, researchers tend to select the (statistically) significant ones
 > for emphasis, discussion and support of conclusions. An unguarded use of single-inference procedures
@@ -229,7 +316,7 @@ O marcador é o segundo da frase; o primeiro é A12.
 **Situação: citação de origem de método. O texto completo não foi obtido; não há passagem
 transcrita.**
 
-**Referência 12.** Assunção RM, Reis EA. A new proposal to adjust Moran's I for population density. Stat
+**Referência 15.** Assunção RM, Reis EA. A new proposal to adjust Moran's I for population density. Stat
 Med. 1999;18(16):2147-62. doi:10.1002/(SICI)1097-0258(19990830)18:16<2147::AID-SIM179>3.0.CO;2-I
 
 **Caminhos tentados:**
@@ -263,7 +350,7 @@ rejeitar uma hipótese nesse piso exige m+1 ≥ n/(q·i).»
 
 **Situação: sustenta.**
 
-**Referência 13.** Fischer L, Barry T, Ramdas A. arXiv:2404.15586v4, 2025. As fórmulas foram transcritas
+**Referência 16.** Fischer L, Barry T, Ramdas A. arXiv:2404.15586v4, 2025. As fórmulas foram transcritas
 da página.
 
 > «In a classical Monte Carlo permutation test, we observe some test statistic Y0, generate B additional
@@ -278,13 +365,13 @@ Pela fórmula (1), o menor valor possível é 1/(1+B), que é o 1/(m+1) do manus
 
 **Situação: sustenta.**
 
-**Referência 6.** Benjamini e Hochberg, 1995, lida na página renderizada.
+**Referência 9.** Benjamini e Hochberg, 1995, lida na página renderizada.
 
 > «let k be the largest i for which P(i) ≤ (i/m) q*; then reject all H(i), i = 1, 2, . . ., k.» (p. 293)
 
 ### Sobre a desigualdade
 
-- m+1 ≥ n/(q·i) resulta de combinar o piso (referência 13) com a regra (referência 6). O manuscrito agora
+- m+1 ≥ n/(q·i) resulta de combinar o piso (referência 16) com a regra (referência 9). O manuscrito agora
   o declara.
 - Fischer et al. enunciam o caso de pior situação, em que um único p pequeno é testado a α/M; esse
   caso corresponde a i = 1:
@@ -322,7 +409,7 @@ Grande do Sul, em planilhas de divulgação pública por município e ano [n].»
 
 **Situação: fonte de dados.** Não há afirmação a sustentar; a referência identifica a publicação.
 
-**Referência 7.** Rio Grande do Sul, Secretaria da Segurança Pública. Indicadores da violência contra a
+**Referência 10.** Rio Grande do Sul, Secretaria da Segurança Pública. Indicadores da violência contra a
 mulher – Lei Maria da Penha. Página consultada em 2026-11-02:
 https://www.ssp.rs.gov.br/indicadores-da-violencia-contra-a-mulher
 
@@ -342,7 +429,7 @@ https://www.ssp.rs.gov.br/indicadores-da-violencia-contra-a-mulher
 
 **Situação: fonte de dados, com ressalva.**
 
-**Referência 8.** Instituto Brasileiro de Geografia e Estatística. Estimativas de População: tabela
+**Referência 11.** Instituto Brasileiro de Geografia e Estatística. Estimativas de População: tabela
 6579, população residente estimada. Sistema IBGE de Recuperação Automática (SIDRA):
 https://sidra.ibge.gov.br/tabela/6579
 
@@ -370,10 +457,10 @@ https://sidra.ibge.gov.br/tabela/6579
 **Situação: fonte de dados.** Não há afirmação bibliográfica a sustentar. As referências identificam
 as tabelas usadas por `src/analysis/denominador_feminino.py` e `src/analysis/auditoria/populacao_feminina.py`.
 
-**Referência 9.** IBGE, Censo Demográfico 2022, tabelas 4709 e 9514 do SIDRA. A 9514 dá
+**Referência 12.** IBGE, Censo Demográfico 2022, tabelas 4709 e 9514 do SIDRA. A 9514 dá
 a população feminina, e a 4709 a total, a mesma usada em `populacao_municipio_rs.csv`.
 
-**Referência 10.** IBGE, Censo Demográfico 2010, tabela 1378 do SIDRA, com população
+**Referência 13.** IBGE, Censo Demográfico 2010, tabela 1378 do SIDRA, com população
 feminina e total na mesma consulta.
 
 Metadados conferidos em 2026-11-03 na API de agregados do IBGE (`/api/v3/agregados/<tabela>/metadados`):
@@ -403,7 +490,7 @@ primeiro da frase.
 
 **Situação: citação de origem de método. O texto completo não foi lido.**
 
-**Referência 11.** Anselin L. Local indicators of spatial association—LISA. Geogr Anal.
+**Referência 14.** Anselin L. Local indicators of spatial association—LISA. Geogr Anal.
 1995;27(2):93-115. doi:10.1111/j.1538-4632.1995.tb00338.x
 
 - Os metadados vêm do registro do DOI no Crossref, conferido em 2026-11-02: título «Local Indicators of
