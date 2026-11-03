@@ -199,9 +199,8 @@ mediu a variação territorial da subnotificação.
 ## A07
 
 **Afirmação:** «A autocorrelação foi estimada pelo índice de Moran global e pelo indicador local de
-associação espacial (LISA) [n], ambos com o ajuste de Assunção e Reis [n], apropriado a taxas calculadas
-sobre populações de tamanhos muito desiguais, em que a variância da taxa é maior nos municípios
-menores.» O marcador é o segundo da frase; o primeiro é A12.
+associação espacial (LISA) [n], ambos com o ajuste proposto por Assunção e Reis [n].»
+O marcador é o segundo da frase; o primeiro é A12.
 
 **Situação: citação de origem de método. O texto completo não foi obtido; não há passagem
 transcrita.**
@@ -337,7 +336,7 @@ https://sidra.ibge.gov.br/tabela/6579
 ## A12 — indicador local
 
 **Afirmação:** «A autocorrelação foi estimada pelo índice de Moran global e pelo indicador local de
-associação espacial (LISA) [n], ambos com o ajuste de Assunção e Reis [n], ...» O marcador é o
+associação espacial (LISA) [n], ambos com o ajuste proposto por Assunção e Reis [n].» O marcador é o
 primeiro da frase.
 
 **Situação: citação de origem de método. O texto completo não foi lido.**

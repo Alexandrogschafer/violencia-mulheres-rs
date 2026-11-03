@@ -65,11 +65,12 @@ população feminina anual é estimada, não medida.
 
 A vizinhança foi definida por contiguidade do tipo rainha, com matriz padronizada por
 linha. A autocorrelação foi estimada pelo índice de Moran global e pelo indicador local de
-associação espacial (LISA) [n], ambos com o ajuste de Assunção e Reis [n], apropriado a taxas calculadas sobre populações de tamanhos muito
-desiguais, em que a variância da taxa é maior nos municípios menores. O ajuste opera sobre
-a contagem e a população sob risco, e não sobre taxas previamente suavizadas: suavizar por
-método bayesiano e em seguida testar autocorrelação induziria dependência por construção,
-já que a suavização toma emprestado dos vizinhos.
+associação espacial (LISA) [n], ambos com o ajuste proposto por Assunção e Reis [n]. O
+ajuste responde à instabilidade da variância das taxas em áreas de tamanhos populacionais
+desiguais: quanto menor a população do município, maior a variância da taxa estimada. O
+ajuste opera sobre a contagem e a população sob risco, e não sobre taxas previamente
+suavizadas: suavizar por método bayesiano e em seguida testar autocorrelação induziria
+dependência por construção, já que a suavização toma emprestado dos vizinhos.
 
 ### Parâmetros do teste
 
