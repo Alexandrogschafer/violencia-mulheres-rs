@@ -25,7 +25,7 @@ Saída em publicacoes/artigo_espacial/03_figuras/:
 - `figura1.pdf`, vetorial, com as fontes embutidas como TrueType;
 - `figura1.png`, a 300 dpi;
 - `figura1_cinza.png`, a mesma figura convertida para escala de cinza, só para conferência;
-- `figura1_legenda.md`, com a legenda.
+- `figura1_legenda.md`, com a legenda no padrão RESS (a das tabelas) e a conferência da paleta.
 
 Uso, da raiz do repositório:
     python3 publicacoes/artigo_espacial/03_figuras/gerar_figura1.py
@@ -75,7 +75,9 @@ ROTULOS = {
     "BA": "Baixo-alto",
     "NS": "Não significativo",
 }
-ROTULO_MARCA = f"Menos de {LIMIAR} eventos esperados: mantido no cálculo, fora da interpretação"
+# Letras de nota no padrão RESS (as mesmas das tabelas): ᵃ nos quadrantes, ᵇ na marca de esperado < 5.
+NOTA_ENTRADA = {"AA": "a", "BB": "a", "AB": "a", "BA": "a"}
+ROTULO_MARCA = f"Menos de {LIMIAR} eventos esperados" + tabelas.SOBRESCRITO["b"]
 DELTA_L_MINIMO = 15.0
 DELTA_CINZA_MINIMO = 40
 LARGURA_CM = 17.0  # cabe em A4 com margens de 1,5 cm (18 cm úteis)
@@ -194,7 +196,8 @@ def desenha(sig, abaixo, malha):
         ax.set_title(f"{letra}  {d.capitalize()}", loc="left", fontsize=9, fontweight="bold")
         escala_e_norte(ax)
         escalas.append((ax, marcados))
-    entradas = [Patch(facecolor=CORES[k], edgecolor="#9a9a9a", linewidth=0.4, label=ROTULOS[k])
+    entradas = [Patch(facecolor=CORES[k], edgecolor="#9a9a9a", linewidth=0.4,
+                      label=ROTULOS[k] + tabelas.s_(NOTA_ENTRADA.get(k, "")))
                 for k in ["AA", "BB", "AB", "BA", "NS"]]
     entradas.append(Line2D([], [], marker="o", linestyle="", markersize=5, markerfacecolor="none",
                            markeredgecolor="black", markeredgewidth=0.8, label=ROTULO_MARCA))
@@ -211,31 +214,18 @@ def desenha(sig, abaixo, malha):
     return fig, escala, {d: len(m) for (_, m), d in zip(escalas, LISA)}
 
 
-def legenda(escala: float, marcados: dict) -> str:
-    arredondada = round(escala / 500_000) * 500_000
-    return (
-        "**Figura 1.** Municípios com indicador local de associação espacial (LISA) significativo, por quadrante, "
-        "na ameaça (A), na lesão corporal (B), no estupro (C) e no feminicídio tentado (D), Rio Grande do Sul, "
-        "2018-2025 (n = 497 municípios)\n\n"
-        "Nota: taxas por 100 mil mulheres-ano, com o ajuste de Assunção e Reis. Significância por 99.999 "
-        "permutações condicionais (semente 12345), com controle de Benjamini-Hochberg a 5% sobre o valor p "
-        "direcional. Alto-alto e baixo-baixo: município com valor alto (baixo) cercado de vizinhos com valores "
-        "altos (baixos); alto-baixo e baixo-alto: outliers espaciais. «Alto» e «baixo» referem-se à média dos "
-        "municípios, e não à taxa estadual. O anel vazado marca os pares com menos de "
-        f"{LIMIAR} eventos esperados sob a taxa estadual "
-        f"({', '.join(f'{LETRAS[i]}: {marcados[d]}' for i, d in enumerate(LISA))}), mantidos no cálculo, mas "
-        "sem interpretação substantiva. O feminicídio consumado não foi analisado no nível local, pela baixa "
-        f"ocorrência. Projeção policônica, SIRGAS 2000. Escala gráfica de {BARRA_ESCALA_KM} km em cada painel; "
-        f"na impressão com {br_cm(LARGURA_CM)} cm de largura, a escala é de cerca de 1:{milhar(arredondada)}."
+def legenda(marcados: dict) -> str:
+    """Legenda no padrão RESS: título sem ponto final, com local, anos e n; notas em letras minúsculas
+    sobrescritas; sem detalhes de método (taxa, permutações, multiplicidade, projeção), que ficam nos Métodos."""
+    contagem = "; ".join(f"{LETRAS[i]}: {marcados[d]}" for i, d in enumerate(LISA) if marcados[d])
+    return tabelas.legenda(
+        "Figura 1",
+        "Municípios com indicador local de associação espacial (LISA) significativo, por quadrante, na ameaça (A), "
+        "na lesão corporal (B), no estupro (C) e no feminicídio tentado (D), Rio Grande do Sul, 2018-2025 "
+        "(n = 497 municípios)",
+        [("a", tabelas.NOTA_QUADRANTE),
+         ("b", f"{tabelas.NOTA_ESPERADO} ({contagem})")],
     )
-
-
-def milhar(x: float) -> str:
-    return f"{x:,.0f}".replace(",", ".")
-
-
-def br_cm(x: float) -> str:
-    return f"{x:.1f}".replace(".", ",").replace(",0", "")
 
 
 def main() -> None:
@@ -247,7 +237,7 @@ def main() -> None:
     fig.savefig(SAIDA / "figura1.png", dpi=300)
     plt.close(fig)
     Image.open(SAIDA / "figura1.png").convert("L").save(SAIDA / "figura1_cinza.png", dpi=(300, 300))
-    texto = legenda(escala, marcados)
+    texto = legenda(marcados)
     (SAIDA / "figura1_legenda.md").write_text(
         "# Figura 1 — legenda\n\n<!-- Gerado por 03_figuras/gerar_figura1.py. Não editar à mão. -->\n\n"
         + texto + "\n\n## Conferência da paleta\n\n" + "\n".join(f"- {l}" for l in paleta) + "\n",
