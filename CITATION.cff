@@ -4,13 +4,18 @@ title: "Pipeline de análise da violência contra a mulher no RS (2012-2026)"
 authors:
   - family-names: "Schäfer"
     given-names: "Alexandro Gularte"
+    orcid: "https://orcid.org/0000-0001-8700-0860"
+    affiliation: "Universidade Federal do Pampa"
   - family-names: "Prates"
     given-names: "Lisie Alende"
+    orcid: "https://orcid.org/0000-0002-5151-0292"
+    affiliation: "Universidade Federal do Pampa"
   - family-names: "Schäfer"
     given-names: "Luiza Pinheiro"
   - family-names: "Fernandes"
     given-names: "Maria Antonia Dutra"
-date-released: 2026-07-16
+version: "artigo-ress-v1"
+date-released: 2026-11-03
 repository-code: "https://github.com/Alexandrogschafer/violencia-mulheres-rs"
 license: CC-BY-4.0
 identifiers:
