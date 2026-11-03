@@ -1,6 +1,6 @@
-# Artigo espacial — manuscrito
+# Distribuição espacial de quatro formas de violência contra a mulher nos municípios do Rio Grande do Sul: estudo ecológico, 2018-2025
 
-<!-- Montado em 2026-11-02 a partir dos quatro rascunhos de seção. Título provisório. -->
+<!-- Montado em 2026-11-02 a partir dos quatro rascunhos de seção. Título definido em 2026-11-03, no formato da RESS: tema, dois-pontos, delineamento e anos. -->
 
 ## Resumo
 
