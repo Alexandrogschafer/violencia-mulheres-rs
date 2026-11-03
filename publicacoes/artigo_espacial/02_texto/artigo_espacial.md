@@ -64,9 +64,9 @@ distintos; registrou-se a proveniência de cada extração, com data e soma de v
 As populações municipais anuais vieram das estimativas do IBGE [11]. O denominador adotado
 foi a população feminina, estimada como a população total de cada ano multiplicada pela
 razão entre população feminina e total do município no Censo 2022 [12]. Essa razão
-mostrou-se estável entre os Censos de 2010 [13] e 2022, com variação mediana de 0,32 ponto
-percentual e nenhum município acima de 5 pontos. As taxas são expressas por 100 mil
-mulheres-ano. Registre-se que a população feminina anual é estimada, não medida.
+mostrou-se estável entre os Censos de 2010 [13] e 2022, com variação mediana absoluta de
+0,48 ponto percentual e máximo de 2,60. As taxas são expressas por 100 mil mulheres-ano.
+Registre-se que a população feminina anual é estimada, não medida.
 
 ### Autocorrelação espacial
 

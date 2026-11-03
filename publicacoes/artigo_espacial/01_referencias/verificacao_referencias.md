@@ -451,8 +451,8 @@ https://sidra.ibge.gov.br/tabela/6579
 **Afirmações:**
 - A13: «O denominador adotado foi a população feminina, estimada como a população total de cada ano
   multiplicada pela razão entre população feminina e total do município no Censo 2022 [n].»
-- A14: «Essa razão mostrou-se estável entre os Censos de 2010 [n] e 2022, com variação mediana de 0,32
-  ponto percentual e nenhum município acima de 5 pontos.»
+- A14: «Essa razão mostrou-se estável entre os Censos de 2010 [n] e 2022, com variação mediana
+  absoluta de 0,48 ponto percentual e máximo de 2,60.»
 
 **Situação: fonte de dados.** Não há afirmação bibliográfica a sustentar. As referências identificam
 as tabelas usadas por `src/analysis/denominador_feminino.py` e `src/analysis/auditoria/populacao_feminina.py`.
@@ -478,9 +478,10 @@ municípios comparáveis (Pinto Bandeira não existe em 2010):
 - o mínimo é −2,16 e o máximo 2,60;
 - 5 municípios passam de 2 p.p. em módulo.
 
-**Anomalia, não corrigida:** «variação mediana de 0,32 ponto» lê-se como magnitude típica, mas é a
-mediana com sinal. Além disso, «nenhum município acima de 5 pontos» é verdadeiro, mas folgado, porque
-o máximo é 2,6. Falta decidir a redação.
+**Anomalia corrigida em 2026-11-03:** o texto dizia «variação mediana de 0,32 ponto percentual e
+nenhum município acima de 5 pontos». Era a mediana com sinal, e o limite era folgado. A frase passou
+a «variação mediana absoluta de 0,48 ponto percentual e máximo de 2,60», que são os valores em módulo
+conferidos acima.
 
 ## A12 — indicador local
 
