@@ -9,6 +9,7 @@ Os identificadores são estáveis, e por isso não seguem a ordem do texto:
 - A10–A12 foram acrescentados depois (fontes de dados e Anselin).
 - A15–A17 (estudos fora da escala municipal) foram acrescentados em 2026-11-03.
 - A13 e A14 (Censos de 2022 e 2010) foram acrescentados em 2026-11-03.
+- A11 foi dividido em A11a (estimativas) e A11b (Censo 2022) quando a frase foi reescrita, em 2026-11-03.
 
 | Ordem | ID | Seção | Marcador | Referências | Frase |
 |---|---|---|---|---|---|
@@ -22,13 +23,14 @@ Os identificadores são estáveis, e por isso não seguem a ordem do texto:
 | 8 | A05 | Introdução | `[n]` | 1 | A segunda é o número de testes: avaliar quinhentas áreas simultaneamente exige controle de multiplicidade, sem o qual a quantidade de falsos positivos deixa de ser desprezível [n]. |
 | 9 | A06 | Introdução | `[n,n]` | 2 | A subnotificação da violência contra a mulher é reconhecida, e varia entre territórios conforme a capacidade de acolhimento e a disposição de denunciar [n,n]. |
 | 10 | A10 | Métodos — Fonte e desfechos | `[n]` | 1 | Os dados provêm dos registros administrativos da Secretaria da Segurança Pública do Rio Grande do Sul, em planilhas de divulgação pública por município e ano [n]. |
-| 11 | A11 | Métodos — Fonte e desfechos | `[n]` | 1 | As populações municipais anuais vieram das estimativas do IBGE [n]. |
-| 12 | A13 | Métodos — Fonte e desfechos | `[n]` | 1 | O denominador adotado foi a população feminina, estimada como a população total de cada ano multiplicada pela razão entre população feminina e total do município no Censo 2022 [n]. |
-| 13 | A14 | Métodos — Fonte e desfechos | `[n]` | 1 | Essa razão mostrou-se estável entre os Censos de 2010 [n] e 2022, com variação mediana absoluta de 0,48 ponto percentual e máximo de 2,60. |
-| 14 | A12 | Métodos — Autocorrelação espacial | `[n]` | 1 | A autocorrelação foi estimada pelo índice de Moran global e pelo indicador local de associação espacial (LISA) [n], ambos com o ajuste proposto por Assunção e Reis [n]. |
-| 15 | A07 | Métodos — Autocorrelação espacial | `[n]` | 1 | A autocorrelação foi estimada pelo índice de Moran global e pelo indicador local de associação espacial (LISA) [n], ambos com o ajuste proposto por Assunção e Reis [n]. |
-| 16 | A08a | Métodos — Parâmetros do teste | `[n]` | 1 | O menor valor p obtenível com m permutações é 1/(m+1) [n], e o procedimento de Benjamini-Hochberg, com n áreas ao nível q, rejeita as hipóteses até o maior posto i cujo valor p ordenado não excede q·i/n [n]. |
-| 17 | A08b | Métodos — Parâmetros do teste | `[n]` | 1 | O menor valor p obtenível com m permutações é 1/(m+1) [n], e o procedimento de Benjamini-Hochberg, com n áreas ao nível q, rejeita as hipóteses até o maior posto i cujo valor p ordenado não excede q·i/n [n]. |
-| 18 | A09 | Métodos — Processamento e reprodutibilidade | `[n]` | 1 | O código, os dados processados e os parâmetros de execução estão depositados em repositório público, em versão etiquetada correspondente aos resultados aqui apresentados [n]. |
+| 11 | A11a | Métodos — Fonte e desfechos | `[n]` | 1 | As populações municipais anuais vieram do IBGE: de 2018 a 2021 e em 2024 e 2025, das estimativas populacionais [n]; em 2022, ano censitário sem estimativa, do Censo Demográfico [n]. (reescrita em 2026-11-03) |
+| 12 | A11b | Métodos — Fonte e desfechos | `[n]` | 1 | As populações municipais anuais vieram do IBGE: de 2018 a 2021 e em 2024 e 2025, das estimativas populacionais [n]; em 2022, ano censitário sem estimativa, do Censo Demográfico [n]. (reescrita em 2026-11-03) |
+| 13 | A13 | Métodos — Fonte e desfechos | `[n]` | 1 | O denominador adotado foi a população feminina, estimada como a população total de cada ano multiplicada pela razão entre população feminina e total do município no Censo 2022 [n]. |
+| 14 | A14 | Métodos — Fonte e desfechos | `[n]` | 1 | Essa razão mostrou-se estável entre os Censos de 2010 [n] e 2022, com variação mediana absoluta de 0,48 ponto percentual e máximo de 2,60. |
+| 15 | A12 | Métodos — Autocorrelação espacial | `[n]` | 1 | A autocorrelação foi estimada pelo índice de Moran global e pelo indicador local de associação espacial (LISA) [n], ambos com o ajuste proposto por Assunção e Reis [n]. |
+| 16 | A07 | Métodos — Autocorrelação espacial | `[n]` | 1 | A autocorrelação foi estimada pelo índice de Moran global e pelo indicador local de associação espacial (LISA) [n], ambos com o ajuste proposto por Assunção e Reis [n]. |
+| 17 | A08a | Métodos — Parâmetros do teste | `[n]` | 1 | O menor valor p obtenível com m permutações é 1/(m+1) [n], e o procedimento de Benjamini-Hochberg, com n áreas ao nível q, rejeita as hipóteses até o maior posto i cujo valor p ordenado não excede q·i/n [n]. |
+| 18 | A08b | Métodos — Parâmetros do teste | `[n]` | 1 | O menor valor p obtenível com m permutações é 1/(m+1) [n], e o procedimento de Benjamini-Hochberg, com n áreas ao nível q, rejeita as hipóteses até o maior posto i cujo valor p ordenado não excede q·i/n [n]. |
+| 19 | A09 | Métodos — Processamento e reprodutibilidade | `[n]` | 1 | O código, os dados processados e os parâmetros de execução estão depositados em repositório público, em versão etiquetada correspondente aos resultados aqui apresentados [n]. |
 
-Total: 18 marcadores, 21 referências pedidas.
+Total: 19 marcadores, 22 referências pedidas.

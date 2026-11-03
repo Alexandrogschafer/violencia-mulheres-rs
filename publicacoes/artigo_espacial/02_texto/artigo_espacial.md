@@ -61,12 +61,16 @@ que são tipos penais distintos. Os arquivos divulgados são revisados retroativ
 secretaria, de modo que a mesma consulta em datas diferentes pode retornar valores
 distintos; registrou-se a proveniência de cada extração, com data e soma de verificação.
 
-As populações municipais anuais vieram das estimativas do IBGE [11]. O denominador adotado
-foi a população feminina, estimada como a população total de cada ano multiplicada pela
-razão entre população feminina e total do município no Censo 2022 [12]. Essa razão
-mostrou-se estável entre os Censos de 2010 [13] e 2022, com variação mediana absoluta de
-0,48 ponto percentual e máximo de 2,60. As taxas são expressas por 100 mil mulheres-ano.
-Registre-se que a população feminina anual é estimada, não medida.
+As populações municipais anuais vieram do IBGE: de 2018 a 2021 e em 2024 e 2025, das
+estimativas populacionais [11]; em 2022, ano censitário sem estimativa, do Censo
+Demográfico [12]. Como o IBGE não publicou estimativa municipal para 2023, a população
+desse ano foi interpolada linearmente entre 2022 e 2024, como a média dos dois anos
+arredondada ao inteiro. O denominador adotado foi a população feminina, estimada como a
+população total de cada ano multiplicada pela razão entre população feminina e total do
+município no Censo 2022 [12]. Essa razão mostrou-se estável entre os Censos de 2010 [13] e
+2022, com variação mediana absoluta de 0,48 ponto percentual e máximo de 2,60. As taxas
+são expressas por 100 mil mulheres-ano. Registre-se que a população feminina anual é
+estimada, não medida.
 
 ### Autocorrelação espacial
 

@@ -3,7 +3,7 @@
 Verificação, em 2026-11-02, dos marcadores de `afirmacoes_a_referenciar.md`. Para cada um há a
 afirmação exata do manuscrito, a referência e a passagem que a sustenta, com página. Sem passagem
 transcrita, a referência não entra na lista Vancouver. Há duas exceções, as citações de origem de
-método (A07, A12) e de fonte de dados (A01, A10, A11), cujos critérios estão descritos em cada entrada.
+método (A07, A12) e de fonte de dados (A01, A10, A11, A13, A14), cujos critérios estão descritos em cada entrada.
 
 Revisão de 2026-11-02, segunda rodada:
 - o antigo A08 foi dividido em A08a e A08b;
@@ -58,7 +58,8 @@ referência 1 e desloca as demais. Os números desta página foram atualizados.
 | A05 | multiplicidade e falsos positivos | Sustenta | 9 |
 | A06 | subnotificação reconhecida e variável entre territórios | Sustenta, com ressalva | 2, 4 |
 | A10 | fonte dos dados: divulgação da SSP-RS | Fonte de dados | 10 |
-| A11 | populações municipais: estimativas do IBGE | Fonte de dados, com ressalva | 11 |
+| A11a | população 2018–2021 e 2024–2025: estimativas do IBGE | Fonte de dados | 11 |
+| A11b | população de 2022: Censo 2022 | Fonte de dados | 12 |
 | A13 | razão feminina do Censo 2022 | Fonte de dados | 12 |
 | A14 | estabilidade da razão entre os Censos 2010 e 2022 | Fonte de dados | 13 |
 | A12 | indicador local (LISA) | Origem do método; texto completo não lido | 14 |
@@ -423,28 +424,47 @@ https://www.ssp.rs.gov.br/indicadores-da-violencia-contra-a-mulher
   anterior à vigente, o que é coerente com a ressalva dos Métodos sobre revisão retroativa. Falta
   decidir se a extração será atualizada antes da submissão.
 
-## A11 — estimativas populacionais
+## A11a e A11b — origem da população anual
 
-**Afirmação:** «As populações municipais anuais vieram das estimativas do IBGE [n].»
+**Afirmação (reescrita em 2026-11-03):** «As populações municipais anuais vieram do IBGE: de 2018 a 2021
+e em 2024 e 2025, das estimativas populacionais [n]; em 2022, ano censitário sem estimativa, do Censo
+Demográfico [n]. Como o IBGE não publicou estimativa municipal para 2023, a população desse ano foi
+interpolada linearmente entre 2022 e 2024, como a média dos dois anos arredondada ao inteiro.»
+O primeiro marcador é A11a, e o segundo A11b.
 
-**Situação: fonte de dados, com ressalva.**
+**Situação: fonte de dados, conferida contra o pipeline e a API.** A ressalva anterior, de que a frase
+omitia 2022 e 2023, ficou resolvida.
 
-**Referência 11.** Instituto Brasileiro de Geografia e Estatística. Estimativas de População: tabela
-6579, população residente estimada. Sistema IBGE de Recuperação Automática (SIDRA):
+**Referência 11 (A11a).** Instituto Brasileiro de Geografia e Estatística. Estimativas de População:
+tabela 6579, população residente estimada. Sistema IBGE de Recuperação Automática (SIDRA):
 https://sidra.ibge.gov.br/tabela/6579
 
-- Metadados conferidos na API de agregados do IBGE: tabela 6579, «População residente estimada»,
-  pesquisa «Estimativas de População».
-- **Ressalva: a frase não descreve exatamente o que foi feito.** Segundo `src/fetch_populacao.py`:
-  - 2022 não vem das estimativas, e sim do Censo 2022 (tabela 4709), porque não há estimativa em ano de
-    censo;
-  - 2023 não existe em fonte oficial: o IBGE não publicou a estimativa municipal, e o valor foi
-    interpolado linearmente entre 2022 e 2024.
+**A11b** cita a mesma referência de A13, o Censo Demográfico 2022, cuja tabela 4709 dá a população
+total de 2022.
 
-  A frase precisa mencionar as duas exceções, e o Censo 2022 entra como segunda referência do IBGE.
-  O Censo 2022 também é a fonte da razão feminina, e o Censo 2010 a da verificação de estabilidade.
-  Desde 2026-11-03, os dois têm marcador (A13 e A14). A frase de A11 continua sem mencionar as duas
-  exceções.
+**O que o pipeline faz** (`src/fetch_populacao.py`, lido em 2026-11-03):
+- Busca na tabela 6579, variável 9324, todos os anos de 2012 a 2025 que a API lista como publicados,
+  menos 2022 (`anos_com_estimativa`).
+- Busca 2022 na tabela 4709, variável 93, do Censo 2022 (`URL_CENSO_2022`).
+- Se 2023 não veio da API, interpola 2023 entre o ano anterior e o seguinte disponíveis, 2022 e 2024,
+  com peso 0,5. O resultado é arredondado com `round()` e convertido em inteiro
+  (`_interpola_ano_faltante`). O arredondamento do pandas leva os valores terminados em ,5 ao par
+  mais próximo.
+- A saída é `outputs/tables/populacao_municipio_rs.csv`, a mesma população de
+  `violencia_anual_municipio_taxa.csv`, que alimenta a análise espacial: 3.976 pares
+  município-ano iguais entre 2018 e 2025.
+
+**Conferência em 2026-11-03** de `populacao_municipio_rs.csv` contra a API do IBGE, ano a ano:
+
+| Ano | Origem | Municípios iguais à fonte |
+|---|---|---|
+| 2018–2021 | tabela 6579 (estimativa) | 497 de 497 em cada ano |
+| 2022 | tabela 4709 (Censo 2022) | 497 de 497 |
+| 2023 | média de 2022 e 2024, arredondada | 497 de 497 |
+| 2024–2025 | tabela 6579 (estimativa) | 497 de 497 em cada ano |
+
+- Na consulta, a API listou para a tabela 6579 os períodos 2016–2021 e 2024–2026, sem 2022 e sem 2023.
+- 2026 já aparece, mas fica fora do período do artigo.
 
 ## A13 e A14 — Censos Demográficos
 

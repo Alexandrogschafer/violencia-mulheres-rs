@@ -21,7 +21,8 @@ A lista final está também ao fim de `02_texto/artigo_espacial.md`. As duas dev
 | 8 | A05 | 9 |
 | 9 | A06 | 2,4 |
 | 10 | A10 | 10 |
-| 11 | A11 | 11 |
+| 11 | A11a | 11 |
+| A11b | 12 |
 | 12 | A13 | 12 |
 | 13 | A14 | 13 |
 | 14 | A12 | 14 |
