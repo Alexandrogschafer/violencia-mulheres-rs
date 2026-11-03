@@ -8,21 +8,21 @@ A violência contra a mulher é problema de saúde pública e de segurança cuja
 organiza no território: é no município que funcionam os serviços de acolhimento, a
 delegacia, a unidade de saúde que atende o agravo e a rede de assistência social que
 acompanha o caso [n]. Saber como os registros se distribuem entre municípios é, portanto,
-condição para dirigir a resposta — e a distribuição não é homogênea [n,n].
+condição para dirigir a resposta — e a distribuição não é homogênea [1,2].
 
 Estudos que descrevem essa distribuição em municípios brasileiros recorrem a estatísticas
 de autocorrelação espacial, que identificam agrupamentos de valores semelhantes em áreas
-vizinhas [n,n]. A aplicação dessas estatísticas em escala municipal, porém, encontra duas
+vizinhas [1,3]. A aplicação dessas estatísticas em escala municipal, porém, encontra duas
 dificuldades próprias. A primeira é a instabilidade das taxas: municípios pequenos
 produzem taxas muito variáveis a partir de poucos eventos, e desfechos raros agravam o
-problema [n]. A segunda é o número de testes: avaliar quinhentas áreas simultaneamente
+problema [4]. A segunda é o número de testes: avaliar quinhentas áreas simultaneamente
 exige controle de multiplicidade, sem o qual a quantidade de falsos positivos deixa de ser
-desprezível [n].
+desprezível [5].
 
 Há ainda uma limitação que antecede a análise. Registros administrativos medem a
 notificação, não a ocorrência. A subnotificação da violência contra a mulher é reconhecida,
 e varia entre territórios conforme a capacidade de acolhimento e a disposição de denunciar
-[n,n]. Um mapa construído sobre esses registros descreve, a rigor, a geografia do registro
+[1,3]. Um mapa construído sobre esses registros descreve, a rigor, a geografia do registro
 — e distinguir o que nele é fenômeno do que é captação é parte da leitura, não uma ressalva
 a acrescentar ao final.
 
@@ -44,7 +44,7 @@ municípios do Rio Grande do Sul.
 ### Fonte e desfechos
 
 Os dados provêm dos registros administrativos da Secretaria da Segurança Pública do Rio
-Grande do Sul, em planilhas de divulgação pública por município e ano [n]. Foram analisados
+Grande do Sul, em planilhas de divulgação pública por município e ano [6]. Foram analisados
 quatro desfechos de violência contra a mulher no período de 2018 a 2025: ameaça, lesão
 corporal, estupro e feminicídio tentado. O feminicídio consumado foi analisado apenas
 quanto à autocorrelação global, pela baixa ocorrência.
@@ -54,7 +54,7 @@ que são tipos penais distintos. Os arquivos divulgados são revisados retroativ
 secretaria, de modo que a mesma consulta em datas diferentes pode retornar valores
 distintos; registrou-se a proveniência de cada extração, com data e soma de verificação.
 
-As populações municipais anuais vieram das estimativas do IBGE [n]. O denominador adotado foi a
+As populações municipais anuais vieram das estimativas do IBGE [7]. O denominador adotado foi a
 população feminina, estimada como a população total de cada ano multiplicada pela razão entre
 população feminina e total do município no Censo 2022. Essa razão mostrou-se estável entre
 os Censos de 2010 e 2022, com variação mediana de 0,32 ponto percentual e nenhum município
@@ -65,7 +65,7 @@ população feminina anual é estimada, não medida.
 
 A vizinhança foi definida por contiguidade do tipo rainha, com matriz padronizada por
 linha. A autocorrelação foi estimada pelo índice de Moran global e pelo indicador local de
-associação espacial (LISA) [n], ambos com o ajuste proposto por Assunção e Reis [n]. O
+associação espacial (LISA) [8], ambos com o ajuste proposto por Assunção e Reis [9]. O
 ajuste responde à instabilidade da variância das taxas em áreas de tamanhos populacionais
 desiguais: quanto menor a população do município, maior a variância da taxa estimada. O
 ajuste opera sobre a contagem e a população sob risco, e não sobre taxas previamente
@@ -79,8 +79,8 @@ semente fixada em **12345**. A multiplicidade foi tratada pelo procedimento de
 Benjamini-Hochberg a 5%, aplicado ao valor p direcional.
 
 O número de permutações não é escolha indiferente. O menor valor p obtenível com m
-permutações é 1/(m+1) [n], e o procedimento de Benjamini-Hochberg, com n áreas ao nível q,
-rejeita as hipóteses até o maior posto i cujo valor p ordenado não excede q·i/n [n].
+permutações é 1/(m+1) [10], e o procedimento de Benjamini-Hochberg, com n áreas ao nível q,
+rejeita as hipóteses até o maior posto i cujo valor p ordenado não excede q·i/n [5].
 Combinando as duas expressões, o que nenhuma das duas fontes enuncia, rejeitar uma
 hipótese nesse piso exige m+1 ≥ n/(q·i). Com 497 municípios ao nível de 5%, as 999
 permutações usuais só permitiriam rejeição se ao menos dez municípios atingissem o piso
@@ -111,7 +111,7 @@ acima da média municipal, e não necessariamente acima da taxa estadual.
 
 As análises foram conduzidas em Python, com as bibliotecas esda e libpysal. O código, os
 dados processados e os parâmetros de execução estão depositados em repositório público, em
-versão etiquetada correspondente aos resultados aqui apresentados [n].
+versão etiquetada correspondente aos resultados aqui apresentados [11].
 
 ## Resultados
 
@@ -318,3 +318,52 @@ A interpretação de resultados desse tipo depende de parâmetros que raramente 
 declarados. O número de permutações, a semente e o tratamento da multiplicidade determinam
 o que o teste é capaz de detectar, e sua omissão impede que o leitor distingua a ausência
 de agrupamento da incapacidade de encontrá-lo.
+
+## Referências
+
+<!-- Numeração em ordem de primeira aparição, gerada em 2026-11-03. O marcador [n] da primeira
+frase da Introdução (A01) continua pendente: a frase será substituída e citará a MUNIC, que entrará
+como referência 1 e renumerará a lista. -->
+
+1. Oliveira MR, Madeiro AP, Nascimento FF, Andrade JX, Rodrigues MTP, Mascarenhas MDM. Tendência e
+   padrão espacial das notificações de estupro por parceiro íntimo contra mulheres no Nordeste do
+   Brasil (2013–2022). Rev Bras Epidemiol. 2024;27:e240030. doi:10.1590/1980-549720240030.2
+
+2. Sá YRC, Moi PCP, Galvão ND, Silva AMC, Moi GP. The geography of femicide in Sergipe, Brazil:
+   matriarchy, human development, and income distribution. Rev Bras Epidemiol. 2021;24(Suppl
+   1):e210016. doi:10.1590/1980-549720210016.supl.1
+
+3. Barros SC, Oliveira CM, Silva APSC, Melo MFO, Pimentel DR, Bonfim CV. Análise espacial dos
+   homicídios intencionais de mulheres. Rev Esc Enferm USP. 2021;55:e03770.
+   doi:10.1590/S1980-220X2020037303770
+
+4. Carvalho AXY, Silva GDM, Almeida Júnior GR, Albuquerque PHM. Taxas bayesianas para o mapeamento
+   de homicídios nos municípios brasileiros. Cad Saude Publica. 2012;28(7):1249-62.
+   doi:10.1590/S0102-311X2012000700004
+
+5. Benjamini Y, Hochberg Y. Controlling the false discovery rate: a practical and powerful approach
+   to multiple testing. J R Stat Soc Series B Stat Methodol. 1995;57(1):289-300.
+   doi:10.1111/j.2517-6161.1995.tb02031.x
+
+6. Rio Grande do Sul. Secretaria da Segurança Pública. Indicadores da violência contra a mulher – Lei
+   Maria da Penha [Internet]. Porto Alegre: SSP; 2018-2026 [citado 2026 nov 2]. Disponível em:
+   https://www.ssp.rs.gov.br/indicadores-da-violencia-contra-a-mulher
+
+7. Instituto Brasileiro de Geografia e Estatística. Estimativas de População: tabela 6579 –
+   população residente estimada [Internet]. Rio de Janeiro: IBGE; [citado 2026 nov 2]. Disponível
+   em: https://sidra.ibge.gov.br/tabela/6579
+
+8. Anselin L. Local indicators of spatial association—LISA. Geogr Anal. 1995;27(2):93-115.
+   doi:10.1111/j.1538-4632.1995.tb00338.x
+
+9. Assunção RM, Reis EA. A new proposal to adjust Moran's I for population density. Stat Med.
+   1999;18(16):2147-62. doi:10.1002/(SICI)1097-0258(19990830)18:16<2147::AID-SIM179>3.0.CO;2-I
+
+10. Fischer L, Barry T, Ramdas A. Multiple testing with anytime-valid Monte Carlo p-values
+    [Preprint]. arXiv:2404.15586v4 [stat.ME]. 2025 [citado 2026 nov 2]. Disponível em:
+    https://arxiv.org/abs/2404.15586v4
+
+11. Schäfer AG, Prates LA, Schäfer LP, Fernandes MAD. Pipeline de análise da violência contra a
+    mulher no RS (2012-2026) [Internet]. Versão [etiqueta do artigo a criar]. Zenodo; 2026 [citado
+    2026 nov 3]. doi:10.5281/zenodo.21403499. Disponível em:
+    https://github.com/Alexandrogschafer/violencia-mulheres-rs

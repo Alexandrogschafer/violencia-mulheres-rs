@@ -14,6 +14,8 @@ Revisão de 2026-11-02, segunda rodada:
 
 Revisão de 2026-11-03: A07 (Assunção e Reis) passa a entrar na lista como citação de origem do método,
 sem passagem transcrita, porque o texto completo não foi obtido. Os caminhos tentados estão na entrada.
+Na mesma data, o repositório (A09) entrou como referência 11, e os marcadores foram numerados no
+manuscrito; Fischer et al. passaram de 9 para 10. A01 segue pendente.
 
 ## Como ler
 
@@ -50,12 +52,12 @@ sem passagem transcrita, porque o texto completo não foi obtido. Os caminhos te
 | A10 | fonte dos dados: divulgação da SSP-RS | Fonte de dados | 6 |
 | A11 | populações municipais: estimativas do IBGE | Fonte de dados, com ressalva | 7 |
 | A12 | indicador local (LISA) | Origem do método; texto completo não lido | 8 |
-| A07 | ajuste de Assunção e Reis | Origem do método; **texto completo não obtido** | a numerar |
-| A08a | piso do p por permutação | Sustenta | 9 |
+| A07 | ajuste de Assunção e Reis | Origem do método; **texto completo não obtido** | 9 |
+| A08a | piso do p por permutação | Sustenta | 10 |
 | A08b | regra de Benjamini-Hochberg | Sustenta | 5 |
-| A09 | repositório público com versão etiquetada | **Pendente:** não é afirmação bibliográfica | — |
+| A09 | repositório público com versão etiquetada | Repositório citado; **etiqueta do artigo a criar** | 11 |
 
-As linhas seguem a ordem do texto. São 9 referências na lista; o limite da RESS é 30.
+As linhas seguem a ordem do texto. São 11 referências na lista; o limite da RESS é 30. A01 continua com `[n]` pendente.
 
 ---
 
@@ -205,7 +207,7 @@ O marcador é o segundo da frase; o primeiro é A12.
 **Situação: citação de origem de método. O texto completo não foi obtido; não há passagem
 transcrita.**
 
-**Referência.** Assunção RM, Reis EA. A new proposal to adjust Moran's I for population density. Stat
+**Referência 9.** Assunção RM, Reis EA. A new proposal to adjust Moran's I for population density. Stat
 Med. 1999;18(16):2147-62. doi:10.1002/(SICI)1097-0258(19990830)18:16<2147::AID-SIM179>3.0.CO;2-I
 
 **Caminhos tentados:**
@@ -239,7 +241,7 @@ rejeitar uma hipótese nesse piso exige m+1 ≥ n/(q·i).»
 
 **Situação: sustenta.**
 
-**Referência 9.** Fischer L, Barry T, Ramdas A. arXiv:2404.15586v4, 2025. As fórmulas foram transcritas
+**Referência 10.** Fischer L, Barry T, Ramdas A. arXiv:2404.15586v4, 2025. As fórmulas foram transcritas
 da página.
 
 > «In a classical Monte Carlo permutation test, we observe some test statistic Y0, generate B additional
@@ -260,7 +262,7 @@ Pela fórmula (1), o menor valor possível é 1/(1+B), que é o 1/(m+1) do manus
 
 ### Sobre a desigualdade
 
-- m+1 ≥ n/(q·i) resulta de combinar o piso (referência 9) com a regra (referência 5). O manuscrito agora
+- m+1 ≥ n/(q·i) resulta de combinar o piso (referência 10) com a regra (referência 5). O manuscrito agora
   o declara.
 - Fischer et al. enunciam o caso de pior situação, em que um único p pequeno é testado a α/M; esse
   caso corresponde a i = 1:
@@ -281,14 +283,15 @@ Pela fórmula (1), o menor valor possível é 1/(1+B), que é o 1/(m+1) do manus
 **Afirmação:** «O código, os dados processados e os parâmetros de execução estão depositados em
 repositório público, em versão etiquetada correspondente aos resultados aqui apresentados [n].»
 
-**Situação: pendente.**
+**Situação: repositório citado; a etiqueta do artigo ainda não existe.**
 
 - A referência é o próprio repositório (`github.com/Alexandrogschafer/violencia-mulheres-rs`). Não há
   passagem a transcrever.
 - A versão etiquetada deste artigo ainda não existe. O repositório tem as etiquetas `v1.0.0` e
-  `artigo-reciis-v1`, de outros trabalhos. A afirmação só fica verdadeira quando a etiqueta for criada. Um DOI de arquivamento, por exemplo do Zenodo, tornaria a referência
-  estável.
-- Ficou fora da lista Vancouver.
+  `artigo-reciis-v1`, de outros trabalhos. A afirmação só fica verdadeira quando a etiqueta for criada.
+- Em 2026-11-03 o repositório entrou na lista como **referência 11**, por decisão do autor, com a
+  autoria e o título de `CITATION.cff`, o DOI conceitual do Zenodo (10.5281/zenodo.21403499) e a
+  versão marcada como «etiqueta do artigo a criar». Ao criar a etiqueta, substituir pelo DOI da versão.
 
 ## A10 — fonte dos dados
 
