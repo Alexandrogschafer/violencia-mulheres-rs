@@ -26,6 +26,17 @@ acentuados sugerem lacunas de notificação.
 
 **Palavras-chave:** Violência contra a Mulher; Análise Espacial; Sub-Registro; Estudos Ecológicos; Brasil.
 
+## Aspectos éticos
+
+<!-- A RESS pede quadro com comitê, parecer, data, CAAE e consentimento; estudos sem apreciação ética
+justificam o motivo de modo sucinto, sem redação prescrita. Base conferida em 2026-11-03 no texto da
+Resolução CNS nº 510/2016 publicado pela BVS/MS: art. 1º, parágrafo único, incisos II e V. -->
+
+O estudo utilizou exclusivamente dados agregados por município, de acesso público, sem
+possibilidade de identificação individual, e por isso dispensou apreciação por comitê de
+ética em pesquisa, nos termos do artigo 1º, parágrafo único, incisos II e V, da Resolução
+nº 510, de 7 de abril de 2016, do Conselho Nacional de Saúde.
+
 ## Introdução
 
 A violência contra a mulher é problema de saúde pública e de segurança, e os serviços
