@@ -3,7 +3,7 @@
 Verificação, em 2026-11-02, dos marcadores de `afirmacoes_a_referenciar.md`. Para cada um há a
 afirmação exata do manuscrito, a referência e a passagem que a sustenta, com página. Sem passagem
 transcrita, a referência não entra na lista Vancouver. Há duas exceções, as citações de origem de
-método (A07, A12) e de fonte de dados (A10, A11), cujos critérios estão descritos em cada entrada.
+método (A07, A12) e de fonte de dados (A01, A10, A11), cujos critérios estão descritos em cada entrada.
 
 Revisão de 2026-11-02, segunda rodada:
 - o antigo A08 foi dividido em A08a e A08b;
@@ -16,6 +16,9 @@ Revisão de 2026-11-03: A07 (Assunção e Reis) passa a entrar na lista como cit
 sem passagem transcrita, porque o texto completo não foi obtido. Os caminhos tentados estão na entrada.
 Na mesma data, o repositório (A09) entrou como referência 11, e os marcadores foram numerados no
 manuscrito; Fischer et al. passaram de 9 para 10. A01 segue pendente.
+
+Revisão de 2026-11-03, segunda rodada: A01 foi reescrita e cita a MUNIC 2023, que entra como
+referência 1 e desloca as demais. Os números desta página foram atualizados.
 
 ## Como ler
 
@@ -43,48 +46,64 @@ manuscrito; Fischer et al. passaram de 9 para 10. A01 segue pendente.
 
 | ID | Afirmação, abreviada | Situação | Referências (número na lista) |
 |---|---|---|---|
-| A01 | resposta organizada no município | **Sem sustentação**; a frase será substituída e citará a MUNIC | — |
-| A02 | a distribuição não é homogênea | Sustenta | 1, 2 |
-| A03 | estudos em municípios brasileiros usam autocorrelação espacial | Sustenta | 3, 1 |
-| A04 | instabilidade das taxas em municípios pequenos e desfechos raros | Sustenta | 4 |
-| A05 | multiplicidade e falsos positivos | Sustenta | 5 |
-| A06 | subnotificação reconhecida e variável entre territórios | Sustenta, com ressalva | 3, 1 |
-| A10 | fonte dos dados: divulgação da SSP-RS | Fonte de dados | 6 |
-| A11 | populações municipais: estimativas do IBGE | Fonte de dados, com ressalva | 7 |
-| A12 | indicador local (LISA) | Origem do método; texto completo não lido | 8 |
-| A07 | ajuste de Assunção e Reis | Origem do método; **texto completo não obtido** | 9 |
-| A08a | piso do p por permutação | Sustenta | 10 |
-| A08b | regra de Benjamini-Hochberg | Sustenta | 5 |
-| A09 | repositório público com versão etiquetada | Repositório citado; **etiqueta do artigo a criar** | 11 |
+| A01 | delegacia especializada em 38 de 496 municípios | Fonte de dados, conferida na base | 1 |
+| A02 | a distribuição não é homogênea | Sustenta | 2, 3 |
+| A03 | estudos em municípios brasileiros usam autocorrelação espacial | Sustenta | 2, 4 |
+| A04 | instabilidade das taxas em municípios pequenos e desfechos raros | Sustenta | 5 |
+| A05 | multiplicidade e falsos positivos | Sustenta | 6 |
+| A06 | subnotificação reconhecida e variável entre territórios | Sustenta, com ressalva | 2, 4 |
+| A10 | fonte dos dados: divulgação da SSP-RS | Fonte de dados | 7 |
+| A11 | populações municipais: estimativas do IBGE | Fonte de dados, com ressalva | 8 |
+| A12 | indicador local (LISA) | Origem do método; texto completo não lido | 9 |
+| A07 | ajuste de Assunção e Reis | Origem do método; **texto completo não obtido** | 10 |
+| A08a | piso do p por permutação | Sustenta | 11 |
+| A08b | regra de Benjamini-Hochberg | Sustenta | 6 |
+| A09 | repositório público com versão etiquetada | Repositório citado; **etiqueta do artigo a criar** | 12 |
 
-As linhas seguem a ordem do texto. São 11 referências na lista; o limite da RESS é 30. A01 continua com `[n]` pendente.
+As linhas seguem a ordem do texto. São 12 referências na lista; o limite da RESS é 30.
 
 ---
 
 ## A01
 
-**Afirmação:** «A violência contra a mulher é problema de saúde pública e de segurança cuja resposta se
-organiza no território: é no município que funcionam os serviços de acolhimento, a delegacia, a unidade
-de saúde que atende o agravo e a rede de assistência social que acompanha o caso [n].»
+**Afirmação (reescrita em 2026-11-03):** «A violência contra a mulher é problema de saúde pública e de
+segurança, e os serviços especializados que a atendem distribuem-se de modo desigual entre os
+municípios: no Rio Grande do Sul, em 2023, 38 dos 496 municípios que responderam ao quesito declararam
+ter delegacia especializada no atendimento à mulher [n].»
 
-**Situação: sem sustentação.**
+**Situação: fonte de dados, conferida na base publicada.** A frase anterior («é no município que
+funcionam os serviços de acolhimento, a delegacia...») não tinha sustentação e foi substituída. A
+nova restringe-se ao que a MUNIC mede. A citação é da publicação do IBGE, e não do CSV processado
+do repositório.
 
-- Nenhum dos oito PDFs trata da organização municipal da rede de atendimento.
-- Busca no PubMed: violência contra a mulher × rede ou serviços × município × Brasil, 15 resultados.
-  Ela trouxe dois candidatos, lidos na íntegra, que descrevem a rede de **um** município e não sustentam
-  a afirmação geral:
-  - Batista KBC, Schraiber LB, D'Oliveira AFPL. Cad Saude Publica. 2018;34(8):e00140017. Trata da rede
-    de São Paulo, organizada pela Secretaria Municipal da Saúde.
-  - Silva EB, Padoin SMM, Vianna LAC. Cienc Saude Colet. 2015;20(1):249-58. Trata de Palmeira das
-    Missões (RS). Traz a fala de uma profissional sobre a falta de articulação entre saúde, CRAS e CREAS
-    na gestão municipal.
-- A frase também mistura esferas: a delegacia é estadual, e não municipal, e só funciona onde existe.
+**Referência 1.** Instituto Brasileiro de Geografia e Estatística. Pesquisa de Informações Básicas
+Municipais – MUNIC 2023: base de dados [Internet]. Rio de Janeiro: IBGE; 2024 [citado 2026 nov 3].
+Disponível em: https://ftp.ibge.gov.br/Perfil_Municipios/2023/Base_de_Dados/Base_MUNIC_2023.xlsx
 
-**Para reescrever:**
-- restringir a afirmação ao que é verificável, por exemplo "é no território municipal que a mulher
-  acessa os serviços", sem atribuir ao município a gestão de todos eles; ou
-- apoiar-se em texto normativo. A Lei 11.340/2006, art. 35, atribui à União, aos estados e aos
-  municípios a criação dos serviços. Isso exige decidir se fontes normativas entram.
+Passagens da base publicada, `Base_MUNIC_2023.xlsx`. O SHA-256 `511d50a2…6c759` confere com
+`data/processed/rede_atendimento_proveniencia.csv`.
+
+> Aba «Dicionário», quesito 6.3: «Estrutura existente» / «Existe no município:» / «Delegacia
+> especializada no Atendimento à Mulher | MSEG168» (linhas 702–711 da aba)
+
+> Aba «Dicionário», rodapé do bloco de segurança pública: «Fonte: IBGE, Pesquisa de Informações
+> Básicas Municipais - 2023»
+
+**Contagem, feita por programa sobre a aba «Segurança Pública»** e filtrada pelos códigos de município
+iniciados em 43 (497 municípios):
+
+| MSEG168 | Municípios |
+|---|---:|
+| Sim | 38 |
+| Não | 286 |
+| «-» (marcaram «Nenhuma das citadas», MSEG1611 = Sim) | 172 |
+| Não informou | 1 |
+
+- 38 «Sim» sobre 496 respondentes, ou seja, 497 menos o «Não informou».
+- O «-» é ausência porque coincide exatamente com MSEG1611 = Sim, como em `src/fetch_rede_atendimento.py`.
+- A contagem confere com `data/processed/rede_atendimento_municipio.csv`: 38 `tem`, 458 `nao_tem`,
+  1 `sem_resposta`.
+- **Ressalva:** a MUNIC é autodeclarada pela prefeitura. A frase diz «declararam», não «têm».
 
 ## A02
 
@@ -93,13 +112,13 @@ a resposta — e a distribuição não é homogênea [n,n].»
 
 **Situação: sustenta**, quanto a "a distribuição não é homogênea", que é o que o marcador apoia.
 
-**Referência 1.** Oliveira MR, Madeiro AP, Nascimento FF, Andrade JX, Rodrigues MTP, Mascarenhas MDM.
+**Referência 2.** Oliveira MR, Madeiro AP, Nascimento FF, Andrade JX, Rodrigues MTP, Mascarenhas MDM.
 Rev Bras Epidemiol. 2024;27:e240030.
 
 > «Constatou-se, neste estudo, heterogeneidade espacial nas taxas brutas de notificações de estupro por
 > parceiro íntimo no Nordeste, com conglomerados mais altos nos estados do Ceará e de Pernambuco.» (p. 8)
 
-**Referência 2.** Sá YRC, Moi PCP, Galvão ND, Silva AMC, Moi GP. Rev Bras Epidemiol.
+**Referência 3.** Sá YRC, Moi PCP, Galvão ND, Silva AMC, Moi GP. Rev Bras Epidemiol.
 2021;24(Supl 1):e210016.
 
 > «The results of the present study show a very uneven distribution of the femicide rates per 100
@@ -116,7 +135,7 @@ vizinhas [n,n].»
 
 **Situação: sustenta.** Os dois estudos têm o município como unidade e usam o Moran global e local.
 
-**Referência 3.** Barros SC, Oliveira CM, Silva APSC, Melo MFO, Pimentel DR, Bonfim CV. Rev Esc Enferm
+**Referência 4.** Barros SC, Oliveira CM, Silva APSC, Melo MFO, Pimentel DR, Bonfim CV. Rev Esc Enferm
 USP. 2021;55:e03770.
 
 > «Estudo ecológico que considerou como unidade espacial de análise os municípios do estado de
@@ -126,7 +145,7 @@ USP. 2021;55:e03770.
 > Para a delimitação das áreas críticas e de transição, bem como a identificação de clusters,
 > empregou-se o índice de Moran local (Local Indicators of Spatial Association – LISA).» (p. 2)
 
-**Referência 1.** Oliveira MR et al., 2024.
+**Referência 2.** Oliveira MR et al., 2024.
 
 > «Na análise espacial, adotou-se o Índice Global e Local de Moran (IGM/ILM) univariado. Para a criação
 > desse modelo, foi empregada na cartografia toda a extensão da macrorregião nordestina, tendo como
@@ -146,7 +165,7 @@ a partir de poucos eventos, e desfechos raros agravam o problema [n].»
 
 **Situação: sustenta.**
 
-**Referência 4.** Carvalho AXY, Silva GDM, Almeida Júnior GR, Albuquerque PHM. Cad Saude Publica.
+**Referência 5.** Carvalho AXY, Silva GDM, Almeida Júnior GR, Albuquerque PHM. Cad Saude Publica.
 2012;28(7):1249-62.
 
 > «Quando os municípios são pequenos, a estimação de taxas brutas é pouco indicada. Por serem pouco
@@ -163,7 +182,7 @@ de multiplicidade, sem o qual a quantidade de falsos positivos deixa de ser desp
 
 **Situação: sustenta.**
 
-**Referência 5.** Benjamini Y, Hochberg Y. J R Stat Soc Series B Stat Methodol. 1995;57(1):289-300.
+**Referência 6.** Benjamini Y, Hochberg Y. J R Stat Soc Series B Stat Methodol. 1995;57(1):289-300.
 
 > «When pursuing multiple inferences, researchers tend to select the (statistically) significant ones
 > for emphasis, discussion and support of conclusions. An unguarded use of single-inference procedures
@@ -177,7 +196,7 @@ conforme a capacidade de acolhimento e a disposição de denunciar [n,n].»
 
 **Situação: sustenta, com ressalva.**
 
-**Referência 3.** Barros SC et al., 2021. A passagem atravessa a quebra de página, e o cabeçalho corrido
+**Referência 4.** Barros SC et al., 2021. A passagem atravessa a quebra de página, e o cabeçalho corrido
 da p. 7 foi omitido.
 
 > «Ainda é frequente, em municípios localizados em regiões menos urbanas, as mulheres [p. 6 | p. 7] não
@@ -186,7 +205,7 @@ da p. 7 foi omitido.
 > dificuldade de acesso a serviços de proteção às vítimas de violência, como as delegacias
 > especializadas de atendimento à mulher(26).» (p. 6-7)
 
-**Referência 1.** Oliveira MR et al., 2024.
+**Referência 2.** Oliveira MR et al., 2024.
 
 > «Primeiro, é possível que tenha ocorrido subnotificação do estupro, tanto por conta da dificuldade de
 > identificação da violência pela mulher como por provável barreira de acesso às unidades de saúde, uma
@@ -207,7 +226,7 @@ O marcador é o segundo da frase; o primeiro é A12.
 **Situação: citação de origem de método. O texto completo não foi obtido; não há passagem
 transcrita.**
 
-**Referência 9.** Assunção RM, Reis EA. A new proposal to adjust Moran's I for population density. Stat
+**Referência 10.** Assunção RM, Reis EA. A new proposal to adjust Moran's I for population density. Stat
 Med. 1999;18(16):2147-62. doi:10.1002/(SICI)1097-0258(19990830)18:16<2147::AID-SIM179>3.0.CO;2-I
 
 **Caminhos tentados:**
@@ -241,7 +260,7 @@ rejeitar uma hipótese nesse piso exige m+1 ≥ n/(q·i).»
 
 **Situação: sustenta.**
 
-**Referência 10.** Fischer L, Barry T, Ramdas A. arXiv:2404.15586v4, 2025. As fórmulas foram transcritas
+**Referência 11.** Fischer L, Barry T, Ramdas A. arXiv:2404.15586v4, 2025. As fórmulas foram transcritas
 da página.
 
 > «In a classical Monte Carlo permutation test, we observe some test statistic Y0, generate B additional
@@ -256,13 +275,13 @@ Pela fórmula (1), o menor valor possível é 1/(1+B), que é o 1/(m+1) do manus
 
 **Situação: sustenta.**
 
-**Referência 5.** Benjamini e Hochberg, 1995, lida na página renderizada.
+**Referência 6.** Benjamini e Hochberg, 1995, lida na página renderizada.
 
 > «let k be the largest i for which P(i) ≤ (i/m) q*; then reject all H(i), i = 1, 2, . . ., k.» (p. 293)
 
 ### Sobre a desigualdade
 
-- m+1 ≥ n/(q·i) resulta de combinar o piso (referência 10) com a regra (referência 5). O manuscrito agora
+- m+1 ≥ n/(q·i) resulta de combinar o piso (referência 11) com a regra (referência 6). O manuscrito agora
   o declara.
 - Fischer et al. enunciam o caso de pior situação, em que um único p pequeno é testado a α/M; esse
   caso corresponde a i = 1:
@@ -300,7 +319,7 @@ Grande do Sul, em planilhas de divulgação pública por município e ano [n].»
 
 **Situação: fonte de dados.** Não há afirmação a sustentar; a referência identifica a publicação.
 
-**Referência 6.** Rio Grande do Sul, Secretaria da Segurança Pública. Indicadores da violência contra a
+**Referência 7.** Rio Grande do Sul, Secretaria da Segurança Pública. Indicadores da violência contra a
 mulher – Lei Maria da Penha. Página consultada em 2026-11-02:
 https://www.ssp.rs.gov.br/indicadores-da-violencia-contra-a-mulher
 
@@ -320,7 +339,7 @@ https://www.ssp.rs.gov.br/indicadores-da-violencia-contra-a-mulher
 
 **Situação: fonte de dados, com ressalva.**
 
-**Referência 7.** Instituto Brasileiro de Geografia e Estatística. Estimativas de População: tabela
+**Referência 8.** Instituto Brasileiro de Geografia e Estatística. Estimativas de População: tabela
 6579, população residente estimada. Sistema IBGE de Recuperação Automática (SIDRA):
 https://sidra.ibge.gov.br/tabela/6579
 
@@ -344,7 +363,7 @@ primeiro da frase.
 
 **Situação: citação de origem de método. O texto completo não foi lido.**
 
-**Referência 8.** Anselin L. Local indicators of spatial association—LISA. Geogr Anal.
+**Referência 9.** Anselin L. Local indicators of spatial association—LISA. Geogr Anal.
 1995;27(2):93-115. doi:10.1111/j.1538-4632.1995.tb00338.x
 
 - Os metadados vêm do registro do DOI no Crossref, conferido em 2026-11-02: título «Local Indicators of
@@ -353,24 +372,6 @@ primeiro da frase.
 - O PDF não foi obtido: a editora bloqueou o download automático, embora o Unpaywall registre acesso
   aberto. O texto completo não foi lido. A referência entra por instrução, como citação de origem do
   método. Ela não sustenta nenhuma afirmação específica sobre o conteúdo do artigo.
-
-## MUNIC — preparada, aguardando a frase
-
-A nova primeira frase da Introdução não chegou com o pedido. A frase atual (A01) continua no
-manuscrito, e a MUNIC ainda não tem marcador.
-
-- **Edição:** o repositório baixou três edições, 2018, 2019 e 2023 (`data/processed/rede_atendimento_proveniencia.csv`).
-  A mais recente é a 2023, cuja base foi publicada no FTP do IBGE em 2024-10-31.
-- **Referência preparada, se for a 2023:** Instituto Brasileiro de Geografia e Estatística.
-  Pesquisa de Informações Básicas Municipais – MUNIC 2023: base de dados [Internet]. Rio de Janeiro:
-  IBGE; 2024 [citado 2026 nov 2]. Disponível em:
-  https://ftp.ibge.gov.br/Perfil_Municipios/2023/Base_de_Dados/Base_MUNIC_2023.xlsx
-- **Dado que sustenta a desigualdade no RS**, de `outputs/tables/rede_atendimento_cobertura.md`:
-  - delegacia especializada em 38 de 496 municípios respondentes (8%) em 2023;
-  - organismo municipal de políticas para mulheres em 164 de 497 (33%) em 2023;
-  - CREAS declarado em 134 de 491 (27%) em 2023.
-  
-  A frase exata ainda precisa ser conferida contra esses números.
 
 ---
 

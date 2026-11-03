@@ -10,7 +10,7 @@ Os identificadores são estáveis, e por isso não seguem a ordem do texto:
 
 | Ordem | ID | Seção | Marcador | Referências | Frase |
 |---|---|---|---|---|---|
-| 1 | A01 | Introdução | `[n]` | 1 | A violência contra a mulher é problema de saúde pública e de segurança cuja resposta se organiza no território: é no município que funcionam os serviços de acolhimento, a delegacia, a unidade de saúde que atende o agravo e a rede de assistência social que acompanha o caso [n]. |
+| 1 | A01 | Introdução | `[n]` | 1 | A violência contra a mulher é problema de saúde pública e de segurança, e os serviços especializados que a atendem distribuem-se de modo desigual entre os municípios: no Rio Grande do Sul, em 2023, 38 dos 496 municípios que responderam ao quesito declararam ter delegacia especializada no atendimento à mulher [n]. (reescrita em 2026-11-03) |
 | 2 | A02 | Introdução | `[n,n]` | 2 | Saber como os registros se distribuem entre municípios é, portanto, condição para dirigir a resposta — e a distribuição não é homogênea [n,n]. |
 | 3 | A03 | Introdução | `[n,n]` | 2 | Estudos que descrevem essa distribuição em municípios brasileiros recorrem a estatísticas de autocorrelação espacial, que identificam agrupamentos de valores semelhantes em áreas vizinhas [n,n]. |
 | 4 | A04 | Introdução | `[n]` | 1 | A primeira é a instabilidade das taxas: municípios pequenos produzem taxas muito variáveis a partir de poucos eventos, e desfechos raros agravam o problema [n]. |
