@@ -3,7 +3,7 @@
 Verificação, em 2026-11-02, dos marcadores de `afirmacoes_a_referenciar.md`. Para cada um há a
 afirmação exata do manuscrito, a referência e a passagem que a sustenta, com página. Sem passagem
 transcrita, a referência não entra na lista Vancouver. Há duas exceções, as citações de origem de
-método e de fonte de dados (A10–A12), cujos critérios estão descritos em cada entrada.
+método (A07, A12) e de fonte de dados (A10, A11), cujos critérios estão descritos em cada entrada.
 
 Revisão de 2026-11-02, segunda rodada:
 - o antigo A08 foi dividido em A08a e A08b;
@@ -11,6 +11,9 @@ Revisão de 2026-11-02, segunda rodada:
 - a autoria de Fischer foi corrigida para três autores;
 - A10–A12 foram acrescentados;
 - a referência da MUNIC está preparada, mas aguarda a nova primeira frase da Introdução.
+
+Revisão de 2026-11-03: A07 (Assunção e Reis) passa a entrar na lista como citação de origem do método,
+sem passagem transcrita, porque o texto completo não foi obtido. Os caminhos tentados estão na entrada.
 
 ## Como ler
 
@@ -47,7 +50,7 @@ Revisão de 2026-11-02, segunda rodada:
 | A10 | fonte dos dados: divulgação da SSP-RS | Fonte de dados | 6 |
 | A11 | populações municipais: estimativas do IBGE | Fonte de dados, com ressalva | 7 |
 | A12 | indicador local (LISA) | Origem do método; texto completo não lido | 8 |
-| A07 | ajuste de Assunção e Reis | **Não obtenível** | — |
+| A07 | ajuste de Assunção e Reis | Origem do método; **texto completo não obtido** | a numerar |
 | A08a | piso do p por permutação | Sustenta | 9 |
 | A08b | regra de Benjamini-Hochberg | Sustenta | 5 |
 | A09 | repositório público com versão etiquetada | **Pendente:** não é afirmação bibliográfica | — |
@@ -200,14 +203,28 @@ associação espacial (LISA) [n], ambos com o ajuste de Assunção e Reis [n], a
 sobre populações de tamanhos muito desiguais, em que a variância da taxa é maior nos municípios
 menores.» O marcador é o segundo da frase; o primeiro é A12.
 
-**Situação: não obtenível.**
+**Situação: citação de origem de método. O texto completo não foi obtido; não há passagem
+transcrita.**
 
-- Referência: Assunção RM, Reis EA. A new proposal to adjust Moran's I for population density. Stat Med.
-  1999;18(16):2147-62.
-- O artigo não é de acesso aberto: Unpaywall registra `is_oa: false`. Também não foi achada cópia do
-  autor nem cópia hospedada.
-- Não foi citado pelo resumo e **não entra na lista** até que o PDF seja obtido, por exemplo pelo Portal
-  de Periódicos CAPES. É a única referência cuja ausência impede citar um método usado.
+**Referência.** Assunção RM, Reis EA. A new proposal to adjust Moran's I for population density. Stat
+Med. 1999;18(16):2147-62. doi:10.1002/(SICI)1097-0258(19990830)18:16<2147::AID-SIM179>3.0.CO;2-I
+
+**Caminhos tentados:**
+
+| Data | Caminho | Resultado |
+|---|---|---|
+| 2026-11-02 | Unpaywall, pelo DOI | `is_oa: false`; sem versão de acesso aberto |
+| 2026-11-02 | Cópia do autor (páginas pessoais e institucionais) | Não localizada |
+| 2026-11-02 | Cópia hospedada em outro sítio | Não localizada |
+| 2026-11-03 | Portal de Periódicos CAPES | Não disponível, segundo informou o autor do manuscrito; a consulta não foi refeita aqui |
+
+**Por que entra sem passagem:** a referência é a origem do método aplicado nos Métodos, e não fonte de
+uma afirmação sobre o conteúdo do artigo. Entra pelo mesmo critério de A12 (Anselin): atribui o
+método e não sustenta nenhuma afirmação específica. Por isso a frase dos Métodos passa a
+separar a atribuição («o ajuste proposto por Assunção e Reis») da explicação da variância das taxas,
+que é propriedade geral de uma taxa e não depende de fonte.
+
+Se o PDF for obtido, transcrever a passagem que descreve o ajuste e revisar esta entrada.
 
 ## A08a e A08b
 
