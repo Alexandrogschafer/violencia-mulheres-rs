@@ -55,18 +55,18 @@ que são tipos penais distintos. Os arquivos divulgados são revisados retroativ
 secretaria, de modo que a mesma consulta em datas diferentes pode retornar valores
 distintos; registrou-se a proveniência de cada extração, com data e soma de verificação.
 
-As populações municipais anuais vieram das estimativas do IBGE [8]. O denominador adotado foi a
-população feminina, estimada como a população total de cada ano multiplicada pela razão entre
-população feminina e total do município no Censo 2022. Essa razão mostrou-se estável entre
-os Censos de 2010 e 2022, com variação mediana de 0,32 ponto percentual e nenhum município
-acima de 5 pontos. As taxas são expressas por 100 mil mulheres-ano. Registre-se que a
-população feminina anual é estimada, não medida.
+As populações municipais anuais vieram das estimativas do IBGE [8]. O denominador
+adotado foi a população feminina, estimada como a população total de cada ano multiplicada
+pela razão entre população feminina e total do município no Censo 2022 [9]. Essa
+razão mostrou-se estável entre os Censos de 2010 [10] e 2022, com variação mediana
+de 0,32 ponto percentual e nenhum município acima de 5 pontos. As taxas são expressas por
+100 mil mulheres-ano. Registre-se que a população feminina anual é estimada, não medida.
 
 ### Autocorrelação espacial
 
 A vizinhança foi definida por contiguidade do tipo rainha, com matriz padronizada por
 linha. A autocorrelação foi estimada pelo índice de Moran global e pelo indicador local de
-associação espacial (LISA) [9], ambos com o ajuste proposto por Assunção e Reis [10]. O
+associação espacial (LISA) [11], ambos com o ajuste proposto por Assunção e Reis [12]. O
 ajuste responde à instabilidade da variância das taxas em áreas de tamanhos populacionais
 desiguais: quanto menor a população do município, maior a variância da taxa estimada. O
 índice ajustado é calculado a partir da contagem e da população sob risco, e não de taxas
@@ -80,7 +80,7 @@ semente fixada em **12345**. A multiplicidade foi tratada pelo procedimento de
 Benjamini-Hochberg a 5%, aplicado ao valor p direcional.
 
 O número de permutações não é escolha indiferente. O menor valor p obtenível com m
-permutações é 1/(m+1) [11], e o procedimento de Benjamini-Hochberg, com n áreas ao nível q,
+permutações é 1/(m+1) [13], e o procedimento de Benjamini-Hochberg, com n áreas ao nível q,
 rejeita as hipóteses até o maior posto i cujo valor p ordenado não excede q·i/n [6].
 Combinando as duas expressões, o que nenhuma das duas fontes enuncia, rejeitar uma
 hipótese nesse piso exige m+1 ≥ n/(q·i). Com 497 municípios ao nível de 5%, as 999
@@ -112,7 +112,7 @@ acima da média municipal, e não necessariamente acima da taxa estadual.
 
 As análises foram conduzidas em Python, com as bibliotecas esda e libpysal. O código, os
 dados processados e os parâmetros de execução estão depositados em repositório público, em
-versão etiquetada correspondente aos resultados aqui apresentados [12].
+versão etiquetada correspondente aos resultados aqui apresentados [14].
 
 ## Resultados
 
@@ -356,17 +356,26 @@ de agrupamento da incapacidade de encontrá-lo.
    população residente estimada [Internet]. Rio de Janeiro: IBGE; [citado 2026 nov 2]. Disponível
    em: https://sidra.ibge.gov.br/tabela/6579
 
-9. Anselin L. Local indicators of spatial association—LISA. Geogr Anal. 1995;27(2):93-115.
-   doi:10.1111/j.1538-4632.1995.tb00338.x
+9. Instituto Brasileiro de Geografia e Estatística. Censo Demográfico 2022: tabela 4709 – população
+   residente, e tabela 9514 – população residente, por sexo, idade e forma de declaração da idade
+   [Internet]. Rio de Janeiro: IBGE; [citado 2026 nov 3]. Disponível em:
+   https://sidra.ibge.gov.br/tabela/4709 e https://sidra.ibge.gov.br/tabela/9514
 
-10. Assunção RM, Reis EA. A new proposal to adjust Moran's I for population density. Stat Med.
+10. Instituto Brasileiro de Geografia e Estatística. Censo Demográfico 2010: tabela 1378 – população
+    residente, por situação do domicílio, sexo e idade [Internet]. Rio de Janeiro: IBGE; [citado
+    2026 nov 3]. Disponível em: https://sidra.ibge.gov.br/tabela/1378
+
+11. Anselin L. Local indicators of spatial association—LISA. Geogr Anal. 1995;27(2):93-115.
+    doi:10.1111/j.1538-4632.1995.tb00338.x
+
+12. Assunção RM, Reis EA. A new proposal to adjust Moran's I for population density. Stat Med.
     1999;18(16):2147-62. doi:10.1002/(SICI)1097-0258(19990830)18:16<2147::AID-SIM179>3.0.CO;2-I
 
-11. Fischer L, Barry T, Ramdas A. Multiple testing with anytime-valid Monte Carlo p-values
+13. Fischer L, Barry T, Ramdas A. Multiple testing with anytime-valid Monte Carlo p-values
     [Preprint]. arXiv:2404.15586v4 [stat.ME]. 2025 [citado 2026 nov 2]. Disponível em:
     https://arxiv.org/abs/2404.15586v4
 
-12. Schäfer AG, Prates LA, Schäfer LP, Fernandes MAD. Pipeline de análise da violência contra a
+14. Schäfer AG, Prates LA, Schäfer LP, Fernandes MAD. Pipeline de análise da violência contra a
     mulher no RS (2012-2026) [Internet]. Versão [etiqueta do artigo a criar]. Zenodo; 2026 [citado
     2026 nov 3]. doi:10.5281/zenodo.21403499. Disponível em:
     https://github.com/Alexandrogschafer/violencia-mulheres-rs

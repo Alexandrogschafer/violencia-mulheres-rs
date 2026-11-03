@@ -19,6 +19,7 @@ manuscrito; Fischer et al. passaram de 9 para 10. A01 segue pendente.
 
 Revisão de 2026-11-03, segunda rodada: A01 foi reescrita e cita a MUNIC 2023, que entra como
 referência 1 e desloca as demais. Os números desta página foram atualizados.
+- A13 e A14 (Censos 2022 e 2010) foram acrescentados.
 
 ## Como ler
 
@@ -54,13 +55,15 @@ referência 1 e desloca as demais. Os números desta página foram atualizados.
 | A06 | subnotificação reconhecida e variável entre territórios | Sustenta, com ressalva | 2, 4 |
 | A10 | fonte dos dados: divulgação da SSP-RS | Fonte de dados | 7 |
 | A11 | populações municipais: estimativas do IBGE | Fonte de dados, com ressalva | 8 |
-| A12 | indicador local (LISA) | Origem do método; texto completo não lido | 9 |
-| A07 | ajuste de Assunção e Reis | Origem do método; **texto completo não obtido** | 10 |
-| A08a | piso do p por permutação | Sustenta | 11 |
+| A13 | razão feminina do Censo 2022 | Fonte de dados | 9 |
+| A14 | estabilidade da razão entre os Censos 2010 e 2022 | Fonte de dados | 10 |
+| A12 | indicador local (LISA) | Origem do método; texto completo não lido | 11 |
+| A07 | ajuste de Assunção e Reis | Origem do método; **texto completo não obtido** | 12 |
+| A08a | piso do p por permutação | Sustenta | 13 |
 | A08b | regra de Benjamini-Hochberg | Sustenta | 6 |
-| A09 | repositório público com versão etiquetada | Repositório citado; **etiqueta do artigo a criar** | 12 |
+| A09 | repositório público com versão etiquetada | Repositório citado; **etiqueta do artigo a criar** | 14 |
 
-As linhas seguem a ordem do texto. São 12 referências na lista; o limite da RESS é 30.
+As linhas seguem a ordem do texto. São 14 referências na lista; o limite da RESS é 30.
 
 ---
 
@@ -226,7 +229,7 @@ O marcador é o segundo da frase; o primeiro é A12.
 **Situação: citação de origem de método. O texto completo não foi obtido; não há passagem
 transcrita.**
 
-**Referência 10.** Assunção RM, Reis EA. A new proposal to adjust Moran's I for population density. Stat
+**Referência 12.** Assunção RM, Reis EA. A new proposal to adjust Moran's I for population density. Stat
 Med. 1999;18(16):2147-62. doi:10.1002/(SICI)1097-0258(19990830)18:16<2147::AID-SIM179>3.0.CO;2-I
 
 **Caminhos tentados:**
@@ -260,7 +263,7 @@ rejeitar uma hipótese nesse piso exige m+1 ≥ n/(q·i).»
 
 **Situação: sustenta.**
 
-**Referência 11.** Fischer L, Barry T, Ramdas A. arXiv:2404.15586v4, 2025. As fórmulas foram transcritas
+**Referência 13.** Fischer L, Barry T, Ramdas A. arXiv:2404.15586v4, 2025. As fórmulas foram transcritas
 da página.
 
 > «In a classical Monte Carlo permutation test, we observe some test statistic Y0, generate B additional
@@ -281,7 +284,7 @@ Pela fórmula (1), o menor valor possível é 1/(1+B), que é o 1/(m+1) do manus
 
 ### Sobre a desigualdade
 
-- m+1 ≥ n/(q·i) resulta de combinar o piso (referência 11) com a regra (referência 6). O manuscrito agora
+- m+1 ≥ n/(q·i) resulta de combinar o piso (referência 13) com a regra (referência 6). O manuscrito agora
   o declara.
 - Fischer et al. enunciam o caso de pior situação, em que um único p pequeno é testado a α/M; esse
   caso corresponde a i = 1:
@@ -353,7 +356,44 @@ https://sidra.ibge.gov.br/tabela/6579
 
   A frase precisa mencionar as duas exceções, e o Censo 2022 entra como segunda referência do IBGE.
   O Censo 2022 também é a fonte da razão feminina, e o Censo 2010 a da verificação de estabilidade.
-  Nenhum dos dois tem marcador.
+  Desde 2026-11-03, os dois têm marcador (A13 e A14). A frase de A11 continua sem mencionar as duas
+  exceções.
+
+## A13 e A14 — Censos Demográficos
+
+**Afirmações:**
+- A13: «O denominador adotado foi a população feminina, estimada como a população total de cada ano
+  multiplicada pela razão entre população feminina e total do município no Censo 2022 [n].»
+- A14: «Essa razão mostrou-se estável entre os Censos de 2010 [n] e 2022, com variação mediana de 0,32
+  ponto percentual e nenhum município acima de 5 pontos.»
+
+**Situação: fonte de dados.** Não há afirmação bibliográfica a sustentar. As referências identificam
+as tabelas usadas por `src/analysis/denominador_feminino.py` e `src/analysis/auditoria/populacao_feminina.py`.
+
+**Referência 9.** IBGE, Censo Demográfico 2022, tabelas 4709 e 9514 do SIDRA. A 9514 dá
+a população feminina, e a 4709 a total, a mesma usada em `populacao_municipio_rs.csv`.
+
+**Referência 10.** IBGE, Censo Demográfico 2010, tabela 1378 do SIDRA, com população
+feminina e total na mesma consulta.
+
+Metadados conferidos em 2026-11-03 na API de agregados do IBGE (`/api/v3/agregados/<tabela>/metadados`):
+
+| Tabela | Nome | Pesquisa | Período |
+|---|---|---|---|
+| 4709 | «População residente, Variação absoluta de população residente e Taxa de crescimento geométrico» | Censo Demográfico | 2022 |
+| 9514 | «População residente, por sexo, idade e forma de declaração da idade» | Censo Demográfico | 2022 |
+| 1378 | «População residente, por situação do domicílio, sexo e idade, segundo a condição no domicílio e compartilhamento da responsabilidade pelo domicílio» | Censo Demográfico | 2010 |
+
+**Conferência dos números de A14** contra `outputs/tables/populacao_feminina_censos_rs.csv`, com 496
+municípios comparáveis (Pinto Bandeira não existe em 2010):
+- a mediana da variação **com sinal** é 0,32 p.p., o número do texto;
+- a mediana da variação **em módulo** é 0,48 p.p.;
+- o mínimo é −2,16 e o máximo 2,60;
+- 5 municípios passam de 2 p.p. em módulo.
+
+**Anomalia, não corrigida:** «variação mediana de 0,32 ponto» lê-se como magnitude típica, mas é a
+mediana com sinal. Além disso, «nenhum município acima de 5 pontos» é verdadeiro, mas folgado, porque
+o máximo é 2,6. Falta decidir a redação.
 
 ## A12 — indicador local
 
@@ -363,7 +403,7 @@ primeiro da frase.
 
 **Situação: citação de origem de método. O texto completo não foi lido.**
 
-**Referência 9.** Anselin L. Local indicators of spatial association—LISA. Geogr Anal.
+**Referência 11.** Anselin L. Local indicators of spatial association—LISA. Geogr Anal.
 1995;27(2):93-115. doi:10.1111/j.1538-4632.1995.tb00338.x
 
 - Os metadados vêm do registro do DOI no Crossref, conferido em 2026-11-02: título «Local Indicators of
@@ -377,7 +417,5 @@ primeiro da frase.
 
 ## Observações fora dos marcadores
 
-- **Censos 2022 e 2010 sem marcador.** Os Métodos usam a razão feminina do Censo 2022 e a comparação
-  com o Censo 2010, sem referência. Ver A11.
 - **Arbia, Cardile, Nardelli e Salvini (arXiv:2610.13472)** constam em `decisoes_artigo_espacial.md`
   como referência a citar, mas o manuscrito não tem frase que os cite.

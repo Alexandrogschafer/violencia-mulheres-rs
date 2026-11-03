@@ -3,7 +3,7 @@
 Lista verificada em 2026-11-02 e 2026-11-03. A numeração segue a ordem de primeira aparição no
 manuscrito e foi gerada a partir dos marcadores. Entram as referências com passagem transcrita em
 `verificacao_referencias.md`, mais as de fonte de dados, as de origem de método e o repositório, pelos
-critérios descritos lá. São 12 referências; o limite da RESS é 30.
+critérios descritos lá. São 14 referências; o limite da RESS é 30.
 
 A lista final está também ao fim de `02_texto/artigo_espacial.md`. As duas devem ser mantidas iguais.
 
@@ -19,11 +19,13 @@ A lista final está também ao fim de `02_texto/artigo_espacial.md`. As duas dev
 | 6 | A06 | 2,4 |
 | 7 | A10 | 7 |
 | 8 | A11 | 8 |
-| 9 | A12 | 9 |
-| 10 | A07 | 10 |
-| 11 | A08a | 11 |
-| 12 | A08b | 6 |
-| 13 | A09 | 12 |
+| 9 | A13 | 9 |
+| 10 | A14 | 10 |
+| 11 | A12 | 11 |
+| 12 | A07 | 12 |
+| 13 | A08a | 13 |
+| 14 | A08b | 6 |
+| 15 | A09 | 14 |
 
 ## Lista
 
@@ -59,26 +61,31 @@ A lista final está também ao fim de `02_texto/artigo_espacial.md`. As duas dev
    população residente estimada [Internet]. Rio de Janeiro: IBGE; [citado 2026 nov 2]. Disponível
    em: https://sidra.ibge.gov.br/tabela/6579
 
-9. Anselin L. Local indicators of spatial association—LISA. Geogr Anal. 1995;27(2):93-115.
-   doi:10.1111/j.1538-4632.1995.tb00338.x
+9. Instituto Brasileiro de Geografia e Estatística. Censo Demográfico 2022: tabela 4709 – população
+   residente, e tabela 9514 – população residente, por sexo, idade e forma de declaração da idade
+   [Internet]. Rio de Janeiro: IBGE; [citado 2026 nov 3]. Disponível em:
+   https://sidra.ibge.gov.br/tabela/4709 e https://sidra.ibge.gov.br/tabela/9514
 
-10. Assunção RM, Reis EA. A new proposal to adjust Moran's I for population density. Stat Med.
+10. Instituto Brasileiro de Geografia e Estatística. Censo Demográfico 2010: tabela 1378 – população
+    residente, por situação do domicílio, sexo e idade [Internet]. Rio de Janeiro: IBGE; [citado
+    2026 nov 3]. Disponível em: https://sidra.ibge.gov.br/tabela/1378
+
+11. Anselin L. Local indicators of spatial association—LISA. Geogr Anal. 1995;27(2):93-115.
+    doi:10.1111/j.1538-4632.1995.tb00338.x
+
+12. Assunção RM, Reis EA. A new proposal to adjust Moran's I for population density. Stat Med.
     1999;18(16):2147-62. doi:10.1002/(SICI)1097-0258(19990830)18:16<2147::AID-SIM179>3.0.CO;2-I
 
-11. Fischer L, Barry T, Ramdas A. Multiple testing with anytime-valid Monte Carlo p-values
+13. Fischer L, Barry T, Ramdas A. Multiple testing with anytime-valid Monte Carlo p-values
     [Preprint]. arXiv:2404.15586v4 [stat.ME]. 2025 [citado 2026 nov 2]. Disponível em:
     https://arxiv.org/abs/2404.15586v4
 
-12. Schäfer AG, Prates LA, Schäfer LP, Fernandes MAD. Pipeline de análise da violência contra a
+14. Schäfer AG, Prates LA, Schäfer LP, Fernandes MAD. Pipeline de análise da violência contra a
     mulher no RS (2012-2026) [Internet]. Versão [etiqueta do artigo a criar]. Zenodo; 2026 [citado
     2026 nov 3]. doi:10.5281/zenodo.21403499. Disponível em:
     https://github.com/Alexandrogschafer/violencia-mulheres-rs
 
 ## Fora da lista, aguardando
-
-| Referência | Marcador | O que falta |
-|---|---|---|
-| Instituto Brasileiro de Geografia e Estatística. Censo Demográfico 2022 (tabelas 4709 e 9514) e Censo 2010 (tabela 1378). | sem marcador | São as fontes da população de 2022, da razão feminina e da verificação de estabilidade |
 
 O repositório já está na lista, mas a frase de A09 só fica verdadeira quando a etiqueta do artigo for
 criada. A referência traz «Versão [etiqueta do artigo a criar]» e o DOI conceitual do Zenodo, que
