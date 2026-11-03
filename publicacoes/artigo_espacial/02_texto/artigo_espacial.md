@@ -147,8 +147,9 @@ acima da média municipal, e não necessariamente acima da taxa estadual.
 
 ### Processamento e reprodutibilidade
 
-As análises foram conduzidas em Python, com as bibliotecas esda e libpysal. O código, os
-dados processados e os parâmetros de execução estão depositados em repositório público, em
+As análises foram conduzidas em Python, com as bibliotecas esda e libpysal. Os mapas foram
+desenhados no sistema geodésico SIRGAS 2000, em projeção policônica. O código, os dados
+processados e os parâmetros de execução estão depositados em repositório público, em
 versão etiquetada correspondente aos resultados aqui apresentados [17].
 
 ## Resultados
