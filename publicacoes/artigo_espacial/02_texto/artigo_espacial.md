@@ -2,6 +2,29 @@
 
 <!-- Montado em 2026-11-02 a partir dos quatro rascunhos de seção. Título provisório. -->
 
+## Resumo
+
+**Objetivo:** descrever a distribuição espacial de quatro formas de violência contra a
+mulher nos 497 municípios do Rio Grande do Sul entre 2018 e 2025 e examinar em que medida
+os agrupamentos identificados coincidem entre si. **Métodos:** estudo ecológico de
+delineamento transversal, com registros administrativos da Secretaria da Segurança Pública
+estadual e taxas por 100 mil mulheres-ano. Estimaram-se os índices de Moran global e local
+com o ajuste de Assunção e Reis, por permutação condicional com 99.999 permutações e
+semente fixada, com controle de multiplicidade por Benjamini-Hochberg a 5%. A
+interpretação restringiu-se aos pares com ao menos cinco eventos esperados sob a taxa
+estadual. **Resultados:** o índice ajustado decresceu com a raridade do desfecho, de 0,32
+na ameaça a 0,09 no feminicídio tentado, e não houve autocorrelação detectável no
+feminicídio consumado. Identificaram-se 67 pares município-desfecho significativos em 58
+municípios, entre eles um bloco contíguo de 21 municípios em quadrante alto-alto no norte
+do estado. A maioria dos municípios foi significativa em um único desfecho; a coincidência
+mais expressiva em relação ao acaso reuniu lesão corporal e estupro em três municípios
+contíguos do litoral. Três municípios registraram contagens muito abaixo do esperado.
+**Conclusão:** os registros apresentam estruturação espacial tanto mais nítida quanto mais
+frequente o desfecho. Os agrupamentos descrevem a distribuição do registro, não
+necessariamente a da violência, e os déficits acentuados sugerem lacunas de notificação.
+
+**Palavras-chave:** Violência contra a Mulher; Análise Espacial; Sub-Registro; Estudos Ecológicos; Brasil.
+
 ## Introdução
 
 A violência contra a mulher é problema de saúde pública e de segurança, e os serviços
