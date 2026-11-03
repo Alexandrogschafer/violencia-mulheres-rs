@@ -16,7 +16,7 @@ entram os nomes oficiais do IBGE, tirados da coluna «Mun» da base da MUNIC 202
 `outputs/tables/municipio_codigo_ibge.csv`. O COREDE vem de `outputs/tables/municipio_corede.csv`.
 
 Saída, em publicacoes/artigo_espacial/03_tabelas/:
-- `tabelas.md`, com todas as tabelas e as legendas abaixo de cada uma;
+- `tabelas.md`, com todas as tabelas e as legendas abaixo de cada uma, no padrão da RESS;
 - um CSV por tabela, para a diagramação. Os CSVs são em UTF-8, separados por ponto e vírgula, com os
   valores já formatados como na tabela (vírgula decimal).
 
@@ -56,25 +56,6 @@ LISA_POR_MUNICIPIO = TABLES / "lisa_denominador_feminino_vs_total_2018_2025.csv"
 FEMININO_CSV = TABLES / "moran_lisa_denominador_feminino_2018_2025.csv"
 
 NOME_QUADRANTE = {"AA": "Alto-alto", "BB": "Baixo-baixo", "AB": "Alto-baixo", "BA": "Baixo-alto"}
-NOTA_QUADRANTES = (
-    "Alto-alto e baixo-baixo: município com valor alto (baixo) cercado de vizinhos com valores altos (baixos); "
-    "alto-baixo e baixo-alto: outliers espaciais. «Alto» e «baixo» referem-se à média dos municípios, e não à "
-    "taxa estadual."
-)
-NOTA_PARAMETROS = (
-    "LISA com o ajuste de Assunção e Reis, contiguidade do tipo rainha padronizada por linha, 99.999 "
-    "permutações condicionais, semente 12345, Benjamini-Hochberg a 5% sobre o valor p direcional."
-)
-NOTA_DENOMINADOR = (
-    "Denominador: população feminina anual estimada (população total do ano × razão feminina do município no "
-    "Censo 2022)."
-)
-FONTE = (
-    "Fonte: Secretaria da Segurança Pública do Rio Grande do Sul (registros de 2018 a 2025); IBGE, "
-    "estimativas populacionais e Censos Demográficos de 2010 e 2022."
-)
-
-
 # ---------------------------------------------------------------- formatação
 
 
@@ -175,14 +156,6 @@ def tabela1(estadual: dict) -> pd.DataFrame:
     return t
 
 
-LEGENDA_1 = (
-    "**Tabela 1** – Eventos registrados, distribuição municipal, taxa estadual e autocorrelação espacial global "
-    "(índice de Moran), por desfecho de violência contra a mulher. Rio Grande do Sul, 2018-2025.\n\n"
-    "Nota: 497 municípios. Taxa estadual = eventos do estado / mulheres-ano acumuladas × 100 mil. Moran com "
-    "contiguidade do tipo rainha padronizada por linha e 99.999 permutações (semente 12345). O ajuste é o de "
-    "Assunção e Reis. O menor valor p obtenível com 99.999 permutações é 0,00001. "
-    + NOTA_DENOMINADOR + "\n\n" + FONTE
-)
 
 
 # ---------------------------------------------------------------- Tabela 2
@@ -209,13 +182,6 @@ def tabela2(sig: pd.DataFrame) -> pd.DataFrame:
     return t
 
 
-LEGENDA_2 = (
-    "**Tabela 2** – Municípios com associação espacial local significativa (LISA), por desfecho e quadrante. "
-    "Rio Grande do Sul, 2018-2025.\n\n"
-    "Nota: cada célula conta pares município-desfecho. Um município significativo em dois desfechos conta uma "
-    "vez em cada um. O feminicídio consumado não foi analisado no nível local, pela baixa ocorrência. "
-    + NOTA_PARAMETROS + " " + NOTA_QUADRANTES + " " + NOTA_DENOMINADOR + "\n\n" + FONTE
-)
 
 
 # ---------------------------------------------------------------- Tabela 3
@@ -234,7 +200,7 @@ def tabela3(sig: pd.DataFrame, nomes: pd.Series, abaixo_limiar: set) -> tuple[pd
                 fora = set().union(*(conj[d] for d in LISA if d not in combo))
                 exatos = sorted(dentro - fora, key=lambda m: nomes[m])
                 if exatos:
-                    rotulos = [nomes[m] + ("*" if any((m, d) in abaixo_limiar for d in combo) else "") for m in exatos]
+                    rotulos = [nomes[m] + (SOBRESCRITO["c"] if any((m, d) in abaixo_limiar for d in combo) else "") for m in exatos]
                     linhas.append({"Quadrante": NOME_QUADRANTE[q], "Desfechos": " e ".join(combo),
                                    "Municípios": len(exatos), "Quais": ", ".join(rotulos)})
     comb = pd.DataFrame(linhas)
@@ -258,20 +224,6 @@ def tabela3(sig: pd.DataFrame, nomes: pd.Series, abaixo_limiar: set) -> tuple[pd
     return matriz, comb
 
 
-LEGENDA_3A = (
-    "**Tabela 3** – Sobreposição dos municípios com associação espacial local significativa entre desfechos. "
-    "Rio Grande do Sul, 2018-2025. (a) Matriz desfecho por desfecho, em qualquer quadrante.\n\n"
-    "Nota: a diagonal traz o número de municípios significativos em cada desfecho; fora da diagonal, o número de "
-    "municípios significativos nos dois desfechos. Nenhum município foi significativo em dois desfechos com "
-    "quadrantes diferentes, nem em três ou mais desfechos. " + NOTA_PARAMETROS + " " + NOTA_DENOMINADOR
-    + "\n\n" + FONTE
-)
-LEGENDA_3B = (
-    "**Tabela 3** (continuação) – (b) Combinações de desfechos no mesmo quadrante, com os municípios.\n\n"
-    "Nota: cada linha conta os municípios significativos exatamente naqueles desfechos e no mesmo quadrante. "
-    f"* Par com menos de {LIMIAR} eventos esperados sob a taxa estadual: mantido no cálculo, sem interpretação "
-    "substantiva. " + NOTA_QUADRANTES + "\n\n" + FONTE
-)
 
 
 # ---------------------------------------------------------------- Suplementar 1
@@ -328,15 +280,6 @@ def suplementar1() -> pd.DataFrame:
     return s
 
 
-LEGENDA_S1 = (
-    "**Tabela Suplementar 1** – Índice de Moran global ajustado e municípios com associação espacial local "
-    "significativa, com denominador de população feminina e de população total, por desfecho. Rio Grande do "
-    "Sul, 2018-2025.\n\n"
-    "Nota: «Só com pop. feminina» e «Só com pop. total» contam os municípios significativos em apenas uma das "
-    "versões; «Mudam de quadrante», os significativos nas duas versões, em quadrantes diferentes. O feminicídio "
-    "consumado não foi analisado no nível local (—). A população feminina anual é estimada como a população "
-    "total do ano × razão feminina do município no Censo 2022. " + NOTA_PARAMETROS + "\n\n" + FONTE
-)
 
 
 # ---------------------------------------------------------------- Suplementar 2
@@ -366,19 +309,129 @@ def suplementar2(pares: pd.DataFrame, nomes: pd.Series, corede: pd.Series) -> pd
     return s.reset_index(drop=True)
 
 
-LEGENDA_S2 = (
-    "**Tabela Suplementar 2** – Pares município-desfecho com associação espacial local significativa: eventos "
-    "observados, esperados sob a taxa estadual, razão entre eles e probabilidade de Poisson. Rio Grande do Sul, "
-    "2018-2025.\n\n"
-    "Nota: esperado = mulheres-ano acumuladas do município × taxa estadual do desfecho / 100 mil. O p de Poisson "
-    "é calculado na direção do quadrante: P(X ≥ observado) em alto-alto e alto-baixo, P(X ≤ observado) em "
-    "baixo-baixo e baixo-alto. É descritivo: não corrige para comparações múltiplas e ignora a vizinhança. "
-    f"Pares com esperado < {LIMIAR} foram mantidos no cálculo, mas não receberam interpretação substantiva. "
-    "COREDE: Conselho Regional de Desenvolvimento. " + NOTA_QUADRANTES + " " + NOTA_PARAMETROS + "\n\n" + FONTE
-)
 
 
 # ---------------------------------------------------------------- saída
+
+
+# ---------------------------------------------------------------- legendas no padrão da RESS
+#
+# Regras da RESS (instruções aos autores, lidas em 2026-11-03): título sem ponto final, com local, anos e total;
+# siglas no título; sem o tipo de ilustração; notas de rodapé identificadas por letras minúsculas sobrescritas,
+# em ordem, separadas por ponto e vírgula; sem «Fonte:» nem detalhes metodológicos, que ficam nos Métodos;
+# suplementares como «Tabela suplementar n». Os rótulos dos desfechos seguem a grafia do manuscrito.
+# A formatação abaixo só é aplicada na saída, depois das conferências, que usam os nomes internos.
+
+SOBRESCRITO = {"a": "ᵃ", "b": "ᵇ", "c": "ᶜ", "d": "ᵈ", "e": "ᵉ"}
+DESFECHO_TEXTO = {d: d[0] + d[1:].lower() for d in ORDEM_DESFECHOS}  # «Lesão Corporal» -> «Lesão corporal»
+NOTA_QUADRANTE = (
+    "alto-alto e baixo-baixo: município com valor alto (baixo) cercado de vizinhos com valores altos (baixos); "
+    "alto-baixo e baixo-alto: outliers espaciais; «alto» e «baixo» referem-se à média dos municípios, e não à taxa "
+    "estadual"
+)
+NOTA_ESPERADO = (
+    f"menos de {LIMIAR} eventos esperados sob a taxa estadual: par mantido no cálculo, sem interpretação substantiva"
+)
+
+
+def s_(letras: str) -> str:
+    return "".join(SOBRESCRITO[l] for l in letras.replace(",", ""))
+
+
+def notas(itens: list[tuple[str, str]]) -> str:
+    corpo = "; ".join(f"{SOBRESCRITO[l]} {texto}" for l, texto in itens) + "."
+    return corpo[:2] + corpo[2].upper() + corpo[3:]
+
+
+def rotula_desfechos(df: pd.DataFrame) -> pd.DataFrame:
+    """Troca a grafia dos desfechos pela do manuscrito em células e cabeçalhos."""
+    def troca(v):
+        if not isinstance(v, str):
+            return v
+        for de, para in DESFECHO_TEXTO.items():
+            v = v.replace(de, para)
+        return v
+    out = df.map(troca)
+    out.columns = [troca(c) for c in df.columns]
+    return out
+
+
+def formata(df: pd.DataFrame, colunas: dict[str, str] | None = None, linhas: dict[str, str] | None = None) -> pd.DataFrame:
+    """Acrescenta as letras de nota a cabeçalhos (colunas) e a rótulos da primeira coluna (linhas)."""
+    out = df.copy()
+    if linhas:
+        primeira = out.columns[0]
+        out[primeira] = out[primeira].map(lambda v: v + s_(linhas[v]) if v in linhas else v)
+    if colunas:
+        out = out.rename(columns={c: c + s_(l) for c, l in colunas.items()})
+    return rotula_desfechos(out)
+
+
+def legenda(rotulo: str, titulo: str, itens: list[tuple[str, str]]) -> str:
+    texto = f"**{rotulo}.** {titulo}"
+    return texto + ("\n\n" + notas(itens) if itens else "")
+
+
+def pecas_formatadas(t1, t2, t3a, t3b, s1, s2) -> list[tuple[str, pd.DataFrame, str]]:
+    return [
+        ("tabela1_desfechos",
+         formata(t1, colunas={"Taxa estadual por 100 mil mulheres-ano": "a", "p (bruta)": "b",
+                              "I de Moran ajustado": "c", "p (ajustado)": "b"}),
+         legenda("Tabela 1", "Eventos registrados, contagem municipal, taxa estadual e índice de Moran global, por "
+                 "desfecho de violência contra a mulher, Rio Grande do Sul, 2018-2025 (n = 497 municípios)",
+                 [("a", "eventos do estado divididos pelas mulheres-ano acumuladas, multiplicados por 100 mil"),
+                  ("b", "o menor valor p obtenível com 99.999 permutações é 0,00001"),
+                  ("c", "com o ajuste de Assunção e Reis")])),
+        ("tabela2_significativos_por_quadrante",
+         formata(t2, colunas={"Desfecho": "a", "Alto-alto": "b", "Baixo-baixo": "b", "Alto-baixo": "b",
+                              "Baixo-alto": "b", "Total": "c"}),
+         legenda("Tabela 2", "Pares município-desfecho com indicador local de associação espacial (LISA) "
+                 "significativo, por desfecho de violência contra a mulher e quadrante, Rio Grande do Sul, "
+                 "2018-2025 (n = 67 pares)",
+                 [("a", "o feminicídio consumado não foi analisado no nível local, pela baixa ocorrência"),
+                  ("b", NOTA_QUADRANTE),
+                  ("c", "um município significativo em dois desfechos conta uma vez em cada um")])),
+        ("tabela3a_sobreposicao_matriz",
+         formata(t3a, colunas={"Desfecho": "a,b"}),
+         legenda("Tabela 3", "Municípios com indicador local de associação espacial (LISA) significativo em mais "
+                 "de um desfecho de violência contra a mulher, em qualquer quadrante (A) e no mesmo quadrante (B), "
+                 "Rio Grande do Sul, 2018-2025 (n = 58 municípios)",
+                 [("a", "na diagonal, os municípios significativos em cada desfecho; fora dela, os significativos "
+                        "nos dois desfechos"),
+                  ("b", "nenhum município foi significativo em três ou mais desfechos, nem em dois desfechos com "
+                        "quadrantes diferentes")])),
+        ("tabela3b_sobreposicao_combinacoes",
+         formata(t3b, colunas={"Quadrante": "a", "Municípios": "b"}),
+         legenda("Tabela 3", "(continuação) (B) Combinações de desfechos no mesmo quadrante",
+                 [("a", NOTA_QUADRANTE),
+                  ("b", "municípios significativos exatamente naqueles desfechos, e em nenhum outro"),
+                  ("c", NOTA_ESPERADO)])),
+        ("suplementar1_denominador",
+         formata(s1, colunas={"I (pop. feminina)": "a", "Só com pop. feminina": "b", "Só com pop. total": "b",
+                              "Mudam de quadrante": "c"}, linhas={"Feminicídio Consumado": "d"}),
+         legenda("Tabela suplementar 1", "Índice de Moran global ajustado e municípios com indicador local de "
+                 "associação espacial (LISA) significativo, com denominador de população feminina e de população "
+                 "total, por desfecho de violência contra a mulher, Rio Grande do Sul, 2018-2025 "
+                 "(n = 497 municípios)",
+                 [("a", "população feminina anual estimada: população total do ano multiplicada pela razão "
+                        "feminina do município no Censo 2022"),
+                  ("b", "municípios significativos em apenas uma das versões"),
+                  ("c", "municípios significativos nas duas versões, em quadrantes diferentes"),
+                  ("d", "não analisado no nível local, pela baixa ocorrência")])),
+        ("suplementar2_pares_significativos",
+         formata(s2, colunas={"Quadrante": "a", "Esperado": "b", "p de Poisson": "c", f"Esperado ≥ {LIMIAR}": "d"}),
+         legenda("Tabela suplementar 2", "Pares município-desfecho com indicador local de associação espacial "
+                 "(LISA) significativo, por Conselho Regional de Desenvolvimento (COREDE), com eventos observados "
+                 "(O) e esperados (E), razão O/E e probabilidade de Poisson, Rio Grande do Sul, 2018-2025 "
+                 "(n = 67 pares)",
+                 [("a", NOTA_QUADRANTE),
+                  ("b", "mulheres-ano acumuladas do município multiplicadas pela taxa estadual do desfecho e "
+                        "divididas por 100 mil"),
+                  ("c", "P(X ≥ O) em alto-alto e alto-baixo e P(X ≤ O) em baixo-baixo e baixo-alto; descritivo, "
+                        "sem correção para comparações múltiplas e sem considerar a vizinhança"),
+                  ("d", f"pares com esperado abaixo de {LIMIAR} foram mantidos no cálculo, sem interpretação "
+                        "substantiva")])),
+    ]
 
 
 def main() -> None:
@@ -393,21 +446,14 @@ def main() -> None:
     s1 = suplementar1()
     s2 = suplementar2(pares, nomes, corede)
 
-    pecas = [
-        ("tabela1_desfechos", t1, LEGENDA_1),
-        ("tabela2_significativos_por_quadrante", t2, LEGENDA_2),
-        ("tabela3a_sobreposicao_matriz", t3a, LEGENDA_3A),
-        ("tabela3b_sobreposicao_combinacoes", t3b, LEGENDA_3B),
-        ("suplementar1_denominador", s1, LEGENDA_S1),
-        ("suplementar2_pares_significativos", s2, LEGENDA_S2),
-    ]
+    pecas = pecas_formatadas(t1, t2, t3a, t3b, s1, s2)
     partes = [
         "# Tabelas — artigo espacial\n\n<!-- Gerado por 03_tabelas/gerar_tabelas.py a partir de outputs/tables/. "
         "Não editar à mão. -->"
     ]
-    for nome, df, legenda in pecas:
+    for nome, df, texto in pecas:
         df.to_csv(SAIDA / f"{nome}.csv", sep=";", index=False, encoding="utf-8")
-        partes.append(markdown(df) + "\n\n" + legenda)
+        partes.append(markdown(df) + "\n\n" + texto)
     (SAIDA / "tabelas.md").write_text("\n\n---\n\n".join(partes) + "\n", encoding="utf-8")
     for nome, df, _ in pecas:
         print(f"{nome}: {len(df)} linhas")
