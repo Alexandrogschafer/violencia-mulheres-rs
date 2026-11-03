@@ -68,9 +68,9 @@ linha. A autocorrelação foi estimada pelo índice de Moran global e pelo indic
 associação espacial (LISA) [8], ambos com o ajuste proposto por Assunção e Reis [9]. O
 ajuste responde à instabilidade da variância das taxas em áreas de tamanhos populacionais
 desiguais: quanto menor a população do município, maior a variância da taxa estimada. O
-ajuste opera sobre a contagem e a população sob risco, e não sobre taxas previamente
-suavizadas: suavizar por método bayesiano e em seguida testar autocorrelação induziria
-dependência por construção, já que a suavização toma emprestado dos vizinhos.
+índice ajustado é calculado a partir da contagem e da população sob risco, e não de taxas
+previamente suavizadas: suavizar por método bayesiano e em seguida testar autocorrelação
+induziria dependência por construção, já que a suavização toma emprestado dos vizinhos.
 
 ### Parâmetros do teste
 
