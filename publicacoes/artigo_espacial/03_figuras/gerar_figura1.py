@@ -190,8 +190,12 @@ def legenda(escala: float, marcados: dict) -> str:
         f"({', '.join(f'{LETRAS[i]}: {marcados[d]}' for i, d in enumerate(LISA))}), mantidos no cálculo, mas "
         "sem interpretação substantiva. O feminicídio consumado não foi analisado no nível local, pela baixa "
         f"ocorrência. Projeção policônica, SIRGAS 2000. Escala gráfica de {BARRA_ESCALA_KM} km em cada painel; "
-        f"na impressão com {br_cm(LARGURA_CM)} cm de largura, a escala é de cerca de 1:{arredondada:,.0f}.".replace(",", ".")
+        f"na impressão com {br_cm(LARGURA_CM)} cm de largura, a escala é de cerca de 1:{milhar(arredondada)}."
     )
+
+
+def milhar(x: float) -> str:
+    return f"{x:,.0f}".replace(",", ".")
 
 
 def br_cm(x: float) -> str:
