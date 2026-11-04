@@ -1,3 +1,5 @@
+**Modalidade:** artigo original
+
 # Distribuição espacial de quatro formas de violência contra a mulher nos municípios do Rio Grande do Sul: estudo ecológico, 2018-2025
 
 <!-- Montado em 2026-11-02 a partir dos quatro rascunhos de seção. Título definido em 2026-11-03, no formato da RESS: tema, dois-pontos, delineamento e anos. -->
@@ -369,6 +371,15 @@ A interpretação de resultados desse tipo depende de parâmetros que raramente 
 declarados. O número de permutações, a semente e o tratamento da multiplicidade determinam
 o que o teste é capaz de detectar, e sua omissão impede que o leitor distingua a ausência
 de agrupamento da incapacidade de encontrá-lo.
+
+## Disponibilidade de dados
+
+O código de análise, os dados processados e os parâmetros de execução estão disponíveis em
+repositório público, na versão etiquetada correspondente aos resultados deste artigo, com
+identificador persistente (DOI) [17]. Os dados de origem são de acesso público: os
+registros da Secretaria da Segurança Pública do Rio Grande do Sul e as estimativas e
+contagens populacionais do Instituto Brasileiro de Geografia e Estatística, descritos nos
+Métodos.
 
 ## Referências
 

@@ -30,6 +30,7 @@ A lista final está também ao fim de `02_texto/artigo_espacial.md`. As duas, e 
 | 17 | A08a | 16 |
 | 18 | A08b | 9 |
 | 19 | A09 | 17 |
+| 20 | A18 | 17 |
 
 ## Lista
 

@@ -32,5 +32,6 @@ Os identificadores são estáveis, e por isso não seguem a ordem do texto:
 | 17 | A08a | Métodos — Parâmetros do teste | `[n]` | 1 | O menor valor p obtenível com m permutações é 1/(m+1) [n], e o procedimento de Benjamini-Hochberg, com n áreas ao nível q, rejeita as hipóteses até o maior posto i cujo valor p ordenado não excede q·i/n [n]. |
 | 18 | A08b | Métodos — Parâmetros do teste | `[n]` | 1 | O menor valor p obtenível com m permutações é 1/(m+1) [n], e o procedimento de Benjamini-Hochberg, com n áreas ao nível q, rejeita as hipóteses até o maior posto i cujo valor p ordenado não excede q·i/n [n]. |
 | 19 | A09 | Métodos — Processamento e reprodutibilidade | `[n]` | 1 | O código, os dados processados e os parâmetros de execução estão depositados em repositório público, em versão etiquetada correspondente aos resultados aqui apresentados [n]. |
+| 20 | A18 | Disponibilidade de dados | `[n]` | 1 | O código de análise, os dados processados e os parâmetros de execução estão disponíveis em repositório público, na versão etiquetada correspondente aos resultados deste artigo, com identificador persistente (DOI) [n]. |
 
-Total: 19 marcadores, 22 referências pedidas.
+Total: 20 marcadores, 23 referências pedidas.

@@ -67,6 +67,7 @@ referência 1 e desloca as demais. Os números desta página foram atualizados.
 | A08a | piso do p por permutação | Sustenta | 16 |
 | A08b | regra de Benjamini-Hochberg | Sustenta | 9 |
 | A09 | repositório público com versão etiquetada | Etiqueta `artigo-ress-v1` criada; **DOI da versão pendente** | 17 |
+| A18 | disponibilidade de dados: o mesmo repositório | Mesma referência de A09 | 17 |
 
 As linhas seguem a ordem do texto. São 17 referências na lista; o limite da RESS é 30.
 
@@ -415,6 +416,16 @@ repositório público, em versão etiquetada correspondente aos resultados aqui 
      um item cujo texto mudou só no JSON;
   5. opcionalmente, acrescentar o DOI da versão em `identifiers` do `CITATION.cff`, num commit posterior
      à etiqueta.
+
+## A18 — disponibilidade de dados
+
+**Afirmação:** «O código de análise, os dados processados e os parâmetros de execução estão disponíveis
+em repositório público, na versão etiquetada correspondente aos resultados deste artigo, com
+identificador persistente (DOI) [n].»
+
+**Situação: mesma referência e mesma pendência de A09.** A seção foi acrescentada em 2026-11-03 porque
+a RESS a torna obrigatória, com o repositório citado e referenciado. A afirmação sobre o DOI vale para o
+DOI conceitual, que já existe. O DOI da versão depende do depósito descrito em A09.
 
 ## A10 — fonte dos dados
 
