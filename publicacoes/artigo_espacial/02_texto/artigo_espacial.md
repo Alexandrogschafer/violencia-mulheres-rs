@@ -381,6 +381,19 @@ registros da Secretaria da Segurança Pública do Rio Grande do Sul e as estimat
 contagens populacionais do Instituto Brasileiro de Geografia e Estatística, descritos nos
 Métodos.
 
+## Uso de inteligência artificial generativa
+
+<!-- Texto aprovado pelos autores em 2026-11-03; não editar sem nova aprovação. A RESS pede esta seção no manuscrito (não no ScholarOne). -->
+
+Os autores declaram ter utilizado o modelo de linguagem Claude (Anthropic) na elaboração
+deste manuscrito, nas funções de redação de versões preliminares, organização da estrutura
+do texto e discussão de decisões analíticas. Todas as análises foram executadas por código
+versionado e disponível no repositório indicado; os valores apresentados foram gerados por
+esses programas e conferidos automaticamente contra as tabelas de resultado, sem
+transcrição manual. A verificação das fontes citadas incluiu a transcrição literal da
+passagem que sustenta cada afirmação. Os autores revisaram integralmente o conteúdo e
+assumem responsabilidade por ele.
+
 ## Referências
 
 <!-- Lista gerada por 01_referencias/renumerar_referencias.py em ordem de primeira aparição. Não editar à mão. -->
