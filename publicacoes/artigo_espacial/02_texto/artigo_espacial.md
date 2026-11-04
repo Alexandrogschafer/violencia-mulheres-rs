@@ -460,7 +460,4 @@ assumem responsabilidade por ele.
     [Preprint]. arXiv:2404.15586v4 [stat.ME]. 2025 [citado 2026 nov 2]. Disponível em:
     https://arxiv.org/abs/2404.15586v4
 
-17. Schäfer AG, Prates LA, Schäfer LP, Fernandes MAD. Pipeline de análise da violência contra a
-    mulher no RS (2012-2026) [Internet]. Versão artigo-ress-v1. Zenodo; 2026 [citado 2026 nov 3].
-    doi:[PENDENTE: DOI da versão artigo-ress-v1 no Zenodo]. Disponível em:
-    https://github.com/Alexandrogschafer/violencia-mulheres-rs
+17. Referência omitida para avaliação cega.

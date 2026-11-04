@@ -66,7 +66,7 @@ referência 1 e desloca as demais. Os números desta página foram atualizados.
 | A07 | ajuste de Assunção e Reis | Origem do método; **texto completo não obtido** | 15 |
 | A08a | piso do p por permutação | Sustenta | 16 |
 | A08b | regra de Benjamini-Hochberg | Sustenta | 9 |
-| A09 | repositório público com versão etiquetada | Etiqueta `artigo-ress-v1` criada; **DOI da versão pendente** | 17 |
+| A09 | repositório público com versão etiquetada | Etiqueta `artigo-ress-v1` criada; **mascarada para avaliação cega; DOI da versão pendente** | 17 |
 | A18 | disponibilidade de dados: o mesmo repositório | Mesma referência de A09 | 17 |
 
 As linhas seguem a ordem do texto. São 17 referências na lista; o limite da RESS é 30.
@@ -405,15 +405,20 @@ repositório público, em versão etiquetada correspondente aos resultados aqui 
 - A referência 17 traz «Versão artigo-ress-v1» e, no lugar do DOI, o marcador
   «doi:[PENDENTE: DOI da versão artigo-ress-v1 no Zenodo]». O DOI conceitual (10.5281/zenodo.21403499)
   saiu porque resolve para a versão mais recente, não para a deste artigo.
+- **Mascarada para avaliação cega em 2026-11-03.** No manuscrito, a referência 17 é «Referência
+  omitida para avaliação cega.». O texto identificado, com o DOI pendente, está em
+  `referencias_identificadas.json`. A RESS não indica forma própria de citar material dos autores
+  na submissão duplo-cega.
 - **O que falta, nesta ordem:**
   1. enviar a etiqueta: `git push origin artigo-ress-v1`;
   2. publicar no GitHub uma *release* a partir da etiqueta; a integração do Zenodo deposita a versão e
      gera o DOI;
-  3. em `referencias.json`, chave `repo`, trocar `[PENDENTE: DOI da versão artigo-ress-v1 no Zenodo]`
-     pelo DOI da versão (forma `10.5281/zenodo.<número>`);
-  4. sincronizar o item 17 da lista do manuscrito com o novo texto e rodar
-     `renumerar_referencias.py`, porque o script casa os itens da lista pelo texto exato e recusa
-     um item cujo texto mudou só no JSON;
+  3. em `referencias_identificadas.json`, chave `repo`, trocar
+     `[PENDENTE: DOI da versão artigo-ress-v1 no Zenodo]` pelo DOI da versão (forma
+     `10.5281/zenodo.<número>`);
+  4. **só na versão final, depois do aceite:** copiar esse texto para a chave `repo` de
+     `referencias.json` e rodar `renumerar_referencias.py`. O script casa o item 17 com a chave `repo`,
+     que é a única sem uso, e regrava a lista;
   5. opcionalmente, acrescentar o DOI da versão em `identifiers` do `CITATION.cff`, num commit posterior
      à etiqueta.
 

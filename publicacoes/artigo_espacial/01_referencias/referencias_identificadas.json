@@ -1,0 +1,4 @@
+{
+  "_nota": "Versão identificada das referências mascaradas para a avaliação cega. Para a versão final: copiar cada texto para a mesma chave de referencias.json, trocar o DOI pendente e rodar renumerar_referencias.py.",
+  "repo": "Schäfer AG, Prates LA, Schäfer LP, Fernandes MAD. Pipeline de análise da violência contra a mulher no RS (2012-2026) [Internet]. Versão artigo-ress-v1. Zenodo; 2026 [citado 2026 nov 3]. doi:[PENDENTE: DOI da versão artigo-ress-v1 no Zenodo]. Disponível em: https://github.com/Alexandrogschafer/violencia-mulheres-rs"
+}

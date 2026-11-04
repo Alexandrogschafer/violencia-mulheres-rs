@@ -96,15 +96,18 @@ A lista final está também ao fim de `02_texto/artigo_espacial.md`. As duas, e 
     [Preprint]. arXiv:2404.15586v4 [stat.ME]. 2025 [citado 2026 nov 2]. Disponível em:
     https://arxiv.org/abs/2404.15586v4
 
-17. Schäfer AG, Prates LA, Schäfer LP, Fernandes MAD. Pipeline de análise da violência contra a
-    mulher no RS (2012-2026) [Internet]. Versão artigo-ress-v1. Zenodo; 2026 [citado 2026 nov 3].
-    doi:[PENDENTE: DOI da versão artigo-ress-v1 no Zenodo]. Disponível em:
-    https://github.com/Alexandrogschafer/violencia-mulheres-rs
+17. Referência omitida para avaliação cega.
 
-## Pendente na referência 17
+## Referência 17: mascarada e com DOI pendente
 
-A etiqueta `artigo-ress-v1` foi criada em 2026-11-03 no repositório local e ainda não foi enviada ao
-remoto. A referência traz o nome da versão e, no lugar do DOI, o marcador
-«doi:[PENDENTE: DOI da versão artigo-ress-v1 no Zenodo]». O DOI conceitual (10.5281/zenodo.21403499)
-saiu da referência porque resolve para a versão mais recente, não para a deste artigo. O DOI da versão só
-existe depois do depósito, que é manual. Os passos estão em `verificacao_referencias.md`, entrada A09.
+**Mascarada para a avaliação cega (2026-11-03).** A referência identifica os autores pelo nome e pela
+URL do GitHub. As instruções da RESS não indicam forma própria de citar material dos autores na
+submissão duplo-cega. Por isso, a lista traz o marcador neutro «Referência omitida para avaliação
+cega.». A versão identificada fica em `referencias_identificadas.json`, chave `repo`, para a versão
+final.
+
+**DOI da versão pendente.** A versão identificada traz «Versão artigo-ress-v1» e, no lugar do DOI, o
+marcador «doi:[PENDENTE: DOI da versão artigo-ress-v1 no Zenodo]». A etiqueta `artigo-ress-v1` foi
+criada em 2026-11-03 e ainda não foi enviada ao remoto. O DOI conceitual saiu porque resolve para a
+versão mais recente, não para a deste artigo. Os passos estão em `verificacao_referencias.md`, entrada
+A09.
