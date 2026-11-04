@@ -27,10 +27,16 @@ taxonomia CRediT, com os 14 papéis listados nas instruções.
 | Papel CRediT | Schäfer AG | Prates LA |
 |---|---|---|
 | Conceituação | sim | sim |
-| Investigação | sim | |
+| Curadoria de dados | sim | |
 | Análise formal | sim | |
+| Investigação | sim | |
+| Metodologia | sim | |
+| Programas de computador | sim | |
+| Visualização | sim | |
 | Escrita – rascunho original | sim | |
 | Escrita – revisão e edição | | sim |
+
+As linhas seguem a ordem dos papéis nas instruções da RESS.
 
 Correspondência entre a divisão informada e os papéis:
 
@@ -42,6 +48,7 @@ Correspondência entre a divisão informada e os papéis:
 | Redação (Schäfer AG) | Escrita – rascunho original | correspondência direta |
 | Interpretação dos dados (Prates LA) | sem papel próprio | o CRediT não tem papel de interpretação; ela fica registrada na declaração abaixo, que segue o critério 1 do ICMJE |
 | Revisão crítica (Prates LA) | Escrita – revisão e edição | a definição inclui «revisão crítica, comentário ou revisão» |
+| Trabalho de Schäfer AG fora da divisão inicial, informado em 2026-11-03 | Curadoria de dados, Metodologia, Programas de computador, Visualização | acrescentados para que o CRediT não subdeclare: tratamento e manutenção dos dados e do código, definição dos parâmetros e do critério de interpretação, cadeia de análise em Python, mapas e tabelas |
 
 ### Declaração (critérios do ICMJE)
 
