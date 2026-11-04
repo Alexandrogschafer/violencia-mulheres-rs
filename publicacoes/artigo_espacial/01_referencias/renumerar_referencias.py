@@ -57,12 +57,24 @@ def lista_atual(resto: str, refs: dict[str, str]) -> dict[int, str]:
     """Número → chave, casando o texto de cada item da lista com referencias.json."""
     por_texto = {normaliza(v): k for k, v in refs.items()}
     itens = re.findall(r"^(\d+)\. (.*?)(?=\n\s*\n\d+\. |\n*\Z)", resto, flags=re.M | re.S)
-    mapa = {}
+    mapa, sem_par = {}, []
     for numero, texto in itens:
         chave = por_texto.get(normaliza(texto))
         if chave is None:
-            sys.exit(f"Item {numero} da lista não está em referencias.json: {normaliza(texto)[:80]}...")
-        mapa[int(numero)] = chave
+            sem_par.append((numero, texto))
+        else:
+            mapa[int(numero)] = chave
+    # Texto alterado só em referencias.json (DOI novo, máscara para avaliação cega): se sobra um único
+    # item sem par e uma única chave sem uso, os dois se casam. Mais de um caso é ambíguo e para.
+    livres = [k for k in refs if k not in mapa.values()]
+    if len(sem_par) == 1 and len(livres) == 1:
+        numero, _ = sem_par[0]
+        mapa[int(numero)] = livres[0]
+        print(f"Item {numero} casado com a chave «{livres[0]}», única sem uso: o texto mudou em "
+              "referencias.json e a lista será regravada.")
+    elif sem_par:
+        numero, texto = sem_par[0]
+        sys.exit(f"Item {numero} da lista não está em referencias.json: {normaliza(texto)[:80]}...")
     return mapa
 
 
@@ -110,9 +122,14 @@ def monta_lista(ordem: list[str], refs: dict[str, str]) -> str:
 
 def conta_palavras(corpo: str) -> int:
     """Critério de 00_protocolo/limite_palavras_ress.md: token com letra ou dígito, da Introdução à
-    Conclusão, com subtítulos e chamadas de referência, sem comentários HTML."""
+    Conclusão, com subtítulos e chamadas de referência, sem comentários HTML. As seções de nível 2
+    depois da Conclusão (disponibilidade de dados, uso de IA) são declarações e ficam fora."""
     sem_comentario = re.sub(r"<!--.*?-->", "", corpo, flags=re.S)
     trecho = sem_comentario[sem_comentario.index("## Introdução"):]
+    conclusao = trecho.index("\n## Conclusão")
+    depois = trecho.find("\n## ", conclusao + 1)
+    if depois != -1:
+        trecho = trecho[:depois]
     return sum(1 for t in trecho.replace("**", "").split() if re.search(r"[0-9A-Za-zÀ-ÿ]", t))
 
 
