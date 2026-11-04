@@ -4,7 +4,7 @@ Arquivo de referência para quem trabalhar neste artigo, humano ou agente. Decis
 tomadas: **não reabrir sem motivo novo**. Cada uma traz a razão, para que o motivo novo
 possa ser reconhecido quando aparecer.
 
-Última atualização: 2026-11-02 (denominador, periódico, orçamento).
+Última atualização: 2026-11-03 (idioma e tradução; registro promovido).
 
 ## Escopo e destino
 
@@ -155,5 +155,14 @@ conclusão 150. Total 3.230.
 município vai para tabela, que não conta palavras. O parágrafo sobre o levantamento
 exploratório dos oito trabalhos é o primeiro a cair se faltar espaço.
 
-**Registro:** `CLIMAPAMPA-I01` do repositório `publicacoes` é a entrada deste artigo, a ser
-promovida. A metade temporal daquela ideia se desmembra em ideia própria.
+**Registro:** a entrada deste artigo no repositório `publicacoes` é `CLIMAPAMPA-A09`, promovida em
+2026-11-03 da ideia `CLIMAPAMPA-I01`. A metade temporal daquela ideia se desmembra em ideia própria.
+
+## Idioma e tradução — fixado em 2026-11-03
+
+**Sem título, resumo ou texto em inglês na submissão. Não reabrir como pendência.** As instruções da
+RESS, lidas em 2026-11-03 em https://www.scielo.br/journal/ress/about/, dizem que «os manuscritos
+devem ser submetidos em português». Dizem também que «os artigos são traduzidos gratuitamente para o
+inglês e o resumo, para o espanhol». Na produção editorial, a etapa 3 após a aprovação é «tradução do
+texto completo do manuscrito para o inglês e do resumo para espanhol». Quem traduz é a revista, sem
+custo para os autores.
