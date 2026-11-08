@@ -85,174 +85,146 @@ agrupamentos identificados coincidem entre si.
 Estudo ecológico de delineamento transversal, tendo como unidade de análise os 497
 municípios do Rio Grande do Sul.
 
-### Fonte e desfechos
+### Dados
 
 Os dados provêm dos registros administrativos da Secretaria da Segurança Pública do Rio
-Grande do Sul, em planilhas de divulgação pública por município e ano [10]. Foram analisados
-quatro desfechos de violência contra a mulher no período de 2018 a 2025: ameaça, lesão
-corporal, estupro e feminicídio tentado. O feminicídio consumado foi analisado apenas
-quanto à autocorrelação global, pela baixa ocorrência.
-
-A categoria "estupro" da fonte reúne, sob rótulo único, estupro e estupro de vulnerável,
-que são tipos penais distintos. Os arquivos divulgados são revisados retroativamente pela
+Grande do Sul, em planilhas de divulgação pública por município e ano [10]. Foram
+analisados quatro desfechos de violência contra a mulher no período de 2018 a 2025 —
+ameaça, lesão corporal, estupro e feminicídio tentado —, além do feminicídio consumado,
+examinado apenas quanto à autocorrelação global, pela baixa ocorrência. A categoria
+"estupro" da fonte reúne, sob rótulo único, estupro e estupro de vulnerável, que são tipos
+penais distintos. Como os arquivos divulgados são revisados retroativamente pela
 secretaria, de modo que a mesma consulta em datas diferentes pode retornar valores
-distintos; registrou-se a proveniência de cada extração, com data e soma de verificação.
+distintos, registrou-se a proveniência de cada extração, com data e soma de verificação.
 
 As populações municipais anuais vieram do IBGE: de 2018 a 2021 e em 2024 e 2025, das
 estimativas populacionais [11]; em 2022, do Censo Demográfico [12], porque a série de
 estimativas não traz o ano censitário e, onde existe, a contagem medida é preferível à
 projetada. Como o IBGE não publicou estimativa municipal para 2023, a população desse ano
 foi interpolada linearmente entre 2022 e 2024, como a média dos dois anos arredondada ao
-inteiro. O denominador adotado foi a população feminina, estimada como a população total
-de cada ano multiplicada pela razão entre população feminina e total do município no Censo
-2022 [12]. Essa razão mostrou-se estável entre os Censos de 2010 [13] e 2022, com variação
+inteiro. O denominador adotado foi a população feminina, estimada como a população total de
+cada ano multiplicada pela razão entre população feminina e total do município no Censo
+2022 [12] — razão que se mostrou estável entre os Censos de 2010 [13] e 2022, com variação
 mediana absoluta de 0,48 ponto percentual e máximo de 2,60. As taxas são expressas por 100
-mil mulheres-ano. Registre-se que a população feminina anual é estimada, não medida.
+mil mulheres-ano, e registre-se que a população feminina anual é estimada, não medida.
 
-### Autocorrelação espacial
+### Análise
 
 A vizinhança foi definida por contiguidade do tipo rainha, com matriz padronizada por
-linha. A autocorrelação foi estimada pelo índice de Moran global e pelo indicador local de
-associação espacial (LISA) [14], ambos com o ajuste proposto por Assunção e Reis [15]. O
-ajuste responde à instabilidade da variância das taxas em áreas de tamanhos populacionais
-desiguais: quanto menor a população do município, maior a variância da taxa estimada. O
-índice ajustado é calculado a partir da contagem e da população sob risco, e não de taxas
-previamente suavizadas: suavizar por método bayesiano e em seguida testar autocorrelação
-induziria dependência por construção, já que a suavização toma emprestado dos vizinhos.
-
-### Parâmetros do teste
+linha, e a autocorrelação foi estimada pelo índice de Moran global e pelo indicador local
+de associação espacial (LISA) [14], ambos com o ajuste proposto por Assunção e Reis [15].
+O ajuste responde à instabilidade da variância das taxas em áreas de tamanhos populacionais
+desiguais: quanto menor a população do município, maior a variância da taxa estimada. Ele
+opera a partir da contagem e da população sob risco, e não de taxas previamente suavizadas,
+porque suavizar por método bayesiano e em seguida testar autocorrelação induziria
+dependência por construção, já que a suavização toma emprestado dos vizinhos.
 
 A significância do índice global foi avaliada por permutação aleatória do vetor de taxas
 ajustadas entre os municípios, e a do indicador local por permutação condicional, que
 mantém fixo o valor de cada município e sorteia os valores de seus vizinhos entre os
-demais. Nas duas, usaram-se **99.999 permutações** e semente fixada em **12345**. A
-multiplicidade do indicador local foi tratada pelo procedimento de Benjamini-Hochberg a
-5%, aplicado ao valor p direcional.
+demais. Nas duas, usaram-se 99.999 permutações e semente fixada em 12345, e a multiplicidade
+do indicador local foi tratada pelo procedimento de Benjamini-Hochberg a 5%, aplicado ao
+valor p direcional.
 
 O número de permutações não é escolha indiferente. O menor valor p obtenível com m
 permutações é 1/(m+1) [16], e o procedimento de Benjamini-Hochberg, com n áreas ao nível q,
-rejeita as hipóteses até o maior posto i cujo valor p ordenado não excede q·i/n [9].
-Combinando as duas expressões, o que nenhuma das duas fontes enuncia, rejeitar uma
-hipótese nesse piso exige m+1 ≥ n/(q·i). Com 497 municípios ao nível de 5%, as 999
-permutações usuais só permitiriam rejeição se ao menos dez municípios atingissem o piso
-simultaneamente. Em verificação com vinte sementes, o feminicídio tentado não apresentou
-nenhum município significativo em nenhuma das vinte execuções com 999 permutações, e
-apresentou de cinco a seis com 99.999 — diferença atribuível exclusivamente ao parâmetro.
+rejeita as hipóteses até o maior posto i cujo valor p ordenado não excede q·i/n [9];
+combinando as duas expressões, o que nenhuma das duas fontes enuncia, rejeitar uma hipótese
+nesse piso exige m+1 ≥ n/(q·i). Com 497 municípios ao nível de 5%, as 999 permutações
+usuais só permitiriam rejeição se ao menos dez municípios atingissem o piso simultaneamente.
+Em verificação com vinte sementes, o feminicídio tentado não apresentou nenhum município
+significativo em nenhuma das vinte execuções com 999 permutações, e apresentou de cinco a
+seis com 99.999 — diferença atribuível exclusivamente ao parâmetro. Como análise de
+sensibilidade, o procedimento foi repetido aplicando o controle de multiplicidade ao dobro
+do valor p direcional.
 
-Como análise de sensibilidade, o procedimento foi repetido aplicando o controle de
-multiplicidade ao dobro do valor p direcional; os resultados constam da seção de Resultados.
+Para delimitar o que os resultados autorizam afirmar, calculou-se para cada par
+município-desfecho significativo o número esperado de eventos sob a taxa estadual do
+desfecho, como mulheres-ano acumuladas no período multiplicadas pela taxa e divididas por
+100 mil. Pares com valor esperado inferior a cinco foram mantidos no cálculo — excluí-los
+alteraria a matriz de vizinhança e, portanto, os resultados dos demais — mas não receberam
+interpretação substantiva, e a razão entre observado e esperado é informada para cada
+município significativo. Cabe ainda uma observação sobre a leitura dos quadrantes: o
+procedimento padroniza as taxas em relação à taxa estadual e, em seguida, centra os valores
+na média municipal; como a taxa estadual é ponderada pela população e, portanto,
+influenciada pelos municípios mais populosos, a maioria dos municípios situa-se abaixo dela
+e a média dos valores padronizados é negativa, de modo que os quadrantes designados "alto"
+indicam valores acima da média municipal, e não necessariamente acima da taxa estadual.
 
-### Critério de interpretação
-
-Para cada par município-desfecho significativo calculou-se o número esperado de eventos sob
-a taxa estadual do desfecho, como mulheres-ano acumuladas no período multiplicadas pela taxa
-e divididas por 100 mil. Pares com valor esperado inferior a cinco foram mantidos no
-cálculo — excluí-los alteraria a matriz de vizinhança e, portanto, os resultados dos demais
-— mas não receberam interpretação substantiva. A razão entre observado e esperado é
-informada para cada município significativo.
-
-Cabe uma observação sobre a leitura dos quadrantes. O procedimento padroniza as taxas em
-relação à taxa estadual e, em seguida, centra os valores na média municipal. Como a taxa
-estadual é ponderada pela população e, portanto, influenciada pelos municípios mais
-populosos, a maioria dos municípios situa-se abaixo dela e a média dos valores
-padronizados é negativa. Em consequência, os quadrantes designados "alto" indicam valores
-acima da média municipal, e não necessariamente acima da taxa estadual.
-
-### Processamento e reprodutibilidade
-
-As análises foram conduzidas em Python, com as bibliotecas esda e libpysal. Os mapas foram
+As análises foram conduzidas em Python, com as bibliotecas esda e libpysal, e os mapas
 desenhados no sistema geodésico SIRGAS 2000, em projeção policônica. O código, os dados
-processados e os parâmetros de execução estão depositados em repositório público, em
-versão etiquetada correspondente aos resultados aqui apresentados [17].
+processados e os parâmetros de execução estão depositados em repositório público, em versão
+etiquetada correspondente aos resultados aqui apresentados [17].
 
 ## Resultados
 
-### Ocorrência
-
 Entre 2018 e 2025 foram registradas, nos 497 municípios do Rio Grande do Sul, 269.917
 ameaças, 155.062 lesões corporais, 18.726 estupros, 2.286 feminicídios tentados e 739
-feminicídios consumados contra mulheres. As taxas estaduais por 100 mil mulheres-ano foram
-de 579,91; 333,15; 40,23; 4,91 e 1,59, respectivamente (Tabela 1).
+feminicídios consumados contra mulheres, o que corresponde a taxas estaduais de 579,91;
+333,15; 40,23; 4,91 e 1,59 por 100 mil mulheres-ano (Tabela 1). Os desfechos diferem em
+ordem de grandeza e, com isso, na densidade com que ocorrem no território: a contagem
+municipal mediana foi de 116 ameaças e 52 lesões corporais, contra 8 estupros e 1
+feminicídio tentado, e, enquanto nenhum município deixou de registrar ameaça ou lesão
+corporal no período, 4,6% não registraram estupro, 42,3% não registraram feminicídio
+tentado e 53,1% não registraram feminicídio consumado.
 
-Os desfechos diferem em ordem de grandeza e, com isso, na densidade com que ocorrem no
-território. A contagem municipal mediana foi de 116 ameaças e 52 lesões corporais, contra 8
-estupros e 1 feminicídio tentado. Nenhum município deixou de registrar ameaça ou lesão
-corporal no período, enquanto 4,6% não registraram estupro, 42,3% não registraram
-feminicídio tentado e 53,1% não registraram feminicídio consumado.
+Essa ordem reaparece na autocorrelação global. O índice de Moran ajustado decresceu
+monotonicamente com a raridade do desfecho — 0,3198 para ameaça, 0,2962 para lesão
+corporal, 0,2194 para estupro e 0,0948 para feminicídio tentado, todos com p < 0,001 —, e o
+feminicídio consumado foi o único sem autocorrelação detectável (I = 0,0122; p = 0,29;
+Tabela 1). Nos desfechos mais raros, os índices calculados sobre a taxa bruta ficaram
+abaixo dos ajustados, 0,1713 contra 0,2194 no estupro, como se espera quando a
+instabilidade da taxa em populações pequenas atenua a medida.
 
-### Autocorrelação global
+A estrutura global não se distribui uniformemente pelo território. Foram identificados 67
+pares município-desfecho significativos, entre 58 municípios: 31 em ameaça, 15 em lesão
+corporal, 15 em estupro e 6 em feminicídio tentado (Tabela 2 e Figura 1; pares listados na
+Tabela suplementar 2). Por quadrante, 32 pares foram de valores altos cercados de altos, 28
+de baixos cercados de baixos, 4 de altos cercados de baixos e 3 de baixos cercados de
+altos; cinco apresentaram menos de cinco eventos esperados sob a taxa estadual e foram
+excluídos da interpretação, embora mantidos no cálculo. O achado de maior extensão foi um
+bloco contíguo de 21 municípios em quadrante alto-alto, no norte do estado, distribuídos
+pelos Conselhos Regionais de Desenvolvimento Médio Alto Uruguai (11), Celeiro (9) e Rio da
+Várzea (1), todos satisfazendo o critério de cinco eventos esperados — cabendo registrar
+que áreas vizinhas compartilham vizinhos no cálculo do indicador local, de modo que parte
+da contiguidade observada é esperada por construção. Os agrupamentos de valores baixos
+apresentaram padrão oposto, com os 24 municípios envolvidos distribuídos em dez blocos de
+quatro municípios ou menos, três deles isolados, e os outliers espaciais ocorreram todos
+isoladamente.
 
-O índice de Moran ajustado decresceu de forma monótona na mesma ordem: 0,3198 para ameaça,
-0,2962 para lesão corporal, 0,2194 para estupro e 0,0948 para feminicídio tentado, todos
-com p < 0,001. O feminicídio consumado foi o único desfecho sem autocorrelação detectável
-(I = 0,0122; p = 0,29; Tabela 1).
+Esses agrupamentos raramente se repetem entre desfechos. Dos 58 municípios significativos,
+49 o foram em um único desfecho e 9 em dois, nenhum em três ou mais (Tabela 3) — a ausência
+de coincidências triplas corresponde ao esperado sob independência, inferior a uma unidade,
+e não constitui achado. As coincidências observadas, em compensação, excederam largamente o
+acaso e foram espacialmente concentradas: lesão corporal e estupro coincidiram em quadrante
+alto-alto em três municípios contíguos do Conselho Regional de Desenvolvimento Litoral —
+Capivari do Sul, Osório e Tramandaí —, contra 0,05 esperados sob independência dentro do
+quadrante, e ameaça e lesão corporal coincidiram em quadrante baixo-baixo em quatro
+municípios: Boa Vista do Sul, Linha Nova, Picada Café e Presidente Lucena. As demais
+coincidências ocorreram em um município cada, e uma delas envolve par excluído da
+interpretação por insuficiência de eventos esperados. Nenhum município foi significativo em
+dois desfechos com quadrantes distintos: quando a coincidência ocorre, a direção é a mesma
+nos dois.
 
-Os índices calculados sobre a taxa bruta foram menores que os ajustados nos desfechos mais
-raros — 0,1713 contra 0,2194 no estupro —, como se espera quando a instabilidade da taxa em
-populações pequenas atenua a medida.
+No extremo oposto ao dos agrupamentos de valores altos, três municípios apresentaram
+contagens muito abaixo do previsto pela taxa estadual, em todas as vinte sementes testadas
+(Tabela suplementar 2): em Canudos do Vale registrou-se uma lesão corporal, contra 21,77
+esperadas (p < 0,0001); em Mariana Pimentel não houve registro de estupro, contra 6,15
+esperados (p = 0,0021); e em Doutor Maurício Cardoso registraram-se dois estupros, contra
+7,33 esperados (p = 0,0230).
 
-### Agrupamentos locais
-
-Foram identificados 67 pares município-desfecho significativos, distribuídos entre 58
-municípios: 31 em ameaça, 15 em lesão corporal, 15 em estupro e 6 em feminicídio tentado
-(Tabela 2 e Figura 1; pares listados na Tabela suplementar 2). Por quadrante, 32 pares
-foram de valores altos cercados de altos, 28 de baixos cercados de baixos, 4 de altos
-cercados de baixos e 3 de baixos cercados de altos. Cinco pares apresentaram menos de
-cinco eventos esperados sob a taxa estadual e foram excluídos da interpretação, embora
-mantidos no cálculo.
-
-O achado de maior extensão foi um bloco contíguo de 21 municípios em quadrante alto-alto,
-no norte do estado, distribuídos pelos Conselhos Regionais de Desenvolvimento Médio Alto
-Uruguai (11), Celeiro (9) e Rio da Várzea (1). Todos satisfizeram o critério de cinco
-eventos esperados. Cabe registrar que áreas vizinhas compartilham vizinhos no cálculo do
-indicador local, de modo que parte da contiguidade observada é esperada por construção.
-
-Os agrupamentos de valores baixos apresentaram padrão oposto: os 24 municípios envolvidos
-distribuíram-se em dez blocos, de quatro municípios ou menos, três deles isolados. Os
-outliers espaciais, nos quadrantes alto-baixo e baixo-alto, ocorreram todos isolados.
-
-### Coincidência entre desfechos
-
-Dos 58 municípios significativos, 49 o foram em um único desfecho e 9 em dois; nenhum em
-três ou mais (Tabela 3). A ausência de coincidências triplas corresponde ao esperado sob
-independência, inferior a uma unidade, e não constitui achado.
-
-As coincidências observadas, em compensação, excederam largamente o acaso, e foram
-espacialmente concentradas. A coincidência entre lesão corporal e estupro em quadrante
-alto-alto ocorreu em três municípios contíguos do Conselho Regional de Desenvolvimento
-Litoral — Capivari do Sul, Osório e Tramandaí —, contra 0,05 esperados sob independência
-dentro do quadrante. A coincidência entre ameaça e lesão corporal em quadrante baixo-baixo
-ocorreu em quatro municípios: Boa Vista do Sul, Linha Nova, Picada Café e Presidente
-Lucena. As demais coincidências ocorreram em um município cada, e uma delas envolve par
-excluído da interpretação por insuficiência de eventos esperados.
-
-Nenhum município foi significativo em dois desfechos com quadrantes distintos: quando a
-coincidência ocorre, a direção é a mesma nos dois.
-
-### Déficits de registro
-
-Três municípios apresentaram contagens muito abaixo do previsto pela taxa estadual, em
-todas as vinte sementes testadas (Tabela suplementar 2). Em Canudos do Vale registrou-se
-uma lesão corporal, contra 21,77 esperadas (p < 0,0001). Em Mariana Pimentel não houve
-registro de estupro, contra 6,15 esperados (p = 0,0021). Em Doutor Maurício Cardoso
-registraram-se dois estupros, contra 7,33 esperados (p = 0,0230).
-
-### Sensibilidade
-
-A aplicação do controle de multiplicidade ao dobro do valor p direcional reduziu o número de
-municípios significativos em todos os desfechos — 20 em ameaça, 10 em lesão corporal, 8 em
-estupro e 3 em feminicídio tentado — e ampliou a variação entre sementes, que alcançou de 6
-a 12 municípios na lesão corporal e de 0 a 3 no feminicídio tentado.
-
-Quatro pares classificados em quadrante alto apresentaram contagem observada inferior à
-esperada pela taxa estadual (Tabela suplementar 2), entre eles Capivari do Sul em lesão
-corporal, com razão de 0,77. Porto Alegre foi classificada como baixo-alto em estupro, com
-observado em 0,94 do esperado (p = 0,0006); a significância decorre do tamanho da
-população do município, não da magnitude do desvio.
-
-A substituição do denominador feminino pela população total, apresentada na Tabela
-suplementar 1, alterou o índice de Moran global em no máximo 0,014, o status de
-significância de três municípios e o quadrante de um.
+Os resultados mostraram-se sensíveis a duas escolhas analíticas. Aplicar o controle de
+multiplicidade ao dobro do valor p direcional reduziu o número de municípios significativos
+em todos os desfechos — 20 em ameaça, 10 em lesão corporal, 8 em estupro e 3 em feminicídio
+tentado — e ampliou a variação entre sementes, que alcançou de 6 a 12 municípios na lesão
+corporal e de 0 a 3 no feminicídio tentado. Já a substituição do denominador feminino pela
+população total, apresentada na Tabela suplementar 1, alterou o índice de Moran global em
+no máximo 0,014, o status de significância de três municípios e o quadrante de um. Convém
+registrar, por fim, que quatro pares classificados em quadrante alto apresentaram contagem
+observada inferior à esperada pela taxa estadual (Tabela suplementar 2), entre eles
+Capivari do Sul em lesão corporal, com razão de 0,77, e que Porto Alegre foi classificada
+como baixo-alto em estupro com observado em 0,94 do esperado (p = 0,0006), significância
+que decorre do tamanho da população do município e não da magnitude do desvio.
 
 ## Discussão
 
@@ -262,98 +234,74 @@ desfecho: forte na ameaça e na lesão corporal, moderada no estupro, fraca no f
 tentado e indetectável no feminicídio consumado. O desfecho mais grave é, também, aquele
 sobre cuja geografia menos se pode afirmar.
 
-### O que os quadrantes dizem e o que não dizem
+A leitura dos agrupamentos exige, porém, uma precaução que a nomenclatura convida a
+dispensar. O procedimento compara cada município à média dos municípios, não à taxa do
+estado, e como esta é ponderada pela população e portanto puxada pelos municípios mais
+populosos, a maioria deles situa-se abaixo dela. Um agrupamento de valores "altos" indica,
+assim, valores altos em relação à vizinhança — e quatro dos pares aqui identificados em
+quadrante alto registraram, na verdade, menos eventos do que a taxa estadual previa. Chamar
+esses agrupamentos de áreas de alta incidência seria incorreto, e é a leitura que um gestor
+faria se o texto não a prevenisse; é também por isso que a razão entre observado e esperado
+é informada para cada município, já que ela distingue o que é alto em termos absolutos do
+que é alto apenas em relação a vizinhos baixos.
 
-A leitura dos agrupamentos exige uma precaução que a nomenclatura convida a dispensar. O
-procedimento compara cada município à média dos municípios, não à taxa do estado. Como a
-taxa estadual é ponderada pela população e, portanto, puxada pelos municípios mais
-populosos, a maioria dos municípios situa-se abaixo dela. Um agrupamento de valores "altos"
-indica, assim, valores altos em relação à vizinhança — e quatro dos pares aqui
-identificados em quadrante alto registraram, na verdade, menos eventos do que a taxa
-estadual previa. Chamar esses agrupamentos de áreas de alta incidência seria incorreto, e é
-a leitura que um gestor faria se o texto não a prevenisse.
-
-Pela mesma razão, a razão entre observado e esperado é informada para cada município: ela
-distingue o que é alto em termos absolutos do que é alto apenas em relação a vizinhos
-baixos.
-
-### O bloco do norte
-
-O achado de maior extensão é um conjunto contíguo de 21 municípios no norte do estado.
-Trata-se de municípios pequenos, e a contiguidade do bloco deve ser lida com reserva, já
+Com essa ressalva, o achado de maior extensão é um conjunto contíguo de 21 municípios no
+norte do estado, todos de pequeno porte, cuja contiguidade deve ser lida com reserva, já
 que o indicador local compartilha vizinhos entre áreas adjacentes e tende, por construção,
-a produzir conjuntos contíguos.
+a produzir conjuntos contíguos. Este estudo não investiga as razões do padrão: explicá-lo
+exigiria análise de fatores associados, deliberadamente não realizada, porque num desenho
+transversal e com registros administrativos a associação entre características municipais e
+taxas registradas confunde a ocorrência do evento com a sua captação pelo sistema de
+registro. O que o resultado estabelece é onde a atenção deve ser dirigida, não por quê.
 
-Este estudo não investiga as razões do padrão. Explicá-lo exigiria análise de fatores
-associados, deliberadamente não realizada: num desenho transversal e com registros
-administrativos, a associação entre características municipais e taxas registradas confunde
-a ocorrência do evento com a sua captação pelo sistema de registro. O que o resultado
-estabelece é onde a atenção deve ser dirigida, não por quê.
+Quanto à relação entre as formas de violência, elas não compartilham território de modo
+geral — a maioria dos municípios significativos o é em um único desfecho —, mas onde
+coincidem, coincidem muito acima do acaso e sempre na mesma direção, sem que nenhum
+município apresente valores altos para uma forma e baixos para outra. Isso é compatível com
+uma propensão municipal ao registro, que afetaria todas as formas, mais do que com uma
+especificidade por tipo de violência. A coincidência entre lesão corporal e estupro nos três
+municípios contíguos do Conselho Regional de Desenvolvimento Litoral merece ressalva
+adicional: a região litorânea recebe população flutuante expressiva no verão e o denominador
+utilizado é a população feminina residente, de modo que eventos envolvendo pessoas não
+residentes inflam o numerador sem alterar o denominador, e parte do excesso pode ser
+artefato de medida, não concentração do fenômeno.
 
-### Coincidência entre formas de violência
+Interpretação de sinal contrário cabe aos três municípios com contagens muito abaixo do
+previsto — uma lesão corporal contra 21,77 esperadas, nenhum estupro contra 6,15, dois
+estupros contra 7,33 —, resultado que se manteve em todas as sementes testadas. A leitura
+substantiva desses casos, territórios com pouca violência, é menos plausível que a leitura
+de medida: territórios com pouco registro, já que municípios pequenos e sem serviços
+especializados oferecem menos pontos de notificação e a ausência de registro não equivale à
+ausência do evento. Essa interpretação, porém, não pôde ser confirmada. A comparação da
+cobertura da rede de atendimento entre os municípios de déficit e os demais não discrimina,
+porque serviços especializados praticamente inexistem em municípios desse porte: de 306
+municípios gaúchos com menos de 7.500 habitantes, apenas um declara delegacia
+especializada, de modo que a ausência de serviço é o que o porte já prevê e não distingue
+as duas leituras. Resolver a questão exigiria confronto com fonte independente de registro,
+como as notificações compulsórias do sistema de saúde.
 
-As formas de violência não compartilham território de modo geral — a maioria dos municípios
-significativos o é em um único desfecho —, mas onde coincidem, coincidem muito acima do
-acaso e sempre na mesma direção. Nenhum município apresentou valores altos para uma forma e
-baixos para outra. Isso é compatível com uma propensão municipal ao registro, que afeta
-todas as formas, mais do que com uma especificidade por tipo de violência.
+Os dois conjuntos de casos — os municípios pequenos de um lado, a capital de outro —
+expõem um comportamento do próprio indicador. Ele é pouco potente onde a população é pequena
+e excessivamente potente onde ela é grande: nos municípios menores, poucos eventos esperados
+tornam o teste incapaz de distinguir variação aleatória de padrão, razão pela qual cinco
+pares foram excluídos da interpretação; na capital, ao contrário, um desvio de 6% em relação
+à taxa estadual produz p inferior a 0,001, por efeito do tamanho da população e não da
+magnitude do desvio. Nenhum dos dois extremos sustenta interpretação substantiva
+isoladamente, e ambos permanecem invisíveis em uma apresentação que informe apenas o mapa de
+quadrantes.
 
-A coincidência entre lesão corporal e estupro em três municípios contíguos do Conselho
-Regional de Desenvolvimento Litoral merece ressalva adicional. A região litorânea recebe
-população flutuante expressiva no verão, e o denominador utilizado é a população feminina
-residente. Eventos envolvendo pessoas não residentes inflam o numerador sem alterar o denominador, de modo que parte do excesso pode
-ser artefato de medida, e não concentração do fenômeno.
-
-### Zero não é ausência
-
-Três municípios registraram contagens muito abaixo do previsto: uma lesão corporal contra
-21,77 esperadas, nenhum estupro contra 6,15, dois estupros contra 7,33. Em todos, o
-resultado se manteve em todas as sementes testadas.
-
-A leitura substantiva desses casos — territórios com pouca violência — é menos plausível
-que a leitura de medida: territórios com pouco registro. Municípios pequenos e sem serviços
-especializados oferecem menos pontos de notificação, e a ausência de registro não equivale
-à ausência do evento.
-
-Essa interpretação, porém, não pôde ser confirmada. A comparação da cobertura da rede de
-atendimento entre os municípios de déficit e os demais não discrimina, porque serviços
-especializados praticamente inexistem em municípios desse porte: de 306 municípios gaúchos
-com menos de 7.500 habitantes, apenas um declara delegacia especializada. A ausência de
-serviço nesses municípios é o que o porte já prevê, e não distingue as duas leituras.
-Resolver a questão exigiria confronto com fonte independente de registro, como as
-notificações compulsórias do sistema de saúde.
-
-### Os dois extremos do teste
-
-O indicador local é pouco potente onde a população é pequena e excessivamente potente onde
-ela é grande. Nos municípios menores, poucos eventos esperados tornam o teste incapaz de
-distinguir variação aleatória de padrão — razão pela qual cinco pares foram excluídos da
-interpretação. Na capital, ao contrário, um desvio de 6% em relação à taxa estadual produz
-p inferior a 0,001, por efeito do tamanho da população e não da magnitude do desvio.
-
-Nenhum dos dois extremos sustenta interpretação substantiva isoladamente, e ambos
-permanecem invisíveis em uma apresentação que informe apenas o mapa de quadrantes.
-
-### Limitações
-
-Os dados provêm de registros administrativos e medem a notificação, não a ocorrência. A
-subnotificação da violência contra a mulher é reconhecida e variável entre territórios, o
-que afeta diretamente a comparação espacial.
-
-A categoria "estupro" da fonte reúne estupro e estupro de vulnerável, tipos penais
-distintos cuja agregação não pode ser desfeita a partir dos dados divulgados.
-
+Algumas limitações delimitam o alcance destes resultados. Os dados provêm de registros
+administrativos e medem a notificação, não a ocorrência, e a subnotificação da violência
+contra a mulher é reconhecida e variável entre territórios, o que afeta diretamente a
+comparação espacial. A categoria "estupro" da fonte reúne estupro e estupro de vulnerável,
+tipos penais distintos cuja agregação não pode ser desfeita a partir dos dados divulgados.
 Os arquivos de divulgação são revisados retroativamente, de modo que os valores aqui
 analisados correspondem à extração datada e registrada, e não necessariamente ao que a mesma
-consulta retornaria hoje.
-
-O período foi agregado, de modo que o estudo descreve a distribuição acumulada em oito anos
-e não permite afirmar nada sobre tendência ou deslocamento dos agrupamentos ao longo do
-tempo.
-
-Por fim, a unidade de análise é o município, e os resultados descrevem municípios, não as
-mulheres que neles vivem: nenhuma conclusão sobre risco individual decorre deste
-delineamento.
+consulta retornaria hoje. O período foi agregado, de modo que o estudo descreve a
+distribuição acumulada em oito anos e nada permite afirmar sobre tendência ou deslocamento
+dos agrupamentos ao longo do tempo. Por fim, a unidade de análise é o município, e os
+resultados descrevem municípios, não as mulheres que neles vivem: nenhuma conclusão sobre
+risco individual decorre deste delineamento.
 
 ## Conclusão
 
