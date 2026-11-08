@@ -569,10 +569,11 @@ O autor adotou a primeira, segundo o resumo.
 
 ### A25 — Rio Grande do Sul, por microrregião
 
-**Afirmação (corrigida em 2026-11-08, segunda rodada):** «No estado, por microrregião, quatro das sete
-microrregiões com maiores coeficientes de mortalidade feminina por agressão estão entre as mais
-representativas na agropecuária do estado [n], associação também observada no Paraná [n].» O marcador
-é o primeiro; o segundo é A16.
+**Afirmação (corrigida em 2026-11-08, terceira rodada):** «Por microrregião, quatro das sete com maiores
+coeficientes de mortalidade feminina por agressão no Rio Grande do Sul estão entre as mais
+representativas na agropecuária [n], associação também observada no Paraná [n].» O marcador é o
+primeiro; o segundo é A16. A redação da segunda rodada («No estado, por microrregião, quatro das sete
+microrregiões [...] na agropecuária do estado») só mudou para tirar as repetições; o conteúdo é o mesmo.
 
 **Situação: sustenta.** As sete são as da p. 646, e as quatro são as que a p. 650 nomeia. A fonte as
 introduz com «como», ou seja, como exemplos: não afirma que as outras três fiquem fora. A frase diz
