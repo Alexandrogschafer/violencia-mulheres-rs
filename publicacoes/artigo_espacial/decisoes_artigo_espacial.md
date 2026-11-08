@@ -4,7 +4,7 @@ Arquivo de referência para quem trabalhar neste artigo, humano ou agente. Decis
 tomadas: **não reabrir sem motivo novo**. Cada uma traz a razão, para que o motivo novo
 possa ser reconhecido quando aparecer.
 
-Última atualização: 2026-11-03 (idioma e tradução; registro promovido).
+Última atualização: 2026-11-08 (figuras; limite de ilustrações; suplementares renumeradas).
 
 ## Escopo e destino
 
@@ -29,8 +29,8 @@ possa ser reconhecido quando aparecer.
   municípios, no máximo 1 por desfecho, e o quadrante de 1. **Declarar no texto que a
   população feminina anual é estimada, não medida.**
   - O **portal usa população total**. A diferença é imaterial e vai para **tabela
-    suplementar**, com os dois denominadores lado a lado. A RESS permite duas suplementares
-    e elas não contam no limite de palavras.
+    suplementar** (a Tabela suplementar 2), com os dois denominadores lado a lado. A RESS
+    permite duas suplementares e elas não contam no limite de palavras.
   - **Porto Alegre em Estupro passa de AA para BA** com o denominador feminino, por ter a
     maior razão feminina do estado (0,540). Único caso em que a classificação muda. Merece
     uma frase: a capital não é aglomerado robusto nesse desfecho sob nenhum dos dois
@@ -151,7 +151,8 @@ epidemiologia municipal do mesmo projeto.
 **Orçamento de palavras:** introdução 450, métodos 730, resultados 950, discussão 950,
 conclusão 150. Total 3.230.
 
-**Cinco figuras/tabelas, e o que não cabe:** o painel do MAUP fica fora. Todo detalhe por
+**Cinco figuras/tabelas, e o que não cabe:** o limite está **atingido** — ver «Figuras e
+limite de ilustrações», abaixo. O painel do MAUP fica fora. Todo detalhe por
 município vai para tabela, que não conta palavras. O parágrafo sobre o levantamento
 exploratório dos oito trabalhos é o primeiro a cair se faltar espaço.
 
@@ -166,3 +167,35 @@ devem ser submetidos em português». Dizem também que «os artigos são traduz
 inglês e o resumo, para o espanhol». Na produção editorial, a etapa 3 após a aprovação é «tradução do
 texto completo do manuscrito para o inglês e do resumo para espanhol». Quem traduz é a revista, sem
 custo para os autores.
+
+## Figuras e limite de ilustrações — fixado em 2026-11-08
+
+**Figura 1 = variante A, geográfica com recortes.** Os dois recortes são os painéis principais:
+o bloco norte, nos COREDEs Médio Alto Uruguai, Celeiro e Rio da Várzea (A), e o COREDE Litoral
+(B). Eles mostram os dois achados principais (bloco contíguo do norte; sobreposição no Litoral)
+numa escala em que cada município se distingue e é nomeado. Só os significativos têm nome (22
+no norte, 5 no Litoral), com pelo menos 6 pt impressos na largura de 15,3 cm. O estado inteiro
+fica num **localizador pequeno, pintado com as cores de direção e sem texto**. Pintado porque fora
+dos recortes há 31 municípios significativos, entre eles os 24 baixo-baixo, que de outro modo
+sairiam da figura. Gerada por `03_figuras/gerar_figura1_variantes.py`.
+
+**Figura 2 = variante D, superfície contínua, no corpo.** Mostra, por desfecho, a taxa ajustada
+padronizada de cada município — o valor cujo sinal define o quadrante do LISA —, com os
+significativos contornados. Foi pensada como figura suplementar, mas a RESS admite «até duas
+tabelas e figuras suplementares em arquivo único», e as duas vagas já são tabelas. Por isso foi
+para o corpo.
+
+**Variantes descartadas** (na escolha de 2026-11-08; código e saídas apagados):
+
+- **B — cartograma contínuo** (área proporcional à população feminina): a área deixa de ser
+  geográfica, os municípios ficam irreconhecíveis e não há escala de distância, justamente
+  num artigo cujos achados são de contiguidade. Além disso, exigia uma dependência a mais, sob
+  GPL-3.0 (`cartogram`), e convergia com erro médio de área de cerca de 8%.
+- **C — símbolos nos centroides**: um ponto por município significativo não mostra a extensão
+  nem a contiguidade dos municípios, e é isso que torna visível o bloco norte, o achado
+  principal.
+
+**O corpo está no limite de cinco ilustrações:** Tabelas 1, 2 e 3 e Figuras 1 e 2. As duas
+suplementares também estão no limite: a Tabela suplementar 1 (pares significativos) e a Tabela
+suplementar 2 (denominador). **Qualquer tabela ou figura nova exige tirar outra**, no corpo ou
+nas suplementares. As suplementares são numeradas pela ordem de citação no texto.
