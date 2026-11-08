@@ -1,4 +1,4 @@
-"""Gera a Figura 1 (variante A) e a Figura suplementar 1 (variante D) do artigo espacial, com as legendas.
+"""Gera a Figura 1 (variante A) e a Figura 2 (variante D) do artigo espacial, com as legendas.
 
 As variantes B (cartograma) e C (símbolos nos centroides), consideradas na escolha, foram descartadas em
 2026-11-08; o desenho anterior da Figura 1 (quatro painéis por quadrante) também. `gerar_figura1.py`
@@ -24,7 +24,8 @@ nos COREDEs Médio Alto Uruguai, Celeiro e Rio da Várzea (C).
   confere): dois significativos que se tocam são afastados o mínimo necessário, e o script para se nenhum
   par sobrar ou se algum nome significativo sair.
 
-Figura suplementar 1 (variante D) — superfície contínua: um painel por desfecho com a taxa ajustada de
+Figura 2 (variante D; pensada como figura suplementar, mas as duas suplementares que a RESS admite já são
+tabelas) — superfície contínua: um painel por desfecho com a taxa ajustada de
 Assunção e Reis (`esda.smoothing.assuncao_rate`, a mesma que `Moran_Local_Rate` usa) padronizada pela
 média e pelo desvio-padrão municipais — exatamente o valor cujo sinal define o quadrante do LISA. O script
 confere, antes de desenhar, que esse valor reproduz o I de Moran ajustado da Tabela 1 e que o sinal do
@@ -39,10 +40,10 @@ cinza. Por cima, os municípios significativos contornados em preto (com halo br
 com esperado < 5.
 
 Saída em publicacoes/artigo_espacial/03_figuras/:
-- `figura1.pdf` e `figura_suplementar1.pdf`, vetoriais, fontes embutidas como TrueType;
-- `figura1.png` e `figura_suplementar1.png`, a 300 dpi (as que entram nos .docx);
-- `figura1_cinza.png` e `figura_suplementar1_cinza.png`, em escala de cinza, só para conferência;
-- `figura1_legenda.md` e `figura_suplementar1_legenda.md`, com a legenda no padrão RESS (a das tabelas)
+- `figura1.pdf` e `figura2.pdf`, vetoriais, fontes embutidas como TrueType;
+- `figura1.png` e `figura2.png`, a 300 dpi (as que entram nos .docx);
+- `figura1_cinza.png` e `figura2_cinza.png`, em escala de cinza, só para conferência;
+- `figura1_legenda.md` e `figura2_legenda.md`, com a legenda no padrão RESS (a das tabelas)
   e a conferência da paleta ou da escala.
 
 Uso, da raiz do repositório:
@@ -594,7 +595,7 @@ def variante_d(g):
                 markeredgewidth=0.8, label=f"Menos de {LIMIAR} eventos esperados" + tabelas.s_("c"))]
     fig.legend(handles=e, loc="lower left", bbox_to_anchor=(0.56, 0.055), frameon=False, fontsize=7.5,
                handlelength=1.6, labelspacing=0.9)
-    grava(fig, "figura_suplementar1")
+    grava(fig, "figura2")
     return escala_txt, {d: {"I": round(float(s["I"]), 4), "contornados": len(s["sig"]), "aneis": len(s["abaixo"]),
                             "fora_de_±2,5": s["fora"]} for d, s in sup.items()}
 
@@ -603,7 +604,7 @@ def legenda_d(info_d: dict) -> str:
     aneis = "; ".join(f"{fig1.LETRAS[i]}: {info_d[d]['aneis']}" for i, d in enumerate(fig1.LISA) if info_d[d]["aneis"])
     fora = "; ".join(f"{fig1.LETRAS[i]}: {info_d[d]['fora_de_±2,5']}" for i, d in enumerate(fig1.LISA))
     return tabelas.legenda(
-        "Figura suplementar 1",
+        "Figura 2",
         "Taxa ajustada padronizada e municípios com indicador local de associação espacial (LISA) significativo, "
         "na ameaça (A), na lesão corporal (B), no estupro (C) e no feminicídio tentado (D), Rio Grande do Sul, "
         "2018-2025 (n = 497 municípios)",
@@ -630,9 +631,9 @@ def main() -> None:
     g = dados()
     a = variante_a(g)
     escala_d, info_d = variante_d(g)
-    tabelas.confere(sum(v["aneis"] for v in info_d.values()) == 5, "Figura suplementar 1: pares com esperado < 5")
+    tabelas.confere(sum(v["aneis"] for v in info_d.values()) == 5, "Figura 2: pares com esperado < 5")
     grava_legenda("figura1", "Figura 1", legenda_a(g), "Conferência da paleta", paleta)
-    grava_legenda("figura_suplementar1", "Figura suplementar 1", legenda_d(info_d), "Conferência da escala", escala_d)
+    grava_legenda("figura2", "Figura 2", legenda_d(info_d), "Conferência da escala", escala_d)
     print("\n".join(paleta))
     print(f"Municípios significativos: {int((g['n_desfechos'] > 0).sum())}; "
           f"em 2 desfechos: {int((g['n_desfechos'] == 2).sum())}; "
@@ -644,8 +645,8 @@ def main() -> None:
           f"pares de significativos afastados: {[(f'{x} × {y}', round(float(d), 2)) for (x, y), d in a['afastados']]}; "
           f"fonte dos nomes {a['fontes'][0]:.1f}-{a['fontes'][1]:.1f} pt; escalas "
           + "; ".join(f"{k} 1:{v:,.0f}" for k, v in a["escalas"].items()))
-    print("Figura suplementar 1 (D), escala:\n" + "\n".join(escala_d))
-    print(f"Figura suplementar 1 (D): {info_d}")
+    print("Figura 2 (D), escala:\n" + "\n".join(escala_d))
+    print(f"Figura 2 (D): {info_d}")
 
 
 if __name__ == "__main__":

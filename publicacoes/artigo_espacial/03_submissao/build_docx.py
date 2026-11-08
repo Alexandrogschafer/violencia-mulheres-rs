@@ -10,7 +10,7 @@ do artigo espacial, que têm outra forma:
   `**...**`, referências numeradas em texto;
 - 03_tabelas/tabelas.md -- tabelas em pipe com título e notas (gerado por gerar_tabelas.py);
   cada tabela é conferida, célula a célula, contra o CSV de mesmo cabeçalho na mesma pasta;
-- 03_figuras/figura1.png e 03_figuras/figura1_legenda.md (gerados por gerar_figura1_variantes.py).
+- 03_figuras/figuraN.png e 03_figuras/figuraN_legenda.md, N = 1 e 2 (gerados por gerar_figura1_variantes.py).
 
 Nenhum conteúdo é escrito aqui: todo texto, número, título e nota vem desses arquivos.
 
@@ -19,7 +19,7 @@ Saídas, em 03_submissao/:
 - artigo_espacial_manuscrito.docx -- o "documento único" da RESS, na ordem das instruções:
   modalidade, título, resumo, palavras-chave, aspectos éticos, corpo (Introdução a Conclusão),
   disponibilidade de dados, uso de IA generativa, referências e, "ao final do texto, após as
-  referências", as três tabelas e a Figura 1;
+  referências", as três tabelas e as Figuras 1 e 2;
 - artigo_espacial_suplementar.docx -- as duas tabelas suplementares. As instruções dizem que
   "poderão ser encaminhadas até duas tabelas e figuras suplementares em arquivo único", e o
   material suplementar não está entre os itens do documento único: vão em arquivo próprio;
@@ -79,7 +79,7 @@ temporário e só substituem as anteriores se tudo passar):
   caminho de arquivo, sem o usuário do sistema e sem nenhum dos identificadores acima; nenhum
   identificador no texto extraído nem nos metadados XMP;
 - paginação dos PDF: o corpo termina antes da primeira ilustração, cada tabela (com título e
-  notas) ocupa no máximo duas páginas e a figura, com legenda e notas, uma só -- os limites das
+  notas) ocupa no máximo duas páginas e cada figura, com legenda e notas, uma só -- os limites das
   instruções da RESS.
 
 Os .docx só substituem os anteriores depois de conferidos; os PDF, depois de conferidos também.
@@ -122,8 +122,7 @@ DADOS_SUBMISSAO = TEXTO_DIR / "dados_submissao.md"
 TABELAS_DIR = ARTIGO / "03_tabelas"
 TABELAS_MD = TABELAS_DIR / "tabelas.md"
 FIGURAS_DIR = ARTIGO / "03_figuras"
-LEGENDA_FIGURA1 = FIGURAS_DIR / "figura1_legenda.md"
-IMAGEM_FIGURA1 = FIGURAS_DIR / "figura1.png"
+FIGURAS = [(f"Figura {n}", FIGURAS_DIR / f"figura{n}.png", FIGURAS_DIR / f"figura{n}_legenda.md") for n in (1, 2)]
 SAIDA_DIR = ARTIGO / "03_submissao"
 SAIDA_MANUSCRITO = SAIDA_DIR / "artigo_espacial_manuscrito.docx"
 SAIDA_SUPLEMENTAR = SAIDA_DIR / "artigo_espacial_suplementar.docx"
@@ -334,16 +333,22 @@ def ler_tabelas(csvs: dict) -> list[dict]:
     return tabelas
 
 
-def ler_legenda_figura1() -> tuple[str, str]:
-    texto = re.sub(r"<!--.*?-->", "", LEGENDA_FIGURA1.read_text(encoding="utf-8"), flags=re.S)
-    texto = texto.split("\n## ", 1)[0]  # a "Conferência da paleta" é nota interna, não legenda
-    blocos = [b for b in _blocos(texto) if not b.startswith("# ")]
-    if len(blocos) != 2 or not blocos[0].startswith("**Figura 1.**"):
-        raise Divergencia(f"{LEGENDA_FIGURA1.name}: esperava título «**Figura 1.**» e uma linha de notas, achei {blocos}")
-    return blocos[0], blocos[1]
+def ler_legendas_figuras() -> list[tuple[str, Path, str, str]]:
+    """(rótulo, imagem, título, notas) de cada figura, na ordem de numeração."""
+    saida = []
+    for rotulo, imagem, arquivo in FIGURAS:
+        texto = re.sub(r"<!--.*?-->", "", arquivo.read_text(encoding="utf-8"), flags=re.S)
+        texto = texto.split("\n## ", 1)[0]  # a conferência da paleta ou da escala é nota interna, não legenda
+        blocos = [b for b in _blocos(texto) if not b.startswith("# ")]
+        if len(blocos) != 2 or not blocos[0].startswith(f"**{rotulo}.**"):
+            raise Divergencia(f"{arquivo.name}: esperava título «**{rotulo}.**» e uma linha de notas, achei {blocos}")
+        if not imagem.exists():
+            raise Divergencia(f"Falta {imagem.name}.")
+        saida.append((rotulo, imagem, blocos[0], blocos[1]))
+    return saida
 
 
-def conferir_citacoes(m: dict, tabelas: list[dict]) -> None:
+def conferir_citacoes(m: dict, tabelas: list[dict], figuras: list) -> None:
     corpo = " ".join(
         _sem_negrito(t) for s in m["secoes"] if s["nome"] not in ("Referências",) for _, t in s["itens"]
     )
@@ -352,7 +357,7 @@ def conferir_citacoes(m: dict, tabelas: list[dict]) -> None:
         if t["continuacao"]:
             continue
         rotulos.append(re.match(r"\*\*(Tabela(?: suplementar)? \d+)\.\*\*", t["titulo"]).group(1))
-    rotulos.append("Figura 1")
+    rotulos += [f[0] for f in figuras]
     for rotulo in rotulos:
         if not re.search(rf"\b{rotulo}\b", corpo):
             raise Divergencia(f"{rotulo} não é citada no texto.")
@@ -606,7 +611,7 @@ def _figura(doc, imagem: Path, titulo: str, notas: str) -> None:
 # ---------------------------------------------------------------- montagem
 
 
-def montar_manuscrito(m: dict, tabelas: list[dict], legenda: tuple[str, str]) -> Document:
+def montar_manuscrito(m: dict, tabelas: list[dict], figuras: list) -> Document:
     doc = _documento(_sem_negrito(m["titulo"]))
     _paragrafo(doc, m["modalidade"], WD_ALIGN_PARAGRAPH.LEFT)
     _paragrafo(doc, m["titulo"], WD_ALIGN_PARAGRAPH.CENTER, negrito_base=True)
@@ -631,8 +636,9 @@ def montar_manuscrito(m: dict, tabelas: list[dict], legenda: tuple[str, str]) ->
         if not t["continuacao"]:
             _nova_pagina(doc, _em_paisagem(t["celulas"]))
         _tabela(doc, t)
-    _nova_pagina(doc, False)
-    _figura(doc, IMAGEM_FIGURA1, *legenda)
+    for _, imagem, titulo, notas in figuras:
+        _nova_pagina(doc, False)
+        _figura(doc, imagem, titulo, notas)
     return doc
 
 
@@ -681,7 +687,7 @@ def _esperado_tabela(t: dict) -> list:
     return [("p", _sem_negrito(t["titulo"])), ("t", t["celulas"])] + ([("p", t["notas"])] if t["notas"] else [])
 
 
-def esperado_manuscrito(m, tabelas, legenda) -> list:
+def esperado_manuscrito(m, tabelas, figuras) -> list:
     saida = [("p", _sem_negrito(m["modalidade"])), ("p", _sem_negrito(m["titulo"]))]
     for s in m["secoes"]:
         if s["nome"] == "Aspectos éticos":
@@ -692,7 +698,8 @@ def esperado_manuscrito(m, tabelas, legenda) -> list:
     for t in tabelas:
         if not t["suplementar"]:
             saida += _esperado_tabela(t)
-    saida += [("p", _sem_negrito(legenda[0])), ("p", legenda[1])]
+    for _, _, titulo, notas in figuras:
+        saida += [("p", _sem_negrito(titulo)), ("p", notas)]
     return saida
 
 
@@ -895,11 +902,11 @@ def conferir_paginacao_pdf(pdf: Path, rotulos: list[str], ultima_secao: str | No
     return len(paginas), spans
 
 
-def gerar_pdfs(m: dict, tabelas: list[dict], proibidos: list[str]) -> list:
+def gerar_pdfs(m: dict, tabelas: list[dict], figuras: list, proibidos: list[str]) -> list:
     rotulos_principais = [
         re.match(r"\*\*(Tabela \d+)\.\*\*", t["titulo"]).group(1)
         for t in tabelas if not t["suplementar"] and not t["continuacao"]
-    ] + ["Figura 1"]
+    ] + [f[0] for f in figuras]
     rotulos_supl = [re.match(r"\*\*(Tabela suplementar \d+)\.\*\*", t["titulo"]).group(1)
                     for t in tabelas if t["suplementar"]]
     titulo = _sem_negrito(m["titulo"])
@@ -932,15 +939,17 @@ def main() -> int:
         notas = conferir_requisitos(m, texto_md)
         csvs = ler_csvs()
         tabelas = ler_tabelas(csvs)
-        legenda = ler_legenda_figura1()
-        conferir_citacoes(m, tabelas)
+        figuras = ler_legendas_figuras()
+        conferir_citacoes(m, tabelas, figuras)
 
         texto_tabelas = TABELAS_MD.read_text(encoding="utf-8")
         pedacos = re.split(r"^---$", re.sub(r"<!--.*?-->", "", texto_tabelas, flags=re.S), flags=re.M)[1:]
         supl = [p for p in pedacos if "**Tabela suplementar" in p]
         principais = [p for p in pedacos if "**Tabela suplementar" not in p]
-        legenda_bruta = re.sub(r"<!--.*?-->", "", LEGENDA_FIGURA1.read_text(encoding="utf-8"), flags=re.S).split("\n## ", 1)[0]
-        legenda_bruta = re.sub(r"^# .*$", "", legenda_bruta, flags=re.M)  # «# Figura 1 — legenda» rotula o arquivo
+        legendas_brutas = []
+        for _, _, arquivo in FIGURAS:
+            bruta = re.sub(r"<!--.*?-->", "", arquivo.read_text(encoding="utf-8"), flags=re.S).split("\n## ", 1)[0]
+            legendas_brutas.append(re.sub(r"^# .*$", "", bruta, flags=re.M))  # «# Figura N — legenda» rotula o arquivo
         titulo_bruto = "# " + m["titulo"]
         proibidos = _identificadores()
 
@@ -949,9 +958,9 @@ def main() -> int:
         for destino, doc, esperado, numeros in (
             (
                 SAIDA_MANUSCRITO,
-                montar_manuscrito(m, tabelas, legenda),
-                esperado_manuscrito(m, tabelas, legenda),
-                _numeros_brutos(texto_md, *principais, legenda_bruta),
+                montar_manuscrito(m, tabelas, figuras),
+                esperado_manuscrito(m, tabelas, figuras),
+                _numeros_brutos(texto_md, *principais, *legendas_brutas),
             ),
             (
                 SAIDA_SUPLEMENTAR,
@@ -973,14 +982,14 @@ def main() -> int:
         n_corpo = conferir_palavras(resultados[SAIDA_MANUSCRITO][1], texto_md)
         for destino, (temporario, _) in resultados.items():
             os.replace(temporario, destino)
-        pdfs = gerar_pdfs(m, tabelas, proibidos)
+        pdfs = gerar_pdfs(m, tabelas, figuras, proibidos)
     except Divergencia as erro:
         print(f"PAROU: {erro}", file=sys.stderr)
         return 1
 
     n_tab = sum(1 for t in tabelas if not t["suplementar"] and not t["continuacao"])
     n_supl = sum(1 for t in tabelas if t["suplementar"])
-    print(f"OK -- {SAIDA_MANUSCRITO.relative_to(ROOT)}: {n_tab} tabelas, 1 figura, "
+    print(f"OK -- {SAIDA_MANUSCRITO.relative_to(ROOT)}: {n_tab} tabelas, {len(figuras)} figuras, "
           f"{m['n_referencias']} referências; resumo com {m['n_resumo']} palavras; corpo com {n_corpo} palavras.")
     print(f"OK -- {SAIDA_SUPLEMENTAR.relative_to(ROOT)}: {n_supl} tabelas suplementares.")
     print(f"Conferidos: texto e números contra as fontes, tabelas contra {len(csvs)} CSVs, "
