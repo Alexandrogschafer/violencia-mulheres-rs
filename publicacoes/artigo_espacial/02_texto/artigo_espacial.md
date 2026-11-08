@@ -63,14 +63,13 @@ distribuição não é homogênea [7,8]. Os estudos que a descrevem variam na es
 método: alguns aplicam estatísticas de autocorrelação espacial [7,9], outros descrevem
 taxas ou modelam associações. Entre unidades da federação, o Rio Grande do Sul esteve
 entre os seis estados com taxas altas e excesso de risco acima da média nacional nas
-notificações de violência doméstica [10]. No estado, por microrregião, quatro das sete
-microrregiões com maiores coeficientes de mortalidade feminina por agressão estão entre as
-mais representativas na agropecuária do estado [11], associação também observada no Paraná
-[12]. Em Minas Gerais, por microrregião de saúde, detectaram-se cinco agrupamentos
-espaço-temporais [13]; em Pernambuco, por mesorregião, o maior número de casos esteve
-sempre na Metropolitana do Recife [14]; e em João Pessoa, por bairro, as taxas
-mostraram-se heterogêneas sem que o indicador de Getis e Ord apontasse aglomerado
-significativo [15].
+notificações de violência doméstica [10]. Por microrregião, quatro das sete com maiores
+coeficientes de mortalidade feminina por agressão no Rio Grande do Sul estão entre as mais
+representativas na agropecuária [11], associação também observada no Paraná [12]. Em Minas
+Gerais, por microrregião de saúde, detectaram-se cinco agrupamentos espaço-temporais [13];
+em Pernambuco, por mesorregião, o maior número de casos esteve sempre na Metropolitana do
+Recife [14]; e em João Pessoa, por bairro, as taxas mostraram-se heterogêneas sem que o
+indicador de Getis e Ord apontasse aglomerado significativo [15].
 
 Em escala municipal, duas dificuldades se acrescentam. A primeira é a instabilidade das
 taxas: municípios pequenos produzem taxas muito variáveis a partir de poucos eventos, e
