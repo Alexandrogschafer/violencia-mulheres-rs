@@ -22,7 +22,12 @@ Saídas, em 03_submissao/:
   referências", as três tabelas e a Figura 1;
 - artigo_espacial_suplementar.docx -- as duas tabelas suplementares. As instruções dizem que
   "poderão ser encaminhadas até duas tabelas e figuras suplementares em arquivo único", e o
-  material suplementar não está entre os itens do documento único: vão em arquivo próprio.
+  material suplementar não está entre os itens do documento único: vão em arquivo próprio;
+- artigo_espacial_manuscrito.pdf e artigo_espacial_suplementar.pdf -- os mesmos .docx, já
+  gravados e conferidos, convertidos pelo LibreOffice em modo headless, que é o renderizador com
+  que a paginação foi conferida. Sem LibreOffice, o script tenta pandoc com um motor LaTeX e diz
+  qual caminho usou; esse caminho não reproduz a paginação do Word/LibreOffice, e a conferência
+  de paginação abaixo provavelmente o interrompe.
 
 Formatação e origem de cada item (instruções da RESS lidas em 2026-11-07 em
 https://www.scielo.br/journal/ress/about/; "RECIIS" = padrão do script de origem):
@@ -69,17 +74,33 @@ temporário e só substituem as anteriores se tudo passar):
 - contagem de palavras do corpo no .docx igual à do .md (critério de
   00_protocolo/limite_palavras_ress.md);
 - nenhum nome, ORCID iD ou afiliação de 02_texto/dados_submissao.md, nem o endereço ou o
-  usuário do repositório, em nenhuma parte dos .docx (texto, metadados, relações).
+  usuário do repositório, em nenhuma parte dos .docx (texto, metadados, relações);
+- nos PDF: Author vazio; Title igual ao título do .docx (o do artigo); Creator e Producer sem
+  caminho de arquivo, sem o usuário do sistema e sem nenhum dos identificadores acima; nenhum
+  identificador no texto extraído nem nos metadados XMP;
+- paginação dos PDF: o corpo termina antes da primeira ilustração, cada tabela (com título e
+  notas) ocupa no máximo duas páginas e a figura, com legenda e notas, uma só -- os limites das
+  instruções da RESS.
+
+Os .docx só substituem os anteriores depois de conferidos; os PDF, depois de conferidos também.
+Uma falha nos PDF deixa os .docx novos já gravados e os PDF anteriores intocados.
+
+Nota não impeditiva: o título tem uma vírgula antes dos anos, e as instruções dizem que a
+pontuação aceita no título são os dois pontos. Mantida por decisão dos autores (2026-11-07);
+o script só a registra como nota.
 
 Uso: python build_docx.py
 """
 
 import csv
+import getpass
 import importlib.util
 import os
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
 import zipfile
 from collections import Counter
 from pathlib import Path
@@ -221,8 +242,8 @@ def ler_manuscrito(texto: str) -> dict:
 
 
 def conferir_requisitos(m: dict, texto: str) -> list[str]:
-    """Requisitos das instruções verificáveis no texto. Devolve avisos que não param o script."""
-    avisos = []
+    """Requisitos das instruções verificáveis no texto. Devolve notas que não param o script."""
+    notas = []
     resumo = [t for k, t in _secao(m, "Resumo") if k == "paragrafo"]
     chaves = [t for t in resumo if t.startswith("**Palavras-chave:**")]
     corpo_resumo = [t for t in resumo if not t.startswith("**Palavras-chave:**")]
@@ -243,13 +264,13 @@ def conferir_requisitos(m: dict, texto: str) -> list[str]:
     if len(refs) > LIMITE_REFERENCIAS:
         raise Divergencia(f"{len(refs)} referências, acima de {LIMITE_REFERENCIAS}.")
     if re.search(r"[,;.!?]", m["titulo"]):
-        avisos.append(
-            "O título tem pontuação além dos dois pontos; as instruções aceitam só os dois pontos: "
-            f"«{m['titulo']}»"
+        notas.append(
+            "o título tem pontuação além dos dois pontos (as instruções aceitam só os dois pontos); "
+            f"mantida por decisão dos autores: «{m['titulo']}»"
         )
     m["n_resumo"] = n_resumo
     m["n_referencias"] = len(refs)
-    return avisos
+    return notas
 
 
 def _secao(m: dict, nome: str) -> list:
@@ -767,6 +788,134 @@ def conferir_anonimato(caminho: Path, proibidos: list[str]) -> None:
         raise Divergencia(f"{caminho.name} identifica autoria: {achados}")
 
 
+# ---------------------------------------------------------------- PDF
+
+
+def converter_pdf(docx: Path, pasta: Path) -> str:
+    """Converte o .docx em PDF dentro de `pasta` e devolve a descrição do caminho usado."""
+    soffice = shutil.which("soffice") or shutil.which("libreoffice")
+    if soffice:
+        versao = subprocess.run([soffice, "--version"], capture_output=True, text=True).stdout.strip()
+        # Perfil descartável: não depende nem altera o perfil do usuário, e não colide com uma
+        # instância do LibreOffice já aberta.
+        with tempfile.TemporaryDirectory() as perfil:
+            r = subprocess.run(
+                [soffice, f"-env:UserInstallation={Path(perfil).as_uri()}", "--headless",
+                 "--convert-to", "pdf", "--outdir", str(pasta), str(docx)],
+                capture_output=True, text=True, timeout=600,
+            )
+        if r.returncode != 0 or not (pasta / f"{docx.stem}.pdf").exists():
+            raise Divergencia(f"LibreOffice não converteu {docx.name}: {r.stderr.strip() or r.stdout.strip()}")
+        return f"LibreOffice headless ({' '.join(versao.split()[:2])})"
+    pandoc = shutil.which("pandoc")
+    motor = next((m for m in ("xelatex", "lualatex", "pdflatex") if shutil.which(m)), None)
+    if pandoc and motor:
+        r = subprocess.run(
+            [pandoc, str(docx), "-o", str(pasta / f"{docx.stem}.pdf"), f"--pdf-engine={motor}"],
+            capture_output=True, text=True, timeout=600,
+        )
+        if r.returncode != 0:
+            raise Divergencia(f"pandoc não converteu {docx.name}: {r.stderr.strip()}")
+        return f"pandoc com {motor} (sem LibreOffice; paginação diferente da do Word)"
+    raise Divergencia("Nenhum conversor para PDF: falta LibreOffice (soffice) e pandoc com motor LaTeX.")
+
+
+def _poppler(*args: str) -> str:
+    programa = shutil.which(args[0])
+    if not programa:
+        raise Divergencia(f"Falta {args[0]} (poppler-utils) para conferir os PDF.")
+    r = subprocess.run([programa, *args[1:]], capture_output=True, text=True)
+    if r.returncode != 0:
+        raise Divergencia(f"{args[0]} falhou: {r.stderr.strip()}")
+    return r.stdout
+
+
+def conferir_metadados_pdf(pdf: Path, titulo: str, proibidos: list[str]) -> dict:
+    info = {}
+    for linha in _poppler("pdfinfo", str(pdf)).splitlines():
+        chave, _, valor = linha.partition(":")
+        info[chave.strip()] = valor.strip()
+    xmp = _poppler("pdfinfo", "-meta", str(pdf))
+    problemas = []
+    if info.get("Author"):
+        problemas.append(f"Author preenchido: {info['Author']!r}")
+    if info.get("Title") != titulo:
+        problemas.append(f"Title diferente do título do artigo: {info.get('Title')!r}")
+    pessoais = proibidos + [str(Path.home()), getpass.getuser()]
+    for campo in ("Creator", "Producer", "Subject", "Keywords"):
+        valor = info.get(campo, "")
+        if re.search(r"[/\\]", valor):
+            problemas.append(f"{campo} com caminho de arquivo: {valor!r}")
+        problemas += [f"{campo} contém {t!r}" for t in pessoais if t.lower() in valor.lower()]
+    texto = _poppler("pdftotext", str(pdf), "-")
+    for origem, conteudo in (("texto", texto), ("XMP", xmp), ("metadados", "\n".join(info.values()))):
+        problemas += [f"{origem} contém {t!r}" for t in pessoais if t.lower() in conteudo.lower()]
+    if problemas:
+        raise Divergencia(f"{pdf.name} pode identificar autoria: {sorted(set(problemas))}")
+    return info
+
+
+def conferir_paginacao_pdf(pdf: Path, rotulos: list[str], ultima_secao: str | None) -> list:
+    """Página em que cada ilustração começa (pelo título «Rótulo N.» no início da linha) e
+    quantas páginas ocupa até a próxima ilustração ou o fim do arquivo."""
+    paginas = _poppler("pdftotext", "-layout", str(pdf), "-").split("\f")
+    if paginas and not paginas[-1].strip():
+        paginas.pop()
+    inicio_busca = 0
+    if ultima_secao:  # as ilustrações vêm depois das referências
+        inicio_busca = next(
+            (i for i, p in enumerate(paginas) if re.search(rf"^\s*{ultima_secao}\s*$", p, re.M)), None
+        )
+        if inicio_busca is None:
+            raise Divergencia(f"{pdf.name}: não achei a seção {ultima_secao}.")
+    inicios = []
+    for rotulo in rotulos:
+        padrao = re.compile(rf"^\s*{re.escape(rotulo)}\.", re.M)
+        pagina = next((i for i in range(inicio_busca, len(paginas)) if padrao.search(paginas[i])), None)
+        if pagina is None:
+            raise Divergencia(f"{pdf.name}: não achei o título de {rotulo}.")
+        if inicios and pagina <= inicios[-1][1]:
+            raise Divergencia(f"{pdf.name}: {rotulo} começa na mesma página da ilustração anterior.")
+        inicios.append((rotulo, pagina))
+        inicio_busca = pagina
+    spans = []
+    for k, (rotulo, pagina) in enumerate(inicios):
+        fim = inicios[k + 1][1] if k + 1 < len(inicios) else len(paginas)
+        n = fim - pagina
+        limite = 1 if rotulo.startswith("Figura") else 2
+        if n > limite:
+            raise Divergencia(f"{pdf.name}: {rotulo} ocupa {n} páginas; a RESS admite {limite}.")
+        spans.append((rotulo, pagina + 1, n))
+    return len(paginas), spans
+
+
+def gerar_pdfs(m: dict, tabelas: list[dict], proibidos: list[str]) -> list:
+    rotulos_principais = [
+        re.match(r"\*\*(Tabela \d+)\.\*\*", t["titulo"]).group(1)
+        for t in tabelas if not t["suplementar"] and not t["continuacao"]
+    ] + ["Figura 1"]
+    rotulos_supl = [re.match(r"\*\*(Tabela suplementar \d+)\.\*\*", t["titulo"]).group(1)
+                    for t in tabelas if t["suplementar"]]
+    titulo = _sem_negrito(m["titulo"])
+    relatorio = []
+    with tempfile.TemporaryDirectory() as pasta:
+        pasta = Path(pasta)
+        convertidos = []
+        for docx, rotulos, ultima in (
+            (SAIDA_MANUSCRITO, rotulos_principais, SECOES_ESPERADAS[-1]),
+            (SAIDA_SUPLEMENTAR, rotulos_supl, None),
+        ):
+            caminho = converter_pdf(docx, pasta)
+            pdf = pasta / f"{docx.stem}.pdf"
+            info = conferir_metadados_pdf(pdf, titulo, proibidos)
+            n_paginas, spans = conferir_paginacao_pdf(pdf, rotulos, ultima)
+            convertidos.append(pdf)
+            relatorio.append((SAIDA_DIR / pdf.name, caminho, n_paginas, spans, info))
+        for pdf in convertidos:
+            shutil.move(str(pdf), SAIDA_DIR / pdf.name)
+    return relatorio
+
+
 # ---------------------------------------------------------------- principal
 
 
@@ -774,7 +923,7 @@ def main() -> int:
     try:
         texto_md = conferir_versao_submissao()
         m = ler_manuscrito(texto_md)
-        avisos = conferir_requisitos(m, texto_md)
+        notas = conferir_requisitos(m, texto_md)
         csvs = ler_csvs()
         tabelas = ler_tabelas(csvs)
         legenda = ler_legenda_figura1()
@@ -818,6 +967,7 @@ def main() -> int:
         n_corpo = conferir_palavras(resultados[SAIDA_MANUSCRITO][1], texto_md)
         for destino, (temporario, _) in resultados.items():
             os.replace(temporario, destino)
+        pdfs = gerar_pdfs(m, tabelas, proibidos)
     except Divergencia as erro:
         print(f"PAROU: {erro}", file=sys.stderr)
         return 1
@@ -829,8 +979,13 @@ def main() -> int:
     print(f"OK -- {SAIDA_SUPLEMENTAR.relative_to(ROOT)}: {n_supl} tabelas suplementares.")
     print(f"Conferidos: texto e números contra as fontes, tabelas contra {len(csvs)} CSVs, "
           f"ausência de {len(proibidos)} identificadores de autoria.")
-    for aviso in avisos:
-        print(f"AVISO: {aviso}")
+    for pdf, caminho, n_paginas, spans, info in pdfs:
+        ilustracoes = "; ".join(f"{r} p. {p}" + (f"-{p + n - 1}" if n > 1 else "") for r, p, n in spans)
+        print(f"OK -- {pdf.relative_to(ROOT)}: {n_paginas} páginas, por {caminho}. {ilustracoes}.")
+        print(f"      metadados: Title={info.get('Title')!r} Author={info.get('Author', '')!r} "
+              f"Creator={info.get('Creator')!r} Producer={info.get('Producer')!r}")
+    for nota in notas:
+        print(f"NOTA: {nota}")
     return 0
 
 
