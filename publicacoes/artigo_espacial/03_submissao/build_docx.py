@@ -10,7 +10,7 @@ do artigo espacial, que têm outra forma:
   `**...**`, referências numeradas em texto;
 - 03_tabelas/tabelas.md -- tabelas em pipe com título e notas (gerado por gerar_tabelas.py);
   cada tabela é conferida, célula a célula, contra o CSV de mesmo cabeçalho na mesma pasta;
-- 03_figuras/figura1.png e 03_figuras/figura1_legenda.md (gerados por gerar_figura1.py).
+- 03_figuras/figura1.png e 03_figuras/figura1_legenda.md (gerados por gerar_figura1_variantes.py).
 
 Nenhum conteúdo é escrito aqui: todo texto, número, título e nota vem desses arquivos.
 
@@ -46,7 +46,7 @@ https://www.scielo.br/journal/ress/about/; "RECIIS" = padrão do script de orige
 | Tabelas: largura das colunas | ao menos a palavra mais longa do cabeçalho; o resto em proporção ao texto mais longo da coluna, medido em Times New Roman 10; soma igual à largura útil da página | próprio: a régua do Pandoc que a RECIIS usava não existe em tabela pipe |
 | Notas de rodapé | letras minúsculas sobrescritas (formatação de sobrescrito do Word) | RESS |
 | Ilustrações | ao final, após as referências, cada uma em página nova | RESS (posição); página nova é próprio |
-| Figura | largura 17 cm, legenda e notas abaixo, presas à imagem | RECIIS |
+| Figura | largura 17 cm (altura até 19 cm, com a largura reduzida na proporção), legenda e notas abaixo, presas à imagem | RECIIS; teto de altura próprio, para caber numa página |
 | Aspectos éticos | em quadro (tabela de uma célula com borda) | RESS ("quadro") |
 | Página | A4 retrato, margens de 2 cm | RECIIS (a RESS só fixa mínimo de 1,5 cm para tabelas e figuras) |
 | Orientação das tabelas | paisagem quando as células não cabem, cada uma numa linha, na largura do retrato | RESS aceita retrato ou paisagem; o critério é próprio, para que cada tabela caiba nas duas páginas permitidas |
@@ -133,6 +133,9 @@ FONTE_TAMANHO = Pt(12)
 TABELA_TAMANHO = Pt(10)
 MARGEM_CM = 2.0
 LARGURA_UTIL_CM = 21.0 - 2 * MARGEM_CM  # retrato
+# Altura máxima da imagem de uma figura: a figura, com título e notas, tem de caber numa página (RESS). A Figura 1
+# geográfica com recortes é mais alta que larga; na largura útil passaria da página.
+ALTURA_MAX_FIGURA_CM = 19.0
 LARGURA_UTIL_PAISAGEM_CM = 29.7 - 2 * MARGEM_CM
 RECUO_CORPO = Cm(0.5)
 
@@ -592,7 +595,10 @@ def _figura(doc, imagem: Path, titulo: str, notas: str) -> None:
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p.paragraph_format.keep_with_next = True
-    p.add_run().add_picture(str(imagem), width=Cm(LARGURA_UTIL_CM))
+    imagem_docx = p.add_run().add_picture(str(imagem), width=Cm(LARGURA_UTIL_CM))
+    if imagem_docx.height > Cm(ALTURA_MAX_FIGURA_CM):
+        imagem_docx.width = int(imagem_docx.width * Cm(ALTURA_MAX_FIGURA_CM) / imagem_docx.height)
+        imagem_docx.height = Cm(ALTURA_MAX_FIGURA_CM)
     _paragrafo(doc, titulo, WD_ALIGN_PARAGRAPH.CENTER).paragraph_format.keep_with_next = True
     _paragrafo(doc, notas, WD_ALIGN_PARAGRAPH.CENTER)
 
