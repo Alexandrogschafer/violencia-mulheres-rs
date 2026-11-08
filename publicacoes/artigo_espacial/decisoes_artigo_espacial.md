@@ -185,15 +185,27 @@ significativos contornados. Foi pensada como figura suplementar, mas a RESS admi
 tabelas e figuras suplementares em arquivo único», e as duas vagas já são tabelas. Por isso foi
 para o corpo.
 
-**Variantes descartadas** (na escolha de 2026-11-08; código e saídas apagados):
+**Variantes descartadas** (na escolha de 2026-11-08; código e saídas apagados). A decisão entre as
+cinco versões (a Figura 1 anterior e as variantes A a D) foi tomada **olhando a folha de
+comparação**, com as cinco lado a lado, e não por propriedades declaradas.
 
-- **B — cartograma contínuo** (área proporcional à população feminina): a área deixa de ser
-  geográfica, os municípios ficam irreconhecíveis e não há escala de distância, justamente
-  num artigo cujos achados são de contiguidade. Além disso, exigia uma dependência a mais, sob
-  GPL-3.0 (`cartogram`), e convergia com erro médio de área de cerca de 8%.
-- **C — símbolos nos centroides**: um ponto por município significativo não mostra a extensão
-  nem a contiguidade dos municípios, e é isso que torna visível o bloco norte, o achado
-  principal.
+- **B — cartograma contínuo** (área proporcional à população feminina). Descartada porque a
+  mancha de maior área da figura corresponde a um outlier espacial de município populoso, e ela
+  domina visualmente a imagem. A discussão do artigo afirma que esse caso não é substantivo — a
+  significância decorre do tamanho da população, não da magnitude do desvio. Uma figura que
+  destaca justamente o que o texto manda relativizar trabalha contra o argumento. As demais
+  objeções (área não geográfica, ausência de escala de distância, dependência GPL-3.0, erro
+  médio de área de cerca de 8%) são reais, mas secundárias: a razão é de leitura, não de
+  técnica.
+- **C — símbolos nos centroides.** Descartada por não nomear os municípios. Os achados do artigo
+  são sobre lugares nomeados — os 22 significativos do norte (o bloco de 21 alto-alto e
+  Sarandi), os três da sobreposição no Litoral, os três déficits de registro — e o leitor
+  precisa conseguir cruzar a figura com as tabelas. Sem nome, vê a cor e não chega ao caso. A
+  perda de extensão e contiguidade é consequência do símbolo pontual e pesou menos na decisão.
+  - **Lacuna registrada em 2026-11-08:** os três déficits de registro — Canudos do Vale (Vale
+    do Taquari), Mariana Pimentel (Centro-Sul) e Doutor Maurício Cardoso (Fronteira Noroeste) —
+    ficam fora dos dois recortes da Figura 1. Lá aparecem só coloridos no localizador, sem nome,
+    e só são nomeados na Tabela suplementar 1. Pendente: decidir se a figura deve nomeá-los.
 
 **O corpo está no limite de cinco ilustrações:** Tabelas 1, 2 e 3 e Figuras 1 e 2. As duas
 suplementares também estão no limite: a Tabela suplementar 1 (pares significativos) e a Tabela
