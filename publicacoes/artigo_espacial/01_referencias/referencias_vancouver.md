@@ -55,10 +55,8 @@ A lista final está também ao fim de `02_texto/artigo_espacial.md`. As duas, e 
    notificações de violência por parceiro íntimo contra mulheres, Brasil, 2011–2017. Rev Bras
    Epidemiol. 2020;23(Suppl 1):e200007. doi:10.1590/1980-549720200007.supl.1
 
-4. Brasil. Lei nº 11.340, de 7 de agosto de 2006. Cria mecanismos para coibir a violência doméstica
-   e familiar contra a mulher, nos termos do § 8º do art. 226 da Constituição Federal [...]. Diário
-   Oficial da União. 2006 ago 8 [citado 2026 nov 8]. Disponível em:
-   https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11340.htm
+4. Brasil. Lei nº 11.340, de 7 de agosto de 2006. Diário Oficial da União. 2006 ago 8 [citado 2026
+   nov 8]. Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11340.htm
 
 5. Instituto Brasileiro de Geografia e Estatística. Pesquisa de Informações Básicas Municipais –
    MUNIC 2023: base de dados [Internet]. Rio de Janeiro: IBGE; 2024 [citado 2026 nov 3]. Disponível

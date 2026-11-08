@@ -29,7 +29,13 @@ referências, levantadas em `candidatos_introducao.md`, de onde vieram as transc
 - As afirmações de A01–A03, A05 e A15–A17 foram atualizadas para a nova redação. As passagens não
   mudaram.
 - A lista vai de 17 a 26 referências, e as demais foram renumeradas.
-- A24, A25, A23 e A03 têm ressalva sobre a redação, e A24 tem decisão pendente.
+- A24, A25, A23 e A03 tinham ressalva sobre a redação, e A24 uma divergência com os Resultados da
+  fonte.
+
+Revisão de 2026-11-08, segunda rodada: o autor corrigiu as quatro frases, e as quatro passaram a
+«sustenta». As redações anteriores ficam registradas nas entradas.
+- A referência da Lei ficou só com número e data, sem a ementa truncada.
+- O Anuário fica citado como volume.
 
 ## Como ler
 
@@ -71,11 +77,11 @@ referências, levantadas em `candidatos_introducao.md`, de onde vieram as transc
 | A21 | Sinan: mais de um milhão de notificações, 2011–2017 | Sustenta | 3 |
 | A22 | Lei Maria da Penha: ação articulada; os entes podem criar serviços | Sustenta | 4 |
 | A01 | delegacia especializada em 38 de 496 municípios | Fonte de dados, conferida na base | 5 |
-| A23 | norte do RS: distância e transporte afastam as mulheres rurais | Sustenta, com ressalva | 6 |
+| A23 | norte do RS: distância e acesso restrito ao transporte afastam as mulheres rurais | Sustenta | 6 |
 | A02 | a distribuição não é homogênea | Sustenta | 7, 8 |
-| A03 | os estudos recorrem a autocorrelação espacial | Sustenta, com ressalva | 7, 9 |
-| A24 | RS entre os seis estados com excesso de risco | **Sustenta só em parte: decisão pendente** | 10 |
-| A25 | RS, microrregiões: maiores coeficientes em áreas agropecuárias | Sustenta, com ressalva | 11 |
+| A03 | os estudos variam na escala e no método; alguns aplicam autocorrelação espacial | Sustenta | 7, 9 |
+| A24 | RS entre os seis estados com taxas altas e excesso de risco | Sustenta | 10 |
+| A25 | RS: quatro das sete microrregiões de maior coeficiente estão entre as mais agropecuárias | Sustenta | 11 |
 | A16 | PR: maior incidência nas regiões de maior área agricultável | Sustenta | 12 |
 | A15 | MG: microrregiões de saúde, cinco agrupamentos | Sustenta | 13 |
 | A17 | PE: maior número de casos na Metropolitana do Recife | Sustenta | 14 |
@@ -169,10 +175,22 @@ Rev Bras Epidemiol. 2024;27:e240030.
 
 ## A03
 
-**Afirmação (reescrita em 2026-11-08):** «Os estudos que a descrevem recorrem a estatísticas de
+**Afirmação (corrigida em 2026-11-08, segunda rodada):** «Os estudos que a descrevem variam na escala e
+no método: alguns aplicam estatísticas de autocorrelação espacial [n,n], outros descrevem taxas ou
+modelam associações.»
+
+**Situação: sustenta.** Os dois estudos citados aplicam autocorrelação, como mostram as passagens
+abaixo. A segunda parte da frase, sem marcador, resume os estudos enumerados em seguida, conforme o
+levantamento abaixo:
+- descrevem taxas: Azevedo et al. e Veiga e Bushatsky;
+- modelam associações: Leites et al. e Moroskoski et al.
+
+A ressalva de 2026-11-08, transcrita abaixo, ficou resolvida.
+
+Redação da primeira rodada de 2026-11-08: «Os estudos que a descrevem recorrem a estatísticas de
 autocorrelação espacial [n,n], variando na escala.»
 
-**Ressalva de 2026-11-08, sobre a redação, não sobre as passagens.** As passagens abaixo sustentam o
+**Ressalva de 2026-11-08 (resolvida), sobre a redação, não sobre as passagens.** As passagens abaixo sustentam o
 uso de autocorrelação nos dois estudos citados. Mas a frase abre a enumeração que se segue, e a
 leitura natural é que os estudos enumerados também a usam. Pelos PDFs, quatro dos seis não usam:
 - Azevedo et al. (A24) usam taxas, excesso de risco e mapas coropléticos;
@@ -189,7 +207,8 @@ Redação de 2026-11-03, substituída: «Estudos que descrevem essa distribuiç�
 recorrem a estatísticas de autocorrelação espacial, que identificam agrupamentos de valores semelhantes
 em áreas vizinhas [n,n].»
 
-**Situação: sustenta.** Os dois estudos têm o município como unidade e usam o Moran global e local.
+**Situação (2026-11-03): sustenta.** Os dois estudos têm o município como unidade e usam o Moran global
+e local.
 
 **Referência 9.** Barros SC, Oliveira CM, Silva APSC, Melo MFO, Pimentel DR, Bonfim CV. Rev Esc Enferm
 USP. 2021;55:e03770.
@@ -410,6 +429,9 @@ São Paulo: FBSP; 2026.
 - A referência é a do volume, com autoria institucional.
 - As passagens estão no Texto 08, de Matosinhos e Brandão (p. 157). A referência do capítulo está em
   `candidatos_introducao.md`, C01, com a página final a conferir.
+- **Decisão do autor (2026-11-08):** manter a citação do volume. O motivo é que o levantamento usou
+  passagens de dois textos distintos do Anuário: o Texto 08 e o texto de abertura (p. 23, C12). Na
+  Introdução atual, só as do Texto 08 sustentam A19.
 - «Duas das formas aqui analisadas» é ligação do autor, não da fonte: ameaça e lesão corporal são
   categorias do artigo.
 
@@ -477,14 +499,19 @@ delegacias especializadas [n].»
   omitida acima.
 - O verbo «poderão» é o que a frase traduz por «possam criar». A lei não tem página; a localização é
   o artigo e o inciso.
+- **Referência (2026-11-08, segunda rodada):** na lista, a ementa truncada com «[...]» saiu. A entrada
+  ficou «Brasil. Lei nº 11.340, de 7 de agosto de 2006. Diário Oficial da União. 2006 ago 8 [citado
+  2026 nov 8]. Disponível em: [...]».
 
 ### A23 — distância e acesso no norte do RS
 
-**Afirmação:** «A consequência é prática, porque o acesso depende de onde a mulher vive — em municípios
-do norte do estado, profissionais da rede apontaram a distância e o transporte precário entre os
-fatores que afastam as mulheres rurais dos serviços [n].»
+**Afirmação (corrigida em 2026-11-08, segunda rodada):** «A consequência é prática, porque o acesso
+depende de onde a mulher vive — em municípios do norte do estado, profissionais da rede apontaram a
+distância e o acesso restrito ao transporte entre os fatores que afastam as mulheres rurais dos
+serviços [n].»
 
-**Situação: sustenta, com ressalva.**
+**Situação: sustenta.** A frase usa a formulação da fonte. Redação anterior: «a distância e o
+transporte precário».
 
 **Referência 6.** Costa MC, Silva EB, Soares JSF, Borth LC, Honnef F. Rev Gaucha Enferm.
 2017;38(2):e59553.
@@ -501,17 +528,21 @@ fatores que afastam as mulheres rurais dos serviços [n].»
 > considerada pelos participantes como fator que dificulta a acessibilidade da mulher à rede de
 > atenção, pois o local onde vivem fica longe dos recursos de apoio sociais e institucionais.» (p. 4)
 
-**Ressalva:** a fonte diz «acesso restrito ao transporte», e a frase diz «transporte precário».
+**Ressalva da primeira rodada (resolvida):** a fonte diz «acesso restrito ao transporte», e a frase dizia «transporte precário».
 «Precário» qualifica o transporte, enquanto a fonte fala no acesso a ele. Sugestão, se se quiser
 colar à fonte: «a distância e o acesso restrito ao transporte». O estudo é qualitativo, em quatro
 municípios, e sustenta o mecanismo, não uma magnitude.
 
 ### A24 — Brasil, por unidade da federação
 
-**Afirmação:** «Entre unidades da federação, o Rio Grande do Sul esteve entre os seis estados com excesso
-de risco nas notificações de violência doméstica [n].»
+**Afirmação (corrigida em 2026-11-08, segunda rodada):** «Entre unidades da federação, o Rio Grande do
+Sul esteve entre os seis estados com taxas altas e excesso de risco acima da média nacional nas
+notificações de violência doméstica [n].»
 
-**Situação: sustenta só em parte. Decisão pendente.**
+**Situação: sustenta.** A frase segue o resumo (p. 1): os seis estados que têm, ao mesmo tempo, «altas
+taxas e excesso de risco >1, ou seja, maior que a média do país». Redação anterior: «esteve entre os
+seis estados com excesso de risco nas notificações de violência doméstica», que contradizia os
+Resultados (p. 5), onde nove estados têm excesso de risco acima de 1.
 
 **Referência 10.** Azevedo LS, Oliveira NN, Oliveira RR. Epidemiol Serv Saude. 2025;34:e20240277.
 
@@ -528,21 +559,25 @@ leiaute (`pdftotext -layout`), porque a extração simples intercala as duas col
 > foram: Acre (1,93), Mato Grosso do Sul (1,88), Paraná (1,66), Minas Gerais (1,51), Tocantins (1,43),
 > Rio Grande do Sul (1,43), Rio de Janeiro (1,22), São Paulo (1,21) e Espírito Santo (1,17).» (p. 5)
 
-**Divergência:** os estados com excesso de risco acima de 1 são **nove**, não seis. Os seis do resumo
+**Divergência da primeira rodada (resolvida):** os estados com excesso de risco acima de 1 são **nove**, não seis. Os seis do resumo
 são os que têm, ao mesmo tempo, «altas taxas e excesso de risco >1». A frase, como está, diz que só
 seis tiveram excesso de risco. Há duas correções possíveis, a decidir pelo autor:
 - «entre os seis estados com altas taxas e excesso de risco», que segue o resumo (p. 1);
 - «entre os nove estados com excesso de risco», que segue os Resultados (p. 5).
 
-A segunda conta uma palavra a menos que a primeira. O texto não foi alterado.
+O autor adotou a primeira, segundo o resumo.
 
 ### A25 — Rio Grande do Sul, por microrregião
 
-**Afirmação:** «No estado, por microrregião, os maiores coeficientes de mortalidade feminina por agressão
-concentraram-se em áreas de peso agropecuário [n], associação também observada no Paraná [n].» O
-marcador é o primeiro; o segundo é A16.
+**Afirmação (corrigida em 2026-11-08, segunda rodada):** «No estado, por microrregião, quatro das sete
+microrregiões com maiores coeficientes de mortalidade feminina por agressão estão entre as mais
+representativas na agropecuária do estado [n], associação também observada no Paraná [n].» O marcador
+é o primeiro; o segundo é A16.
 
-**Situação: sustenta, com ressalva.**
+**Situação: sustenta.** As sete são as da p. 646, e as quatro são as que a p. 650 nomeia. A fonte as
+introduz com «como», ou seja, como exemplos: não afirma que as outras três fiquem fora. A frase diz
+«quatro [...] estão entre», o que é verdadeiro e não exclui as outras. Redação anterior: «os maiores
+coeficientes [...] concentraram-se em áreas de peso agropecuário».
 
 **Referência 11.** Leites GT, Meneghel SN, Hirakata VN. Rev Bras Epidemiol. 2014;17(3):642-53.
 
@@ -558,7 +593,7 @@ marcador é o primeiro; o segundo é A16.
 > do Sul, como: Passo Fundo (3º lugar), Vacaria (5º lugar), Cruz Alta (6º lugar) e Frederico
 > Westphalen (7º lugar)24.» (p. 650)
 
-**Ressalva:** das sete microrregiões de maior coeficiente, a fonte põe quatro entre as mais
+**Ressalva da primeira rodada (resolvida pela correção):** das sete microrregiões de maior coeficiente, a fonte põe quatro entre as mais
 representativas da agropecuária: Passo Fundo, Vacaria, Cruz Alta e Frederico Westphalen. As outras três
 não são mencionadas: Ijuí, Campanha Meridional e Porto Alegre. «Concentraram-se» é mais forte que o
 «encontram-se entre» da fonte. Uma forma mais colada seria «vários dos maiores coeficientes [...]
