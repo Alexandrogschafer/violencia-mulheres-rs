@@ -1,51 +1,28 @@
-"""Gera a Figura 1 do artigo espacial: quadrantes do LISA por município, um painel por desfecho.
+"""Dados e paleta da Figura 1 do artigo espacial, usados por `gerar_figura1_variantes.py`.
+
+Este módulo não desenha nem grava nada. O desenho anterior da Figura 1 (quadrantes do LISA, um painel por
+desfecho) foi substituído em 2026-11-08 pela variante A de `gerar_figura1_variantes.py`, que grava os
+`figura1.*`; o que resta aqui é a parte de que aquele script depende.
 
 Dados: os mesmos da Tabela 2 e da Tabela suplementar 2, com o denominador feminino, 2018-2025, semente
 12345, 99.999 permutações, Benjamini-Hochberg a 5% sobre o p direcional e ajuste de Assunção e Reis.
 Os pares significativos vêm de `carregar_lisa` (via `03_tabelas/gerar_tabelas.py`), e o esperado sob a
-taxa estadual vem de `esperado_vs_observado_lisa.calcular`. Antes de desenhar, as contagens por desfecho
-e quadrante são conferidas contra `outputs/tables/resultados_consolidados.md`.
+taxa estadual vem de `esperado_vs_observado_lisa.calcular`. Antes de devolver os dados, `dados` confere as
+contagens por desfecho e quadrante contra `outputs/tables/resultados_consolidados.md`. A malha está em
+SIRGAS 2000 / Brazil Polyconic (EPSG:5880), o CRS de desenho do restante do projeto
+(`mapa_choropleth.CRS_PLOT`).
 
-Cartografia:
-- SIRGAS 2000 / Brazil Polyconic (EPSG:5880), o CRS de desenho do restante do projeto
-  (`mapa_choropleth.CRS_PLOT`);
-- escala gráfica de 100 km e seta de norte com haste visível em cada painel (`escala_e_norte`, abaixo; a
-  função compartilhada do capítulo, nesse tamanho de painel, mostrava só a ponta da seta);
-- legenda única para os quatro painéis, que são identificados por letras maiúsculas, como pede a RESS
-  para mosaicos.
-
-Cores: os cinco preenchimentos (quatro quadrantes e não significativo) precisam se distinguir pela
-luminosidade, e não só pelo matiz, para a figura funcionar em escala de cinza. O script confere, antes de
-desenhar, que a diferença de luminosidade CIE L* entre quaisquer dois preenchimentos é de pelo menos
-`DELTA_L_MINIMO` e que os níveis de cinza (luminância de PIL «L», a de uma fotocópia) diferem em pelo menos
-`DELTA_CINZA_MINIMO`. Pares com menos de 5 eventos esperados recebem um anel vazado preto com halo branco, legível sobre
-qualquer preenchimento, que deixa a cor do município visível e tem entrada própria na legenda.
-
-Saída em publicacoes/artigo_espacial/03_figuras/:
-- `figura1.pdf`, vetorial, com as fontes embutidas como TrueType;
-- `figura1.png`, a 300 dpi;
-- `figura1_cinza.png`, a mesma figura convertida para escala de cinza, só para conferência;
-- `figura1_legenda.md`, com a legenda no padrão RESS (a das tabelas) e a conferência da paleta.
-
-Uso, da raiz do repositório:
-    python3 publicacoes/artigo_espacial/03_figuras/gerar_figura1.py
+Cores: os preenchimentos precisam se distinguir pela luminosidade, e não só pelo matiz, para a figura
+funcionar em escala de cinza. `luminosidade_lab` (CIE L*) e `nivel_cinza` (luminância de PIL «L», a de
+uma fotocópia) medem isso, com os limiares `DELTA_L_MINIMO` e `DELTA_CINZA_MINIMO`.
 """
 
 import importlib.util
 import sys
-from itertools import combinations
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(RAIZ))
-
-import matplotlib  # noqa: E402
-
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt  # noqa: E402
-from matplotlib.lines import Line2D  # noqa: E402
-from matplotlib.patches import Patch  # noqa: E402
-from PIL import Image  # noqa: E402
 
 from src.analysis.esperado_vs_observado_lisa import LIMIAR, calcular  # noqa: E402
 from src.analysis.mapa_choropleth import BARRA_ESCALA_KM, CRS_PLOT, montar_geodataframe  # noqa: E402
@@ -56,7 +33,6 @@ _spec = importlib.util.spec_from_file_location("gerar_tabelas", RAIZ / "publicac
 tabelas = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(tabelas)
 
-SAIDA = Path(__file__).resolve().parent
 TABLES = RAIZ / "outputs" / "tables"
 
 # Do mais escuro ao mais claro. Vermelho para «alto», azul para «baixo», como na convenção do projeto
@@ -68,16 +44,6 @@ CORES = {
     "AB": "#f6b39a",
     "NS": "#f0efeb",
 }
-ROTULOS = {
-    "AA": "Alto-alto",
-    "BB": "Baixo-baixo",
-    "AB": "Alto-baixo",
-    "BA": "Baixo-alto",
-    "NS": "Não significativo",
-}
-# Letras de nota no padrão RESS (as mesmas das tabelas): ᵃ nos quadrantes, ᵇ na marca de esperado < 5.
-NOTA_ENTRADA = {"AA": "a", "BB": "a", "AB": "a", "BA": "a"}
-ROTULO_MARCA = f"Menos de {LIMIAR} eventos esperados" + tabelas.SOBRESCRITO["b"]
 DELTA_L_MINIMO = 15.0
 DELTA_CINZA_MINIMO = 40
 LARGURA_CM = 17.0  # cabe em A4 com margens de 1,5 cm (18 cm úteis)
@@ -105,56 +71,6 @@ def nivel_cinza(h: str) -> int:
     return round(0.299 * r + 0.587 * g + 0.114 * b)
 
 
-def confere_paleta() -> list[str]:
-    linhas = []
-    for a, b in combinations(CORES, 2):
-        dl = abs(luminosidade_lab(CORES[a]) - luminosidade_lab(CORES[b]))
-        dc = abs(nivel_cinza(CORES[a]) - nivel_cinza(CORES[b]))
-        if dl < DELTA_L_MINIMO or dc < DELTA_CINZA_MINIMO:
-            sys.exit(f"Paleta reprovada: {a} × {b} com ΔL* = {dl:.1f} e Δcinza = {dc}.")
-    for k, c in CORES.items():
-        linhas.append(f"{ROTULOS[k]}: {c}, L* = {luminosidade_lab(c):.1f}, cinza = {nivel_cinza(c)}")
-    menor_l = min(abs(luminosidade_lab(CORES[a]) - luminosidade_lab(CORES[b])) for a, b in combinations(CORES, 2))
-    menor_c = min(abs(nivel_cinza(CORES[a]) - nivel_cinza(CORES[b])) for a, b in combinations(CORES, 2))
-    linhas.append(f"Menor diferença entre dois preenchimentos: ΔL* = {menor_l:.1f}; Δcinza = {menor_c}")
-    return linhas
-
-
-# ---------------------------------------------------------------- escala e norte
-
-
-def escala_e_norte(ax) -> None:
-    """Escala gráfica de BARRA_ESCALA_KM e seta de norte, no canto inferior direito do painel.
-
-    O CRS é métrico e o aspecto é 1:1, então N metros em coordenadas de dados são N metros no terreno.
-    A seta é desenhada como haste (linha) mais ponta (triângulo), com comprimento em fração da altura do
-    eixo, para que a haste fique visível em qualquer tamanho de painel. Em EPSG:5880, o norte da grade
-    coincide com o verdadeiro no meridiano central (54° O); nas bordas do RS, a diferença é de cerca de 2°.
-    """
-    cor = "#3a3a3a"
-    (x0, x1), (y0, y1) = ax.get_xlim(), ax.get_ylim()
-    largura, altura = x1 - x0, y1 - y0
-    barra = BARRA_ESCALA_KM * 1000
-    x_fim = x0 + 0.92 * largura
-    x_ini = x_fim - barra
-    y_barra = y0 + 0.06 * altura
-    marca = altura * 0.008
-    ax.plot([x_ini, x_fim], [y_barra, y_barra], color=cor, linewidth=1.2, solid_capstyle="butt")
-    for x in (x_ini, x_fim):
-        ax.plot([x, x], [y_barra - marca, y_barra + marca], color=cor, linewidth=1.2)
-    ax.text((x_ini + x_fim) / 2, y_barra + altura * 0.02, f"{BARRA_ESCALA_KM} km", ha="center", va="bottom",
-            fontsize=7, color=cor)
-
-    x_n = x_fim - barra / 2
-    y_base = y_barra + altura * 0.10
-    y_topo = y_base + altura * 0.11
-    ax.plot([x_n, x_n], [y_base, y_topo - altura * 0.025], color=cor, linewidth=1.3, solid_capstyle="butt")
-    ax.annotate("", xy=(x_n, y_topo), xytext=(x_n, y_topo - altura * 0.03),
-                arrowprops={"arrowstyle": "-|>,head_length=0.6,head_width=0.3", "color": cor, "lw": 1.3,
-                            "shrinkA": 0, "shrinkB": 0})
-    ax.text(x_n, y_topo + altura * 0.01, "N", ha="center", va="bottom", fontsize=8, fontweight="bold", color=cor)
-
-
 # ---------------------------------------------------------------- dados
 
 
@@ -170,82 +86,3 @@ def dados():
     malha = montar_geodataframe(LISA[0], ANO_INICIO, ANO_FIM)[["municipio", "geometry"]].to_crs(CRS_PLOT)
     tabelas.confere(len(malha) == N_MUNICIPIOS, "malha sem os 497 municípios")
     return sig, abaixo, malha
-
-
-# ---------------------------------------------------------------- desenho
-
-
-def desenha(sig, abaixo, malha):
-    plt.rcParams.update({"pdf.fonttype": 42, "ps.fonttype": 42, "font.size": 8})
-    largura_pol = LARGURA_CM / 2.54
-    fig, eixos = plt.subplots(2, 2, figsize=(largura_pol, largura_pol * 0.93))
-    contorno = malha.dissolve()
-    escalas = []
-    for ax, letra, d in zip(eixos.flat, LETRAS, LISA):
-        q = sig[sig["tipo_crime"] == d].set_index("municipio")["categoria"]
-        g = malha.assign(classe=malha["municipio"].map(q).fillna("NS"))
-        g.plot(ax=ax, color=g["classe"].map(CORES), edgecolor="white", linewidth=0.15)
-        contorno.boundary.plot(ax=ax, color="#3a3a3a", linewidth=0.5)
-        marcados = g[g["municipio"].isin({m for m, t in abaixo if t == d})]
-        pontos = marcados.geometry.representative_point()
-        # Anel vazado: o preenchimento do município continua visível dentro dele; o halo branco por baixo
-        # mantém o anel legível sobre os preenchimentos escuros.
-        ax.scatter(pontos.x, pontos.y, s=22, facecolor="none", edgecolor="white", linewidth=2.2, zorder=5)
-        ax.scatter(pontos.x, pontos.y, s=22, facecolor="none", edgecolor="black", linewidth=0.8, zorder=6)
-        ax.set_axis_off()
-        ax.set_title(f"{letra}  {d.capitalize()}", loc="left", fontsize=9, fontweight="bold")
-        escala_e_norte(ax)
-        escalas.append((ax, marcados))
-    entradas = [Patch(facecolor=CORES[k], edgecolor="#9a9a9a", linewidth=0.4,
-                      label=ROTULOS[k] + tabelas.s_(NOTA_ENTRADA.get(k, "")))
-                for k in ["AA", "BB", "AB", "BA", "NS"]]
-    entradas.append(Line2D([], [], marker="o", linestyle="", markersize=5, markerfacecolor="none",
-                           markeredgecolor="black", markeredgewidth=0.8, label=ROTULO_MARCA))
-    fig.legend(handles=entradas, loc="lower center", ncol=3, frameon=False, fontsize=7.5,
-               handlelength=1.4, columnspacing=1.2, bbox_to_anchor=(0.5, 0.0))
-    fig.subplots_adjust(left=0.01, right=0.99, top=0.94, bottom=0.11, wspace=0.03, hspace=0.10)
-
-    # Escala numérica na largura de impressão: largura do eixo em cm sobre a extensão em metros.
-    fig.canvas.draw()
-    ax = eixos.flat[0]
-    largura_eixo_cm = ax.get_window_extent().width / fig.dpi * 2.54
-    extensao_m = ax.get_xlim()[1] - ax.get_xlim()[0]
-    escala = extensao_m * 100 / largura_eixo_cm
-    return fig, escala, {d: len(m) for (_, m), d in zip(escalas, LISA)}
-
-
-def legenda(marcados: dict) -> str:
-    """Legenda no padrão RESS: título sem ponto final, com local, anos e n; notas em letras minúsculas
-    sobrescritas; sem detalhes de método (taxa, permutações, multiplicidade, projeção), que ficam nos Métodos."""
-    contagem = "; ".join(f"{LETRAS[i]}: {marcados[d]}" for i, d in enumerate(LISA) if marcados[d])
-    return tabelas.legenda(
-        "Figura 1",
-        "Municípios com indicador local de associação espacial (LISA) significativo, por quadrante, na ameaça (A), "
-        "na lesão corporal (B), no estupro (C) e no feminicídio tentado (D), Rio Grande do Sul, 2018-2025 "
-        "(n = 497 municípios)",
-        [("a", tabelas.NOTA_QUADRANTE),
-         ("b", f"{tabelas.NOTA_ESPERADO} ({contagem})")],
-    )
-
-
-def main() -> None:
-    paleta = confere_paleta()
-    sig, abaixo, malha = dados()
-    fig, escala, marcados = desenha(sig, abaixo, malha)
-    tabelas.confere(sum(marcados.values()) == len(abaixo), "marcas de esperado < 5 não batem com os pares")
-    fig.savefig(SAIDA / "figura1.pdf", metadata={"CreationDate": None, "ModDate": None})
-    fig.savefig(SAIDA / "figura1.png", dpi=300)
-    plt.close(fig)
-    Image.open(SAIDA / "figura1.png").convert("L").save(SAIDA / "figura1_cinza.png", dpi=(300, 300))
-    texto = legenda(marcados)
-    (SAIDA / "figura1_legenda.md").write_text(
-        "# Figura 1 — legenda\n\n<!-- Gerado por 03_figuras/gerar_figura1.py. Não editar à mão. -->\n\n"
-        + texto + "\n\n## Conferência da paleta\n\n" + "\n".join(f"- {l}" for l in paleta) + "\n",
-        encoding="utf-8",
-    )
-    print("\n".join(paleta))
-    print(f"Escala na largura de impressão: 1:{escala:,.0f}; marcas por painel: {marcados}")
-
-
-if __name__ == "__main__":
-    main()
