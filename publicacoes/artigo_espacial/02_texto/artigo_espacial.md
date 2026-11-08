@@ -41,44 +41,59 @@ nº 510, de 7 de abril de 2016, do Conselho Nacional de Saúde.
 
 ## Introdução
 
-A violência contra a mulher é problema de saúde pública e de segurança, e os serviços
-especializados que a atendem distribuem-se de modo desigual entre os municípios: no Rio
-Grande do Sul, em 2023, 38 dos 496 municípios que responderam ao quesito declararam ter
-delegacia especializada no atendimento à mulher [1]. Saber como os registros se distribuem
-entre municípios é, portanto, condição para dirigir a resposta — e a distribuição não é
-homogênea [2,3].
+A violência contra a mulher é problema de saúde pública e de segurança cuja magnitude os
+registros deixam entrever apenas em parte. Em 2025, 1.571 mulheres foram vítimas de
+feminicídio no Brasil, e para cada feminicídio registrado houve, em média, 502 registros
+de ameaça e 182 de lesão corporal dolosa em contexto de violência doméstica [1] — duas das
+formas aqui analisadas. No inquérito domiciliar de 2019, 19,4% das mulheres adultas
+relataram violência nos doze meses anteriores [2], e o sistema de notificação da saúde
+acumulou mais de um milhão de registros entre 2011 e 2017 [3].
 
-Estudos que descrevem essa distribuição em municípios brasileiros recorrem a estatísticas
-de autocorrelação espacial, que identificam agrupamentos de valores semelhantes em áreas
-vizinhas [2,4]. Fora da escala municipal, variam a unidade e o desfecho. Em Minas Gerais,
-a análise de feminicídios e homicídios de mulheres por microrregião de saúde detectou
-cinco agrupamentos espaço-temporais, quatro deles comuns aos dois desfechos [5]. No
-Paraná, as taxas suavizadas de denúncias de feminicídio foram maiores nas regiões
-geográficas imediatas de maior área agricultável [6]. Em Pernambuco, entre os boletins de
-ocorrência de violência doméstica agregados por mesorregião, o maior número de casos
-esteve, em todos os anos, na Metropolitana do Recife [7]. A aplicação das estatísticas de
-autocorrelação em escala municipal, porém, encontra duas dificuldades próprias. A primeira
-é a instabilidade das taxas: municípios pequenos produzem taxas muito variáveis a partir
-de poucos eventos, e desfechos raros agravam o problema [8]. A segunda é o número de
-testes: avaliar quinhentas áreas simultaneamente exige controle de multiplicidade, sem o
-qual a quantidade de falsos positivos deixa de ser desprezível [9].
+A resposta se organiza no território. A Lei Maria da Penha atribui a política de
+enfrentamento à ação articulada da União, dos estados e dos municípios, e prevê que esses
+entes possam criar centros de atendimento, casas-abrigo e delegacias especializadas [4]. A
+faculdade produz distribuição desigual: no Rio Grande do Sul, em 2023, 38 dos 496
+municípios que responderam declararam ter delegacia especializada [5]. A consequência é
+prática, porque o acesso depende de onde a mulher vive — em municípios do norte do estado,
+profissionais da rede apontaram a distância e o transporte precário entre os fatores que
+afastam as mulheres rurais dos serviços [6].
 
-Há ainda uma limitação que antecede a análise. Registros administrativos medem a
-notificação, não a ocorrência. A subnotificação da violência contra a mulher é reconhecida,
-e varia entre territórios conforme a capacidade de acolhimento e a disposição de denunciar
-[2,4]. Um mapa construído sobre esses registros descreve, a rigor, a geografia do registro
-— e distinguir o que nele é fenômeno do que é captação é parte da leitura, não uma ressalva
-a acrescentar ao final.
+Saber como os registros se distribuem é, portanto, condição para dirigir a resposta, e a
+distribuição não é homogênea [7,8]. Os estudos que a descrevem recorrem a estatísticas de
+autocorrelação espacial [7,9], variando na escala. Entre unidades da federação, o Rio
+Grande do Sul esteve entre os seis estados com excesso de risco nas notificações de
+violência doméstica [10]. No estado, por microrregião, os maiores coeficientes de
+mortalidade feminina por agressão concentraram-se em áreas de peso agropecuário [11],
+associação também observada no Paraná [12]. Em Minas Gerais, por microrregião de saúde,
+detectaram-se cinco agrupamentos espaço-temporais [13]; em Pernambuco, por mesorregião, o
+maior número de casos esteve sempre na Metropolitana do Recife [14]; e em João Pessoa, por
+bairro, as taxas mostraram-se heterogêneas sem que o indicador de Getis e Ord apontasse
+aglomerado significativo [15].
 
-A maior parte dos estudos disponíveis examina uma forma de violência por vez, usualmente o
-homicídio ou o feminicídio. Com isso, permanece em aberto se as diferentes formas se
-concentram nos mesmos territórios — pergunta com consequência direta para o planejamento,
-já que a resposta é hoje organizada como se a violência contra a mulher fosse fenômeno
-único.
+Em escala municipal, duas dificuldades se acrescentam. A primeira é a instabilidade das
+taxas: municípios pequenos produzem taxas muito variáveis a partir de poucos eventos, e
+desfechos raros agravam o problema [16]. A segunda é o número de testes: avaliar quinhentas
+áreas simultaneamente exige controle de multiplicidade, sem o qual os falsos positivos
+deixam de ser desprezíveis [17].
 
-Este estudo descreve a distribuição espacial de quatro formas de violência contra a mulher
-nos 497 municípios do Rio Grande do Sul entre 2018 e 2025, e examina em que medida os
-agrupamentos identificados coincidem entre si.
+Há ainda uma limitação anterior à análise: registros administrativos medem a notificação,
+não a ocorrência. Confrontando as notificações da saúde com o inquérito de 2019,
+estimou-se subnotificação de 98,5% para a violência psicológica e 75,9% para a física no
+país, e de 96,7% e 81,1% no Rio Grande do Sul [18]. A estimativa é do sistema de saúde, e
+não dos registros policiais analisados aqui, cuja subnotificação não tem medida
+equivalente; indica, porém, a ordem de grandeza do que escapa. A captação depende também
+da rede local: no Paraná, o número de delegacias especializadas associou-se positivamente
+às denúncias [12]. Um mapa construído sobre esses registros descreve, a rigor, a geografia
+do registro, e separar nele o fenômeno da captação é parte da leitura, não ressalva a
+acrescentar ao final.
+
+A maior parte dos estudos examina uma forma de violência por vez, usualmente o homicídio ou
+o feminicídio, e permanece em aberto se as diferentes formas se concentram nos mesmos
+territórios — pergunta com consequência direta para o planejamento, já que a resposta é hoje
+organizada como se a violência contra a mulher fosse fenômeno único. Este estudo descreve a
+distribuição espacial de quatro formas de violência contra a mulher nos 497 municípios do
+Rio Grande do Sul entre 2018 e 2025, e examina em que medida os agrupamentos identificados
+coincidem entre si.
 
 ## Métodos
 
@@ -88,7 +103,7 @@ municípios do Rio Grande do Sul.
 ### Dados
 
 Os dados provêm dos registros administrativos da Secretaria da Segurança Pública do Rio
-Grande do Sul, em planilhas de divulgação pública por município e ano [10]. Foram
+Grande do Sul, em planilhas de divulgação pública por município e ano [19]. Foram
 analisados quatro desfechos de violência contra a mulher no período de 2018 a 2025 —
 ameaça, lesão corporal, estupro e feminicídio tentado —, além do feminicídio consumado,
 examinado apenas quanto à autocorrelação global, pela baixa ocorrência. A categoria
@@ -98,13 +113,13 @@ secretaria, de modo que a mesma consulta em datas diferentes pode retornar valor
 distintos, registrou-se a proveniência de cada extração, com data e soma de verificação.
 
 As populações municipais anuais vieram do IBGE: de 2018 a 2021 e em 2024 e 2025, das
-estimativas populacionais [11]; em 2022, do Censo Demográfico [12], porque a série de
+estimativas populacionais [20]; em 2022, do Censo Demográfico [21], porque a série de
 estimativas não traz o ano censitário e, onde existe, a contagem medida é preferível à
 projetada. Como o IBGE não publicou estimativa municipal para 2023, a população desse ano
 foi interpolada linearmente entre 2022 e 2024, como a média dos dois anos arredondada ao
 inteiro. O denominador adotado foi a população feminina, estimada como a população total de
 cada ano multiplicada pela razão entre população feminina e total do município no Censo
-2022 [12] — razão que se mostrou estável entre os Censos de 2010 [13] e 2022, com variação
+2022 [21] — razão que se mostrou estável entre os Censos de 2010 [22] e 2022, com variação
 mediana absoluta de 0,48 ponto percentual e máximo de 2,60. As taxas são expressas por 100
 mil mulheres-ano, e registre-se que a população feminina anual é estimada, não medida.
 
@@ -112,7 +127,7 @@ mil mulheres-ano, e registre-se que a população feminina anual é estimada, n�
 
 A vizinhança foi definida por contiguidade do tipo rainha, com matriz padronizada por
 linha, e a autocorrelação foi estimada pelo índice de Moran global e pelo indicador local
-de associação espacial (LISA) [14], ambos com o ajuste proposto por Assunção e Reis [15].
+de associação espacial (LISA) [23], ambos com o ajuste proposto por Assunção e Reis [24].
 O ajuste responde à instabilidade da variância das taxas em áreas de tamanhos populacionais
 desiguais: quanto menor a população do município, maior a variância da taxa estimada. Ele
 opera a partir da contagem e da população sob risco, e não de taxas previamente suavizadas,
@@ -127,8 +142,8 @@ do indicador local foi tratada pelo procedimento de Benjamini-Hochberg a 5%, apl
 valor p direcional.
 
 O número de permutações não é escolha indiferente. O menor valor p obtenível com m
-permutações é 1/(m+1) [16], e o procedimento de Benjamini-Hochberg, com n áreas ao nível q,
-rejeita as hipóteses até o maior posto i cujo valor p ordenado não excede q·i/n [9];
+permutações é 1/(m+1) [25], e o procedimento de Benjamini-Hochberg, com n áreas ao nível q,
+rejeita as hipóteses até o maior posto i cujo valor p ordenado não excede q·i/n [17];
 combinando as duas expressões, o que nenhuma das duas fontes enuncia, rejeitar uma hipótese
 nesse piso exige m+1 ≥ n/(q·i). Com 497 municípios ao nível de 5%, as 999 permutações
 usuais só permitiriam rejeição se ao menos dez municípios atingissem o piso simultaneamente.
@@ -154,7 +169,7 @@ indicam valores acima da média municipal, e não necessariamente acima da taxa 
 As análises foram conduzidas em Python, com as bibliotecas esda e libpysal, e os mapas
 desenhados no sistema geodésico SIRGAS 2000, em projeção policônica. O código, os dados
 processados e os parâmetros de execução estão depositados em repositório público, em versão
-etiquetada correspondente aos resultados aqui apresentados [17].
+etiquetada correspondente aos resultados aqui apresentados [26].
 
 ## Resultados
 
@@ -324,7 +339,7 @@ de agrupamento da incapacidade de encontrá-lo.
 
 O código de análise, os dados processados e os parâmetros de execução estão disponíveis em
 repositório público, na versão etiquetada correspondente aos resultados deste artigo, com
-identificador persistente (DOI) [17]. Os dados de origem são de acesso público: os
+identificador persistente (DOI) [26]. Os dados de origem são de acesso público: os
 registros da Secretaria da Segurança Pública do Rio Grande do Sul e as estimativas e
 contagens populacionais do Instituto Brasileiro de Geografia e Estatística, descritos nos
 Métodos.
@@ -346,66 +361,102 @@ assumem responsabilidade por ele.
 
 <!-- Lista gerada por 01_referencias/renumerar_referencias.py em ordem de primeira aparição. Não editar à mão. -->
 
-1. Instituto Brasileiro de Geografia e Estatística. Pesquisa de Informações Básicas Municipais –
+1. Fórum Brasileiro de Segurança Pública. Anuário Brasileiro de Segurança Pública 2026 [Internet].
+   São Paulo: FBSP; 2026 [citado 2026 nov 8]. Disponível em:
+   https://forumseguranca.org.br/wp-content/uploads/2026/07/anuario-2026.pdf
+
+2. Mascarenhas MDM, Melo AS, Rodrigues MTP, Bahia CA, Lima CM, Corassa RB, et al. Prevalência de
+   exposição à violência entre adultos – Brasil, 2019. Rev Bras Epidemiol. 2021;24(Suppl 2):e210019.
+   doi:10.1590/1980-549720210019.supl.2
+
+3. Mascarenhas MDM, Tomaz GR, Meneses GMS, Rodrigues MTP, Pereira VOM, Corassa RB. Análise das
+   notificações de violência por parceiro íntimo contra mulheres, Brasil, 2011–2017. Rev Bras
+   Epidemiol. 2020;23(Suppl 1):e200007. doi:10.1590/1980-549720200007.supl.1
+
+4. Brasil. Lei nº 11.340, de 7 de agosto de 2006. Cria mecanismos para coibir a violência doméstica
+   e familiar contra a mulher, nos termos do § 8º do art. 226 da Constituição Federal [...]. Diário
+   Oficial da União. 2006 ago 8 [citado 2026 nov 8]. Disponível em:
+   https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11340.htm
+
+5. Instituto Brasileiro de Geografia e Estatística. Pesquisa de Informações Básicas Municipais –
    MUNIC 2023: base de dados [Internet]. Rio de Janeiro: IBGE; 2024 [citado 2026 nov 3]. Disponível
    em: https://ftp.ibge.gov.br/Perfil_Municipios/2023/Base_de_Dados/Base_MUNIC_2023.xlsx
 
-2. Oliveira MR, Madeiro AP, Nascimento FF, Andrade JX, Rodrigues MTP, Mascarenhas MDM. Tendência e
+6. Costa MC, Silva EB, Soares JSF, Borth LC, Honnef F. Mulheres rurais e situações de violência:
+   fatores que limitam o acesso e a acessibilidade à rede de atenção à saúde. Rev Gaucha Enferm.
+   2017;38(2):e59553. doi:10.1590/1983-1447.2017.02.59553
+
+7. Oliveira MR, Madeiro AP, Nascimento FF, Andrade JX, Rodrigues MTP, Mascarenhas MDM. Tendência e
    padrão espacial das notificações de estupro por parceiro íntimo contra mulheres no Nordeste do
    Brasil (2013–2022). Rev Bras Epidemiol. 2024;27:e240030. doi:10.1590/1980-549720240030.2
 
-3. Sá YRC, Moi PCP, Galvão ND, Silva AMC, Moi GP. The geography of femicide in Sergipe, Brazil:
+8. Sá YRC, Moi PCP, Galvão ND, Silva AMC, Moi GP. The geography of femicide in Sergipe, Brazil:
    matriarchy, human development, and income distribution. Rev Bras Epidemiol. 2021;24(Suppl
    1):e210016. doi:10.1590/1980-549720210016.supl.1
 
-4. Barros SC, Oliveira CM, Silva APSC, Melo MFO, Pimentel DR, Bonfim CV. Análise espacial dos
+9. Barros SC, Oliveira CM, Silva APSC, Melo MFO, Pimentel DR, Bonfim CV. Análise espacial dos
    homicídios intencionais de mulheres. Rev Esc Enferm USP. 2021;55:e03770.
    doi:10.1590/S1980-220X2020037303770
 
-5. Bahia CA, Pinto IV, Trindade CM, Silva CMA, Habkouk P, Simões TC, et al. Feminicídios em Minas
-   Gerais, Brasil: da caracterização dos eventos à análise espaço-temporal. Cad Saude Publica.
-   2025;41(1):e00015224. doi:10.1590/0102-311XPT015224
+10. Azevedo LS, Oliveira NN, Oliveira RR. Notificações, excesso de risco e distribuição espacial da
+    violência doméstica contra mulheres, Brasil, 2015-2020. Epidemiol Serv Saude. 2025;34:e20240277.
+    doi:10.1590/S2237-96222025v34e20240277.pt
 
-6. Moroskoski M, Azevedo LS, Brito FAM, Oliveira NN, Pereira ND, Carreira L, et al. Feminicídio:
-   análise espacial e fatores associados aos crimes de gênero no Paraná, Brasil. Cien Saude Colet.
-   2025;30(10):e10862025. doi:10.1590/1413-812320253010.10862025
+11. Leites GT, Meneghel SN, Hirakata VN. Homicídios femininos no Rio Grande do Sul, Brasil. Rev Bras
+    Epidemiol. 2014;17(3):642-53. doi:10.1590/1809-4503201400030006
 
-7. Veiga BCS, Bushatsky M. Distribuição espacial da violência contra a mulher: uma análise por
-   geoprocessamento. Rev Bras Cienc Crim. 2021;29(186):285-319.
+12. Moroskoski M, Azevedo LS, Brito FAM, Oliveira NN, Pereira ND, Carreira L, et al. Feminicídio:
+    análise espacial e fatores associados aos crimes de gênero no Paraná, Brasil. Cien Saude Colet.
+    2025;30(10):e10862025. doi:10.1590/1413-812320253010.10862025
 
-8. Carvalho AXY, Silva GDM, Almeida Júnior GR, Albuquerque PHM. Taxas bayesianas para o mapeamento
-   de homicídios nos municípios brasileiros. Cad Saude Publica. 2012;28(7):1249-62.
-   doi:10.1590/S0102-311X2012000700004
+13. Bahia CA, Pinto IV, Trindade CM, Silva CMA, Habkouk P, Simões TC, et al. Feminicídios em Minas
+    Gerais, Brasil: da caracterização dos eventos à análise espaço-temporal. Cad Saude Publica.
+    2025;41(1):e00015224. doi:10.1590/0102-311XPT015224
 
-9. Benjamini Y, Hochberg Y. Controlling the false discovery rate: a practical and powerful approach
-   to multiple testing. J R Stat Soc Series B Stat Methodol. 1995;57(1):289-300.
-   doi:10.1111/j.2517-6161.1995.tb02031.x
+14. Veiga BCS, Bushatsky M. Distribuição espacial da violência contra a mulher: uma análise por
+    geoprocessamento. Rev Bras Cienc Crim. 2021;29(186):285-319.
 
-10. Rio Grande do Sul. Secretaria da Segurança Pública. Indicadores da violência contra a mulher –
+15. Lucena KDT, Silva ATMC, Moraes RM, Silva CC, Bezerra IMP. Análise espacial da violência
+    doméstica contra a mulher entre os anos de 2002 e 2005 em João Pessoa, Paraíba, Brasil. Cad
+    Saude Publica. 2012;28(6):1111-21. doi:10.1590/S0102-311X2012000600010
+
+16. Carvalho AXY, Silva GDM, Almeida Júnior GR, Albuquerque PHM. Taxas bayesianas para o mapeamento
+    de homicídios nos municípios brasileiros. Cad Saude Publica. 2012;28(7):1249-62.
+    doi:10.1590/S0102-311X2012000700004
+
+17. Benjamini Y, Hochberg Y. Controlling the false discovery rate: a practical and powerful approach
+    to multiple testing. J R Stat Soc Series B Stat Methodol. 1995;57(1):289-300.
+    doi:10.1111/j.2517-6161.1995.tb02031.x
+
+18. Vasconcelos NM, Bernal RTI, Souza JB, Bordoni PHC, Stein C, Coll CVN, et al. Subnotificação de
+    violência contra as mulheres: uma análise de duas fontes de dados. Cien Saude Colet.
+    2024;29(10):e07732023. doi:10.1590/1413-812320242910.07732023
+
+19. Rio Grande do Sul. Secretaria da Segurança Pública. Indicadores da violência contra a mulher –
     Lei Maria da Penha [Internet]. Porto Alegre: SSP; 2018-2026 [citado 2026 nov 2]. Disponível em:
     https://www.ssp.rs.gov.br/indicadores-da-violencia-contra-a-mulher
 
-11. Instituto Brasileiro de Geografia e Estatística. Estimativas de População: tabela 6579 –
+20. Instituto Brasileiro de Geografia e Estatística. Estimativas de População: tabela 6579 –
     população residente estimada [Internet]. Rio de Janeiro: IBGE; [citado 2026 nov 2]. Disponível
     em: https://sidra.ibge.gov.br/tabela/6579
 
-12. Instituto Brasileiro de Geografia e Estatística. Censo Demográfico 2022: tabela 4709 – população
+21. Instituto Brasileiro de Geografia e Estatística. Censo Demográfico 2022: tabela 4709 – população
     residente, e tabela 9514 – população residente, por sexo, idade e forma de declaração da idade
     [Internet]. Rio de Janeiro: IBGE; [citado 2026 nov 3]. Disponível em:
     https://sidra.ibge.gov.br/tabela/4709 e https://sidra.ibge.gov.br/tabela/9514
 
-13. Instituto Brasileiro de Geografia e Estatística. Censo Demográfico 2010: tabela 1378 – população
+22. Instituto Brasileiro de Geografia e Estatística. Censo Demográfico 2010: tabela 1378 – população
     residente, por situação do domicílio, sexo e idade [Internet]. Rio de Janeiro: IBGE; [citado
     2026 nov 3]. Disponível em: https://sidra.ibge.gov.br/tabela/1378
 
-14. Anselin L. Local indicators of spatial association—LISA. Geogr Anal. 1995;27(2):93-115.
+23. Anselin L. Local indicators of spatial association—LISA. Geogr Anal. 1995;27(2):93-115.
     doi:10.1111/j.1538-4632.1995.tb00338.x
 
-15. Assunção RM, Reis EA. A new proposal to adjust Moran's I for population density. Stat Med.
+24. Assunção RM, Reis EA. A new proposal to adjust Moran's I for population density. Stat Med.
     1999;18(16):2147-62. doi:10.1002/(SICI)1097-0258(19990830)18:16<2147::AID-SIM179>3.0.CO;2-I
 
-16. Fischer L, Barry T, Ramdas A. Multiple testing with anytime-valid Monte Carlo p-values
+25. Fischer L, Barry T, Ramdas A. Multiple testing with anytime-valid Monte Carlo p-values
     [Preprint]. arXiv:2404.15586v4 [stat.ME]. 2025 [citado 2026 nov 2]. Disponível em:
     https://arxiv.org/abs/2404.15586v4
 
-17. Referência omitida para avaliação cega.
+26. Referência omitida para avaliação cega.
