@@ -58,20 +58,6 @@
 
 ---
 
-| Desfecho | I (pop. total) | I (pop. feminina)ᵃ | Diferença | p (pop. total) | p (pop. feminina) | LISA (pop. total) | LISA (pop. feminina) | Só com pop. femininaᵇ | Só com pop. totalᵇ | Mudam de quadranteᶜ |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Ameaça | 0,3055 | 0,3198 | 0,0143 | 0,00001 | 0,00001 | 30 | 31 | 1 | 0 | 0 |
-| Lesão corporal | 0,2902 | 0,2962 | 0,0060 | 0,00001 | 0,00001 | 16 | 15 | 0 | 1 | 0 |
-| Estupro | 0,2228 | 0,2194 | -0,0034 | 0,00001 | 0,00001 | 16 | 15 | 0 | 1 | 1 |
-| Feminicídio tentado | 0,0945 | 0,0948 | 0,0003 | 0,00059 | 0,00058 | 6 | 6 | 0 | 0 | 0 |
-| Feminicídio consumadoᵈ | 0,0114 | 0,0122 | 0,0008 | 0,30563 | 0,29488 | — | — | — | — | — |
-
-**Tabela suplementar 1.** Índice de Moran global ajustado e municípios com indicador local de associação espacial (LISA) significativo, com denominador de população feminina e de população total, por desfecho de violência contra a mulher, Rio Grande do Sul, 2018-2025 (n = 497 municípios)
-
-ᵃ População feminina anual estimada: população total do ano multiplicada pela razão feminina do município no Censo 2022; ᵇ municípios significativos em apenas uma das versões; ᶜ municípios significativos nas duas versões, em quadrantes diferentes; ᵈ não analisado no nível local, pela baixa ocorrência.
-
----
-
 | Município | COREDE | Desfecho | Quadranteᵃ | Observado | Esperadoᵇ | Razão O/E | p de Poissonᶜ | Esperado ≥ 5ᵈ |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Alpestre | Médio Alto Uruguai | Ameaça | Alto-alto | 205 | 152,41 | 1,35 | < 0,0001 | sim |
@@ -142,6 +128,20 @@
 | Candelária | Vale do Rio Pardo | Feminicídio tentado | Alto-baixo | 10 | 6,10 | 1,64 | 0,0908 | sim |
 | Santa Maria do Herval | Paranhana Encosta da Serra | Feminicídio tentado | Alto-baixo | 3 | 1,22 | 2,45 | 0,1259 | não |
 
-**Tabela suplementar 2.** Pares município-desfecho com indicador local de associação espacial (LISA) significativo, por Conselho Regional de Desenvolvimento (COREDE), com eventos observados (O) e esperados (E), razão O/E e probabilidade de Poisson, Rio Grande do Sul, 2018-2025 (n = 67 pares)
+**Tabela suplementar 1.** Pares município-desfecho com indicador local de associação espacial (LISA) significativo, por Conselho Regional de Desenvolvimento (COREDE), com eventos observados (O) e esperados (E), razão O/E e probabilidade de Poisson, Rio Grande do Sul, 2018-2025 (n = 67 pares)
 
 ᵃ Alto-alto e baixo-baixo: município com valor alto (baixo) cercado de vizinhos com valores altos (baixos); alto-baixo e baixo-alto: outliers espaciais; «alto» e «baixo» referem-se à média dos municípios, e não à taxa estadual; ᵇ mulheres-ano acumuladas do município multiplicadas pela taxa estadual do desfecho e divididas por 100 mil; ᶜ P(X ≥ O) em alto-alto e alto-baixo e P(X ≤ O) em baixo-baixo e baixo-alto; descritivo, sem correção para comparações múltiplas e sem considerar a vizinhança; ᵈ pares com esperado abaixo de 5 foram mantidos no cálculo, sem interpretação substantiva.
+
+---
+
+| Desfecho | I (pop. total) | I (pop. feminina)ᵃ | Diferença | p (pop. total) | p (pop. feminina) | LISA (pop. total) | LISA (pop. feminina) | Só com pop. femininaᵇ | Só com pop. totalᵇ | Mudam de quadranteᶜ |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Ameaça | 0,3055 | 0,3198 | 0,0143 | 0,00001 | 0,00001 | 30 | 31 | 1 | 0 | 0 |
+| Lesão corporal | 0,2902 | 0,2962 | 0,0060 | 0,00001 | 0,00001 | 16 | 15 | 0 | 1 | 0 |
+| Estupro | 0,2228 | 0,2194 | -0,0034 | 0,00001 | 0,00001 | 16 | 15 | 0 | 1 | 1 |
+| Feminicídio tentado | 0,0945 | 0,0948 | 0,0003 | 0,00059 | 0,00058 | 6 | 6 | 0 | 0 | 0 |
+| Feminicídio consumadoᵈ | 0,0114 | 0,0122 | 0,0008 | 0,30563 | 0,29488 | — | — | — | — | — |
+
+**Tabela suplementar 2.** Índice de Moran global ajustado e municípios com indicador local de associação espacial (LISA) significativo, com denominador de população feminina e de população total, por desfecho de violência contra a mulher, Rio Grande do Sul, 2018-2025 (n = 497 municípios)
+
+ᵃ População feminina anual estimada: população total do ano multiplicada pela razão feminina do município no Censo 2022; ᵇ municípios significativos em apenas uma das versões; ᶜ municípios significativos nas duas versões, em quadrantes diferentes; ᵈ não analisado no nível local, pela baixa ocorrência.
