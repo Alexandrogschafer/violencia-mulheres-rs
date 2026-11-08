@@ -55,20 +55,22 @@ entes possam criar centros de atendimento, casas-abrigo e delegacias especializa
 faculdade produz distribuição desigual: no Rio Grande do Sul, em 2023, 38 dos 496
 municípios que responderam declararam ter delegacia especializada [5]. A consequência é
 prática, porque o acesso depende de onde a mulher vive — em municípios do norte do estado,
-profissionais da rede apontaram a distância e o transporte precário entre os fatores que
-afastam as mulheres rurais dos serviços [6].
+profissionais da rede apontaram a distância e o acesso restrito ao transporte entre os
+fatores que afastam as mulheres rurais dos serviços [6].
 
 Saber como os registros se distribuem é, portanto, condição para dirigir a resposta, e a
-distribuição não é homogênea [7,8]. Os estudos que a descrevem recorrem a estatísticas de
-autocorrelação espacial [7,9], variando na escala. Entre unidades da federação, o Rio
-Grande do Sul esteve entre os seis estados com excesso de risco nas notificações de
-violência doméstica [10]. No estado, por microrregião, os maiores coeficientes de
-mortalidade feminina por agressão concentraram-se em áreas de peso agropecuário [11],
-associação também observada no Paraná [12]. Em Minas Gerais, por microrregião de saúde,
-detectaram-se cinco agrupamentos espaço-temporais [13]; em Pernambuco, por mesorregião, o
-maior número de casos esteve sempre na Metropolitana do Recife [14]; e em João Pessoa, por
-bairro, as taxas mostraram-se heterogêneas sem que o indicador de Getis e Ord apontasse
-aglomerado significativo [15].
+distribuição não é homogênea [7,8]. Os estudos que a descrevem variam na escala e no
+método: alguns aplicam estatísticas de autocorrelação espacial [7,9], outros descrevem
+taxas ou modelam associações. Entre unidades da federação, o Rio Grande do Sul esteve
+entre os seis estados com taxas altas e excesso de risco acima da média nacional nas
+notificações de violência doméstica [10]. No estado, por microrregião, quatro das sete
+microrregiões com maiores coeficientes de mortalidade feminina por agressão estão entre as
+mais representativas na agropecuária do estado [11], associação também observada no Paraná
+[12]. Em Minas Gerais, por microrregião de saúde, detectaram-se cinco agrupamentos
+espaço-temporais [13]; em Pernambuco, por mesorregião, o maior número de casos esteve
+sempre na Metropolitana do Recife [14]; e em João Pessoa, por bairro, as taxas
+mostraram-se heterogêneas sem que o indicador de Getis e Ord apontasse aglomerado
+significativo [15].
 
 Em escala municipal, duas dificuldades se acrescentam. A primeira é a instabilidade das
 taxas: municípios pequenos produzem taxas muito variáveis a partir de poucos eventos, e
@@ -373,10 +375,8 @@ assumem responsabilidade por ele.
    notificações de violência por parceiro íntimo contra mulheres, Brasil, 2011–2017. Rev Bras
    Epidemiol. 2020;23(Suppl 1):e200007. doi:10.1590/1980-549720200007.supl.1
 
-4. Brasil. Lei nº 11.340, de 7 de agosto de 2006. Cria mecanismos para coibir a violência doméstica
-   e familiar contra a mulher, nos termos do § 8º do art. 226 da Constituição Federal [...]. Diário
-   Oficial da União. 2006 ago 8 [citado 2026 nov 8]. Disponível em:
-   https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11340.htm
+4. Brasil. Lei nº 11.340, de 7 de agosto de 2006. Diário Oficial da União. 2006 ago 8 [citado 2026
+   nov 8]. Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11340.htm
 
 5. Instituto Brasileiro de Geografia e Estatística. Pesquisa de Informações Básicas Municipais –
    MUNIC 2023: base de dados [Internet]. Rio de Janeiro: IBGE; 2024 [citado 2026 nov 3]. Disponível
