@@ -173,7 +173,7 @@ instabilidade da taxa em populações pequenas atenua a medida.
 A estrutura global não se distribui uniformemente pelo território. Foram identificados 67
 pares município-desfecho significativos, entre 58 municípios: 31 em ameaça, 15 em lesão
 corporal, 15 em estupro e 6 em feminicídio tentado (Tabela 2 e Figura 1; taxa ajustada de
-cada município na Figura 2; pares listados na Tabela suplementar 2). Por quadrante, 32 pares foram de valores altos cercados de altos, 28
+cada município na Figura 2; pares listados na Tabela suplementar 1). Por quadrante, 32 pares foram de valores altos cercados de altos, 28
 de baixos cercados de baixos, 4 de altos cercados de baixos e 3 de baixos cercados de
 altos; cinco apresentaram menos de cinco eventos esperados sob a taxa estadual e foram
 excluídos da interpretação, embora mantidos no cálculo. O achado de maior extensão foi um
@@ -202,7 +202,7 @@ nos dois.
 
 No extremo oposto ao dos agrupamentos de valores altos, três municípios apresentaram
 contagens muito abaixo do previsto pela taxa estadual, em todas as vinte sementes testadas
-(Tabela suplementar 2): em Canudos do Vale registrou-se uma lesão corporal, contra 21,77
+(Tabela suplementar 1): em Canudos do Vale registrou-se uma lesão corporal, contra 21,77
 esperadas (p < 0,0001); em Mariana Pimentel não houve registro de estupro, contra 6,15
 esperados (p = 0,0021); e em Doutor Maurício Cardoso registraram-se dois estupros, contra
 7,33 esperados (p = 0,0230).
@@ -212,10 +212,10 @@ multiplicidade ao dobro do valor p direcional reduziu o número de municípios s
 em todos os desfechos — 20 em ameaça, 10 em lesão corporal, 8 em estupro e 3 em feminicídio
 tentado — e ampliou a variação entre sementes, que alcançou de 6 a 12 municípios na lesão
 corporal e de 0 a 3 no feminicídio tentado. Já a substituição do denominador feminino pela
-população total, apresentada na Tabela suplementar 1, alterou o índice de Moran global em
+população total, apresentada na Tabela suplementar 2, alterou o índice de Moran global em
 no máximo 0,014, o status de significância de três municípios e o quadrante de um. Convém
 registrar, por fim, que quatro pares classificados em quadrante alto apresentaram contagem
-observada inferior à esperada pela taxa estadual (Tabela suplementar 2), entre eles
+observada inferior à esperada pela taxa estadual (Tabela suplementar 1), entre eles
 Capivari do Sul em lesão corporal, com razão de 0,77, e que Porto Alegre foi classificada
 como baixo-alto em estupro com observado em 0,94 do esperado (p = 0,0006), significância
 que decorre do tamanho da população do município e não da magnitude do desvio.
