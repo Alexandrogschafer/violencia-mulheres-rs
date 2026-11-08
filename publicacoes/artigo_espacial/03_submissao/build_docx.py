@@ -108,7 +108,7 @@ from pathlib import Path
 from docx import Document
 from docx.enum.section import WD_ORIENT, WD_SECTION
 from docx.enum.table import WD_TABLE_ALIGNMENT
-from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK
+from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Cm, Pt
@@ -445,7 +445,16 @@ def _titulo_secao(doc, texto: str, nivel: int):
 
 
 def _quebra_pagina(doc) -> None:
-    doc.add_paragraph().add_run().add_break(WD_BREAK.PAGE)
+    """Marca que o próximo parágrafo de ilustração começa em página nova («quebra de página antes»). Um
+    parágrafo só com a quebra cairia sozinho numa página em branco quando a ilustração anterior termina rente
+    ao fim da página."""
+    doc._quebra_pendente = True
+
+
+def _abre_pagina_se_pendente(doc, paragrafo) -> None:
+    if getattr(doc, "_quebra_pendente", False):
+        paragrafo.paragraph_format.page_break_before = True
+        doc._quebra_pendente = False
 
 
 def _orientar(secao, paisagem: bool) -> None:
@@ -570,7 +579,9 @@ def _tabela(doc, t: dict) -> None:
     numericas = [all(RE_NUMERICO.match(linha[j]) for linha in celulas[1:]) for j in range(len(celulas[0]))]
     larguras = _larguras(celulas, _largura_util(doc))
 
-    _paragrafo(doc, t["titulo"], WD_ALIGN_PARAGRAPH.CENTER).paragraph_format.keep_with_next = True
+    titulo = _paragrafo(doc, t["titulo"], WD_ALIGN_PARAGRAPH.CENTER)
+    titulo.paragraph_format.keep_with_next = True
+    _abre_pagina_se_pendente(doc, titulo)
     tabela = doc.add_table(rows=len(celulas), cols=len(celulas[0]))
     tabela.alignment = WD_TABLE_ALIGNMENT.CENTER
     tabela.autofit = False
@@ -600,6 +611,7 @@ def _figura(doc, imagem: Path, titulo: str, notas: str) -> None:
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p.paragraph_format.keep_with_next = True
+    _abre_pagina_se_pendente(doc, p)
     imagem_docx = p.add_run().add_picture(str(imagem), width=Cm(LARGURA_UTIL_CM))
     if imagem_docx.height > Cm(ALTURA_MAX_FIGURA_CM):
         imagem_docx.width = int(imagem_docx.width * Cm(ALTURA_MAX_FIGURA_CM) / imagem_docx.height)
