@@ -7,8 +7,10 @@ continua como módulo dos dados e da paleta, carregado aqui.
 Base comum (denominador feminino, semente 12345, os pares significativos da Tabela 2 e da Tabela
 suplementar 2, carregados e conferidos por `gerar_figura1.dados`).
 
-Figura 1 (variante A) — geográfica com recortes: o estado (A), o COREDE Litoral (B) e o bloco do norte,
-nos COREDEs Médio Alto Uruguai, Celeiro e Rio da Várzea (C).
+Figura 1 (variante A) — geográfica com recortes, refeita em 2026-11-08 para nomes legíveis: os dois
+recortes são os painéis principais, o bloco do norte nos COREDEs Médio Alto Uruguai, Celeiro e Rio da
+Várzea (A) e o COREDE Litoral (B); o estado vira um localizador pequeno, num canto, com os retângulos dos
+recortes.
 - os municípios significativos nos quatro desfechos, num mapa só, com cor por direção: alto-alto,
   baixo-baixo e outlier espacial (alto-baixo e baixo-alto juntos). Um mapa só é possível porque nenhum
   município tem quadrantes diferentes em desfechos diferentes — o script confere isso antes de desenhar e
@@ -18,11 +20,15 @@ nos COREDEs Médio Alto Uruguai, Celeiro e Rio da Várzea (C).
 - anel vazado nos municípios com ao menos um par com menos de 5 eventos esperados;
 - não significativos em cinza claro; legenda única, escala e norte; paleta conferida por luminosidade
   (CIE L* e nível de cinza), com os limiares de `gerar_figura1`;
-- nos recortes, limites municipais visíveis, contorno dos COREDEs e nomes oficiais do IBGE (significativos
-  em negrito). Rótulos que se tocam têm a fonte reduzida até 3,4 pt, primeiro os de não significativos; os
-  pares que ainda se tocam perdem o nome do não significativo. Todo significativo mantém o nome (o script
-  confere): dois significativos que se tocam são afastados o mínimo necessário, e o script para se nenhum
-  par sobrar ou se algum nome significativo sair.
+- o localizador é pintado com as mesmas cores, sem texto, porque fora dos recortes ficam 31 municípios
+  significativos (os 24 baixo-baixo entre eles) que, de outro modo, sairiam da figura;
+- nos recortes, limites municipais visíveis, contorno dos COREDEs e só os municípios significativos
+  nomeados (nome oficial do IBGE, em negrito, FONTE_NOME fixa); os vizinhos ficam desenhados e esmaecidos,
+  sem nome. A posição dos nomes é escolhida em conjunto (`rotula`): nenhum nome toca outro, os anéis, a
+  escala ou o norte, e nenhuma linha de chamada atravessa nome;
+- tamanho impresso conferido antes de gravar: nomes e demais textos com pelo menos MINIMO_IMPRESSO_PT na
+  menor entre a largura que a figura terá no documento e LARGURA_DOC_CM (15,3 cm); abaixo disso, o script
+  para sem gravar.
 
 Figura 2 (variante D; pensada como figura suplementar, mas as duas suplementares que a RESS admite já são
 tabelas) — superfície contínua: um painel por desfecho com a taxa ajustada de
@@ -51,6 +57,7 @@ Uso, da raiz do repositório:
 """
 
 import importlib.util
+import math
 import sys
 from itertools import combinations
 from pathlib import Path
@@ -71,7 +78,10 @@ import pandas as pd  # noqa: E402
 import matplotlib.patheffects as pe  # noqa: E402
 from matplotlib.lines import Line2D  # noqa: E402
 from matplotlib.patches import Patch, Rectangle  # noqa: E402
+from matplotlib.text import Text  # noqa: E402
+from matplotlib.transforms import Bbox  # noqa: E402
 from PIL import Image  # noqa: E402
+import shapely  # noqa: E402
 from shapely.ops import polylabel  # noqa: E402
 
 from src.analysis.autocorrelacao_espacial import montar_pesos_espaciais  # noqa: E402
@@ -192,7 +202,7 @@ def norte(ax, x_n, y_base, comprimento):
             color=COR_TRACO, zorder=9)
 
 
-def escala_e_norte(ax, km: int, canto: str = "dir"):
+def escala_e_norte(ax, km: int, canto: str = "dir", fonte: float = 6.5):
     """Escala gráfica de `km` e seta de norte num canto inferior do eixo (CRS métrico, aspecto 1:1)."""
     (x0, x1), (y0, y1) = ax.get_xlim(), ax.get_ylim()
     largura, altura = x1 - x0, y1 - y0
@@ -208,7 +218,7 @@ def escala_e_norte(ax, km: int, canto: str = "dir"):
     ax.plot([x_ini, x_fim], [y_barra, y_barra], color=COR_TRACO, linewidth=1.1, solid_capstyle="butt", zorder=9)
     for x in (x_ini, x_fim):
         ax.plot([x, x], [y_barra - marca, y_barra + marca], color=COR_TRACO, linewidth=1.1, zorder=9)
-    ax.text((x_ini + x_fim) / 2, y_barra + altura * 0.015, f"{km} km", ha="center", va="bottom", fontsize=6.5,
+    ax.text((x_ini + x_fim) / 2, y_barra + altura * 0.015, f"{km} km", ha="center", va="bottom", fontsize=fonte,
             color=COR_TRACO, zorder=9)
     comprimento = min(altura * 0.09, largura * 0.12)
     norte(ax, (x_ini + x_fim) / 2, y_barra + altura * 0.07, comprimento)
@@ -250,7 +260,16 @@ def grava(fig, nome: str) -> None:
     Image.open(SAIDA / f"{nome}.png").convert("L").save(SAIDA / f"{nome}_cinza.png", dpi=(300, 300))
 
 
-# ---------------------------------------------------------------- variante A
+# ---------------------------------------------------------------- variante A (Figura 1)
+
+FONTE_NOME = 7.0  # pt, na largura nominal da figura (LARGURA_CM)
+FONTE_TEXTO = 7.0  # títulos menores, legenda, nota, escala
+LARGURA_DOC_CM = 15.3  # largura de conferência dentro do documento
+MINIMO_IMPRESSO_PT = 6.0
+# Candidatos de posição do nome, em pt a partir do ponto do município: primeiro no lugar, depois em anéis
+# cada vez mais largos, começando pelas direções horizontais.
+RAIOS = (0, 6, 10, 14, 18, 23, 28, 34, 40, 47, 55, 64, 74, 85)
+ANGULOS = tuple(range(0, 360, 15))
 
 
 def quebra(nome: str, limite: int = 11) -> str:
@@ -269,172 +288,273 @@ def ponto_rotulo(geom):
     return polylabel(geom, tolerance=50)
 
 
-def _colisoes(fig, rotulos):
+def _candidatos(ax, r, m, obstaculos, folga, outros) -> tuple[str, list[dict]]:
+    """Posições possíveis do nome de `m`: caixa (px) e linha de chamada de cada candidato que cabe no eixo e
+    não toca os obstáculos. A caixa do texto é medida uma vez; as posições são deslocamentos dela.
+
+    Custo: 1,5 por pt de afastamento, 6 pela linha de chamada e 30 por ponto de outro município significativo
+    (`outros`, px) coberto pelo nome, para o nome não parecer de quem está embaixo."""
+    p = ponto_rotulo(m.geometry)
+    ancora = ax.transData.transform((p.x, p.y))
+    texto = quebra(m["nome"])
+    t = ax.text(p.x, p.y, texto, ha="center", va="center", fontsize=FONTE_NOME, fontweight="bold", linespacing=0.9)
+    bb = t.get_window_extent(r)
+    t.remove()
+    meia_l, meia_a = bb.width / 2 + folga, bb.height / 2 + folga
+    eixo = ax.get_window_extent(r)
+    px = ax.figure.dpi / 72
+    saida = []
+    for raio in RAIOS:
+        if raio == 0 and m["esperado_baixo"]:
+            continue
+        for ang in (ANGULOS if raio else (0,)):
+            dx, dy = raio * math.cos(math.radians(ang)), raio * math.sin(math.radians(ang))
+            cx, cy = ancora[0] + dx * px, ancora[1] + dy * px
+            caixa = shapely.box(cx - meia_l, cy - meia_a, cx + meia_l, cy + meia_a)
+            x0, y0, x1, y1 = caixa.bounds
+            if x0 < eixo.x0 or x1 > eixo.x1 or y0 < eixo.y0 or y1 > eixo.y1:
+                continue
+            if any(caixa.intersects(o) for o in obstaculos):
+                continue
+            chamada = None
+            if not caixa.contains(shapely.Point(ancora)):
+                chamada = shapely.LineString([ancora, (cx, cy)]).difference(caixa)
+            cobre = sum(caixa.contains(q) for q in outros)
+            custo = 1.5 * raio + (6 if chamada is not None else 0) + 30 * cobre
+            saida.append({"raio": raio, "ang": ang, "dx": dx, "dy": dy, "caixa": caixa, "chamada": chamada,
+                          "custo": custo, "xy": (p.x, p.y)})
+    return texto, saida
+
+
+def _conflito(a, b) -> float:
+    """Custo do par de posições: proibido (1e6) se as caixas se tocam ou uma linha atravessa a outra caixa;
+    penalidade leve se as duas linhas de chamada se cruzam."""
+    if a["caixa"].intersects(b["caixa"]):
+        return 1e6
+    if (a["chamada"] is not None and a["chamada"].intersects(b["caixa"])) or (
+            b["chamada"] is not None and b["chamada"].intersects(a["caixa"])):
+        return 1e6
+    if a["chamada"] is not None and b["chamada"] is not None and a["chamada"].intersects(b["chamada"]):
+        return 40
+    return 0
+
+
+def rotula(ax, sig, obstaculos, s_anel, rodadas=600, reinicios=30, passo_aleatorio=0.1,
+           semente=12345) -> list[dict]:
+    """Nomeia todos os municípios de `sig` (nomes com FONTE_NOME fixa; nunca retirados nem encolhidos).
+
+    Cada nome tem candidatos em anéis (RAIOS × ANGULOS) em volta do ponto do município (`_candidatos`). A
+    escolha é conjunta (busca local de mínimos conflitos): parte do melhor candidato de cada nome e, em
+    rodadas, reescolhe o candidato de um nome em conflito dado o resto (às vezes, ao acaso, para sair de
+    impasses), até não haver caixa tocando caixa nem linha de chamada atravessando nome. Com reinícios, fica a
+    solução sem conflito de menor custo, depois de uma descida que leva cada nome ao candidato mais barato
+    sem conflito (semente fixa, resultado reproduzível). A linha só é traçada quando o ponto do município fica fora da caixa
+    do nome. Município com anel (esperado < 5) nunca recebe o nome no lugar, para o anel não cobri-lo. Para se
+    sobrar conflito ou se algum nome não tiver candidato."""
+    fig = ax.figure
     fig.canvas.draw()
     r = fig.canvas.get_renderer()
-    caixas = [(t, s, t.get_window_extent(r)) for t, s in rotulos]
-    return [(a, b) for a, b in combinations(caixas, 2) if a[2].overlaps(b[2])]
+    folga = 1.5 * fig.dpi / 72
+    obst = [shapely.box(o.x0, o.y0, o.x1, o.y1) for o in obstaculos]
+    textos, cands = [], []
+    pontos = [shapely.Point(ax.transData.transform((q.x, q.y))) for q in map(ponto_rotulo, sig.geometry)]
+    for i, (_, m) in enumerate(sig.iterrows()):
+        texto, c = _candidatos(ax, r, m, obst, folga, pontos[:i] + pontos[i + 1:])
+        tabelas.confere(len(c) > 0, f"nenhuma posição possível para o nome de {m['nome']}")
+        textos.append(texto)
+        cands.append(c)
+    n = len(cands)
+    rng = np.random.default_rng(semente)
 
+    def conflitos(esc):
+        return [i for i in range(n) if any(_conflito(cands[i][esc[i]], cands[j][esc[j]]) >= 1e6
+                                           for j in range(n) if j != i)]
 
-def desfaz_colisoes(fig, rotulos, minimo=3.4, passo=0.3, rodadas=12) -> tuple[int, list]:
-    """Desfaz os rótulos que se tocam, em duas etapas.
+    def total(esc):
+        return sum(cands[i][esc[i]]["custo"] for i in range(n)) + sum(
+            _conflito(cands[i][esc[i]], cands[j][esc[j]]) for i, j in combinations(range(n), 2))
 
-    1. Reduz a fonte, primeiro a dos não significativos, até `minimo` pt.
-    2. Nos pares que ainda se tocam, retira o nome do não significativo — um por vez, o que está em mais
-       pares (empate: o de nome em ordem alfabética), até não sobrar par. Um par de dois significativos não
-       se resolve assim: os dois rótulos são afastados o mínimo para não se tocarem (`_afasta`).
-
-    Devolve quantos pares se tocavam ao fim da etapa 1, os nomes retirados e os pares afastados, com o
-    deslocamento de cada rótulo em pt."""
-    for _ in range(rodadas + 1):
-        colisoes = _colisoes(fig, rotulos)
-        if not colisoes:
-            break
-        mudou = False
-        for a, b in colisoes:
-            alvo = a if (not a[1] and b[1]) else b if (not b[1] and a[1]) else max(
-                (a, b), key=lambda x: x[0].get_fontsize())
-            if alvo[0].get_fontsize() - passo >= minimo - 1e-9:
-                alvo[0].set_fontsize(alvo[0].get_fontsize() - passo)
-                mudou = True
-        if not mudou:
-            break
-    apos_fonte = len(_colisoes(fig, rotulos))
-    retirados, afastados = [], []
-    while colisoes := _colisoes(fig, rotulos):
-        duplos = [(a, b) for a, b in colisoes if a[1] and b[1]]
-        if duplos:
-            a, b = duplos[0]
-            nomes = (a[0].get_text().replace("\n", " "), b[0].get_text().replace("\n", " "))
-            tabelas.confere(len(afastados) < 5 and nomes not in [n for n, _ in afastados],
-                            f"rótulos de significativos que não se separam: {nomes}")
-            afastados.append((nomes, _afasta(a, b)))
+    melhor_sol = None
+    for reinicio in range(reinicios):
+        # Primeiro reinício: o melhor candidato de cada nome; os demais, um dos cinco melhores ao acaso.
+        escolha = [min(range(len(c)), key=lambda k: c[k]["custo"]) if reinicio == 0 else
+                   int(rng.choice(sorted(range(len(c)), key=lambda k: c[k]["custo"])[:5])) for c in cands]
+        for _ in range(rodadas):
+            em_conflito = conflitos(escolha)
+            if not em_conflito:
+                break
+            i = int(rng.choice(em_conflito))
+            if rng.random() < passo_aleatorio:
+                escolha[i] = int(rng.integers(len(cands[i])))
+                continue
+            custos = [cands[i][k]["custo"] + sum(_conflito(cands[i][k], cands[j][escolha[j]])
+                                                 for j in range(n) if j != i) for k in range(len(cands[i]))]
+            menor = min(custos)
+            escolha[i] = int(rng.choice([k for k, c in enumerate(custos) if c <= menor + 1e-9]))
+        if conflitos(escolha):
             continue
-        contagem = {}
-        for a, b in colisoes:
-            for t, sig, _ in (a, b):
-                if not sig:
-                    contagem[t] = contagem.get(t, 0) + 1
-        alvo = min(contagem, key=lambda t: (-contagem[t], t.get_text()))
-        retirados.append(alvo.get_text().replace("\n", " "))
-        alvo.remove()
-        rotulos[:] = [(t, s) for t, s in rotulos if t is not alvo]
-    return apos_fonte, retirados, afastados
+        # Descida: cada nome vai para o candidato mais barato que não cria conflito, até nada melhorar.
+        melhorou = True
+        while melhorou:
+            melhorou = False
+            for i in range(n):
+                custos = [cands[i][k]["custo"] + sum(_conflito(cands[i][k], cands[j][escolha[j]])
+                                                     for j in range(n) if j != i) for k in range(len(cands[i]))]
+                k = min(range(len(custos)), key=custos.__getitem__)
+                atual = custos[escolha[i]]
+                if custos[k] < atual - 1e-9:
+                    escolha[i] = k
+                    melhorou = True
+        if melhor_sol is None or total(escolha) < total(melhor_sol):
+            melhor_sol = list(escolha)
+    escolha = melhor_sol if melhor_sol is not None else escolha
+    em_conflito = sorted({sig.iloc[i]["nome"] for i in conflitos(escolha)})
+    tabelas.confere(not em_conflito, f"nomes que não se acomodam: {', '.join(em_conflito)}")
+
+    saida = []
+    for i, (_, m) in enumerate(sig.iterrows()):
+        c = cands[i][escolha[i]]
+        escuro = c["raio"] == 0 and m["direcao"] in ("BB", "AA")
+        cor, halo = ("white", COR_TRACO) if escuro else ("#1a1a1a", "white")
+        seta = None
+        if c["chamada"] is not None:
+            seta = {"arrowstyle": "-", "color": COR_TRACO, "lw": 0.5, "shrinkA": 1,
+                    "shrinkB": (math.sqrt(s_anel) / 2 + 0.5) if m["esperado_baixo"] else 0}
+        t = ax.annotate(textos[i], xy=c["xy"], xytext=(c["dx"], c["dy"]), textcoords="offset points", ha="center",
+                        va="center", fontsize=FONTE_NOME, fontweight="bold", color=cor, linespacing=0.9, zorder=7,
+                        arrowprops=seta, path_effects=[pe.withStroke(linewidth=1.6, foreground=halo, alpha=0.9)])
+        if t.arrow_patch is not None:
+            t.arrow_patch.set_path_effects([pe.withStroke(linewidth=1.6, foreground="white")])
+        saida.append({"nome": m["nome"], "texto": t, "raio": c["raio"], "chamada": c["chamada"] is not None})
+    # Conferência independente, no desenho final: nenhuma caixa de nome toca outra.
+    fig.canvas.draw()
+    caixas = [shapely.box(*_caixa_texto(s_["texto"], r)) for s_ in saida]
+    tocam = [(saida[a]["nome"], saida[b]["nome"]) for a, b in combinations(range(n), 2)
+             if caixas[a].intersects(caixas[b])]
+    tabelas.confere(not tocam, f"nomes que se tocam no desenho final: {tocam}")
+    return saida
 
 
-def _afasta(a, b, folga_pt=0.5) -> float:
-    """Afasta dois rótulos de significativos que se tocam, cada um metade da sobreposição mais `folga_pt`,
-    no eixo (horizontal ou vertical) em que a sobreposição é menor. Devolve o deslocamento de cada um, em pt."""
-    (ta, _, ca), (tb, _, cb) = a, b
-    dx = min(ca.x1, cb.x1) - max(ca.x0, cb.x0)
-    dy = min(ca.y1, cb.y1) - max(ca.y0, cb.y0)
-    fig = ta.figure
-    folga = folga_pt * fig.dpi / 72
-    horizontal = dx <= dy
-    passo = ((dx if horizontal else dy) + folga) / 2
-    for t, c, sinal in ((ta, ca, -1), (tb, cb, 1)):
-        if horizontal:
-            sinal = sinal if ca.x0 <= cb.x0 else -sinal
-            desl = (sinal * passo, 0)
-        else:
-            sinal = sinal if ca.y0 <= cb.y0 else -sinal
-            desl = (0, sinal * passo)
-        x, y = t.axes.transData.transform(t.get_position())
-        t.set_position(t.axes.transData.inverted().transform((x + desl[0], y + desl[1])))
-    return passo * 72 / fig.dpi
+def _caixa_texto(t, r):
+    """Caixa só do texto de uma anotação (sem a linha de chamada), em px; vale depois de um draw, que fixa a
+    posição deslocada da anotação."""
+    b = Text.get_window_extent(t, r)
+    return b.x0, b.y0, b.x1, b.y1
 
 
-def recorte(ax, g, coredes, km, titulo, fonte, canto="esq"):
+def _novos(ax, antes):
+    return [a for a in ax.get_children() if a not in antes]
+
+
+def recorte(ax, g, coredes, km, titulo, canto="esq", s_anel=70):
     dentro = g[g["corede"].isin(coredes)]
     ajusta(ax, dentro, folga=0.04)
-    # Vizinhança em volta, esmaecida, para situar o recorte.
+    # Vizinhança em volta, esmaecida, para situar o recorte; sem nomes.
     (x0, x1), (y0, y1) = ax.get_xlim(), ax.get_ylim()
     fora = g[~g["corede"].isin(coredes)].cx[x0:x1, y0:y1]
     pinta(ax, fora, borda=0.3)
     ax.add_patch(Rectangle((x0, y0), x1 - x0, y1 - y0, facecolor="white", alpha=0.55, edgecolor="none", zorder=3))
-    pinta_sobre = dentro.copy()
-    pinta_sobre.plot(ax=ax, color=pinta_sobre["direcao"].map(CORES), edgecolor="#6b6b6b", linewidth=0.35, zorder=4)
-    duplos = pinta_sobre[pinta_sobre["n_desfechos"] == 2]
+    dentro.plot(ax=ax, color=dentro["direcao"].map(CORES), edgecolor="#6b6b6b", linewidth=0.35, zorder=4)
+    duplos = dentro[dentro["n_desfechos"] == 2]
     if len(duplos):
         duplos.plot(ax=ax, facecolor="none", edgecolor=COR_HACHURA, linewidth=0, hatch=HACHURA, zorder=4.5)
         duplos.boundary.plot(ax=ax, color="#6b6b6b", linewidth=0.35, zorder=4.6)
     dentro.dissolve("corede").boundary.plot(ax=ax, color=COR_TRACO, linewidth=0.9, zorder=4.7)
-    rotulos = []
-    for _, r in dentro.iterrows():
-        p = ponto_rotulo(r.geometry)
-        sig = r["direcao"] != "NS"
-        escuro = r["direcao"] in ("BB", "AA")
-        cor, halo = ("white", COR_TRACO) if escuro else ("#1a1a1a", "white")
-        txt = ax.text(p.x, p.y, quebra(r["nome"]), ha="center", va="center", fontsize=fonte, linespacing=0.88,
-                      fontweight="bold" if sig else "normal", color=cor, zorder=7,
-                      path_effects=[pe.withStroke(linewidth=1.1, foreground=halo, alpha=0.9)])
-        rotulos.append((txt, sig))
     marc = dentro[dentro["esperado_baixo"]]
     pm = gpd.GeoSeries([ponto_rotulo(x) for x in marc.geometry])
-    # No recorte o anel envolve o nome, para não cobri-lo.
-    ax.scatter(pm.x, pm.y, s=260, facecolor="none", edgecolor="white", linewidth=2.2, zorder=5)
-    ax.scatter(pm.x, pm.y, s=260, facecolor="none", edgecolor="black", linewidth=0.8, zorder=6)
+    ax.scatter(pm.x, pm.y, s=s_anel, facecolor="none", edgecolor="white", linewidth=2.2, zorder=5)
+    ax.scatter(pm.x, pm.y, s=s_anel, facecolor="none", edgecolor="black", linewidth=0.8, zorder=6)
     ax.set_title(titulo, loc="left", fontsize=8.5, fontweight="bold")
-    escala_e_norte(ax, km, canto=canto)
-    return dentro, rotulos
+    antes = set(ax.get_children())
+    escala_e_norte(ax, km, canto=canto, fonte=FONTE_TEXTO)
+    ax.figure.canvas.draw()
+    r = ax.figure.canvas.get_renderer()
+    obst = [a.get_window_extent(r) for a in _novos(ax, antes)]
+    # Os anéis também são obstáculos: nenhum nome por cima deles.
+    raio_px = (math.sqrt(s_anel) / 2 + 1.2) * ax.figure.dpi / 72
+    for x, y in ax.transData.transform(np.column_stack([pm.x, pm.y])) if len(pm) else []:
+        obst.append(Bbox.from_extents(x - raio_px, y - raio_px, x + raio_px, y + raio_px))
+    nomes = rotula(ax, dentro[dentro["direcao"] != "NS"], obst, s_anel)
+    return dentro, nomes
+
+
+def localizador(ax, g):
+    """Miniatura do estado com as cores de direção (os significativos fora dos recortes continuam na figura),
+    sem nomes, com os retângulos dos dois recortes."""
+    pinta(ax, g, borda=0.08)
+    g.dissolve().boundary.plot(ax=ax, color=COR_TRACO, linewidth=0.4)
+    aneis(ax, g, s=9)
+    ajusta(ax, g, folga=0.02)
+    for coredes, letra, lado in ((NORTE, "A", "right"), (LITORAL, "B", "left")):
+        x0, y0, x1, y1 = g[g["corede"].isin(coredes)].total_bounds
+        ax.add_patch(Rectangle((x0, y0), x1 - x0, y1 - y0, facecolor="none", edgecolor="black", linewidth=0.8,
+                               zorder=8))
+        ax.text(x0 if lado == "right" else x1, y1, f" {letra} ", ha=lado, va="top", fontsize=FONTE_TEXTO + 0.5,
+                fontweight="bold", zorder=8)
 
 
 def variante_a(g):
     largura_pol = LARGURA_CM / 2.54
-    altura_pol = largura_pol * 1.24
+    altura_pol = largura_pol * 0.80
     fig = plt.figure(figsize=(largura_pol, altura_pol))
-    gs = fig.add_gridspec(2, 2, width_ratios=[1.45, 1.0], height_ratios=[1.0, 1.0],
-                          left=0.01, right=0.99, top=0.955, bottom=0.005, wspace=0.03, hspace=0.07)
-    ax_rs = fig.add_subplot(gs[0, 0])
+    gs = fig.add_gridspec(2, 2, width_ratios=[1.95, 1.0], height_ratios=[2.15, 1.0],
+                          left=0.01, right=0.99, top=0.94, bottom=0.01, wspace=0.03, hspace=0.12)
+    ax_n = fig.add_subplot(gs[0, 0])
     ax_lit = fig.add_subplot(gs[0, 1])
-    sub = gs[1, :].subgridspec(1, 2, width_ratios=[2.5, 1.0], wspace=0.02)
-    ax_n = fig.add_subplot(sub[0, 0])
-    ax_leg = fig.add_subplot(sub[0, 1])
+    baixo = gs[1, :].subgridspec(1, 3, width_ratios=[1.0, 1.25, 1.25], wspace=0.04)
+    ax_loc = fig.add_subplot(baixo[0, 0])
+    ax_nota = fig.add_subplot(baixo[0, 1])
+    ax_leg = fig.add_subplot(baixo[0, 2])
+    ax_nota.set_axis_off()
     ax_leg.set_axis_off()
 
-    pinta(ax_rs, g)
-    g.dissolve().boundary.plot(ax=ax_rs, color=COR_TRACO, linewidth=0.5)
-    aneis(ax_rs, g, s=16)
-    ajusta(ax_rs, g, folga=0.01)
-    escala_e_norte(ax_rs, fig1.BARRA_ESCALA_KM)
-    ax_rs.set_title("A  Rio Grande do Sul", loc="left", fontsize=8.5, fontweight="bold")
-    for coredes, letra in ((LITORAL, "B"), (NORTE, "C")):
-        x0, y0, x1, y1 = g[g["corede"].isin(coredes)].total_bounds
-        ax_rs.add_patch(Rectangle((x0, y0), x1 - x0, y1 - y0, facecolor="none", edgecolor="black", linewidth=0.8,
-                                  zorder=8))
-        ax_rs.text(x1 if letra == "B" else x0, y1, f" {letra} ", ha="left" if letra == "B" else "right", va="top",
-                   fontsize=8, fontweight="bold", zorder=8)
+    localizador(ax_loc, g)
+    nor, nomes_nor = recorte(ax_n, g, NORTE, 20, "A  COREDEs Médio Alto Uruguai, Celeiro e Rio da Várzea")
+    lit, nomes_lit = recorte(ax_lit, g, LITORAL, 20, "B  COREDE Litoral", canto="dir")
+    nomes = nomes_nor + nomes_lit
+    n_sig = int(((nor["direcao"] != "NS").sum() + (lit["direcao"] != "NS").sum()))
+    tabelas.confere(len(nomes) == n_sig, "município significativo sem nome nos recortes")
+    ax_leg.legend(handles=entradas_legenda(), loc="center left", frameon=False, fontsize=FONTE_TEXTO,
+                  handlelength=1.6, labelspacing=0.8, borderaxespad=0)
+    nota = ("Nos recortes, só os municípios\nsignificativos são nomeados; linha\ngrossa: limite de COREDE; em volta,\n"
+            "esmaecidos, os municípios vizinhos.\nÀ esquerda, o estado, com os\nretângulos dos recortes A e B.")
+    ax_nota.text(0.02, 0.5, nota, transform=ax_nota.transAxes, fontsize=FONTE_TEXTO, va="center", color="#333333",
+                 linespacing=1.25)
 
-    lit, rot_lit = recorte(ax_lit, g, LITORAL, 20, "B  COREDE Litoral", 5.0, canto="dir")
-    nor, rot_nor = recorte(ax_n, g, NORTE, 20, "C  COREDEs Médio Alto Uruguai, Celeiro e Rio da Várzea", 5.0)
-    rotulos = rot_lit + rot_nor
-    n_sig = sum(sig for _, sig in rotulos)
-    apos_fonte, retirados, afastados = desfaz_colisoes(fig, rotulos)
-    tabelas.confere(sum(sig for _, sig in rotulos) == n_sig, "nome de município significativo retirado")
-    tabelas.confere(not _colisoes(fig, rotulos), "rótulos ainda se tocam")
-    fontes = [t.get_fontsize() for t, _ in rotulos]
-    ax_leg.legend(handles=entradas_legenda(), loc="center left", frameon=False, fontsize=7, handlelength=1.6,
-                  labelspacing=0.9, borderaxespad=0)
-    nota = ("Nos recortes, nomes em negrito: municípios\nsignificativos; onde não cabem, omitidos\n"
-            "nomes de não significativos; linha grossa:\nlimite de COREDE; em volta, esmaecidos,\n"
-            "os municípios vizinhos.")
-    ax_leg.text(0.0, 0.08, nota, transform=ax_leg.transAxes, fontsize=6.3, va="bottom", color="#333333")
-    escalas = {k: escala_numerica(fig, a) for k, a in (("A", ax_rs), ("B", ax_lit), ("C", ax_n))}
+    # Tamanho impresso: a figura entra no documento na largura que build_docx der a ela (17 cm, ou menos se a
+    # altura passar de 19 cm); a conferência usa a menor entre essa e LARGURA_DOC_CM.
+    altura_cm = LARGURA_CM * 0.80
+    largura_doc = min(LARGURA_CM, 19.0 * LARGURA_CM / altura_cm, LARGURA_DOC_CM)
+    fator = largura_doc / LARGURA_CM
+    fig.canvas.draw()
+    r = fig.canvas.get_renderer()
+    textos = [t for a in fig.axes for t in a.texts] + [a.title for a in fig.axes if a.get_title(loc="left")]
+    textos = [t for t in textos if t.get_text().strip()] + list(ax_leg.get_legend().get_texts())
+    menor_nome = min(n["texto"].get_fontsize() for n in nomes) * fator
+    menor_texto = min(t.get_fontsize() for t in textos) * fator
+    tabelas.confere(menor_texto >= MINIMO_IMPRESSO_PT,
+                    f"texto com {menor_texto:.2f} pt impressos a {largura_doc} cm, abaixo de {MINIMO_IMPRESSO_PT}")
+    tabelas.confere(menor_nome >= MINIMO_IMPRESSO_PT,
+                    f"nomes com {menor_nome:.2f} pt impressos a {largura_doc} cm, abaixo de {MINIMO_IMPRESSO_PT}")
+    escalas = {k: escala_numerica(fig, a) for k, a in (("A", ax_n), ("B", ax_lit), ("localizador", ax_loc))}
     grava(fig, "figura1")
-    return {"escalas": escalas, "n_lit": len(lit), "n_nor": len(nor), "rotulos": len(rotulos) + len(retirados),
-            "apos_fonte": apos_fonte, "retirados": retirados, "afastados": afastados, "fontes": (min(fontes), max(fontes))}
+    return {"escalas": escalas, "n_lit": len(lit), "n_nor": len(nor), "nomes": len(nomes),
+            "fora_do_lugar": sorted(n["nome"] for n in nomes if n["chamada"]), "largura_doc": largura_doc,
+            "menor_nome_impresso": round(menor_nome, 2), "menor_texto_impresso": round(menor_texto, 2),
+            "altura_cm": altura_cm}
 
 
 def legenda_a(g) -> str:
-    """Legenda no padrão RESS (o das tabelas e da Figura 1 anterior): título sem ponto final, com local, anos
-    e n; notas em letras minúsculas sobrescritas; sem detalhes de método, que ficam nos Métodos."""
+    """Legenda no padrão RESS (o das tabelas): título sem ponto final, com local, anos e n; notas em letras
+    minúsculas sobrescritas; sem detalhes de método, que ficam nos Métodos."""
     n_anel = int(g["esperado_baixo"].sum())
     return tabelas.legenda(
         "Figura 1",
         "Municípios com indicador local de associação espacial (LISA) significativo em ao menos um de quatro "
         "desfechos de violência contra a mulher (ameaça, lesão corporal, estupro e feminicídio tentado), por "
-        "direção, no estado (A), no Conselho Regional de Desenvolvimento (COREDE) Litoral (B) e nos COREDEs Médio "
-        "Alto Uruguai, Celeiro e Rio da Várzea (C), Rio Grande do Sul, 2018-2025 (n = 497 municípios)",
+        "direção, nos Conselhos Regionais de Desenvolvimento (COREDEs) Médio Alto Uruguai, Celeiro e Rio da "
+        "Várzea (A) e no COREDE Litoral (B), com o estado inteiro no mapa de localização, Rio Grande do Sul, "
+        "2018-2025 (n = 497 municípios)",
         [("a", tabelas.NOTA_QUADRANTE),
          ("b", f"{tabelas.NOTA_ESPERADO} ({n_anel} municípios)")],
     )
@@ -639,11 +759,10 @@ def main() -> None:
           f"em 2 desfechos: {int((g['n_desfechos'] == 2).sum())}; "
           f"por direção: {g.loc[g['n_desfechos'] > 0, 'direcao'].value_counts().to_dict()}; "
           f"com anel: {int(g['esperado_baixo'].sum())}")
-    print(f"Figura 1 (A): municípios no recorte Litoral {a['n_lit']}, no recorte norte {a['n_nor']}; "
-          f"{a['rotulos']} nomes; pares que se tocavam após reduzir a fonte {a['apos_fonte']}; "
-          f"nomes retirados {len(a['retirados'])}: {', '.join(a['retirados'])}; "
-          f"pares de significativos afastados: {[(f'{x} × {y}', round(float(d), 2)) for (x, y), d in a['afastados']]}; "
-          f"fonte dos nomes {a['fontes'][0]:.1f}-{a['fontes'][1]:.1f} pt; escalas "
+    print(f"Figura 1 (A): municípios no recorte norte {a['n_nor']}, no Litoral {a['n_lit']}; {a['nomes']} nomes, "
+          f"fora do lugar (com linha de chamada) {len(a['fora_do_lugar'])}: {', '.join(a['fora_do_lugar'])}; "
+          f"figura {LARGURA_CM} × {a['altura_cm']:.1f} cm, conferida a {a['largura_doc']} cm: menor nome "
+          f"{a['menor_nome_impresso']} pt, menor texto {a['menor_texto_impresso']} pt; escalas "
           + "; ".join(f"{k} 1:{v:,.0f}" for k, v in a["escalas"].items()))
     print("Figura 2 (D), escala:\n" + "\n".join(escala_d))
     print(f"Figura 2 (D): {info_d}")
