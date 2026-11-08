@@ -22,6 +22,15 @@ referência 1 e desloca as demais. Os números desta página foram atualizados.
 - A13 e A14 (Censos 2022 e 2010) foram acrescentados.
 - A15–A17 (Bahia et al., Moroskoski et al., Veiga e Bushatsky) foram acrescentados à Introdução.
 
+Revisão de 2026-11-08: a Introdução foi reescrita pelo autor (`reescrita_introducao.md`) e ganhou nove
+referências, levantadas em `candidatos_introducao.md`, de onde vieram as transcrições.
+- A19–A27 são as nove novas; A28 é uma segunda citação de Moroskoski et al. 2025.
+- A06 saiu: a frase sobre subnotificação foi substituída e passou a citar Vasconcelos et al. (A27).
+- As afirmações de A01–A03, A05 e A15–A17 foram atualizadas para a nova redação. As passagens não
+  mudaram.
+- A lista vai de 17 a 26 referências, e as demais foram renumeradas.
+- A24, A25, A23 e A03 têm ressalva sobre a redação, e A24 tem decisão pendente.
+
 ## Como ler
 
 - **Sustenta:** a passagem diz o que a afirmação diz.
@@ -43,39 +52,61 @@ referência 1 e desloca as demais. Os números desta página foram atualizados.
   - Oliveira et al. e Sá et al. foram baixados do SciELO.
   - Fischer et al. foi baixado do arXiv.
   - Benjamini e Hochberg é a cópia JSTOR hospedada na página do primeiro autor.
+  - As nove fontes de A19–A27 foram baixadas em 2026-11-08 e copiadas para `pdf/`. Os PDFs vieram do
+    SciELO e do sítio do FBSP, e a Lei veio do Planalto, salva em HTML. Arquivos:
+    `fbsp_2026_anuario-seguranca-publica.pdf`, `mascarenhas_2021_prevalencia-violencia-pns.pdf`,
+    `mascarenhas_2020_notificacoes-vpi-sinan.pdf`, `brasil_2006_lei-11340-maria-da-penha.html`,
+    `costa_2017_mulheres-rurais-acesso-rede.pdf`, `azevedo_2025_violencia-domestica-excesso-risco.pdf`,
+    `leites_2014_homicidios-femininos-rs.pdf`, `lucena_2012_violencia-domestica-joao-pessoa.pdf` e
+    `vasconcelos_2024_subnotificacao-duas-fontes.pdf`.
+  - Os demais PDFs do levantamento (Moroskoski 2022, Barufaldi 2017, Borth 2018, Meneghel 2017,
+    Stochero 2024) também estão em `pdf/`, embora não citados.
 
 ## Resumo
 
 | ID | Afirmação, abreviada | Situação | Referências (número na lista) |
 |---|---|---|---|
-| A01 | delegacia especializada em 38 de 496 municípios | Fonte de dados, conferida na base | 1 |
-| A02 | a distribuição não é homogênea | Sustenta | 2, 3 |
-| A03 | estudos em municípios brasileiros usam autocorrelação espacial | Sustenta | 2, 4 |
-| A15 | MG: microrregiões de saúde, cinco agrupamentos | Sustenta | 5 |
-| A16 | PR: taxas suavizadas maiores nas regiões agrícolas | Sustenta | 6 |
-| A17 | PE: maior número de casos na Metropolitana do Recife | Sustenta | 7 |
-| A04 | instabilidade das taxas em municípios pequenos e desfechos raros | Sustenta | 8 |
-| A05 | multiplicidade e falsos positivos | Sustenta | 9 |
-| A06 | subnotificação reconhecida e variável entre territórios | Sustenta, com ressalva | 2, 4 |
-| A10 | fonte dos dados: divulgação da SSP-RS | Fonte de dados | 10 |
-| A11a | população 2018–2021 e 2024–2025: estimativas do IBGE | Fonte de dados | 11 |
-| A11b | população de 2022: Censo 2022 | Fonte de dados | 12 |
-| A13 | razão feminina do Censo 2022 | Fonte de dados | 12 |
-| A14 | estabilidade da razão entre os Censos 2010 e 2022 | Fonte de dados | 13 |
-| A12 | indicador local (LISA) | Origem do método; texto completo não lido | 14 |
-| A07 | ajuste de Assunção e Reis | Origem do método; **texto completo não obtido** | 15 |
-| A08a | piso do p por permutação | Sustenta | 16 |
-| A08b | regra de Benjamini-Hochberg | Sustenta | 9 |
-| A09 | repositório público com versão etiquetada | Etiqueta `artigo-ress-v1` criada; **mascarada para avaliação cega; DOI da versão pendente** | 17 |
-| A18 | disponibilidade de dados: o mesmo repositório | Mesma referência de A09 | 17 |
+| A19 | magnitude: 1.571 feminicídios; 502 ameaças e 182 lesões por feminicídio | Sustenta | 1 |
+| A20 | PNS 2019: 19,4% das mulheres relataram violência em 12 meses | Sustenta | 2 |
+| A21 | Sinan: mais de um milhão de notificações, 2011–2017 | Sustenta | 3 |
+| A22 | Lei Maria da Penha: ação articulada; os entes podem criar serviços | Sustenta | 4 |
+| A01 | delegacia especializada em 38 de 496 municípios | Fonte de dados, conferida na base | 5 |
+| A23 | norte do RS: distância e transporte afastam as mulheres rurais | Sustenta, com ressalva | 6 |
+| A02 | a distribuição não é homogênea | Sustenta | 7, 8 |
+| A03 | os estudos recorrem a autocorrelação espacial | Sustenta, com ressalva | 7, 9 |
+| A24 | RS entre os seis estados com excesso de risco | **Sustenta só em parte: decisão pendente** | 10 |
+| A25 | RS, microrregiões: maiores coeficientes em áreas agropecuárias | Sustenta, com ressalva | 11 |
+| A16 | PR: maior incidência nas regiões de maior área agricultável | Sustenta | 12 |
+| A15 | MG: microrregiões de saúde, cinco agrupamentos | Sustenta | 13 |
+| A17 | PE: maior número de casos na Metropolitana do Recife | Sustenta | 14 |
+| A26 | João Pessoa: taxas heterogêneas, Getis-Ord sem aglomerado significativo | Sustenta | 15 |
+| A04 | instabilidade das taxas em municípios pequenos e desfechos raros | Sustenta | 16 |
+| A05 | multiplicidade e falsos positivos | Sustenta | 17 |
+| A27 | subnotificação no setor saúde, Brasil e RS | Sustenta | 18 |
+| A28 | PR: delegacias especializadas associadas a mais denúncias | Sustenta, com ressalva | 12 |
+| A10 | fonte dos dados: divulgação da SSP-RS | Fonte de dados | 19 |
+| A11a | população 2018–2021 e 2024–2025: estimativas do IBGE | Fonte de dados | 20 |
+| A11b | população de 2022: Censo 2022 | Fonte de dados | 21 |
+| A13 | razão feminina do Censo 2022 | Fonte de dados | 21 |
+| A14 | estabilidade da razão entre os Censos 2010 e 2022 | Fonte de dados | 22 |
+| A12 | indicador local (LISA) | Origem do método; texto completo não lido | 23 |
+| A07 | ajuste de Assunção e Reis | Origem do método; **texto completo não obtido** | 24 |
+| A08a | piso do p por permutação | Sustenta | 25 |
+| A08b | regra de Benjamini-Hochberg | Sustenta | 17 |
+| A09 | repositório público com versão etiquetada | Etiqueta `artigo-ress-v1` criada; **mascarada para avaliação cega; DOI da versão pendente** | 26 |
+| A18 | disponibilidade de dados: o mesmo repositório | Mesma referência de A09 | 26 |
 
-As linhas seguem a ordem do texto. São 17 referências na lista; o limite da RESS é 30.
+As linhas seguem a ordem do texto. São 26 referências na lista; o limite da RESS é 30.
 
 ---
 
 ## A01
 
-**Afirmação (reescrita em 2026-11-03):** «A violência contra a mulher é problema de saúde pública e de
+**Afirmação (reescrita em 2026-11-08):** «A faculdade produz distribuição desigual: no Rio Grande do
+Sul, em 2023, 38 dos 496 municípios que responderam declararam ter delegacia especializada [n].» A
+faculdade é a do art. 35 da Lei Maria da Penha, citada na frase anterior (A22).
+
+Redação de 2026-11-03, substituída: «A violência contra a mulher é problema de saúde pública e de
 segurança, e os serviços especializados que a atendem distribuem-se de modo desigual entre os
 municípios: no Rio Grande do Sul, em 2023, 38 dos 496 municípios que responderam ao quesito declararam
 ter delegacia especializada no atendimento à mulher [n].»
@@ -85,7 +116,7 @@ funcionam os serviços de acolhimento, a delegacia...») não tinha sustentaçã
 nova restringe-se ao que a MUNIC mede. A citação é da publicação do IBGE, e não do CSV processado
 do repositório.
 
-**Referência 1.** Instituto Brasileiro de Geografia e Estatística. Pesquisa de Informações Básicas
+**Referência 5.** Instituto Brasileiro de Geografia e Estatística. Pesquisa de Informações Básicas
 Municipais – MUNIC 2023: base de dados [Internet]. Rio de Janeiro: IBGE; 2024 [citado 2026 nov 3].
 Disponível em: https://ftp.ibge.gov.br/Perfil_Municipios/2023/Base_de_Dados/Base_MUNIC_2023.xlsx
 
@@ -116,18 +147,18 @@ iniciados em 43 (497 municípios):
 
 ## A02
 
-**Afirmação:** «Saber como os registros se distribuem entre municípios é, portanto, condição para dirigir
-a resposta — e a distribuição não é homogênea [n,n].»
+**Afirmação (reescrita em 2026-11-08):** «Saber como os registros se distribuem é, portanto, condição
+para dirigir a resposta, e a distribuição não é homogênea [n,n].»
 
 **Situação: sustenta**, quanto a "a distribuição não é homogênea", que é o que o marcador apoia.
 
-**Referência 2.** Oliveira MR, Madeiro AP, Nascimento FF, Andrade JX, Rodrigues MTP, Mascarenhas MDM.
+**Referência 7.** Oliveira MR, Madeiro AP, Nascimento FF, Andrade JX, Rodrigues MTP, Mascarenhas MDM.
 Rev Bras Epidemiol. 2024;27:e240030.
 
 > «Constatou-se, neste estudo, heterogeneidade espacial nas taxas brutas de notificações de estupro por
 > parceiro íntimo no Nordeste, com conglomerados mais altos nos estados do Ceará e de Pernambuco.» (p. 8)
 
-**Referência 3.** Sá YRC, Moi PCP, Galvão ND, Silva AMC, Moi GP. Rev Bras Epidemiol.
+**Referência 8.** Sá YRC, Moi PCP, Galvão ND, Silva AMC, Moi GP. Rev Bras Epidemiol.
 2021;24(Supl 1):e210016.
 
 > «The results of the present study show a very uneven distribution of the femicide rates per 100
@@ -138,13 +169,29 @@ Rev Bras Epidemiol. 2024;27:e240030.
 
 ## A03
 
-**Afirmação:** «Estudos que descrevem essa distribuição em municípios brasileiros recorrem a
-estatísticas de autocorrelação espacial, que identificam agrupamentos de valores semelhantes em áreas
-vizinhas [n,n].»
+**Afirmação (reescrita em 2026-11-08):** «Os estudos que a descrevem recorrem a estatísticas de
+autocorrelação espacial [n,n], variando na escala.»
+
+**Ressalva de 2026-11-08, sobre a redação, não sobre as passagens.** As passagens abaixo sustentam o
+uso de autocorrelação nos dois estudos citados. Mas a frase abre a enumeração que se segue, e a
+leitura natural é que os estudos enumerados também a usam. Pelos PDFs, quatro dos seis não usam:
+- Azevedo et al. (A24) usam taxas, excesso de risco e mapas coropléticos;
+- Leites et al. (A25) usam correlação e regressão;
+- Moroskoski et al. 2025 (A16) aplicam Moran só aos resíduos;
+- Veiga e Bushatsky (A17) anunciam o Moran, mas não relatam o índice.
+
+Bahia et al. (A15) usam Moran local bivariado e varredura. Lucena et al. (A26) usam Getis-Ord local.
+Antes, a frase dizia «em municípios brasileiros», e a enumeração vinha separada por «Fora da escala
+municipal, variam a unidade e o desfecho». A ligação ficou mais forte na nova redação. Decidir se
+«variando na escala» deve passar a algo como «e os estudos variam também na escala e no método».
+
+Redação de 2026-11-03, substituída: «Estudos que descrevem essa distribuição em municípios brasileiros
+recorrem a estatísticas de autocorrelação espacial, que identificam agrupamentos de valores semelhantes
+em áreas vizinhas [n,n].»
 
 **Situação: sustenta.** Os dois estudos têm o município como unidade e usam o Moran global e local.
 
-**Referência 4.** Barros SC, Oliveira CM, Silva APSC, Melo MFO, Pimentel DR, Bonfim CV. Rev Esc Enferm
+**Referência 9.** Barros SC, Oliveira CM, Silva APSC, Melo MFO, Pimentel DR, Bonfim CV. Rev Esc Enferm
 USP. 2021;55:e03770.
 
 > «Estudo ecológico que considerou como unidade espacial de análise os municípios do estado de
@@ -154,7 +201,7 @@ USP. 2021;55:e03770.
 > Para a delimitação das áreas críticas e de transição, bem como a identificação de clusters,
 > empregou-se o índice de Moran local (Local Indicators of Spatial Association – LISA).» (p. 2)
 
-**Referência 2.** Oliveira MR et al., 2024.
+**Referência 7.** Oliveira MR et al., 2024.
 
 > «Na análise espacial, adotou-se o Índice Global e Local de Moran (IGM/ILM) univariado. Para a criação
 > desse modelo, foi empregada na cartografia toda a extensão da macrorregião nordestina, tendo como
@@ -184,17 +231,23 @@ Páginas:
 - Veiga e Bushatsky usam a numeração «Página N» do documento RT Online. A paginação da revista
   (p. 285-319) não aparece nas páginas.
 
-As frases introdutórias não têm marcador: «Fora da escala municipal, variam a unidade e o desfecho.»
-Elas resumem as três que seguem.
+Na reescrita de 2026-11-08, a frase introdutória sem marcador («Fora da escala municipal, variam a
+unidade e o desfecho.») saiu. As três afirmações foram encurtadas e passaram a vir depois de Azevedo
+et al. (A24) e Leites et al. (A25). Lucena et al. (A26), que analisa bairros, foi acrescentado. As
+redações de 2026-11-03 ficam registradas abaixo de cada afirmação.
 
 ### A15 — Minas Gerais
 
-**Afirmação:** «Em Minas Gerais, a análise de feminicídios e homicídios de mulheres por microrregião
-de saúde detectou cinco agrupamentos espaço-temporais, quatro deles comuns aos dois desfechos [n].»
+**Afirmação (reescrita em 2026-11-08):** «Em Minas Gerais, por microrregião de saúde, detectaram-se
+cinco agrupamentos espaço-temporais [n]»
+
+Redação de 2026-11-03: «Em Minas Gerais, a análise de feminicídios e homicídios de mulheres por
+microrregião de saúde detectou cinco agrupamentos espaço-temporais, quatro deles comuns aos dois
+desfechos [n].»
 
 **Situação: sustenta.**
 
-**Referência 5.** Bahia CA, Pinto IV, Trindade CM, Silva CMA, Habkouk P, Simões TC, et al. Cad Saude
+**Referência 13.** Bahia CA, Pinto IV, Trindade CM, Silva CMA, Habkouk P, Simões TC, et al. Cad Saude
 Publica. 2025;41(1):e00015224.
 
 > «As unidades espaciais de análise foram as microrregiões, categorizadas conforme o Plano Diretor de
@@ -207,12 +260,16 @@ Publica. 2025;41(1):e00015224.
 
 ### A16 — Paraná
 
-**Afirmação:** «No Paraná, as taxas suavizadas de denúncias de feminicídio foram maiores nas regiões
-geográficas imediatas de maior área agricultável [n].»
+**Afirmação (reescrita em 2026-11-08):** «No estado, por microrregião, os maiores coeficientes de
+mortalidade feminina por agressão concentraram-se em áreas de peso agropecuário [n], associação também
+observada no Paraná [n].» O marcador é o segundo; o primeiro é A25.
+
+Redação de 2026-11-03: «No Paraná, as taxas suavizadas de denúncias de feminicídio foram maiores nas
+regiões geográficas imediatas de maior área agricultável [n].»
 
 **Situação: sustenta.**
 
-**Referência 6.** Moroskoski M, Azevedo LS, Brito FAM, Oliveira NN, Pereira ND, Carreira L, et al.
+**Referência 12.** Moroskoski M, Azevedo LS, Brito FAM, Oliveira NN, Pereira ND, Carreira L, et al.
 Cien Saude Colet. 2025;30(10):e10862025.
 
 > «Assim sendo, o estado do Paraná passou a ser dividido em 29 Regiões Geográficas Imediatas.» (p. 2)
@@ -230,12 +287,15 @@ não aplica o Moran às taxas, só aos resíduos da regressão, e por isso a fra
 
 ### A17 — Pernambuco
 
-**Afirmação:** «Em Pernambuco, entre os boletins de ocorrência de violência doméstica agregados por
-mesorregião, o maior número de casos esteve, em todos os anos, na Metropolitana do Recife [n].»
+**Afirmação (reescrita em 2026-11-08):** «em Pernambuco, por mesorregião, o maior número de casos
+esteve sempre na Metropolitana do Recife [n]»
+
+Redação de 2026-11-03: «Em Pernambuco, entre os boletins de ocorrência de violência doméstica agregados
+por mesorregião, o maior número de casos esteve, em todos os anos, na Metropolitana do Recife [n].»
 
 **Situação: sustenta.**
 
-**Referência 7.** Veiga BCS, Bushatsky M. Rev Bras Cienc Crim. 2021;29(186):285-319.
+**Referência 14.** Veiga BCS, Bushatsky M. Rev Bras Cienc Crim. 2021;29(186):285-319.
 
 > «[...] investigar a existência de associação entre a localização geográfica e os registros de
 > Boletins de Ocorrência relacionados à violência doméstica e familiar contra a mulher no estado de
@@ -257,7 +317,7 @@ a partir de poucos eventos, e desfechos raros agravam o problema [n].»
 
 **Situação: sustenta.**
 
-**Referência 8.** Carvalho AXY, Silva GDM, Almeida Júnior GR, Albuquerque PHM. Cad Saude Publica.
+**Referência 16.** Carvalho AXY, Silva GDM, Almeida Júnior GR, Albuquerque PHM. Cad Saude Publica.
 2012;28(7):1249-62.
 
 > «Quando os municípios são pequenos, a estimação de taxas brutas é pouco indicada. Por serem pouco
@@ -269,26 +329,31 @@ a partir de poucos eventos, e desfechos raros agravam o problema [n].»
 
 ## A05
 
-**Afirmação:** «A segunda é o número de testes: avaliar quinhentas áreas simultaneamente exige controle
-de multiplicidade, sem o qual a quantidade de falsos positivos deixa de ser desprezível [n].»
+**Afirmação (reescrita em 2026-11-08):** «A segunda é o número de testes: avaliar quinhentas áreas
+simultaneamente exige controle de multiplicidade, sem o qual os falsos positivos deixam de ser
+desprezíveis [n].»
 
 **Situação: sustenta.**
 
-**Referência 9.** Benjamini Y, Hochberg Y. J R Stat Soc Series B Stat Methodol. 1995;57(1):289-300.
+**Referência 17.** Benjamini Y, Hochberg Y. J R Stat Soc Series B Stat Methodol. 1995;57(1):289-300.
 
 > «When pursuing multiple inferences, researchers tend to select the (statistically) significant ones
 > for emphasis, discussion and support of conclusions. An unguarded use of single-inference procedures
 > results in a greatly increased false positive (significance) rate.» (p. 289; lida na página
 > renderizada)
 
-## A06
+## A06 — retirada em 2026-11-08
 
-**Afirmação:** «A subnotificação da violência contra a mulher é reconhecida, e varia entre territórios
+A frase saiu na reescrita da Introdução e não tem mais marcador. A subnotificação passou a ser citada
+por Vasconcelos et al. (A27), que a medem, e não por autores que a afirmam. Com isso, a ressalva abaixo
+deixou de valer. A entrada fica como registro.
+
+**Afirmação retirada:** «A subnotificação da violência contra a mulher é reconhecida, e varia entre territórios
 conforme a capacidade de acolhimento e a disposição de denunciar [n,n].»
 
 **Situação: sustenta, com ressalva.**
 
-**Referência 4.** Barros SC et al., 2021. A passagem atravessa a quebra de página, e o cabeçalho corrido
+**Referência 9.** Barros SC et al., 2021. A passagem atravessa a quebra de página, e o cabeçalho corrido
 da p. 7 foi omitido.
 
 > «Ainda é frequente, em municípios localizados em regiões menos urbanas, as mulheres [p. 6 | p. 7] não
@@ -297,7 +362,7 @@ da p. 7 foi omitido.
 > dificuldade de acesso a serviços de proteção às vítimas de violência, como as delegacias
 > especializadas de atendimento à mulher(26).» (p. 6-7)
 
-**Referência 2.** Oliveira MR et al., 2024.
+**Referência 7.** Oliveira MR et al., 2024.
 
 > «Primeiro, é possível que tenha ocorrido subnotificação do estupro, tanto por conta da dificuldade de
 > identificação da violência pela mulher como por provável barreira de acesso às unidades de saúde, uma
@@ -309,6 +374,278 @@ referência 26 de Barros et al. e a 43 de Oliveira et al. Elas sustentam a frase
 parecerista pode pedir a fonte primária. A citação, assim, é de autores que afirmam, não de quem
 mediu a variação territorial da subnotificação.
 
+## A19–A28 — Introdução reescrita em 2026-11-08
+
+As afirmações são as da reescrita do autor. As transcrições foram copiadas de
+`candidatos_introducao.md` (levantamento de 2026-11-08), onde foram conferidas por programa contra o
+texto extraído da página indicada. Em 2026-11-08 foram conferidas de novo, contra os arquivos copiados
+para `pdf/`, com o mesmo resultado. Há duas exceções, a de A28 na p. 3 e a de A24 na p. 5, que foram
+acrescentadas aqui e conferidas do mesmo modo. As páginas seguem o critério de «Como ler»:
+- Leites et al. e Lucena et al. têm paginação contínua da revista (p. 646 = p. 5 do PDF; p. 1115 =
+  p. 5 do PDF);
+- no Anuário, a numeração impressa coincide com a do PDF;
+- na p. 170 do Anuário, uma citação em destaque da diagramação se intercala com a frase na extração.
+  A frase está completa na página.
+
+### A19 — magnitude nos registros policiais
+
+**Afirmação:** «Em 2025, 1.571 mulheres foram vítimas de feminicídio no Brasil, e para cada feminicídio
+registrado houve, em média, 502 registros de ameaça e 182 de lesão corporal dolosa em contexto de
+violência doméstica [n] — duas das formas aqui analisadas.»
+
+**Situação: sustenta.**
+
+**Referência 1.** Fórum Brasileiro de Segurança Pública. Anuário Brasileiro de Segurança Pública 2026.
+São Paulo: FBSP; 2026.
+
+> «Ainda assim, mais mulheres foram mortas por serem mulheres: no último ano, 1.571 mulheres foram
+> vítimas de feminicídio, um aumento de 4% em relação a 2024, sendo a taxa nacional de 1,4 vítimas
+> por grupo de 100 mil mulheres.» (p. 159)
+
+> «Em outras palavras, para cada feminicídio registrado no país houve, em média, 502 registros de
+> ameaça, 182 registros de lesão corporal dolosa em contexto de violência doméstica, 84 registros de
+> descumprimento de medida protetiva de urgência e 79 registros de perseguição, entre outros
+> episódios de violência contra mulheres.» (p. 170)
+
+- A referência é a do volume, com autoria institucional.
+- As passagens estão no Texto 08, de Matosinhos e Brandão (p. 157). A referência do capítulo está em
+  `candidatos_introducao.md`, C01, com a página final a conferir.
+- «Duas das formas aqui analisadas» é ligação do autor, não da fonte: ameaça e lesão corporal são
+  categorias do artigo.
+
+### A20 — magnitude no inquérito
+
+**Afirmação:** «No inquérito domiciliar de 2019, 19,4% das mulheres adultas relataram violência nos doze
+meses anteriores [n]»
+
+**Situação: sustenta.**
+
+**Referência 2.** Mascarenhas MDM, Melo AS, Rodrigues MTP, Bahia CA, Lima CM, Corassa RB, et al. Rev Bras
+Epidemiol. 2021;24(Suppl 2):e210019.
+
+> «Em 2019, foram entrevistados 88.531 adultos brasileiros com 18 anos ou mais de idade, dos quais
+> 18,3% referiram ter sofrido algum tipo de violência nos últimos 12 meses, com frequência
+> significativamente maior entre as mulheres (19,4%; IC95% 18,7–20,0) quando comparadas aos homens
+> (17,0%; IC95% 16,3–17,7).» (p. 5)
+
+O número de 19,4% é a prevalência entre mulheres de 18 anos ou mais para violência de qualquer autor,
+não só a violência contra a mulher. A frase diz «relataram violência», sem qualificar.
+
+### A21 — magnitude na notificação
+
+**Afirmação:** «e o sistema de notificação da saúde acumulou mais de um milhão de registros entre 2011 e
+2017 [n].»
+
+**Situação: sustenta.**
+
+**Referência 3.** Mascarenhas MDM, Tomaz GR, Meneses GMS, Rodrigues MTP, Pereira VOM, Corassa RB. Rev
+Bras Epidemiol. 2020;23(Suppl 1):e200007.
+
+> «Do total de 1.015.631 notificações de violência contra mulheres, foram excluídos os registros de
+> lesão autoprovocada, agressor do sexo feminino ou sem informação (embora a VPI possa ocorrer em
+> relacionamentos homossexuais), notificações de violência contra crianças menores de 15 anos de
+> idade.» (p. 3)
+
+O período, de 2011 a 2017, está no título e no resumo. A frase usa só o total bruto. Os 62,4% de VPI,
+calculados sobre o total já filtrado, não foram usados.
+
+### A22 — Lei Maria da Penha
+
+**Afirmação:** «A Lei Maria da Penha atribui a política de enfrentamento à ação articulada da União, dos
+estados e dos municípios, e prevê que esses entes possam criar centros de atendimento, casas-abrigo e
+delegacias especializadas [n].»
+
+**Situação: sustenta.**
+
+**Referência 4.** Brasil. Lei nº 11.340, de 7 de agosto de 2006. Diário Oficial da União. 2006 ago 8.
+
+> «Art. 8º A política pública que visa coibir a violência doméstica e familiar contra a mulher
+> far-se-á por meio de um conjunto articulado de ações da União, dos Estados, do Distrito Federal e
+> dos Municípios e de ações não-governamentais, tendo por diretrizes:» (art. 8º, caput)
+
+> «Art. 35. A União, o Distrito Federal, os Estados e os Municípios poderão criar e promover, no limite
+> das respectivas competências:» (art. 35, caput)
+
+> «I - centros de atendimento integral e multidisciplinar para mulheres e respectivos dependentes em
+> situação de violência doméstica e familiar; II - casas-abrigos para mulheres e respectivos
+> dependentes menores em situação de violência doméstica e familiar; III - delegacias, núcleos de
+> defensoria pública, serviços de saúde e centros de perícia médico-legal especializados no
+> atendimento à mulher em situação de violência doméstica e familiar;» (art. 35, I–III)
+
+- O texto foi lido na versão compilada do Planalto, sem os trechos riscados.
+- Entre o caput e o inciso I do art. 35, a versão compilada traz a nota «(Vide Lei nº 14.316, de 2022)»,
+  omitida acima.
+- O verbo «poderão» é o que a frase traduz por «possam criar». A lei não tem página; a localização é
+  o artigo e o inciso.
+
+### A23 — distância e acesso no norte do RS
+
+**Afirmação:** «A consequência é prática, porque o acesso depende de onde a mulher vive — em municípios
+do norte do estado, profissionais da rede apontaram a distância e o transporte precário entre os
+fatores que afastam as mulheres rurais dos serviços [n].»
+
+**Situação: sustenta, com ressalva.**
+
+**Referência 6.** Costa MC, Silva EB, Soares JSF, Borth LC, Honnef F. Rev Gaucha Enferm.
+2017;38(2):e59553.
+
+> «Métodos: Estudo qualitativo, exploratório descritivo, com profissionais dos serviços da rede de
+> atenção à violência de quatro municípios da região norte do Rio Grande do Sul.» (p. 1)
+
+> «Resultados: (Des)informação das mulheres, distância, acesso restrito ao transporte, dependência
+> do companheiro, (des)atenção dos profissionais para acolher as mulheres em situação de violência e
+> (des)articulação da rede são fatores limitantes do acesso e têm como consequência o não
+> enfrentamento dessa problemática.» (p. 1)
+
+> «A subcategoria “Distância, acesso restrito ao transporte e a dependência do companheiro” foi
+> considerada pelos participantes como fator que dificulta a acessibilidade da mulher à rede de
+> atenção, pois o local onde vivem fica longe dos recursos de apoio sociais e institucionais.» (p. 4)
+
+**Ressalva:** a fonte diz «acesso restrito ao transporte», e a frase diz «transporte precário».
+«Precário» qualifica o transporte, enquanto a fonte fala no acesso a ele. Sugestão, se se quiser
+colar à fonte: «a distância e o acesso restrito ao transporte». O estudo é qualitativo, em quatro
+municípios, e sustenta o mecanismo, não uma magnitude.
+
+### A24 — Brasil, por unidade da federação
+
+**Afirmação:** «Entre unidades da federação, o Rio Grande do Sul esteve entre os seis estados com excesso
+de risco nas notificações de violência doméstica [n].»
+
+**Situação: sustenta só em parte. Decisão pendente.**
+
+**Referência 10.** Azevedo LS, Oliveira NN, Oliveira RR. Epidemiol Serv Saude. 2025;34:e20240277.
+
+> «Foram calculados taxas de notificação de violência por 100 mil e o excesso de risco por estado.»
+> (p. 1)
+
+> «Acre, Mato Grosso do Sul, Paraná, Minas Gerais, Tocantins e Rio Grande do Sul registraram altas
+> taxas e excesso de risco >1, ou seja, maior que a média do país.» (p. 1)
+
+Passagem dos Resultados, acrescentada em 2026-11-08. Foi conferida na coluna direita da extração com
+leiaute (`pdftotext -layout`), porque a extração simples intercala as duas colunas:
+
+> «Quanto ao excesso de risco, os estados onde o risco do agravo foi maior que a média de todo o país
+> foram: Acre (1,93), Mato Grosso do Sul (1,88), Paraná (1,66), Minas Gerais (1,51), Tocantins (1,43),
+> Rio Grande do Sul (1,43), Rio de Janeiro (1,22), São Paulo (1,21) e Espírito Santo (1,17).» (p. 5)
+
+**Divergência:** os estados com excesso de risco acima de 1 são **nove**, não seis. Os seis do resumo
+são os que têm, ao mesmo tempo, «altas taxas e excesso de risco >1». A frase, como está, diz que só
+seis tiveram excesso de risco. Há duas correções possíveis, a decidir pelo autor:
+- «entre os seis estados com altas taxas e excesso de risco», que segue o resumo (p. 1);
+- «entre os nove estados com excesso de risco», que segue os Resultados (p. 5).
+
+A segunda conta uma palavra a menos que a primeira. O texto não foi alterado.
+
+### A25 — Rio Grande do Sul, por microrregião
+
+**Afirmação:** «No estado, por microrregião, os maiores coeficientes de mortalidade feminina por agressão
+concentraram-se em áreas de peso agropecuário [n], associação também observada no Paraná [n].» O
+marcador é o primeiro; o segundo é A16.
+
+**Situação: sustenta, com ressalva.**
+
+**Referência 11.** Leites GT, Meneghel SN, Hirakata VN. Rev Bras Epidemiol. 2014;17(3):642-53.
+
+> «No Rio Grande do Sul, no período de 2003 – 2007, o coeficiente de mortalidade feminino por agressão
+> médio padronizado foi de 3,1 ± 1,4 óbitos/100.000.» (p. 646)
+
+> «As microrregiões que apresentaram maiores coeficientes no período foram: Frederico Westphalen
+> (6,2), Ijuí (5,6), Vacaria (5,2), Campanha Meridional (4,7), Passo Fundo (4,2), Cruz Alta (4,1) e
+> Porto Alegre (4,1).» (p. 646)
+
+> «As microrregiões que apresentaram os maiores coeficientes de mortalidade feminina por agressão
+> encontram-se entre as mais representativas economicamente na agropecuária do Estado do Rio Grande
+> do Sul, como: Passo Fundo (3º lugar), Vacaria (5º lugar), Cruz Alta (6º lugar) e Frederico
+> Westphalen (7º lugar)24.» (p. 650)
+
+**Ressalva:** das sete microrregiões de maior coeficiente, a fonte põe quatro entre as mais
+representativas da agropecuária: Passo Fundo, Vacaria, Cruz Alta e Frederico Westphalen. As outras três
+não são mencionadas: Ijuí, Campanha Meridional e Porto Alegre. «Concentraram-se» é mais forte que o
+«encontram-se entre» da fonte. Uma forma mais colada seria «vários dos maiores coeficientes [...]
+estiveram em microrregiões de peso agropecuário». O estudo não usa estatística de autocorrelação (ver
+a ressalva de A03).
+
+### A26 — João Pessoa, por bairro
+
+**Afirmação:** «e em João Pessoa, por bairro, as taxas mostraram-se heterogêneas sem que o indicador de
+Getis e Ord apontasse aglomerado significativo [n].»
+
+**Situação: sustenta.**
+
+**Referência 15.** Lucena KDT, Silva ATMC, Moraes RM, Silva CC, Bezerra IMP. Cad Saude Publica.
+2012;28(6):1111-21.
+
+> «Segundo o mapa do risco relativo (Figura 2), os bairros que apresentaram os maiores riscos são:
+> Bairro São José, Bessa, Mandacaru, Bancários, Centro, Mangabeira, Valentina, Ernesto Geisel, José
+> Américo, Cristo Redentor, Funcionários, Alto do Mateus, Ilha do Bispo e Cruz das Armas.» (p. 1115)
+
+> «Apenas 21% dos bairros apresentaram baixo risco, dentre eles: Barra de Gramame, Mussuré,
+> Mussumagro, Jardim Oceania, Aeroclube, Mumbaba, Varjão e Portal do Sol.» (p. 1115)
+
+> «Observa-se no mapa de Getis e Ord local (Figura 3a), que todos os bairros apresentaram correlação
+> negativa entre a violência doméstica contra a mulher e o espaço, existindo apenas um bairro com
+> aglomerado positivo, Bairro do Cuiá, mas não significativo.» (p. 1116)
+
+- A heterogeneidade está no mapa de risco relativo: bairros de maior e de menor risco.
+- O resultado do Getis-Ord é nulo: um único aglomerado positivo, não significativo.
+- Os dados são de delegacia especializada, como os de Veiga e Bushatsky.
+
+### A27 — subnotificação estimada em duas fontes
+
+**Afirmação:** «Confrontando as notificações da saúde com o inquérito de 2019, estimou-se subnotificação
+de 98,5% para a violência psicológica e 75,9% para a física no país, e de 96,7% e 81,1% no Rio Grande do
+Sul [n]. A estimativa é do sistema de saúde, e não dos registros policiais analisados aqui, cuja
+subnotificação não tem medida equivalente; indica, porém, a ordem de grandeza do que escapa.»
+
+**Situação: sustenta.**
+
+**Referência 18.** Vasconcelos NM, Bernal RTI, Souza JB, Bordoni PHC, Stein C, Coll CVN, et al. Cien Saude
+Colet. 2024;29(10):e07732023.
+
+> «Calculou-se a subnotificação do SINAN a partir da estimativa da população da PNS para o Brasil e
+> cada UF.» (p. 1)
+
+> «A subnotificação de VCM no Brasil foi de 98,5%, 75,9% e 89,4% para as violências psicológica,
+> física e sexual, respectivamente.» (p. 1)
+
+Valores do RS lidos nas figuras renderizadas (não são texto corrido):
+- Figura 2, violência psicológica (p. 5): notificação 3,3%; subnotificação 96,7%.
+- Figura 3, violência física (p. 6): notificação 18,9%; subnotificação 81,1%.
+
+- A frase seguinte, sobre a medida ser do setor saúde, é a ressalva pedida em
+  `candidatos_introducao.md`. Ela não tem marcador nem precisa de um.
+- «Não tem medida equivalente» é afirmação negativa do autor, sem fonte. Nenhuma estimativa de
+  subnotificação dos registros policiais do RS foi localizada no levantamento.
+- A violência sexual (89,4% no país) ficou fora da frase, porque o RS não tem estimativa:
+
+> «Importante ressaltar que não foi possível calcular o percentual de notificações para Rio Grande do
+> Sul e Mato Grosso, uma vez que não houve relato de violência sexual por parte de mulheres
+> entrevistadas na PNS 2019 para esses dois estados (Figura 4).» (p. 4)
+
+### A28 — rede local e registro, Paraná
+
+**Afirmação:** «A captação depende também da rede local: no Paraná, o número de delegacias especializadas
+associou-se positivamente às denúncias [n].»
+
+**Situação: sustenta, com ressalva.**
+
+**Referência 12.** Moroskoski M, Azevedo LS, Brito FAM, Oliveira NN, Pereira ND, Carreira L, et al. Cien
+Saude Colet. 2025;30(10):e10862025.
+
+> «As covariáveis utilizadas na análise espacial e de fatores associados foram extraídas do Tribunal de
+> Justiça do Paraná [...], segundo blocos temáticos: 1) Acesso à serviços de proteção: número de DEAM,
+> Juizados de Violência Doméstica e Familiar contra a Mulher, CRAM e Núcleo Maria da Penha (NUMAPE);»
+> (p. 3; acrescentada e conferida em 2026-11-08)
+
+> «Foi observado associação positiva entre as DEAM e as denúncias de feminicídio na maior parte do
+> estado.» (p. 6)
+
+**Ressalva:** a associação é local, de regressão geograficamente ponderada, e vale «na maior parte do
+estado», não em todo ele. As denúncias são de feminicídio, ao Ministério Público. A frase omite as duas
+qualificações, o que é aceitável numa Introdução. A associação é ecológica e não separa as duas leituras:
+mais serviço onde há mais violência, ou mais registro onde há serviço. A frase do texto usa a segunda
+como ilustração («a captação depende também»), sem afirmar causalidade.
+
 ## A07
 
 **Afirmação:** «A autocorrelação foi estimada pelo índice de Moran global e pelo indicador local de
@@ -318,7 +655,7 @@ O marcador é o segundo da frase; o primeiro é A12.
 **Situação: citação de origem de método. O texto completo não foi obtido; não há passagem
 transcrita.**
 
-**Referência 15.** Assunção RM, Reis EA. A new proposal to adjust Moran's I for population density. Stat
+**Referência 24.** Assunção RM, Reis EA. A new proposal to adjust Moran's I for population density. Stat
 Med. 1999;18(16):2147-62. doi:10.1002/(SICI)1097-0258(19990830)18:16<2147::AID-SIM179>3.0.CO;2-I
 
 **Caminhos tentados:**
@@ -352,7 +689,7 @@ rejeitar uma hipótese nesse piso exige m+1 ≥ n/(q·i).»
 
 **Situação: sustenta.**
 
-**Referência 16.** Fischer L, Barry T, Ramdas A. arXiv:2404.15586v4, 2025. As fórmulas foram transcritas
+**Referência 25.** Fischer L, Barry T, Ramdas A. arXiv:2404.15586v4, 2025. As fórmulas foram transcritas
 da página.
 
 > «In a classical Monte Carlo permutation test, we observe some test statistic Y0, generate B additional
@@ -367,13 +704,13 @@ Pela fórmula (1), o menor valor possível é 1/(1+B), que é o 1/(m+1) do manus
 
 **Situação: sustenta.**
 
-**Referência 9.** Benjamini e Hochberg, 1995, lida na página renderizada.
+**Referência 17.** Benjamini e Hochberg, 1995, lida na página renderizada.
 
 > «let k be the largest i for which P(i) ≤ (i/m) q*; then reject all H(i), i = 1, 2, . . ., k.» (p. 293)
 
 ### Sobre a desigualdade
 
-- m+1 ≥ n/(q·i) resulta de combinar o piso (referência 16) com a regra (referência 9). O manuscrito agora
+- m+1 ≥ n/(q·i) resulta de combinar o piso (referência 25) com a regra (referência 17). O manuscrito agora
   o declara.
 - Fischer et al. enunciam o caso de pior situação, em que um único p pequeno é testado a α/M; esse
   caso corresponde a i = 1:
@@ -402,10 +739,10 @@ repositório público, em versão etiquetada correspondente aos resultados aqui 
   regeneradas a partir do código, e a árvore ficou idêntica à commitada. A etiqueta aponta para o commit
   que contém essa análise e o `CITATION.cff` com a versão `artigo-ress-v1`. As outras etiquetas,
   `v1.0.0` e `artigo-reciis-v1`, são de outros trabalhos. A etiqueta ainda **não foi enviada ao remoto**.
-- A referência 17 traz «Versão artigo-ress-v1» e, no lugar do DOI, o marcador
+- A referência 26 traz «Versão artigo-ress-v1» e, no lugar do DOI, o marcador
   «doi:[PENDENTE: DOI da versão artigo-ress-v1 no Zenodo]». O DOI conceitual (10.5281/zenodo.21403499)
   saiu porque resolve para a versão mais recente, não para a deste artigo.
-- **Mascarada para avaliação cega em 2026-11-03.** No manuscrito, a referência 17 é «Referência
+- **Mascarada para avaliação cega em 2026-11-03.** No manuscrito, a referência 26 é «Referência
   omitida para avaliação cega.». O texto identificado, com o DOI pendente, está em
   `referencias_identificadas.json`. A RESS não indica forma própria de citar material dos autores
   na submissão duplo-cega.
@@ -417,7 +754,7 @@ repositório público, em versão etiquetada correspondente aos resultados aqui 
      `[PENDENTE: DOI da versão artigo-ress-v1 no Zenodo]` pelo DOI da versão (forma
      `10.5281/zenodo.<número>`);
   4. **só na versão final, depois do aceite:** copiar esse texto para a chave `repo` de
-     `referencias.json` e rodar `renumerar_referencias.py`. O script casa o item 17 com a chave `repo`,
+     `referencias.json` e rodar `renumerar_referencias.py`. O script casa o item 26 com a chave `repo`,
      que é a única sem uso, e regrava a lista;
   5. opcionalmente, acrescentar o DOI da versão em `identifiers` do `CITATION.cff`, num commit posterior
      à etiqueta.
@@ -439,7 +776,7 @@ Grande do Sul, em planilhas de divulgação pública por município e ano [n].»
 
 **Situação: fonte de dados.** Não há afirmação a sustentar; a referência identifica a publicação.
 
-**Referência 10.** Rio Grande do Sul, Secretaria da Segurança Pública. Indicadores da violência contra a
+**Referência 19.** Rio Grande do Sul, Secretaria da Segurança Pública. Indicadores da violência contra a
 mulher – Lei Maria da Penha. Página consultada em 2026-11-02:
 https://www.ssp.rs.gov.br/indicadores-da-violencia-contra-a-mulher
 
@@ -464,7 +801,7 @@ O primeiro marcador é A11a, e o segundo A11b.
 **Situação: fonte de dados, conferida contra o pipeline e a API.** A ressalva anterior, de que a frase
 omitia 2022 e 2023, ficou resolvida.
 
-**Referência 11 (A11a).** Instituto Brasileiro de Geografia e Estatística. Estimativas de População:
+**Referência 20 (A11a).** Instituto Brasileiro de Geografia e Estatística. Estimativas de População:
 tabela 6579, população residente estimada. Sistema IBGE de Recuperação Automática (SIDRA):
 https://sidra.ibge.gov.br/tabela/6579
 
@@ -506,10 +843,10 @@ total de 2022.
 **Situação: fonte de dados.** Não há afirmação bibliográfica a sustentar. As referências identificam
 as tabelas usadas por `src/analysis/denominador_feminino.py` e `src/analysis/auditoria/populacao_feminina.py`.
 
-**Referência 12.** IBGE, Censo Demográfico 2022, tabelas 4709 e 9514 do SIDRA. A 9514 dá
+**Referência 21.** IBGE, Censo Demográfico 2022, tabelas 4709 e 9514 do SIDRA. A 9514 dá
 a população feminina, e a 4709 a total, a mesma usada em `populacao_municipio_rs.csv`.
 
-**Referência 13.** IBGE, Censo Demográfico 2010, tabela 1378 do SIDRA, com população
+**Referência 22.** IBGE, Censo Demográfico 2010, tabela 1378 do SIDRA, com população
 feminina e total na mesma consulta.
 
 Metadados conferidos em 2026-11-03 na API de agregados do IBGE (`/api/v3/agregados/<tabela>/metadados`):
@@ -540,7 +877,7 @@ primeiro da frase.
 
 **Situação: citação de origem de método. O texto completo não foi lido.**
 
-**Referência 14.** Anselin L. Local indicators of spatial association—LISA. Geogr Anal.
+**Referência 23.** Anselin L. Local indicators of spatial association—LISA. Geogr Anal.
 1995;27(2):93-115. doi:10.1111/j.1538-4632.1995.tb00338.x
 
 - Os metadados vêm do registro do DOI no Crossref, conferido em 2026-11-02: título «Local Indicators of
