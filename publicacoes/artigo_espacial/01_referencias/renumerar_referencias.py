@@ -106,7 +106,9 @@ def reescreve_corpo(corpo: str, num_para_chave: dict[int, str], nova: dict[str, 
         tinha_chave = re.search(r"\{[a-z0-9_,]+\}", p) is not None
         p = CITACAO.sub(troca, p)
         if tinha_chave and not p.lstrip().startswith(("#", "-", "|", "<!--")):
-            p = textwrap.fill(normaliza(p), LARGURA)
+            # Sem quebrar no hífen: no Markdown a quebra de linha vira espaço, e «estimou-\nse» sairia
+            # «estimou- se» no documento.
+            p = textwrap.fill(normaliza(p), LARGURA, break_on_hyphens=False)
         paragrafos[i] = p
     return "\n\n".join(paragrafos)
 
