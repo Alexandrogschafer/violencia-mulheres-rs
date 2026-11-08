@@ -6,8 +6,10 @@ p direcional, ajuste de Assunção e Reis). Antes de gravar, cada tabela é conf
 resultado correspondente em `outputs/tables/`:
 - Tabela 1 e Tabela 2 contra `resultados_consolidados.md`;
 - Tabela 3 contra `sobreposicao_desfechos.md`;
-- Suplementar 1 contra `denominador_feminino_vs_total.md`;
-- Suplementar 2 contra `esperado_vs_observado_lisa.md`.
+- Suplementar 1 (pares significativos) contra `esperado_vs_observado_lisa.md`;
+- Suplementar 2 (denominador) contra `denominador_feminino_vs_total.md`.
+As suplementares são numeradas pela ordem de citação no texto (desde 2026-11-08: a dos pares, citada
+primeiro nos Resultados, é a 1).
 Se algo divergir, o script para sem gravar.
 
 Nomes de município: os do pipeline são em maiúsculas e sem acento (convenção SSP/PROCERGS). Nas tabelas
@@ -226,10 +228,10 @@ def tabela3(sig: pd.DataFrame, nomes: pd.Series, abaixo_limiar: set) -> tuple[pd
 
 
 
-# ---------------------------------------------------------------- Suplementar 1
+# ---------------------------------------------------------------- Suplementar 2 (denominador)
 
 
-def suplementar1() -> pd.DataFrame:
+def suplementar_denominador() -> pd.DataFrame:
     fem = pd.read_csv(FEMININO_CSV)
     fem = fem[(fem["configuracao"] == "assuncao_reis") & (fem["semente"] == SEED) & (fem["permutacoes"] == PERMUTACOES)]
     i = fem.pivot(index="tipo_crime", columns="denominador", values="moran_i")
@@ -251,7 +253,7 @@ def suplementar1() -> pd.DataFrame:
             f = sig[(sig["tipo_crime"] == d) & (sig["denominador"] == "feminina")].set_index("municipio")["quadrante"]
             comuns = t.index.intersection(f.index)
             confere(len(t) == int(n.loc[d, "total"]) and len(f) == int(n.loc[d, "feminina"]),
-                    f"Suplementar 1, contagem do LISA de {d}")
+                    f"Suplementar 2, contagem do LISA de {d}")
             linha.update({
                 "LISA (pop. total)": len(t), "LISA (pop. feminina)": len(f),
                 "Só com pop. feminina": len(f.index.difference(t.index)),
@@ -271,21 +273,21 @@ def suplementar1() -> pd.DataFrame:
         d = r["Desfecho"]
         if d in ref_i.index:
             confere(r["I (pop. total)"] == ref_i.loc[d, "I (total)"] and r["I (pop. feminina)"] == ref_i.loc[d, "I (feminina)"],
-                    f"Suplementar 1, Moran de {d}")
+                    f"Suplementar 2, Moran de {d}")
         if d in ref_l.index:
             for col, col_ref in [("LISA (pop. total)", "Significativos (total)"), ("LISA (pop. feminina)", "Significativos (feminina)"),
                                  ("Só com pop. feminina", "Entram"), ("Só com pop. total", "Saem"),
                                  ("Mudam de quadrante", "Mudam de quadrante")]:
-                confere(str(r[col]) == ref_l.loc[d, col_ref], f"Suplementar 1, {col_ref} de {d}")
+                confere(str(r[col]) == ref_l.loc[d, col_ref], f"Suplementar 2, {col_ref} de {d}")
     return s
 
 
 
 
-# ---------------------------------------------------------------- Suplementar 2
+# ---------------------------------------------------------------- Suplementar 1 (pares significativos)
 
 
-def suplementar2(pares: pd.DataFrame, nomes: pd.Series, corede: pd.Series) -> pd.DataFrame:
+def suplementar_pares(pares: pd.DataFrame, nomes: pd.Series, corede: pd.Series) -> pd.DataFrame:
     ordem_d = {d: k for k, d in enumerate(LISA)}
     ordem_q = {q: k for k, q in enumerate(QUADRANTES)}
     p = pares.assign(_d=pares["desfecho"].map(ordem_d), _q=pares["quadrante"].map(ordem_q),
@@ -298,14 +300,14 @@ def suplementar2(pares: pd.DataFrame, nomes: pd.Series, corede: pd.Series) -> pd
         "p de Poisson": p["p_poisson"].map(fmt_p),
         f"Esperado ≥ {LIMIAR}": p["esperado"].map(lambda v: "sim" if v >= LIMIAR else "não"),
     })
-    confere(s["COREDE"].notna().all(), "Suplementar 2, município sem COREDE")
+    confere(s["COREDE"].notna().all(), "Suplementar 1, município sem COREDE")
 
     ref = le_tabela_md(TABLES / "esperado_vs_observado_lisa.md", "Município", "## Os 67 pares")
     chave_ref = set(zip(ref["Município"], ref["Desfecho"], ref["Quadrante"], ref["Observado"], ref["Esperado"],
                         ref["Obs./esp."], ref["Poisson, direção do quadrante"], ref[f"Esperado ≥ {LIMIAR}"]))
     chave = set(zip(p["municipio"], p["desfecho"], p["quadrante"], p["observado"].astype(int).astype(str), s["Esperado"],
                     s["Razão O/E"], s["p de Poisson"], s[f"Esperado ≥ {LIMIAR}"]))
-    confere(len(s) == 67 and chave == chave_ref, "Suplementar 2 diverge de esperado_vs_observado_lisa.md")
+    confere(len(s) == 67 and chave == chave_ref, "Suplementar 1 diverge de esperado_vs_observado_lisa.md")
     return s.reset_index(drop=True)
 
 
@@ -372,7 +374,7 @@ def legenda(rotulo: str, titulo: str, itens: list[tuple[str, str]]) -> str:
     return texto + ("\n\n" + notas(itens) if itens else "")
 
 
-def pecas_formatadas(t1, t2, t3a, t3b, s1, s2) -> list[tuple[str, pd.DataFrame, str]]:
+def pecas_formatadas(t1, t2, t3a, t3b, s_pares, s_denominador) -> list[tuple[str, pd.DataFrame, str]]:
     return [
         ("tabela1_desfechos",
          formata(t1, colunas={"Taxa estadual por 100 mil mulheres-ano": "a", "p (bruta)": "b",
@@ -406,21 +408,9 @@ def pecas_formatadas(t1, t2, t3a, t3b, s1, s2) -> list[tuple[str, pd.DataFrame, 
                  [("a", NOTA_QUADRANTE),
                   ("b", "municípios significativos exatamente naqueles desfechos, e em nenhum outro"),
                   ("c", NOTA_ESPERADO)])),
-        ("suplementar1_denominador",
-         formata(s1, colunas={"I (pop. feminina)": "a", "Só com pop. feminina": "b", "Só com pop. total": "b",
-                              "Mudam de quadrante": "c"}, linhas={"Feminicídio Consumado": "d"}),
-         legenda("Tabela suplementar 1", "Índice de Moran global ajustado e municípios com indicador local de "
-                 "associação espacial (LISA) significativo, com denominador de população feminina e de população "
-                 "total, por desfecho de violência contra a mulher, Rio Grande do Sul, 2018-2025 "
-                 "(n = 497 municípios)",
-                 [("a", "população feminina anual estimada: população total do ano multiplicada pela razão "
-                        "feminina do município no Censo 2022"),
-                  ("b", "municípios significativos em apenas uma das versões"),
-                  ("c", "municípios significativos nas duas versões, em quadrantes diferentes"),
-                  ("d", "não analisado no nível local, pela baixa ocorrência")])),
-        ("suplementar2_pares_significativos",
-         formata(s2, colunas={"Quadrante": "a", "Esperado": "b", "p de Poisson": "c", f"Esperado ≥ {LIMIAR}": "d"}),
-         legenda("Tabela suplementar 2", "Pares município-desfecho com indicador local de associação espacial "
+        ("suplementar1_pares_significativos",
+         formata(s_pares, colunas={"Quadrante": "a", "Esperado": "b", "p de Poisson": "c", f"Esperado ≥ {LIMIAR}": "d"}),
+         legenda("Tabela suplementar 1", "Pares município-desfecho com indicador local de associação espacial "
                  "(LISA) significativo, por Conselho Regional de Desenvolvimento (COREDE), com eventos observados "
                  "(O) e esperados (E), razão O/E e probabilidade de Poisson, Rio Grande do Sul, 2018-2025 "
                  "(n = 67 pares)",
@@ -431,6 +421,18 @@ def pecas_formatadas(t1, t2, t3a, t3b, s1, s2) -> list[tuple[str, pd.DataFrame, 
                         "sem correção para comparações múltiplas e sem considerar a vizinhança"),
                   ("d", f"pares com esperado abaixo de {LIMIAR} foram mantidos no cálculo, sem interpretação "
                         "substantiva")])),
+        ("suplementar2_denominador",
+         formata(s_denominador, colunas={"I (pop. feminina)": "a", "Só com pop. feminina": "b", "Só com pop. total": "b",
+                              "Mudam de quadrante": "c"}, linhas={"Feminicídio Consumado": "d"}),
+         legenda("Tabela suplementar 2", "Índice de Moran global ajustado e municípios com indicador local de "
+                 "associação espacial (LISA) significativo, com denominador de população feminina e de população "
+                 "total, por desfecho de violência contra a mulher, Rio Grande do Sul, 2018-2025 "
+                 "(n = 497 municípios)",
+                 [("a", "população feminina anual estimada: população total do ano multiplicada pela razão "
+                        "feminina do município no Censo 2022"),
+                  ("b", "municípios significativos em apenas uma das versões"),
+                  ("c", "municípios significativos nas duas versões, em quadrantes diferentes"),
+                  ("d", "não analisado no nível local, pela baixa ocorrência")])),
     ]
 
 
@@ -443,10 +445,10 @@ def main() -> None:
     t1 = tabela1(estadual)
     t2 = tabela2(sig)
     t3a, t3b = tabela3(sig, nomes, abaixo)
-    s1 = suplementar1()
-    s2 = suplementar2(pares, nomes, corede)
+    s_pares = suplementar_pares(pares, nomes, corede)
+    s_denominador = suplementar_denominador()
 
-    pecas = pecas_formatadas(t1, t2, t3a, t3b, s1, s2)
+    pecas = pecas_formatadas(t1, t2, t3a, t3b, s_pares, s_denominador)
     partes = [
         "# Tabelas — artigo espacial\n\n<!-- Gerado por 03_tabelas/gerar_tabelas.py a partir de outputs/tables/. "
         "Não editar à mão. -->"

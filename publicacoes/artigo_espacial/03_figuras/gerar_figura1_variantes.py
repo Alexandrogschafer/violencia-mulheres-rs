@@ -5,7 +5,7 @@ As variantes B (cartograma) e C (símbolos nos centroides), consideradas na esco
 continua como módulo dos dados e da paleta, carregado aqui.
 
 Base comum (denominador feminino, semente 12345, os pares significativos da Tabela 2 e da Tabela
-suplementar 2, carregados e conferidos por `gerar_figura1.dados`).
+suplementar 1, carregados e conferidos por `gerar_figura1.dados`).
 
 Figura 1 (variante A) — geográfica com recortes, refeita em 2026-11-08 para nomes legíveis: os dois
 recortes são os painéis principais, o bloco do norte nos COREDEs Médio Alto Uruguai, Celeiro e Rio da

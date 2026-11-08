@@ -4,7 +4,7 @@ Este módulo não desenha nem grava nada. O desenho anterior da Figura 1 (quadra
 desfecho) foi substituído em 2026-11-08 pela variante A de `gerar_figura1_variantes.py`, que grava os
 `figura1.*`; o que resta aqui é a parte de que aquele script depende.
 
-Dados: os mesmos da Tabela 2 e da Tabela suplementar 2, com o denominador feminino, 2018-2025, semente
+Dados: os mesmos da Tabela 2 e da Tabela suplementar 1, com o denominador feminino, 2018-2025, semente
 12345, 99.999 permutações, Benjamini-Hochberg a 5% sobre o p direcional e ajuste de Assunção e Reis.
 Os pares significativos vêm de `carregar_lisa` (via `03_tabelas/gerar_tabelas.py`), e o esperado sob a
 taxa estadual vem de `esperado_vs_observado_lisa.calcular`. Antes de devolver os dados, `dados` confere as
