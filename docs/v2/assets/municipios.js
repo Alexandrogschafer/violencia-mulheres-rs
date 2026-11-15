@@ -10,7 +10,9 @@
     "Ameaça": "#2a78d6", "Estupro": "#1baf7a", "Feminicídio Consumado": "#eda100",
     "Feminicídio Tentado": "#008300", "Lesão Corporal": "#4a3aa7"
   };
-  const PISO = 5000;
+  // Piso e lista de municípios abaixo dele vêm de taxa_por_municipio.json
+  // (pipeline), a mesma lista do mapa -- não de pop_media >= 5.000 aqui.
+  let PISO = null, ABAIXO_PISO = new Set();
   const fmtInt = n => n.toLocaleString("pt-BR");
   const fmtTaxa = n => (n === null || n === undefined) ? "—" : n.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
@@ -24,7 +26,7 @@
 
   // medianas estaduais entre municípios elegíveis (>= piso), por tipo
   function medianas(tipos) {
-    const eleg = RESUMO.filter(r => r.pop_media >= PISO);
+    const eleg = RESUMO.filter(r => !ABAIXO_PISO.has(r.municipio));
     const out = {};
     tipos.forEach(t => {
       const v = eleg.map(r => r["t_" + t]).filter(x => x !== null).sort((a, b) => a - b);
@@ -35,7 +37,7 @@
   }
 
   function ranking(tipo, valor) {
-    const eleg = RESUMO.filter(r => r.pop_media >= PISO && r["t_" + tipo] !== null)
+    const eleg = RESUMO.filter(r => !ABAIXO_PISO.has(r.municipio) && r["t_" + tipo] !== null)
       .sort((a, b) => b["t_" + tipo] - a["t_" + tipo]);
     const pos = eleg.findIndex(r => r["t_" + tipo] <= valor) + 1;
     return { pos: pos || eleg.length, n: eleg.length };
@@ -48,7 +50,7 @@
 
     const tipos = SERIE.tipos;
     const med = medianas(tipos);
-    const abaixoPiso = reg.pop_media < PISO;
+    const abaixoPiso = ABAIXO_PISO.has(nome);
 
     $("#vazio").hidden = true;
     $("#perfil").hidden = false;
@@ -70,7 +72,7 @@
         <span class="mcard-taxa">${fmtTaxa(taxa)}</span>
         <span class="mcard-un">por 100 mil hab. · ${fmtInt(casos)} casos</span>
         <span class="mcard-cmp">${abaixoPiso
-          ? `<span class="cmp-na">Sem ranking: município abaixo de 5.000 hab.</span>`
+          ? `<span class="cmp-na">Sem ranking: município abaixo de ${fmtInt(PISO)} hab.</span>`
           : `<span class="cmp-pos">${r.pos}º entre ${r.n} municípios comparáveis</span>
              <span class="cmp-med ${acima ? "up" : "down"}">${acima ? "Acima" : "Abaixo"} da mediana, de ${fmtTaxa(med[t])}</span>`}</span>
       </div>`;
@@ -140,9 +142,16 @@
 
   Promise.all([
     fetch("../assets/data/tables/municipios_serie_anual.json").then(r => r.json()),
-    fetch("../assets/data/tables/municipios_resumo_periodo.json").then(r => r.json())
-  ]).then(([s, r]) => {
+    fetch("../assets/data/tables/municipios_resumo_periodo.json").then(r => r.json()),
+    fetch("../assets/data/maps/taxa_por_municipio.json").then(r => r.json())
+  ]).then(([s, r, m]) => {
     SERIE = s; RESUMO = r;
+    PISO = m.piso_populacional_instabilidade;
+    ABAIXO_PISO = new Set(m.municipios_abaixo_piso);
+    const preencher = (sel, n) => document.querySelectorAll(sel).forEach(e => { e.textContent = fmtInt(n); });
+    preencher("[data-n-abaixo-piso]", ABAIXO_PISO.size);
+    preencher("[data-n-acima-piso]", RESUMO.filter(x => !ABAIXO_PISO.has(x.municipio)).length);
+    preencher("[data-n-municipios]", RESUMO.length);
     montarLista();
     $("#consulta").hidden = false;
     $("#carregando").hidden = true;

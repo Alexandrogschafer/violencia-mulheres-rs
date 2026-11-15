@@ -2,6 +2,14 @@
   const TIPOS = ["Ameaça","Lesão Corporal","Estupro","Feminicídio Tentado","Feminicídio Consumado"];
   const $ = s => document.querySelector(s);
 
+  // Contagem de municípios abaixo do piso: a mesma lista do mapa, gravada
+  // pelo pipeline em taxa_por_municipio.json -- não um número fixo no HTML.
+  fetch("../assets/data/maps/taxa_por_municipio.json").then(r => r.json()).then(m => {
+    document.querySelectorAll("[data-n-abaixo-piso]").forEach(e => {
+      e.textContent = m.municipios_abaixo_piso.length.toLocaleString("pt-BR");
+    });
+  });
+
   fetch("../assets/data/tables/municipios_resumo_periodo.json").then(r => r.json()).then(resumo => {
     $("#n-municipios").textContent = resumo.length.toLocaleString("pt-BR");
     $("#n-registros").textContent = resumo.reduce((s, r) => s + r.c_geral, 0).toLocaleString("pt-BR");

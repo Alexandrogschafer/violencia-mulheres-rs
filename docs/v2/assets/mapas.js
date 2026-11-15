@@ -73,7 +73,7 @@
       `<div class="ramp-row"><span class="ramp-min">${medida === "taxa" ? fmtTaxa(min) : fmtInt(Math.round(min))}</span>` +
       passos +
       `<span class="ramp-max">${medida === "taxa" ? fmtTaxa(max) : fmtInt(Math.round(max))}</span></div>` +
-      `<div class="ramp-leg">${rot} · <span class="sw" style="background:${COR_ABAIXO_PISO}"></span> menos de ${fmtInt(PISO)} hab. (231 municípios)` +
+      `<div class="ramp-leg">${rot} · <span class="sw" style="background:${COR_ABAIXO_PISO}"></span> menos de ${fmtInt(PISO)} hab. (${fmtInt(ABAIXO_PISO.size)} municípios)` +
       ` · <span class="sw" style="background:${COR_SEM_DADO}"></span> sem dado</div>`;
   }
 
@@ -111,6 +111,7 @@
     RAMPA = m.paleta;
     PISO = m.piso_populacional_instabilidade;
     ABAIXO_PISO = new Set(m.municipios_abaixo_piso);
+    document.querySelectorAll("[data-n-abaixo-piso]").forEach(e => { e.textContent = fmtInt(ABAIXO_PISO.size); });
     r.forEach(x => { PORMUN[x.municipio] = x; });
 
     // O contêiner precisa estar visível ANTES de criar o mapa: num elemento
