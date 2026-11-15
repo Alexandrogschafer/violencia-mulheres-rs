@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resultados — Violência contra as mulheres no RS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot"></span> Violência contra as mulheres no RS</a>
+    <nav class="site">
+      <ul>
+        <li><a href="projeto.html">O projeto</a></li>
+        <li><a href="metodologia.html">Metodologia</a></li>
+        <li><a href="resultados.html" class="is-current">Resultados</a></li>
+        <li><a href="municipios.html">Municípios</a></li>
+        <li><a href="mapas.html">Mapas</a></li>
+        <li><a href="dados.html">Dados</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="pagehead">
+  <div class="wrap">
+    <span class="eyebrow">O estado</span>
+    <h1>Resultados</h1>
+    <p class="lede">Quatro perguntas sobre a série estadual de 2018 a 2025, cada uma com seu teste. Todos os números saem dos relatórios gerados pelo pipeline — nenhum é recalculado nesta página.</p>
+  </div>
+</div>
+
+<p id="carregando" class="sub" style="max-width:1180px;margin:40px auto;padding:0 24px">Carregando os resultados…</p>
+
+<div id="conteudo" hidden>
+  <section class="sumario-sec">
+    <div class="wrap">
+      <h2>As quatro perguntas</h2>
+      <p class="sub">Clique para ir direto a uma delas.</p>
+      <div class="sumario">
+        <a class="sum-card" href="#tendencia">
+          <span class="sum-num">1</span>
+          <h3>Tendência anual</h3>
+          <p>Os registros estão subindo ou caindo entre 2018 e 2025?</p>
+          <span class="sum-achado" id="s-tendencia">…</span>
+        </a>
+        <a class="sum-card" href="#sazonalidade">
+          <span class="sum-num">2</span>
+          <h3>Sazonalidade mensal</h3>
+          <p>Existem meses sistematicamente mais violentos?</p>
+          <span class="sum-achado" id="s-sazonalidade">…</span>
+        </a>
+        <a class="sum-card" href="#correlacao">
+          <span class="sum-num">3</span>
+          <h3>Correlação entre tipos</h3>
+          <p>Municípios com muita de uma violência têm muita das outras?</p>
+          <span class="sum-achado" id="s-correlacao">…</span>
+        </a>
+        <a class="sum-card" href="#quebra">
+          <span class="sum-num">4</span>
+          <h3>Quebra estrutural</h3>
+          <p>A série muda de comportamento em torno das enchentes de maio de 2024?</p>
+          <span class="sum-achado" id="s-quebra">…</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+<section id="tendencia">
+  <div class="wrap">
+    <span class="sec-num">1</span>
+    <h2>Tendência anual</h2>
+    <p class="sub">Regressão linear simples por tipo de crime, com Mann-Kendall como checagem cruzada, mais robusta a não-linearidade.</p>
+    <div class="grafico-wrap"><canvas id="g-tendencia"></canvas></div>
+    <div class="reading"><strong>Leitura</strong><p id="r-tendencia"></p></div>
+    <details class="teste">
+      <summary>Ver os números do teste</summary>
+      <div id="t-tendencia"></div>
+    </details>
+  </div>
+</section>
+<section id="sazonalidade">
+  <div class="wrap">
+    <span class="sec-num">2</span>
+    <h2>Sazonalidade mensal</h2>
+    <p class="sub">Kruskal-Wallis entre os doze meses. Onde há diferença, os meses em destaque vêm de um post-hoc Mann-Whitney mês contra resto, com correção de Holm-Bonferroni.</p>
+    <div class="ctrl-grupo" style="margin-bottom:8px">
+      <span class="ctrl-rot">Tipo de violência</span>
+      <div class="chips">
+        <button class="chip is-on" data-saz="Ameaça">Ameaça</button>
+        <button class="chip" data-saz="Lesão Corporal">Lesão Corporal</button>
+      </div>
+    </div>
+    <p class="nota-seletor">Estupro, feminicídio tentado e feminicídio consumado não apresentaram diferença significativa entre os meses, e o pipeline não publica a média mensal deles — por isso não aparecem aqui.</p>
+    <div class="grafico-wrap"><canvas id="g-sazonalidade"></canvas></div>
+    <div class="reading"><strong>Leitura</strong><p id="r-sazonalidade"></p><p id="r-saz-tipo" class="leitura-tipo"></p></div>
+    <details class="teste">
+      <summary>Ver os números do teste</summary>
+      <div id="t-sazonalidade"></div>
+    </details>
+  </div>
+</section>
+<section id="correlacao">
+  <div class="wrap">
+    <span class="sec-num">3</span>
+    <h2>Correlação entre tipos</h2>
+    <p class="sub">ρ de Spearman entre os cinco tipos, calculado sobre a taxa por 100 mil habitantes de cada município.</p>
+    <div class="grafico-wrap"><canvas id="g-correlacao"></canvas></div>
+    <div class="reading"><strong>Leitura</strong><p id="r-correlacao"></p></div>
+    <details class="teste">
+      <summary>Ver os números do teste</summary>
+      <div id="t-correlacao"></div>
+    </details>
+  </div>
+</section>
+<section id="quebra">
+  <div class="wrap">
+    <span class="sec-num">4</span>
+    <h2>Quebra estrutural</h2>
+    <p class="sub">Teste de Chow sobre a série mensal estadual, com o ponto de quebra fixado em maio de 2024.</p>
+    <div class="grafico-wrap"><canvas id="g-quebra"></canvas></div>
+    <div class="reading"><strong>Leitura</strong><p id="r-quebra"></p></div>
+    <details class="teste">
+      <summary>Ver os números do teste</summary>
+      <div id="t-quebra"></div>
+    </details>
+  </div>
+</section>
+
+  <section>
+    <div class="wrap">
+      <div class="callout"><p>Recorte 2018–2025: 2018 é o primeiro ano com granularidade mensal e layout padronizado na fonte; 2026 fica de fora por estar incompleto. A análise espacial — Moran e LISA — volta ao portal depois da publicação do artigo.</p></div>
+    </div>
+  </section>
+</div>
+<footer class="site">
+  <div class="wrap">
+    <p style="margin:0 0 8px"><strong style="color:var(--ink-primary);font-family:var(--font-display)">Violência contra as mulheres no RS</strong></p>
+    <p style="margin:0">Schäfer, A. G., Prates, L. A., Schäfer, L. P. &amp; Fernandes, M. A. D. (2026) · Desenvolvido no âmbito do PET Saúde: Informação e Saúde Digital (PET Saúde Clima), UNIPAMPA.</p>
+  </div>
+</footer>
+<script src="assets/resultados.js"></script>
+</body>
+</html>

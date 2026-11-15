@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Municípios — Violência contra as mulheres no RS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot"></span> Violência contra as mulheres no RS</a>
+    <nav class="site">
+      <ul>
+        <li><a href="projeto.html">O projeto</a></li>
+        <li><a href="metodologia.html">Metodologia</a></li>
+        <li><a href="resultados.html">Resultados</a></li>
+        <li><a href="municipios.html" class="is-current">Municípios</a></li>
+        <li><a href="mapas.html">Mapas</a></li>
+        <li><a href="dados.html">Dados</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="pagehead">
+  <div class="wrap">
+    <span class="eyebrow">Consulta</span>
+    <h1>Municípios</h1>
+    <p class="lede">Escolha um município do Rio Grande do Sul e veja seus registros, taxas e série histórica, comparados com o estado.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <p id="carregando" class="sub">Carregando os 497 municípios…</p>
+
+    <div id="consulta" class="consulta" hidden>
+      <div class="consulta-campos">
+        <div class="campo">
+          <label for="busca">Município</label>
+          <input id="busca" list="lista" autocomplete="off" placeholder="Digite o nome ou clique para ver os 497">
+          <datalist id="lista"></datalist>
+        </div>
+        <button id="btn" class="btn btn-primary">Visualizar</button>
+      </div>
+      <p id="erro" class="erro" hidden></p>
+      <div class="atalhos">
+        <span>Atalhos:</span>
+        <button class="chip" data-atalho="PORTO ALEGRE">Porto Alegre</button>
+        <button class="chip" data-atalho="BAGE">Bagé</button>
+        <button class="chip" data-atalho="URUGUAIANA">Uruguaiana</button>
+        <button class="chip" data-atalho="SANTA MARIA">Santa Maria</button>
+        <button class="chip" data-atalho="CANUDOS DO VALE">Canudos do Vale</button>
+      </div>
+    </div>
+
+    <div id="vazio" class="vazio">
+      <p><strong>Nenhum município selecionado.</strong></p>
+      <p>Ao escolher um, aparecem aqui: os registros e a taxa por 100 mil habitantes de cada tipo de violência, a posição do município no ranking estadual, e a série anual de 2012 a 2025.</p>
+    </div>
+
+    <div id="perfil" hidden>
+      <div class="perfil-head">
+        <h2 id="perfil-nome"></h2>
+        <p id="perfil-meta" class="sub"></p>
+      </div>
+
+      <div id="aviso-piso" class="callout" hidden>
+        <p>Este município tem menos de 5.000 habitantes. A taxa por 100 mil é instável — poucos casos deslocam muito o valor — e não é diretamente comparável à dos demais. Por isso o ranking não é exibido.</p>
+      </div>
+
+      <p class="nota-comparacao">As comparações abaixo usam os <strong>266 municípios com 5.000 habitantes ou mais</strong>. Os outros 231 ficam de fora porque, com população pequena, poucos casos deslocam demais a taxa. A mediana citada é a desse grupo de 266, não a dos 497.</p>
+
+      <div id="cartoes" class="mcards"></div>
+
+      <h3 class="sec">Série anual, 2012–2025</h3>
+      <p class="sub">Casos registrados por ano, por tipo de violência.</p>
+      <div class="grafico-wrap"><canvas id="grafico"></canvas></div>
+
+      <div class="callout" style="margin-top:28px">
+        <p>Taxa = casos acumulados em 2018–2025 / soma da população anual × 100.000. Não é uma taxa “por ano”. A população é a total do município, não só a feminina — ver Metodologia.</p>
+      </div>
+
+      <p class="todo" style="margin-top:22px"><strong>Protótipo com dados reais.</strong> Os 497 municípios, as taxas, as medianas e as séries vêm do dataset do projeto. Falta o que exige o pipeline: comparação por COREDE e por porte, sazonalidade e tendência municipais — tudo já existe para Uruguaiana e precisa ser parametrizado.</p>
+    </div>
+  </div>
+</section>
+<footer class="site">
+  <div class="wrap">
+    <p style="margin:0 0 8px"><strong style="color:var(--ink-primary);font-family:var(--font-display)">Violência contra as mulheres no RS</strong></p>
+    <p style="margin:0">Schäfer, A. G., Prates, L. A., Schäfer, L. P. &amp; Fernandes, M. A. D. (2026) · Desenvolvido no âmbito do PET Saúde: Informação e Saúde Digital (PET Saúde Clima), UNIPAMPA.</p>
+  </div>
+</footer>
+<script src="assets/municipios.js"></script>
+</body>
+</html>

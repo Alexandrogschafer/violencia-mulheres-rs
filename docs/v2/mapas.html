@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapas — Violência contra as mulheres no RS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="assets/site.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot"></span> Violência contra as mulheres no RS</a>
+    <nav class="site">
+      <ul>
+        <li><a href="projeto.html">O projeto</a></li>
+        <li><a href="metodologia.html">Metodologia</a></li>
+        <li><a href="resultados.html">Resultados</a></li>
+        <li><a href="municipios.html">Municípios</a></li>
+        <li><a href="mapas.html" class="is-current">Mapas</a></li>
+        <li><a href="dados.html">Dados</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="pagehead">
+  <div class="wrap">
+    <span class="eyebrow">Cartografia</span>
+    <h1>Mapas</h1>
+    <p class="lede">Distribuição dos registros pelos 497 municípios do Rio Grande do Sul, acumulados em 2018–2025. Clique num município para ver todos os seus números.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <p id="carregando" class="sub">Carregando a malha municipal…</p>
+
+    <div id="mapa-bloco" hidden>
+      <div class="controles">
+        <div class="ctrl-grupo">
+          <span class="ctrl-rot">Tipo de violência</span>
+          <div class="chips">
+        <button class="chip is-on" data-tipo="Ameaça">Ameaça</button>
+        <button class="chip" data-tipo="Lesão Corporal">Lesão Corporal</button>
+        <button class="chip" data-tipo="Estupro">Estupro</button>
+        <button class="chip" data-tipo="Feminicídio Tentado">Feminicídio Tentado</button>
+        <button class="chip" data-tipo="Feminicídio Consumado">Feminicídio Consumado</button>
+          </div>
+        </div>
+        <div class="ctrl-grupo">
+          <span class="ctrl-rot">Medida</span>
+          <div class="chips">
+            <button class="chip is-on" data-medida="taxa">Taxa por 100 mil</button>
+            <button class="chip" data-medida="casos">Casos</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="aviso-casos" class="callout" hidden>
+        <p>O mapa de casos absolutos acompanha de perto a população: os municípios maiores ficam escuros por serem maiores, não por terem incidência mais alta. Para comparar municípios, use a taxa.</p>
+      </div>
+
+      <div class="mapa-grid">
+        <div>
+          <div id="mapa"></div>
+          <div id="legenda" class="legenda"></div>
+        </div>
+        <aside class="painel-lateral">
+          <div id="painel-vazio" class="painel-vazio">
+            <p><strong>Clique num município</strong></p>
+            <p>Os cinco tipos de violência aparecem aqui, em casos e em taxa, com link para o perfil completo.</p>
+          </div>
+          <div id="painel" hidden>
+            <h3 id="painel-nome"></h3>
+            <p id="painel-pop" class="painel-pop"></p>
+            <table class="painel-tab">
+              <thead><tr><th>Tipo</th><th class="num">Casos</th><th class="num">Taxa</th></tr></thead>
+              <tbody id="painel-linhas"></tbody>
+            </table>
+            <a id="painel-link" class="btn btn-ghost" href="municipios.html">Ver perfil completo</a>
+          </div>
+        </aside>
+      </div>
+
+      <div class="callout" style="margin-top:26px">
+        <p>Taxa = casos acumulados em 2018–2025 / soma da população anual × 100.000. Os 231 municípios com menos de 5.000 habitantes aparecem em cinza: a taxa é instável demais para entrar na escala de cores.</p>
+      </div>
+
+      <p class="todo" style="margin-top:22px"><strong>Análise espacial fora desta página por ora.</strong> Moran global e LISA voltam ao portal depois que o artigo for aceito e publicado. Quando voltarem, entram com os parâmetros e a linguagem que o artigo fixou.</p>
+    </div>
+  </div>
+</section>
+<footer class="site">
+  <div class="wrap">
+    <p style="margin:0 0 8px"><strong style="color:var(--ink-primary);font-family:var(--font-display)">Violência contra as mulheres no RS</strong></p>
+    <p style="margin:0">Schäfer, A. G., Prates, L. A., Schäfer, L. P. &amp; Fernandes, M. A. D. (2026) · Desenvolvido no âmbito do PET Saúde: Informação e Saúde Digital (PET Saúde Clima), UNIPAMPA.</p>
+  </div>
+</footer>
+<script src="assets/mapas.js"></script>
+</body>
+</html>

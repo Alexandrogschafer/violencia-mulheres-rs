@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dados — Violência contra as mulheres no RS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot"></span> Violência contra as mulheres no RS</a>
+    <nav class="site">
+      <ul>
+        <li><a href="projeto.html">O projeto</a></li>
+        <li><a href="metodologia.html">Metodologia</a></li>
+        <li><a href="resultados.html">Resultados</a></li>
+        <li><a href="municipios.html">Municípios</a></li>
+        <li><a href="mapas.html">Mapas</a></li>
+        <li><a href="dados.html" class="is-current">Dados</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="pagehead">
+  <div class="wrap">
+    <span class="eyebrow">Aberto</span>
+    <h1>Dados</h1>
+    <p class="lede">Os mesmos dados que alimentam este portal, prontos para download e reuso, sob licença CC BY 4.0.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="dl-grid">
+      <div class="dl-card">
+        <span class="tag t-violet">Série completa</span>
+        <h3>Dataset principal</h3>
+        <p>Um registro por município × ano × tipo de violência, com casos, população e taxa. Recorte 2012–2026.</p>
+        <p class="dl-meta"><code>violencia_rs_municipio_ano.csv</code> · 36.780 registros</p>
+        <a class="btn btn-accent" href="#">Baixar CSV</a>
+      </div>
+      <div class="dl-card">
+        <span class="tag t-terra">Consolidado</span>
+        <h3>Resumo por município</h3>
+        <p>Casos e taxa acumulados em 2018–2025, por tipo, para os <strong id="n-municipios">…</strong> municípios. É a base das abas Municípios e Mapas.</p>
+        <p class="dl-meta"><strong id="n-registros">…</strong> registros no período</p>
+        <button class="btn btn-accent" id="baixar-resumo">Baixar CSV</button>
+      </div>
+      <div class="dl-card">
+        <span class="tag t-sage">Geometria</span>
+        <h3>Malha municipal</h3>
+        <p>Limites dos 497 municípios do RS, do IBGE, generalizados em qualidade intermediária para uso na web.</p>
+        <p class="dl-meta"><code>municipios_rs.geojson</code> · 497 feições</p>
+        <a class="btn btn-ghost" href="#">Baixar GeoJSON</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Dicionário de dados</h2>
+    <p class="sub">Colunas de <code>violencia_rs_municipio_ano.csv</code>.</p>
+    <table class="teste-tab dic">
+      <thead><tr><th>Coluna</th><th>Descrição</th></tr></thead>
+      <tbody>
+          <tr><td><code>municipio</code></td><td>Nome do município, em maiúsculas e sem acento, ou NÃO INFORMADO</td></tr>
+          <tr><td><code>ano</code></td><td>Ano de referência, de 2012 a 2026</td></tr>
+          <tr><td><code>tipo_crime</code></td><td>Ameaça, Estupro, Feminicídio Consumado, Feminicídio Tentado ou Lesão Corporal</td></tr>
+          <tr><td><code>casos_total</code></td><td>Total de casos no ano, no município, para aquele tipo</td></tr>
+          <tr><td><code>populacao</code></td><td>População total do município no ano, estimativa do IBGE</td></tr>
+          <tr><td><code>taxa_por_100mil_hab</code></td><td>casos_total / populacao × 100.000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Código e dados brutos</h2>
+    <p style="max-width:70ch;color:var(--ink-secondary)">As planilhas originais da SIP/PROCERGS e o código completo de extração e análise estão no repositório, com as tabelas de população do IBGE, a malha municipal e todas as tabelas intermediárias, regeneráveis rodando o pipeline localmente.</p>
+    <div class="cta-row" style="margin-top:22px">
+      <a class="btn btn-primary" href="#">Ver repositório</a>
+      <a class="btn btn-ghost" href="#">Arquivo no Zenodo (DOI)</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Antes de usar estes dados</h2>
+    <p class="sub">Três limitações que valem para todo número deste portal.</p>
+    <div class="goals">
+      <div class="goal"><div class="num">1</div><h3>São registros, não ocorrências</h3><p>Os dados medem o que chegou à polícia. Variação entre municípios pode refletir diferença de notificação, não de violência.</p></div>
+      <div class="goal"><div class="num">2</div><h3>A taxa usa população total</h3><p>Não só a feminina. A população de 2023 é interpolada, e 2026 é ano parcial.</p></div>
+      <div class="goal"><div class="num">3</div><h3>Municípios pequenos são instáveis</h3><p>Nos 231 abaixo de 5.000 habitantes, poucos casos deslocam muito a taxa. Não são diretamente comparáveis aos demais.</p></div>
+    </div>
+    <div class="callout" style="margin-top:28px"><p>Ao reutilizar, cite conforme indicado em <a href="projeto.html">O projeto</a>. A licença CC BY 4.0 exige atribuição.</p></div>
+  </div>
+</section>
+<footer class="site">
+  <div class="wrap">
+    <p style="margin:0 0 8px"><strong style="color:var(--ink-primary);font-family:var(--font-display)">Violência contra as mulheres no RS</strong></p>
+    <p style="margin:0">Schäfer, A. G., Prates, L. A., Schäfer, L. P. &amp; Fernandes, M. A. D. (2026) · Desenvolvido no âmbito do PET Saúde: Informação e Saúde Digital (PET Saúde Clima), UNIPAMPA.</p>
+  </div>
+</footer>
+<script src="assets/dados.js"></script>
+</body>
+</html>
