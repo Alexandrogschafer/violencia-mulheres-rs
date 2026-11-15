@@ -15,7 +15,12 @@ import pandas as pd
 
 from src.analysis.figuras_capitulo import PALETA_OFICIAL
 from src.analysis.mapa_choropleth import _populacao_referencia, carregar_taxa_periodo, paleta_stops
-from src.analysis.periodo_padrao import ANO_FIM_ANALISE, ANO_INICIO_ANALISE
+from src.analysis.periodo_padrao import (
+    ANO_FIM_ANALISE,
+    ANO_FIM_SERIE_HISTORICA,
+    ANO_INICIO_ANALISE,
+    ANO_INICIO_SERIE_HISTORICA,
+)
 from src.fetch_malha_municipios import carregar_malha_com_municipio
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -285,6 +290,89 @@ def gerar_tabela_municipios_resumo() -> pd.DataFrame:
     return resumo
 
 
+def _municipio_ano_processado() -> pd.DataFrame:
+    """data/processed/violencia_rs_municipio_ano.csv sem o pseudo-município
+    NÃO INFORMADO -- base das duas tabelas por município abaixo."""
+    df = pd.read_csv(PROCESSED_DIR / "violencia_rs_municipio_ano.csv")
+    return df[df.municipio != MUNICIPIO_NAO_IDENTIFICADO]
+
+
+def gerar_serie_anual_municipios() -> dict:
+    """Série anual por município (ANO_INICIO_SERIE_HISTORICA-
+    ANO_FIM_SERIE_HISTORICA; 2026 fica de fora por ser parcial), em formato
+    compacto: para cada município, "c" é uma lista por tipo (na ordem de
+    "tipos") de casos por ano (na ordem de "anos") e "p" é a população por
+    ano. Ano sem registro na fonte vira null, não 0 -- hoje só Feminicídio
+    Tentado em 2012, que a planilha 2012-2017 só traz a partir de 2013."""
+    anos = list(range(ANO_INICIO_SERIE_HISTORICA, ANO_FIM_SERIE_HISTORICA + 1))
+    df = _municipio_ano_processado()
+    df = df[df.ano.between(anos[0], anos[-1])]
+
+    casos = df.pivot(index=["municipio", "tipo_crime"], columns="ano", values="casos_total")
+    casos = casos.reindex(columns=anos)
+    pop = df.groupby(["municipio", "ano"]).populacao.first().unstack().reindex(columns=anos)
+
+    def _inteiro_ou_nulo(valor):
+        return None if pd.isna(valor) else int(valor)
+
+    municipios = {}
+    for municipio in sorted(df.municipio.unique()):
+        municipios[municipio] = {
+            "c": [
+                [_inteiro_ou_nulo(v) for v in casos.loc[(municipio, tipo)]]
+                if (municipio, tipo) in casos.index
+                else [None] * len(anos)
+                for tipo in TIPOS_CRIME
+            ],
+            "p": [_inteiro_ou_nulo(v) for v in pop.loc[municipio]],
+        }
+    return {"anos": [str(a) for a in anos], "tipos": TIPOS_CRIME, "municipios": municipios}
+
+
+def gerar_resumo_periodo_municipios() -> list[dict]:
+    """Acumulado por município no período padrão (ANO_INICIO_ANALISE-
+    ANO_FIM_ANALISE): soma e média da população anual, casos e taxa por 100
+    mil hab. (casos / soma das populações anuais) por tipo, e casos somados
+    dos cinco tipos. Ordenado por nome do município."""
+    n_anos = ANO_FIM_ANALISE - ANO_INICIO_ANALISE + 1
+    df = _municipio_ano_processado()
+    df = df[df.ano.between(ANO_INICIO_ANALISE, ANO_FIM_ANALISE)]
+
+    pop_soma = df.groupby(["municipio", "ano"]).populacao.first().groupby("municipio").sum()
+    casos = df.groupby(["municipio", "tipo_crime"]).casos_total.sum().unstack().reindex(columns=TIPOS_CRIME)
+
+    resumo = []
+    for municipio in sorted(pop_soma.index):
+        soma = float(pop_soma[municipio])
+        linha = {
+            "municipio": municipio,
+            "pop_media": int(round(soma / n_anos)),
+            "pop_soma": int(soma),
+        }
+        for tipo in TIPOS_CRIME:
+            c = int(casos.loc[municipio, tipo])
+            linha[f"c_{tipo}"] = c
+            linha[f"t_{tipo}"] = round(c / soma * 100_000, 2)
+        linha["c_geral"] = sum(linha[f"c_{t}"] for t in TIPOS_CRIME)
+        resumo.append(linha)
+    return resumo
+
+
+# Tabelas por município publicadas em docs/assets/data/tables/, geradas de
+# data/processed/violencia_rs_municipio_ano.csv. Lista explícita, como
+# RELATORIOS_PARA_PORTAL (que é só de CSVs de outputs/reports/): uma tabela
+# nova só entra no portal se for acrescentada aqui e em
+# _GERADORES_TABELAS_MUNICIPAIS.
+TABELAS_MUNICIPAIS_PARA_PORTAL = [
+    "municipios_serie_anual",
+    "municipios_resumo_periodo",
+]
+_GERADORES_TABELAS_MUNICIPAIS = {
+    "municipios_serie_anual": (gerar_serie_anual_municipios, {"separators": (",", ":")}),
+    "municipios_resumo_periodo": (gerar_resumo_periodo_municipios, {"indent": 2}),
+}
+
+
 def _csv_para_json(caminho_csv: Path, caminho_json: Path) -> None:
     df = pd.read_csv(caminho_csv)
     caminho_json.parent.mkdir(parents=True, exist_ok=True)
@@ -320,6 +408,14 @@ def preparar_dados_docs() -> None:
     resumo_municipios.to_json(
         docs_tables / "municipios_resumo.json", orient="records", force_ascii=False, indent=2
     )
+
+    # tables/ -- tabelas por município de TABELAS_MUNICIPAIS_PARA_PORTAL,
+    # geradas de data/processed/ (não de outputs/reports/).
+    for nome in TABELAS_MUNICIPAIS_PARA_PORTAL:
+        gerar, opcoes_json = _GERADORES_TABELAS_MUNICIPAIS[nome]
+        (docs_tables / f"{nome}.json").write_text(
+            json.dumps(gerar(), ensure_ascii=False, **opcoes_json), encoding="utf-8"
+        )
 
     # maps/ -- geojson de contorno + taxas por tipo de crime.
     shutil.copy2(MAPS_DIR / "municipios_rs.geojson", docs_maps / "municipios_rs.geojson")
