@@ -452,3 +452,12 @@ details.teste > div { padding: 0 20px 18px; overflow-x: auto; }
 @media (max-width: 680px) { .numero-apoio { grid-template-columns: 1fr; gap: 14px; } .na-valor { flex-direction: row; gap: 18px; } }
 .leitura-tipo { margin-top: 10px !important; padding-top: 10px; border-top: 1px solid var(--border); color: var(--ink-primary) !important; font-weight: 400; }
 .nota-seletor { font-size: 13px; color: var(--muted); margin: 0 0 18px; max-width: 76ch; }
+
+/* realização e apoio (página inicial) */
+.realizacao h2 { margin-bottom: 26px; }
+.realizacao-logos { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+.realizacao-logo { display: inline-flex; align-items: center; background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 22px; transition: border-color .15s; }
+.realizacao-logo:hover { border-color: var(--brand); }
+.realizacao-logo img { display: block; height: 64px; width: auto; max-width: 100%; }
+.realizacao-links { margin: 20px 0 0; font-size: 14.5px; color: var(--ink-secondary); }
+@media (max-width: 760px) { .realizacao-logo img { height: 48px; } }
